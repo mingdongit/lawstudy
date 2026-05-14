@@ -1,0 +1,21 @@
+# Database
+notes.db
+
+# Articles (raw markdown, too large for repo)
+articles/
+
+# Python
+__pycache__/
+*.pyc
+
+# Sync script
+sync_notes.py
+
+# Knowledge point drafts
+知識点整理_*.md
+
+# Old named HTML
+民法学習ガイド_全84講.html
+
+# Claude config
+.claude/

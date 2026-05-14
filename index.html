@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>msahkie民法講義 学習ガイド（全96講）</title>
+<style>
+:root {
+  --bg: #0f1117;
+  --card: #1a1d27;
+  --card-hover: #22263a;
+  --accent: #6c8cff;
+  --accent2: #ff6c8c;
+  --accent3: #6cffb8;
+  --accent4: #ffd76c;
+  --accent5: #c96cff;
+  --text: #e0e0e0;
+  --text-dim: #8a8fa8;
+  --border: #2a2e3f;
+  --tag-bg: #252940;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI','Hiragino Sans','Yu Gothic UI','Meiryo',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+
+/* --- Navigation sidebar --- */
+.sidebar { position:fixed; left:0; top:0; width:280px; height:100vh; background:#13151f; border-right:1px solid var(--border); overflow-y:auto; z-index:100; padding:16px 0; transition:transform .3s; }
+.sidebar.closed { transform:translateX(-280px); }
+.sidebar h2 { font-size:14px; color:var(--accent); padding:8px 20px; margin-top:12px; text-transform:uppercase; letter-spacing:1px; }
+.sidebar .nav-item { display:block; padding:6px 20px 6px 28px; font-size:13px; color:var(--text-dim); cursor:pointer; border-left:3px solid transparent; transition:.2s; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.sidebar .nav-item:hover { color:var(--text); background:rgba(108,140,255,.08); border-left-color:var(--accent); }
+.sidebar .nav-item.active { color:var(--accent); border-left-color:var(--accent); }
+.sidebar .nav-group { padding:4px 20px; font-size:12px; color:var(--accent2); font-weight:700; margin-top:14px; }
+.sidebar-toggle { position:fixed; left:8px; top:8px; z-index:200; background:var(--accent); color:#fff; border:none; border-radius:6px; width:36px; height:36px; font-size:18px; cursor:pointer; display:none; }
+@media(max-width:900px) { .sidebar { transform:translateX(-280px); } .sidebar.open { transform:translateX(0); } .sidebar-toggle { display:block; } }
+
+/* --- Main --- */
+.main { margin-left:280px; padding:40px 48px 80px; max-width:1000px; }
+@media(max-width:900px) { .main { margin-left:0; padding:20px 16px 60px; } }
+
+h1 { font-size:2rem; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px; }
+.subtitle { color:var(--text-dim); margin-bottom:36px; font-size:14px; }
+
+/* Part header */
+.part-header { margin:48px 0 24px; padding:20px 28px; background:linear-gradient(135deg, rgba(108,140,255,.12), rgba(255,108,140,.08)); border-radius:12px; border-left:4px solid var(--accent); }
+.part-header h2 { font-size:1.3rem; color:var(--accent); margin-bottom:4px; }
+.part-header p { font-size:14px; color:var(--text-dim); }
+
+/* Lecture card */
+.lec { background:var(--card); border-radius:10px; margin:16px 0; padding:20px 24px; border:1px solid var(--border); transition:.2s; }
+.lec:hover { border-color:var(--accent); background:var(--card-hover); }
+.lec-title { font-size:1.05rem; font-weight:700; color:var(--text); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.lec-num { background:var(--accent); color:#fff; border-radius:6px; padding:2px 8px; font-size:12px; font-weight:700; min-width:32px; text-align:center; }
+.lec-body { font-size:14px; color:var(--text-dim); }
+.lec-body p { margin:6px 0; }
+.lec-body strong { color:var(--text); }
+
+/* Tags */
+.tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+.tag { background:var(--tag-bg); color:var(--accent3); border-radius:4px; padding:2px 8px; font-size:11px; }
+
+/* Mind map */
+.mindmap { background:#12141e; border-radius:12px; padding:24px; margin:20px 0; overflow-x:auto; border:1px solid var(--border); }
+.mindmap h3 { font-size:14px; color:var(--accent4); margin-bottom:16px; text-align:center; }
+.mm { font-family:'Cascadia Code','Consolas','Courier New',monospace; font-size:13px; line-height:1.9; white-space:pre; color:var(--text-dim); }
+.mm .root { color:var(--accent); font-weight:700; }
+.mm .l1 { color:var(--accent2); font-weight:700; }
+.mm .l2 { color:var(--accent3); }
+.mm .l3 { color:var(--accent4); }
+.mm .l4 { color:var(--accent5); }
+.mm .note { color:var(--text-dim); font-style:italic; }
+
+/* Analogy box */
+.analogy { background:linear-gradient(135deg, rgba(108,255,184,.06), rgba(108,140,255,.06)); border-left:3px solid var(--accent3); border-radius:0 8px 8px 0; padding:14px 18px; margin:12px 0; font-size:13px; }
+.analogy::before { content:"💡 通俗理解："; font-weight:700; color:var(--accent3); }
+
+/* Table */
+table { width:100%; border-collapse:collapse; margin:12px 0; font-size:13px; }
+th { background:var(--tag-bg); color:var(--accent); padding:8px 12px; text-align:left; border:1px solid var(--border); }
+td { padding:8px 12px; border:1px solid var(--border); color:var(--text-dim); }
+tr:hover td { background:rgba(108,140,255,.05); }
+
+/* Quiz */
+.quiz { background:rgba(255,215,108,.06); border:1px solid rgba(255,215,108,.2); border-radius:10px; padding:16px 20px; margin:16px 0; }
+.quiz h4 { color:var(--accent4); font-size:14px; margin-bottom:8px; }
+.quiz details { margin:6px 0; font-size:13px; }
+.quiz summary { cursor:pointer; color:var(--text); padding:4px 0; }
+.quiz details[open] summary { color:var(--accent3); }
+.quiz .answer { padding:6px 0 6px 16px; color:var(--accent3); border-left:2px solid var(--accent3); margin:4px 0 4px 8px; }
+
+/* Progress */
+.progress-bar { position:sticky; top:0; z-index:50; height:3px; background:var(--border); }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width .3s; }
+
+/* Scroll top */
+.scroll-top { position:fixed; bottom:24px; right:24px; background:var(--accent); color:#fff; border:none; border-radius:50%; width:44px; height:44px; font-size:20px; cursor:pointer; opacity:0; transition:.3s; z-index:50; }
+.scroll-top.show { opacity:1; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<button class="sidebar-toggle" id="sidebarToggle">&#9776;</button>
+<button class="scroll-top" id="scrollTop">&#8593;</button>
+
+<!-- Sidebar -->
+<nav class="sidebar" id="sidebar">
+<div style="padding:12px 20px;"><strong style="color:var(--accent);font-size:15px;">msahkie 民法講義</strong><br><span style="font-size:11px;color:var(--text-dim);">全96講 学習ガイド</span></div>
+
+<div class="nav-group">Part A 歴史と体系 (1-3)</div>
+<div class="nav-item" onclick="go('p1')">1. 民法＝ブルジョワ法</div>
+<div class="nav-item" onclick="go('p2')">2. 日本民法典の成立</div>
+<div class="nav-item" onclick="go('p3')">3. パンデクテン体系</div>
+
+<div class="nav-group">Part B 二本柱 (4)</div>
+<div class="nav-item" onclick="go('p4')">4. 物権と債権</div>
+
+<div class="nav-group">Part C 権利実現 (5-7)</div>
+<div class="nav-item" onclick="go('p5')">5. 三位一体性</div>
+<div class="nav-item" onclick="go('p6')">6. 強制執行・執行保全</div>
+<div class="nav-item" onclick="go('p7')">7. 破産法</div>
+
+<div class="nav-group">Part D 債権担保入門 (8-12)</div>
+<div class="nav-item" onclick="go('p8')">8. 人的担保</div>
+<div class="nav-item" onclick="go('p9')">9. 抵当権</div>
+<div class="nav-item" onclick="go('p10')">10. 別除権</div>
+<div class="nav-item" onclick="go('p11')">11. 相殺権</div>
+<div class="nav-item" onclick="go('p12')">12. 民法の本質</div>
+
+<div class="nav-group">Part E 物権vs債権の実戦 (13-22)</div>
+<div class="nav-item" onclick="go('p13')">13. 物権</div>
+<div class="nav-item" onclick="go('p14')">14. 債権</div>
+<div class="nav-item" onclick="go('p15')">15-17. 地上権vs賃借権</div>
+<div class="nav-item" onclick="go('p18')">18-19. 賃借人保護</div>
+<div class="nav-item" onclick="go('p20')">20-21. 借地借家の対抗力</div>
+<div class="nav-item" onclick="go('p22')">22. 攻防まとめ</div>
+
+<div class="nav-group">Part F 物権法各論 (23-25)</div>
+<div class="nav-item" onclick="go('p23')">23. 物権法定主義・占有権</div>
+<div class="nav-item" onclick="go('p24')">24. 所有権・用益物権</div>
+<div class="nav-item" onclick="go('p25')">25. 担保物権</div>
+
+<div class="nav-group">Part G 物権変動論 (26-42)</div>
+<div class="nav-item" onclick="go('p26')">26. 譲渡の自由と不自由</div>
+<div class="nav-item" onclick="go('p27')">27-30. 意思主義・対抗要件</div>
+<div class="nav-item" onclick="go('p31')">31. 無権利の法理</div>
+<div class="nav-item" onclick="go('p32')">32-35. 無効・取消しと第三者</div>
+<div class="nav-item" onclick="go('p36')">36-41. 解除・時効・相続と第三者</div>
+<div class="nav-item" onclick="go('p42')">42. 登記の公信力</div>
+
+<div class="nav-group">Part H 動産即時取得 (43-50)</div>
+<div class="nav-item" onclick="go('p43')">43-44. 即時取得と公信力</div>
+<div class="nav-item" onclick="go('p45')">45-48. 要件と引渡し方法</div>
+<div class="nav-item" onclick="go('p49')">49-50. 占有離脱物と回復</div>
+
+<div class="nav-group">Part I 物権各論 (51-55)</div>
+<div class="nav-item" onclick="go('p51')">51-52. 占有権</div>
+<div class="nav-item" onclick="go('p53')">53-54. 所有権・共同所有</div>
+<div class="nav-item" onclick="go('p55')">55. 用益物権</div>
+
+<div class="nav-group">Part J 債権総則 (56-62)</div>
+<div class="nav-item" onclick="go('p56')">56-57. 債権総則の役割</div>
+<div class="nav-item" onclick="go('p58')">58-60. 債務不履行と損害賠償</div>
+<div class="nav-item" onclick="go('p61')">61-62. 金銭債権と過失相殺</div>
+
+<div class="nav-group">Part K 債権の効力と担保 (63-68)</div>
+<div class="nav-item" onclick="go('p63')">63-65. 金銭債権総則・人的担保</div>
+<div class="nav-item" onclick="go('p66')">66-68. 引渡債務と履行提供</div>
+
+<div class="nav-group">Part L 債権者代位・詐害行為 (69-79)</div>
+<div class="nav-item" onclick="go('p69')">69-71. 債権の効力三層構造</div>
+<div class="nav-item" onclick="go('p72')">72-78. 代位権と取消権</div>
+<div class="nav-item" onclick="go('p79')">79. 取消権の転用</div>
+
+<div class="nav-group">Part M 弁済論 (80-84)</div>
+<div class="nav-item" onclick="go('p80')">80-81. 弁済と第三者弁済</div>
+<div class="nav-item" onclick="go('p82')">82-84. 弁済者代位</div>
+
+<div class="nav-group">Part N 弁済者代位の応用 (85-88)</div>
+<div class="nav-item" onclick="go('p85')">85-86. 代位割合と一部代位</div>
+<div class="nav-item" onclick="go('p87')">87. 第三取得者と代位</div>
+<div class="nav-item" onclick="go('p88')">88. 担保減損責任</div>
+
+<div class="nav-group">Part O 弁済の相手方 (89-91)</div>
+<div class="nav-item" onclick="go('p89')">89-90. 第三者への弁済</div>
+<div class="nav-item" onclick="go('p91')">91. 預担貸しと民法478条</div>
+
+<div class="nav-group">Part P 相殺 (92-96)</div>
+<div class="nav-item" onclick="go('p92')">92-93. 相殺の機能と適状</div>
+<div class="nav-item" onclick="go('p94')">94. 債権適格</div>
+<div class="nav-item" onclick="go('p95')">95-96. 差押えと相殺</div>
+</nav>
+
+<!-- Main Content -->
+<div class="main">
+<h1>msahkie 民法講義 学習ガイド</h1>
+<p class="subtitle">全96講 | 法律未修者向け | 通俗解説 + 思維導図 + 練習問題</p>
+
+<!-- ===== GRAND MIND MAP ===== -->
+<div class="mindmap">
+<h3>全84講 総合思維導図</h3>
+<div class="mm"><span class="root">民法（ブルジョワ法＝資本主義の基本法）</span>
+├─<span class="l1"> A 歴史と体系 [1-3]</span>
+│  ├─ 市民革命 → 資本主義社会の成立
+│  ├─ 日本民法の四大原則
+│  └─ パンデクテン体系（総則＋各則の重層構造）
+├─<span class="l1"> B 二本柱：物権と債権 [4]</span>
+│  ├─ 物権 = 物を直接・排他的に支配する権利
+│  └─ 債権 = 人に行為を請求する権利
+├─<span class="l1"> C 権利実現のメカニズム [5-7]</span>
+│  ├─ 民法＋民訴法＋民執法の三位一体
+│  ├─ 強制執行（債務名義が必要）
+│  └─ 破産法（債権者平等原則）
+├─<span class="l1"> D 債権担保入門 [8-12]</span>
+│  ├─ 人的担保（連帯保証）
+│  ├─ 物的担保（抵当権・相殺権）
+│  ├─ 別除権（破産からの離脱）
+│  └─<span class="l2"> 民法の本質＝金銭債権の円滑な満足</span>
+├─<span class="l1"> E 物権vs債権の実戦 [13-22]</span>
+│  ├─ 地上権（物権）vs 賃借権（債権）の攻防
+│  ├─ 借地借家法による賃借人保護
+│  └─ 返還請求の攻防構造（請求→抗弁→再抗弁）
+├─<span class="l1"> F 物権法各論 [23-25]</span>
+│  ├─ 物権法定主義（民175条）
+│  ├─ 占有権・所有権・用益物権
+│  └─ 担保物権（留置権・先取特権・質権・抵当権）
+├─<span class="l1"> G 物権変動と第三者 [26-42]</span>
+│  ├─ 意思主義（176条）＋対抗要件主義（177条）
+│  ├─ 無権利の法理
+│  ├─ 無効・取消し・解除・時効・相続と第三者
+│  └─ 不動産登記に公信力なし
+├─<span class="l1"> H 動産即時取得 [43-50]</span>
+│  ├─ 動産占有に公信力あり（民192条）
+│  ├─ 占有改定では即時取得不成立
+│  └─ 占有離脱物の2年猶予（民194条）
+├─<span class="l1"> I 物権各論 [51-55]</span>
+│  ├─ 占有権の3つの補助機能
+│  ├─ 所有権・相隣関係・共同所有
+│  └─ 用益物権（地上権・永小作権・地役権）
+├─<span class="l1"> J 債権総則 [56-62]</span>
+│  ├─ 非金銭債権→債務不履行→金銭債権に変身
+│  ├─ 損害賠償の範囲（相当因果関係・民416条）
+│  └─ 過失相殺
+├─<span class="l1"> K 債権の効力と担保 [63-68]</span>
+│  ├─ 金銭債権総則423条以下の全体像
+│  ├─ 人的担保の序列（単独→連帯保証）
+│  └─ 特定物・不特定物・履行提供
+├─<span class="l1"> L 債権者代位・詐害行為取消 [69-79]</span>
+│  ├─ 債権の3階建て（給付保持力→請求力→摑取力）
+│  ├─ 債権者代位権（登記確保・簡易執行・転用）
+│  └─ 詐害行為取消権（責任財産保全・転用なし）
+├─<span class="l1"> M 弁済論 [80-84]</span>
+│  ├─ 弁済＝債権の本来の消滅原因
+│  ├─ 第三者弁済有効の原則
+│  └─ 弁済者代位（原債権の法定移転）
+├─<span class="l1"> N 弁済者代位の応用 [85-88]</span>
+│  ├─ 代位割合（複数担保負担者間の按分）
+│  ├─ 一部弁済による一部代位
+│  ├─ 第三取得者からの代位・に対する代位
+│  └─ 債権者の担保減損責任（民504条）
+├─<span class="l1"> O 弁済の相手方 [89-91]</span>
+│  ├─ 第三者への誤弁済と不当利得
+│  ├─ 債権の準占有者への弁済（民478条）
+│  └─ 預担貸しの実務問題
+└─<span class="l1"> P 相殺 [92-96]</span>
+   ├─ 簡易決済機能＋担保的機能
+   ├─ 相殺適状（双方の弁済期到来）
+   ├─ 自働債権適格・受働債権適格
+   └─ 差押えと相殺（民511条）</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART A: History & System (1-3) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partA">
+<h2>Part A：歴史と体系（講義1-3）</h2>
+<p>民法はどこから来たのか？なぜ存在するのか？</p>
+</div>
+
+<div class="mindmap">
+<h3>Part A 思維導図</h3>
+<div class="mm"><span class="root">民法の歴史と体系</span>
+├─<span class="l1"> 講義1：民法＝ブルジョワ法</span>
+│  ├─<span class="l2"> 封建社会の崩壊</span>
+│  │  ├─ 生産力向上 → 貨幣経済の隆盛
+│  │  └─ ウェストファリア条約（1648年）→ 国民国家
+│  ├─<span class="l2"> 市民革命（ブルジョワ革命）</span>
+│  │  ├─ フランス革命（1789年）
+│  │  └─ 王侯貴族 → 資本実力者（商工業者）へ
+│  └─<span class="l2"> 民法の本質</span>
+│     └─ 資本主義経済社会を法的に支える基本法
+├─<span class="l1"> 講義2：日本民法典の成立</span>
+│  ├─<span class="l2"> 明治政府の近代法整備</span>
+│  │  └─ 不平等条約改正のため
+│  ├─<span class="l2"> フランス法・ドイツ法の継受</span>
+│  └─<span class="l2"> 四大原則</span>
+│     ├─<span class="l3"> 法人格平等（民3条）</span>
+│     ├─<span class="l3"> 所有権絶対（憲29条・民206条）</span>
+│     ├─<span class="l3"> 契約自由（民90・91・521条）</span>
+│     └─<span class="l3"> 過失責任（民709条）</span>
+└─<span class="l1"> 講義3：パンデクテン体系</span>
+   ├─<span class="l2"> ドイツ法の体系を採用</span>
+   │  └─ 総則＋各則の重層構造
+   └─<span class="l2"> 日本民法の5編</span>
+      ├─ 第1編 総則
+      ├─ 第2編 物権
+      ├─ 第3編 債権
+      ├─ 第4編 親族
+      └─ 第5編 相続</div>
+</div>
+
+<div class="lec" id="p1">
+<div class="lec-title"><span class="lec-num">1</span>民法＝ブルジョワ法</div>
+<div class="lec-body">
+<p><strong>核心：</strong>民法は「市民革命（ブルジョワ革命）」の産物。封建的な身分社会が崩壊し、資本家（ブルジョワ）が新しい支配者になった社会のルールブックが民法である。</p>
+<div class="analogy">民法は「資本主義のゲームルール」。封建社会が「貴族がルールを決めるゲーム」だったのに対し、市民革命後は「お金を持っている人が自由にプレイできるゲーム」に変わった。そのルールブックが民法。</div>
+</div>
+<div class="tags"><span class="tag">市民革命</span><span class="tag">ブルジョワ</span><span class="tag">資本主義</span><span class="tag">1789年</span><span class="tag">ウェストファリア条約</span></div>
+</div>
+
+<div class="lec" id="p2">
+<div class="lec-title"><span class="lec-num">2</span>日本民法典の成立</div>
+<div class="lec-body">
+<p><strong>核心：</strong>明治政府が不平等条約を改正するために、フランス・ドイツの民法を参考に日本民法を制定。<strong>四大原則</strong>を柱とする。</p>
+<table>
+<tr><th>原則</th><th>条文</th><th>通俗解説</th></tr>
+<tr><td>法人格平等</td><td>民3条</td><td>生まれただけで法律上の「人」になれる。身分不問。</td></tr>
+<tr><td>所有権絶対</td><td>憲29条・民206条</td><td>あなたの土地は国でも勝手に奪えない</td></tr>
+<tr><td>契約自由</td><td>民90・91・521条</td><td>自由に約束を結べて、国がその実現を手伝ってくれる</td></tr>
+<tr><td>過失責任</td><td>民709条</td><td>わざと or うっかりやった時だけ弁償する</td></tr>
+</table>
+<div class="analogy">不平等条約を改正するには「うちの国にもちゃんとした法律がありますよ」と示す必要があった。だから欧米のルールを輸入して、日本版にカスタマイズしたのが民法典。</div>
+</div>
+</div>
+
+<div class="lec" id="p3">
+<div class="lec-title"><span class="lec-num">3</span>パンデクテン体系</div>
+<div class="lec-body">
+<p><strong>核心：</strong>日本民法の構造はドイツ法の「パンデクテン体系」に依拠。共通ルールを「総則」にまとめ、個別ルールを「各則」に分ける重層構造。</p>
+<div class="analogy">プログラミングに例えると、「総則」は共通ライブラリ（utils）。物権・債権・親族・相続は、それぞれのモジュール。共通部分を先に定義して、各モジュールはそれを使い回す。コードの重複を避けるDRY原則と同じ発想。</div>
+</div>
+</div>
+
+<div class="quiz">
+<h4>Part A 確認問題</h4>
+<details><summary>Q1. 民法を「ブルジョワ法」と呼ぶのはなぜか？</summary><div class="answer">市民革命（ブルジョワ革命）によって成立した資本主義社会を法的に支持するための基本法だから。所有権絶対・契約自由の原則が、商工業者（ブルジョワ）の経済活動を保護する。</div></details>
+<details><summary>Q2. 日本民法の四大原則を挙げ、それぞれ1文で説明せよ。</summary><div class="answer">(1)法人格平等：出生で私法上の人格取得、身分不問 (2)所有権絶対：国家も私人の所有を侵害できない (3)契約自由：当事者の合意した内容の実現を国家が支援 (4)過失責任：故意・過失がなければ不法行為責任なし</div></details>
+<details><summary>Q3. パンデクテン体系とは何か？フランス法との違いは？</summary><div class="answer">総則・各則の重層構造による立法技術。フランス法（インスティトゥティオネス体系）が「人→物→物の取得方法」の三分構成であるのに対し、パンデクテン体系は共通事項を総則に括り出して5編構成とし、論理的整合性が高い。</div></details>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART B: Two Pillars (4) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partB">
+<h2>Part B：民法の二本柱（講義4）</h2>
+<p>財産関係を説明する2つの概念：物権と債権</p>
+</div>
+
+<div class="lec" id="p4">
+<div class="lec-title"><span class="lec-num">4</span>物権と債権</div>
+<div class="lec-body">
+<table>
+<tr><th></th><th>物権</th><th>債権</th></tr>
+<tr><td>定義</td><td>特定の物を<strong>直接・排他的</strong>に支配</td><td>特定の人に一定の行為を<strong>請求</strong></td></tr>
+<tr><td>性質</td><td>絶対権（誰にでも主張できる）</td><td>相対権（債務者にしか主張できない）</td></tr>
+<tr><td>対象</td><td>物</td><td>人の行為（給付）</td></tr>
+<tr><td>例</td><td>所有権・抵当権</td><td>売買代金請求権・賃借権</td></tr>
+</table>
+<p><strong>協働関係：</strong></p>
+<p>商品取引：<strong>債権→物権</strong>（売買契約で所有権移転債権を得て→所有権を取得）</p>
+<p>金融取引：<strong>物権→債権</strong>（土地に抵当権を設定して→貸金債権を担保）</p>
+<div class="analogy">物権は「これは俺のモノだ！」と全世界に宣言できる権利（所有権は持ち主が誰に対しても主張可能）。債権は「お前、約束したよな？やれよ」と特定の相手にしか言えない権利（賃借権は大家さんにしか言えない）。</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART C: Rights Realization (5-7) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partC">
+<h2>Part C：権利実現のメカニズム（講義5-7）</h2>
+<p>権利があっても実現できなければ意味がない</p>
+</div>
+
+<div class="mindmap">
+<h3>Part C 思維導図：権利実現の3段階</h3>
+<div class="mm"><span class="root">権利の実現</span>
+├─<span class="l1"> Step 1：民法（実体法）</span>
+│  └─ 「AはBに100万円請求できる」というルールを定める
+├─<span class="l1"> Step 2：民事訴訟法（手続法）</span>
+│  ├─ 裁判所に訴えて「AはBに100万円請求できる」と認めてもらう
+│  └─ 判決＝債務名義（強制執行のパスポート）
+├─<span class="l1"> Step 3：民事執行法（手続法）</span>
+│  ├─ Bが払わない → 国家権力で強制的に実現
+│  ├─ 金銭執行：Bの財産を差押え→競売→配当
+│  └─ 非金銭執行：物の引渡し等を直接強制
+└─<span class="l1"> 例外：多数債権者の場面</span>
+   └─ 破産法：全債権者で公平に分配（債権者平等原則）</div>
+</div>
+
+<div class="lec" id="p5">
+<div class="lec-title"><span class="lec-num">5</span>民法・民訴法・民執法の三位一体性</div>
+<div class="lec-body">
+<p><strong>核心命題：</strong>「社会あるところ紛争あり、紛争あるところ法なければならず」</p>
+<p>法的解決だけが国家権力の裏付けで紛争の蒸し返し（永久化）を防げる。民法は「何を請求できるか」を定め、民訴法は「それを裁判で認めてもらう手続」、民執法は「認められた権利を強制実現する手続」。</p>
+<div class="analogy">民法＝メニュー（何が注文できるか）、民訴法＝注文の手続き（ウェイターに伝える方法）、民執法＝料理の提供（厨房で作って持ってくる）。メニューだけあっても料理は出てこない。</div>
+</div>
+</div>
+
+<div class="lec" id="p6">
+<div class="lec-title"><span class="lec-num">6</span>強制執行・執行保全</div>
+<div class="lec-body">
+<p><strong>債務名義（Schuldtitel）：</strong>強制執行のパスポート。「この権利は本物です」と国が証明する文書。確定判決・和解調書・公正証書等（民執法22条）。</p>
+<p><strong>保全処分：</strong>裁判中に相手が財産を隠さないようにする仮の手続。仮差押え（金銭）・仮処分（非金銭）。</p>
+<div class="analogy">裁判に勝っても相手が財産を隠してしまったら回収できない。だから先に「仮差押え」で凍結しておく。ネットショッピングでいえば、商品を「カートに入れる＝仮差押え」、「購入完了＝本執行」。</div>
+</div>
+</div>
+
+<div class="lec" id="p7">
+<div class="lec-title"><span class="lec-num">7</span>破産法</div>
+<div class="lec-body">
+<p><strong>核心：</strong>債務者に複数の債権者がいて、全員分の財産がない場合→破産手続（総清算）。</p>
+<p><strong>債権者平等原則：</strong>早い者勝ちではなく、全債権者が按分比例で公平に配当を受ける。</p>
+<div class="analogy">ケーキ（債務者の財産）が1個しかないのに10人（債権者）が食べたい。先に来た人が全部食べてしまうのは不公平。だから全員で公平に切り分ける＝それが破産手続。</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART D: Credit Security Intro (8-12) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partD">
+<h2>Part D：債権担保入門（講義8-12）</h2>
+<p>「返してもらえないかも」というリスクにどう備えるか</p>
+</div>
+
+<div class="mindmap">
+<h3>Part D 思維導図：債権担保の全体像</h3>
+<div class="mm"><span class="root">債権担保＝「返してもらえない」リスクへの備え</span>
+├─<span class="l1"> 人的担保（講義8）</span>
+│  ├─<span class="l2"> 連帯保証</span>
+│  │  ├─ 主債務者以外の人（保証人）の財産も引当て
+│  │  ├─ 催告の抗弁権なし・検索の抗弁権なし
+│  │  └─ 債権者はどちらにも直接請求可能
+│  └─<span class="l2"> 限界：保証人も破産すれば意味なし</span>
+├─<span class="l1"> 物的担保</span>
+│  ├─<span class="l2"> 抵当権（講義9）= チャンピオン</span>
+│  │  ├─ 不動産に設定、占有は債務者に残す
+│  │  ├─ 登記が対抗要件
+│  │  └─ 他の債権者に優先して配当を受ける
+│  ├─<span class="l2"> 別除権（講義10）</span>
+│  │  └─ 債務者が破産しても、破産手続の外で担保を実行
+│  └─<span class="l2"> 相殺権（講義11）</span>
+│     └─ 互いに債権がある場合、差し引きして自己の債権を回収
+└─<span class="l1"> まとめ（講義12）：民法の本質</span>
+   └─ <span class="l3">「抵当権・連帯保証・相殺権により金銭債権の円滑な満足を促進する実体法体系」</span></div>
+</div>
+
+<div class="lec" id="p8">
+<div class="lec-title"><span class="lec-num">8</span>債権の人的担保</div>
+<div class="lec-body">
+<p><strong>核心：</strong>債務者が破産すると債権者平等原則で満額回収は難しい。賢い債権者は事前に担保を取る。人的担保＝連帯保証。</p>
+<div class="analogy">友人にお金を貸すとき、「もし返せなかったら〇〇さんが代わりに返します」という保証人を立てさせる。これが人的担保。でも保証人もお金がなくなれば意味がないから、不動産等を担保にする「物的担保」の方がより確実。</div>
+</div>
+</div>
+
+<div class="lec" id="p9">
+<div class="lec-title"><span class="lec-num">9</span>債権の物的担保：抵当権</div>
+<div class="lec-body">
+<p><strong>核心：</strong>物的担保のチャンピオン。不動産に抵当権を設定すると、債務者が返済しない場合にその不動産を競売して優先的にお金を回収できる。しかも債務者は家に住み続けられる（非占有）。</p>
+<table>
+<tr><th>特徴</th><th>説明</th></tr>
+<tr><td>約定担保権</td><td>契約で設定する（法律が自動で付けるのではない）</td></tr>
+<tr><td>非占有</td><td>土地は債務者が使い続けてOK</td></tr>
+<tr><td>対抗要件</td><td>登記を備える必要がある</td></tr>
+<tr><td>優先弁済力</td><td>他の債権者よりも先に配当を受ける</td></tr>
+<tr><td>追及力</td><td>土地が第三者に売られても抵当権は消えない</td></tr>
+</table>
+</div>
+</div>
+
+<div class="lec" id="p10">
+<div class="lec-title"><span class="lec-num">10</span>別除権</div>
+<div class="lec-body">
+<p><strong>核心：</strong>債務者が破産しても、抵当権者は破産手続に巻き込まれず、独自に担保を実行できる。これが「別除権」。</p>
+<div class="analogy">破産はケーキの公平分配だが、抵当権者はケーキとは別に「予約済みの特別デザート」を持っている。他の人がケーキを分け合っている間に、自分はデザートを丸ごと食べられる。</div>
+</div>
+</div>
+
+<div class="lec" id="p11">
+<div class="lec-title"><span class="lec-num">11</span>債権の物的担保：相殺権</div>
+<div class="lec-body">
+<p><strong>核心：</strong>AとBが互いに債権を持っている場合、Aが破産してもBは「相殺」で自分の債権を確保できる。反対債権を独占する仕組み。</p>
+<div class="analogy">あなたがAさんに100万円貸していて、Aさんにも50万円借りている。Aさんが破産したら、普通は100万円の債権が数%しか返ってこない。でも相殺を使えば「50万円の借金を差し引いて、差額50万円分だけ破産手続に参加」できる。実質的に50万円を優先回収したのと同じ効果。</div>
+</div>
+</div>
+
+<div class="lec" id="p12">
+<div class="lec-title"><span class="lec-num">12</span>民法の本質</div>
+<div class="lec-body">
+<p><strong>民法とは：</strong>近代私法の一般法として資本主義経済社会の存続発展を支持することを目的とし、民事手続法と不可分一体の協働関係を通じて、<strong>抵当権と連帯保証と相殺権</strong>により<strong>金銭債権の円滑な満足を促進する</strong>実体法体系の全体である。</p>
+<div class="analogy">この定義は講義1-11の「答え合わせ」。民法のゴールは「貸したお金がちゃんと返ってくる社会を作ること」。そのために抵当権・保証・相殺という3つの武器を用意している。</div>
+</div>
+</div>
+
+<div class="quiz">
+<h4>Part D 確認問題</h4>
+<details><summary>Q1. 人的担保と物的担保の違いを1文で述べよ。</summary><div class="answer">人的担保は主債務者以外の「人の財産」も引当てにする仕組み（連帯保証）、物的担保は「特定の物」を優先的に自己の債権回収に充てる仕組み（抵当権・相殺権）。</div></details>
+<details><summary>Q2. 抵当権が「非占有」であることのメリットは？</summary><div class="answer">債務者が引き続き不動産を使用・収益できるため（住み続けられる、事業を続けられる）、担保を設定しても経済活動に支障が出ない。質権（占有担保）と比較すると利便性が高い。</div></details>
+<details><summary>Q3. 別除権とは何か？なぜ破産手続から離脱できるのか？</summary><div class="answer">破産手続において担保権者が独立して担保を実行できる権利。抵当権は物権であり、破産は債権者間の平等分配の問題（債権の世界）。物権者はそもそもこの枠組みの外にいるため。</div></details>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART E: Real vs Personal Rights in Practice (13-22) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partE">
+<h2>Part E：物権vs債権の実戦（講義13-22）</h2>
+<p>理論を現実の紛争場面で検証する</p>
+</div>
+
+<div class="mindmap">
+<h3>Part E 思維導図：土地をめぐる攻防</h3>
+<div class="mm"><span class="root">土地の利用権をめぐる攻防</span>
+├─<span class="l1"> 物権と債権の再確認（13-14）</span>
+│  ├─ 物権＝直接・排他的支配（誰にでも主張可）
+│  └─ 債権＝特定人への請求のみ
+├─<span class="l1"> 対決パターン（15-17）</span>
+│  ├─<span class="l2"> 地上権者 vs 賃借人（15）</span>
+│  │  └─ 地上権者は物権的請求権で攻撃、賃借人は対抗の抗弁
+│  ├─<span class="l2"> 賃借権 vs 占有者（16）</span>
+│  │  └─ 賃借権は債権→直接に占有者を追い出せない
+│  │     └─ 所有者の請求権を代位行使（債権者代位権）
+│  └─<span class="l2"> 地上権 vs 地上権（17）</span>
+│     └─ 両者とも物権（絶対権）→ 登記の先後で勝敗
+├─<span class="l1"> 賃借人の保護（18-21）</span>
+│  ├─<span class="l2"> 「売買は賃貸借を破る」原則の問題</span>
+│  │  └─ 大家が土地を売ると借主は追い出される！
+│  ├─<span class="l2"> 借地借家法＝民法の特別法</span>
+│  │  ├─ 存続力の強化（法定更新・正当事由）
+│  │  ├─ 借地権の対抗力：借地上の建物登記（借地借家10条）
+│  │  └─ 借家権の対抗力：建物の引渡し（借地借家31条）
+│  └─<span class="l2"> 趣旨：賃借人の生活基盤を守る</span>
+└─<span class="l1"> 攻防の構造まとめ（22）</span>
+   ├─ 原告：物権的請求権（返還・妨害排除・妨害予防）
+   ├─ 被告：対抗の抗弁（自分にも正当な権原がある）
+   ├─ 原告：再抗弁（対抗要件具備 = 登記あり）
+   └─ 被告：再々抗弁（自分も対抗要件あり）</div>
+</div>
+
+<div class="lec" id="p13">
+<div class="lec-title"><span class="lec-num">13</span>物権</div>
+<div class="lec-body">
+<p>商品交換取引では「債権は物権に到達するための手段」（売買契約→所有権取得）、金融取引では「物権は債権の満足に奉仕する手段」（土地→抵当権→貸金担保）。両者は相互補完的。</p>
+</div>
+</div>
+
+<div class="lec" id="p14">
+<div class="lec-title"><span class="lec-num">14</span>債権</div>
+<div class="lec-body">
+<p>債権の矛先は「人」。近代法は奴隷制を廃止したから、人が人を支配するのは不可。できるのは「請求」のみ。だから債権は「特定の人に対して一定の行為を請求する権利」。賃借権は債権→大家さんにしか言えない。</p>
+<div class="analogy">物権は「名札付きのロッカー」（誰が来ても「これは私のロッカーです」と言える）。債権は「口約束」（約束した相手にしか「約束守って」と言えない）。</div>
+</div>
+</div>
+
+<div class="lec" id="p15">
+<div class="lec-title"><span class="lec-num">15-17</span>地上権 vs 賃借権の攻防</div>
+<div class="lec-body">
+<p><strong>講義15：</strong>地上権者（物権者）が土地占有者（賃借人）に明渡しを請求。賃借人は「私は賃貸借契約に基づいて占有している」と抗弁可能（民法177条）。</p>
+<p><strong>講義16：</strong>賃借権は債権→直接に第三者を追い出せない。賃貸人の所有権に基づく請求権を「債権者代位権」で代わりに行使する。</p>
+<p><strong>講義17：</strong>両方とも地上権者（物権者同士）の場合→登記の先後で決着。地上権は絶対権（物権）だから賃借権よりも強い抵抗力がある。</p>
+</div>
+</div>
+
+<div class="lec" id="p18">
+<div class="lec-title"><span class="lec-num">18-19</span>新所有者 vs 賃借人・賃借人保護</div>
+<div class="lec-body">
+<p><strong>「売買は賃貸借を破る」：</strong>大家が土地を第三者に売ると、賃借権は債権→新所有者に主張できない→追い出される。これでは生活基盤が崩壊する。</p>
+<p><strong>解決策：借地借家法</strong>（民法の特別法）</p>
+<ul style="padding-left:20px;font-size:14px;color:var(--text-dim);margin:8px 0;">
+<li>存続力の強化（法定更新・正当事由主義）</li>
+<li>対抗力の付与（登記がなくても新所有者に対抗可能に）</li>
+<li>流通障害の克服（借地権移転の代諾許可）</li>
+</ul>
+<div class="analogy">アパートの大家さんが建物を売った。新しい大家さんが「出ていけ」と言ってきたら困る。借地借家法は「ちゃんと住んでいるなら追い出せませんよ」という保護ルール。</div>
+</div>
+</div>
+
+<div class="lec" id="p20">
+<div class="lec-title"><span class="lec-num">20-21</span>借地権・借家権の第三者対抗力</div>
+<div class="lec-body">
+<p><strong>借地権の対抗力（講義20）：</strong>借地上に自分名義の建物を建てて登記する → 新所有者に対抗可能（借地借家法10条）。</p>
+<p><strong>借家権の対抗力（講義21）：</strong>建物の引渡しを受けて住んでいる → 新所有者に対抗可能（借地借家法31条）。</p>
+<div class="analogy">対抗力＝「私はここに住んでます！」と第三者にわかるようにする仕組み。借地なら建物登記（書類で証明）、借家なら実際に住んでいること（見ればわかる）が「証拠」になる。</div>
+</div>
+</div>
+
+<div class="lec" id="p22">
+<div class="lec-title"><span class="lec-num">22</span>所有権に基づく目的物返還請求の攻防：まとめ</div>
+<div class="lec-body">
+<p>訴訟での攻防構造の全体像：</p>
+<table>
+<tr><th>段階</th><th>誰が</th><th>何を主張</th></tr>
+<tr><td>請求原因</td><td>原告</td><td>物権に基づく返還請求（所有者であること+相手が占有していること）</td></tr>
+<tr><td>抗弁</td><td>被告</td><td>自分にも正当な権原がある（対抗の抗弁）</td></tr>
+<tr><td>再抗弁</td><td>原告</td><td>対抗要件を具備している（登記あり）</td></tr>
+<tr><td>再々抗弁</td><td>被告</td><td>自分も対抗要件あり → 登記の先後で決定</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART F: Property Law System (23-25) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partF">
+<h2>Part F：物権法各論（講義23-25）</h2>
+<p>物権のカタログを整理する</p>
+</div>
+
+<div class="mindmap">
+<h3>Part F 思維導図：物権のカタログ</h3>
+<div class="mm"><span class="root">物権法定主義（民175条）＝カタログ制</span>
+├─<span class="l1"> 物理的支配秩序の保全</span>
+│  └─<span class="l2"> 占有権</span>（物を事実上支配している状態の保護）
+└─<span class="l1"> 観念的支配秩序の維持</span>
+   ├─<span class="l2"> 所有権（民206条）</span>＝全面的支配権
+   │  └─ 使用・収益・処分を自由にできる
+   ├─<span class="l2"> 用益物権</span>＝他人の所有権を制限して使用収益
+   │  ├─ 地上権（工作物・竹木の所有目的）
+   │  ├─ 永小作権（耕作・牧畜目的）
+   │  ├─ 地役権（自分の土地の便益のため）
+   │  └─ 入会権（住民の共同利用）
+   └─<span class="l2"> 担保物権</span>＝債権担保のために他人の物を支配
+      ├─ 法定担保物権：留置権、先取特権
+      └─ 約定担保物権：質権、抵当権</div>
+</div>
+
+<div class="lec" id="p23">
+<div class="lec-title"><span class="lec-num">23</span>物権法の体系、占有権</div>
+<div class="lec-body">
+<p><strong>物権法定主義（民175条）：</strong>物権は法律が用意したカタログからしか選べない。当事者が自由に新種の物権を作ることは不可。理由：物権は誰にでも主張できる強力な権利だから、勝手に増やすと社会が混乱する。</p>
+<p><strong>対比：債権非法定主義</strong>：債権は当事者間だけで作用するから、自由に内容を設定できる。</p>
+</div>
+</div>
+
+<div class="lec" id="p24">
+<div class="lec-title"><span class="lec-num">24</span>所有権・用益物権</div>
+<div class="lec-body">
+<p><strong>所有権（民206条）：</strong>目的物を自由に使用・収益・処分できる全面的支配権。事実上の占有がなくても、観念的に存続する。</p>
+<p><strong>用益物権：</strong>他人の所有権の「使用収益」権能の一部を切り取った権利。地上権・永小作権・地役権・入会権。</p>
+</div>
+</div>
+
+<div class="lec" id="p25">
+<div class="lec-title"><span class="lec-num">25</span>担保物権</div>
+<div class="lec-body">
+<table>
+<tr><th>分類</th><th>種類</th><th>効力</th></tr>
+<tr><td rowspan="2">法定担保物権</td><td>留置権</td><td>留置的効力のみ（引き渡さないでいい）</td></tr>
+<tr><td>先取特権</td><td>優先弁済力あり</td></tr>
+<tr><td rowspan="2">約定担保物権</td><td>質権</td><td>留置的効力＋優先弁済力</td></tr>
+<tr><td>抵当権</td><td>優先弁済力のみ（非占有）</td></tr>
+</table>
+<div class="analogy">留置権：「修理代を払うまでパソコンは返さない」。抵当権：「住宅ローンを払わなかったら家を競売にかけます（でも住んでいていいですよ）」。</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART G: Property Right Changes & Third Parties (26-42) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partG">
+<h2>Part G：物権変動と第三者（講義26-42）</h2>
+<p>所有権が移転するとき、第三者との間でどう決着をつけるか</p>
+</div>
+
+<div class="mindmap">
+<h3>Part G 思維導図：物権変動の三大法理</h3>
+<div class="mm"><span class="root">物権変動論の核心</span>
+├─<span class="l1"> 三大法理</span>
+│  ├─<span class="l2"> 意思主義（民176条）</span>
+│  │  └─ 当事者の合意だけで物権が移転する
+│  ├─<span class="l2"> 対抗要件主義（民177条・178条）</span>
+│  │  ├─ 不動産：登記
+│  │  ├─ 動産：引渡し
+│  │  └─ 第三者に対抗するには対抗要件が必要
+│  └─<span class="l2"> 無権利の法理</span>
+│     └─ 無権利者から権利を取得できない（当然の理）
+├─<span class="l1"> 第三者との関係パターン（32-42）</span>
+│  ├─<span class="l3"> 法律行為の無効と第三者（32）</span>
+│  │  └─ 無効→無権利の法理が貫徹
+│  ├─<span class="l3"> 法律行為の取消しと第三者（33-35）</span>
+│  │  ├─ 取消前の第三者：善意無過失なら保護（民95④・96③）
+│  │  └─ 取消後の第三者：対抗要件主義
+│  ├─<span class="l3"> 契約解除と第三者（36）</span>
+│  │  └─ 解除前の第三者は民545①但書で保護
+│  ├─<span class="l3"> 時効取得と第三者（37）</span>
+│  │  └─ 時効完成後の第三者とは対抗関係
+│  ├─<span class="l3"> 相続と第三者（38-41）</span>
+│  │  ├─ 法定共同相続：持分超過部分は無権利の法理
+│  │  ├─ 相続放棄：遡及的消滅→無権利の法理
+│  │  ├─ 遺産分割：分割前の第三者は民909但書で保護
+│  │  └─ 遺贈：対抗要件主義
+│  └─<span class="l3"> 登記の公信力（42）</span>
+│     └─ 日本：不動産登記に公信力なし！
+└─<span class="l1"> 核心メッセージ</span>
+   └─ どの場面でも「無権利の法理 vs 対抗要件主義」の使い分けが鍵</div>
+</div>
+
+<div class="lec" id="p26">
+<div class="lec-title"><span class="lec-num">26</span>地上権の譲渡自由、賃借権の譲渡不自由</div>
+<div class="lec-body">
+<p>地上権（物権）＝直接支配 → 所有者の同意なく第三者に譲渡可能。賃借権（債権）＝人への請求 → 賃貸人の承諾なしに譲渡不可（民法612条）。</p>
+</div>
+</div>
+
+<div class="lec" id="p27">
+<div class="lec-title"><span class="lec-num">27-30</span>意思主義・対抗要件主義</div>
+<div class="lec-body">
+<p><strong>講義27：</strong>物権変動の基本＝意思主義（合意で移転）＋対抗要件主義（第三者に主張するには登記/引渡し）＋無権利の法理（無権利者からは取得不可）。</p>
+<p><strong>講義28：</strong>当事者間（AB間）では登記なしに所有権移転を主張できる（意思主義の効果）。</p>
+<p><strong>講義29-30：</strong>第三者が登場した場合→「一般の第三者」か「特別の第三者」かで処理が変わる。二重譲渡の場合は対抗要件主義で登記の先後によって決着。</p>
+<div class="analogy">AがBに土地を売った。でも登記をしないうちにAはCにも同じ土地を売った（二重譲渡）。BとCのどちらが勝つか？→先に登記をした方が勝つ（対抗要件主義）。早い者勝ちではなく「登記した者勝ち」。</div>
+</div>
+</div>
+
+<div class="lec" id="p31">
+<div class="lec-title"><span class="lec-num">31</span>無権利の法理の使い方</div>
+<div class="lec-body">
+<p>他人の物を勝手に売った場合→買主は所有権を取得できない（無権利の法理）。登記があっても無意味。真の所有者は登記の抹消を請求できる。</p>
+<div class="analogy">泥棒が盗んだ時計をメルカリで売っても、買った人は所有者にはなれない。「ちゃんと買ったのに！」と言っても通用しない。それが無権利の法理。</div>
+</div>
+</div>
+
+<div class="lec" id="p32">
+<div class="lec-title"><span class="lec-num">32-35</span>無効・取消しと第三者</div>
+<div class="lec-body">
+<p><strong>講義32（無効）：</strong>CA間の契約が最初から無効 → Aは無権利者 → Bも取得できない（無権利の法理貫徹）。ただし通謀虚偽表示では善意の第三者保護あり（民94条2項）。</p>
+<p><strong>講義33-34（取消し）：</strong>取消しにより遡及的に無効→無権利の法理が原則。ただし：</p>
+<ul style="padding-left:20px;font-size:14px;color:var(--text-dim);">
+<li><strong>取消前の第三者</strong>：善意無過失なら保護（錯誤：民95④、詐欺：民96③）</li>
+<li><strong>取消後の第三者</strong>：対抗要件主義（登記の先後）</li>
+</ul>
+<p><strong>講義35（総括）：</strong>「無権利の法理＋対抗要件主義の特則＋善意無過失保護」の3層構造。</p>
+</div>
+</div>
+
+<div class="lec" id="p36">
+<div class="lec-title"><span class="lec-num">36-41</span>解除・時効・相続と第三者</div>
+<div class="lec-body">
+<p><strong>講義36（解除）：</strong>解除の遡及的無効→取消しと同構造。解除前の第三者は民545①但書で保護（登記必要）。</p>
+<p><strong>講義37（時効）：</strong>時効完成後に第三者が登場→対抗要件主義で処理。</p>
+<p><strong>講義38-41（相続）：</strong></p>
+<table>
+<tr><th>パターン</th><th>第三者保護の法理</th></tr>
+<tr><td>法定共同相続</td><td>自分の持分超過部分→無権利の法理</td></tr>
+<tr><td>相続放棄</td><td>遡及的消滅→無権利の法理（対抗要件不要）</td></tr>
+<tr><td>遺産分割</td><td>分割前の第三者→民909但書で保護</td></tr>
+<tr><td>遺贈</td><td>対抗要件主義（登記の先後）</td></tr>
+</table>
+</div>
+</div>
+
+<div class="lec" id="p42">
+<div class="lec-title"><span class="lec-num">42</span>登記を信頼しても救われない</div>
+<div class="lec-body">
+<p><strong>核心：</strong>日本の不動産登記には<strong>公信力がない</strong>。登記簿に所有者と書いてあっても、本当の所有者とは限らない。登記名義人から買っても無権利者からの取得なら保護されない。</p>
+<div class="analogy">登記簿は「名札」にすぎない。名札に「田中さんの席」と書いてあっても、実際の席の持ち主は佐藤さんかもしれない。名札を信じて田中さんから席を買っても、佐藤さんには対抗できない。</div>
+</div>
+</div>
+
+<div class="quiz">
+<h4>Part G 確認問題</h4>
+<details><summary>Q1. 意思主義・対抗要件主義・無権利の法理の3つを簡潔に説明せよ。</summary><div class="answer">意思主義：当事者の合意のみで物権変動が生じる（民176条）。対抗要件主義：第三者に対抗するには登記（不動産）/引渡し（動産）が必要（民177-178条）。無権利の法理：無権利者から権利を承継取得することはできない（当然の法理）。</div></details>
+<details><summary>Q2. 「取消前の第三者」と「取消後の第三者」で処理が異なるのはなぜか？</summary><div class="answer">取消前の第三者は取消しの遡及効で権利を失うリスクがあり、善意無過失保護（民95④・96③）が直接的に適用される。取消後の第三者は取消し後に新たに登場した者であり、対抗要件主義（登記の先後）で処理される。</div></details>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART H: Immediate Acquisition of Movables (43-50) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partH">
+<h2>Part H：動産即時取得（講義43-50）</h2>
+<p>動産の世界には「公信力」がある</p>
+</div>
+
+<div class="mindmap">
+<h3>Part H 思維導図：即時取得の構造</h3>
+<div class="mm"><span class="root">動産即時取得（民192条）</span>
+├─<span class="l1"> なぜ必要か（43-44）</span>
+│  ├─ 不動産登記に公信力なし → 不動産は買主自身で調査すべき
+│  ├─ 動産は登記制度なし → 占有を信頼するしかない
+│  └─ 民192条が動産占有に公信力を付与
+├─<span class="l1"> 要件と効果（45-48）</span>
+│  ├─<span class="l2"> 要件</span>
+│  │  ├─ 取引行為（売買等）による取得
+│  │  ├─ 占有改定<strong>以外</strong>の方法で引渡しを受ける
+│  │  ├─ 平穏・公然
+│  │  └─ 善意・無過失（再抗弁で争われる）
+│  ├─<span class="l2"> 効果：原始取得</span>（元の所有者は所有権を失う）
+│  ├─<span class="l2"> 占有改定では不成立（46）</span>
+│  │  └─ 理由：占有の実態移転がない
+│  ├─<span class="l2"> 売主無権利は要件でない（47）</span>
+│  └─<span class="l2"> 指図引渡しでも不成立な場合あり（48）</span>
+└─<span class="l1"> 占有離脱物の特則（49-50）</span>
+   ├─<span class="l2"> 盗難・遺失物 → 2年間の猶予（民193-194条）</span>
+   ├─<span class="l2"> 理由：元の所有者に落ち度がない</span>
+   ├─<span class="l2"> 商人からの購入 → 代金弁償と引換え（民194条）</span>
+   └─<span class="l2"> 質屋・古物商 → 盗難1年未満なら無償回復可</span></div>
+</div>
+
+<div class="lec" id="p43">
+<div class="lec-title"><span class="lec-num">43-44</span>即時取得制度と公信力</div>
+<div class="lec-body">
+<p><strong>不動産</strong>：登記制度はあるが公信力なし（登記を信頼しても救われない）。</p>
+<p><strong>動産</strong>：登記制度なし → 占有を頼りにするしかない → 民法192条が占有に公信力を付与。</p>
+<div class="analogy">中古車を買うとき、売主が鍵を持っていて車を使っていれば「この人の車だろう」と信じるのが普通。万が一それが盗品でも、善意無過失で買った人は保護される（ただし盗品なら2年以内は返還請求あり）。</div>
+</div>
+</div>
+
+<div class="lec" id="p45">
+<div class="lec-title"><span class="lec-num">45-48</span>即時取得の要件と引渡し方法</div>
+<div class="lec-body">
+<p><strong>訴訟での使い方：</strong>所有者CがBに返還請求 → Bの抗弁「Aから買って引渡しを受けた」＝所有権喪失の抗弁（民192条）。</p>
+<p><strong>占有改定では不成立（講義46）：</strong>「売ったけど引き続き自分が持ってます」では占有の実態移転がないから即時取得は認めない（Hand wahre Hand ＝「手は手を守れ」ゲルマン法の法諺）。</p>
+<p><strong>売主無権利は要件でない（講義47）：</strong>動産取引の安全のために、買主がいちいち「売主は本当の持ち主か」を証明する必要はない。</p>
+</div>
+</div>
+
+<div class="lec" id="p49">
+<div class="lec-title"><span class="lec-num">49-50</span>占有離脱物の回復</div>
+<div class="lec-body">
+<p><strong>占有委託物</strong>（預けた物）→「信じた自分が悪い」で即時取得成立。</p>
+<p><strong>占有離脱物</strong>（盗品・遺失物）→ 元の所有者に落ち度なし → 2年間の猶予で取り戻し可能。</p>
+<p><strong>講義50の攻防構造：</strong></p>
+<table>
+<tr><th>段階</th><th>主張</th><th>根拠</th></tr>
+<tr><td>抗弁</td><td>Bの即時取得</td><td>民192条</td></tr>
+<tr><td>再抗弁</td><td>Cの回復請求（盗品・遺失物）</td><td>民193条</td></tr>
+<tr><td>再々抗弁</td><td>Bの代金弁償請求（お店で買った場合）</td><td>民194条</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART I: Property Specifics (51-55) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partI">
+<h2>Part I：物権各論（講義51-55）</h2>
+<p>占有権・所有権・用益物権の詳細</p>
+</div>
+
+<div class="lec" id="p51">
+<div class="lec-title"><span class="lec-num">51-52</span>占有権とその機能</div>
+<div class="lec-body">
+<p><strong>主たる機能：</strong>物理的支配秩序の保全（現に物を持っている状態を守る）。</p>
+<p><strong>3つの補助機能：</strong></p>
+<table>
+<tr><th>機能</th><th>内容</th><th>条文</th></tr>
+<tr><td>本権表章機能</td><td>占有者は適法な権利を持っていると推定される</td><td>民186①・188条</td></tr>
+<tr><td>本権取得機能</td><td>占有を続けると所有権を取得できる（取得時効）</td><td>民162条</td></tr>
+<tr><td>責任負担機能</td><td>占有物に関する損害賠償責任</td><td>民191条等</td></tr>
+</table>
+</div>
+</div>
+
+<div class="lec" id="p53">
+<div class="lec-title"><span class="lec-num">53-54</span>所有権・共同所有</div>
+<div class="lec-body">
+<p><strong>所有権（民206条）：</strong>自由に使用・収益・処分できる全面的支配権。土地は地上・地下にも及ぶ。ただし相隣関係による制限あり（境界50cm、民234条）。</p>
+<p><strong>共同所有の3類型：</strong></p>
+<table>
+<tr><th>類型</th><th>紐帯</th><th>持分処分</th><th>例</th></tr>
+<tr><td>共有</td><td>なし（偶然の共有）</td><td>自由</td><td>共同購入した不動産</td></tr>
+<tr><td>合有</td><td>組合的紐帯</td><td>制限あり</td><td>組合財産</td></tr>
+<tr><td>総有</td><td>強い団体的紐帯</td><td>個人持分なし</td><td>権利能力なき社団</td></tr>
+</table>
+<div class="analogy">共有＝シェアハウスの家具（各自の持分を勝手に売れる）。合有＝バンドの機材（メンバーの合意なしに売れない）。総有＝町内会の祭り道具（個人の持分という概念がない）。</div>
+</div>
+</div>
+
+<div class="lec" id="p55">
+<div class="lec-title"><span class="lec-num">55</span>用益物権</div>
+<div class="lec-body">
+<table>
+<tr><th>用益物権</th><th>目的</th><th>地代等</th><th>条文</th></tr>
+<tr><td>地上権</td><td>工作物・竹木の所有</td><td>不要</td><td>民265条</td></tr>
+<tr><td>永小作権</td><td>耕作・牧畜</td><td>必要</td><td>民270条</td></tr>
+<tr><td>地役権</td><td>自分の土地の便益</td><td>-</td><td>民280条</td></tr>
+<tr><td>入会権</td><td>住民の共同利用</td><td>慣習</td><td>民263・294条</td></tr>
+</table>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART J: Claims General Rules (56-62) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partJ">
+<h2>Part J：債権総則（講義56-62）</h2>
+<p>金融資本主義時代の民法の主戦場</p>
+</div>
+
+<div class="mindmap">
+<h3>Part J 思維導図：債権の世界</h3>
+<div class="mm"><span class="root">債権総則</span>
+├─<span class="l1"> 金融資本主義の時代（56-57）</span>
+│  ├─ 産業資本主義 → 物権中心（土地の保護）
+│  ├─ 金融資本主義 → 債権中心（金銭債権の保護）
+│  └─ 債権発生の4大原因：契約・事務管理・不当利得・不法行為
+├─<span class="l1"> 非金銭債権の運命（58-59）</span>
+│  ├─ 非金銭債権 →<span class="l2"> 債務不履行 </span>→ 金銭債権（損害賠償）に変身
+│  └─ 要件事実：不履行＋損害＋因果関係＋帰責性
+├─<span class="l1"> 損害賠償の範囲（60）</span>
+│  ├─<span class="l2"> 相当因果関係（民416条）</span>
+│  ├─ 通常損害（1項）：当然に賠償
+│  └─ 特別損害（2項）：予見可能な場合のみ
+├─<span class="l1"> 金銭債権の透明度（61）</span>
+│  └─ 金銭債権は最初から金銭→変身不要→透明度が高い
+└─<span class="l1"> 過失相殺（62）</span>
+   └─ 債権者にも落ち度がある場合→賠償額を減額</div>
+</div>
+
+<div class="lec" id="p56">
+<div class="lec-title"><span class="lec-num">56-57</span>債権総則の役割と構造</div>
+<div class="lec-body">
+<p><strong>時代の変化：</strong>産業資本主義（土地の保護が中心）→ 金融資本主義（金銭債権の保護が中心）。物権だけ勉強しても足りない時代。</p>
+<p><strong>債権発生の4大原因：</strong>契約・事務管理・不当利得・不法行為。これが債権各則の各章に対応。債権総則はこれらに共通するルール。</p>
+</div>
+</div>
+
+<div class="lec" id="p58">
+<div class="lec-title"><span class="lec-num">58-60</span>債務不履行と損害賠償</div>
+<div class="lec-body">
+<p><strong>非金銭債権の変身（講義58）：</strong>物の引渡し等の債権が不履行になると→損害賠償債権（金銭債権）に変身。</p>
+<p><strong>要件事実（講義59）：</strong>違法有責行為の責任。民事は過失で足り、刑事は原則故意が必要。</p>
+<p><strong>相当因果関係（講義60）：</strong>因果関係の連鎖は無限に続くが、すべてを賠償させるとコスト計算が不可能に。民法416条で「通常損害」と「予見可能な特別損害」に限定。</p>
+<div class="analogy">タクシーが事故で遅刻→会議に間に合わず→契約破談→会社倒産→社員が路頭に迷う…。どこまで運転手の責任？「通常損害」（遅刻による直接の損害）は賠償するが、「会社倒産」まで負わせるのは酷。相当因果関係で線引きする。</div>
+</div>
+</div>
+
+<div class="lec" id="p61">
+<div class="lec-title"><span class="lec-num">61-62</span>金銭債権の透明度・過失相殺</div>
+<div class="lec-body">
+<p><strong>金銭債権の透明度（講義61）：</strong>非金銭債権は不履行を経て金銭に変身するが、金銭債権は最初から金銭→変身プロセス不要→「透明度が高い」。</p>
+<p><strong>過失相殺（講義62）：</strong>損害の発生・拡大に債権者側にも落ち度がある場合、裁判所が賠償額を減額できる。弁論主義の例外として当事者の主張がなくても職権で考慮可能。</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART K: Claims Effects & Security (63-68) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partK">
+<h2>Part K：債権の効力と担保（講義63-68）</h2>
+<p>金銭債権の総則規定と引渡債務の詳細</p>
+</div>
+
+<div class="lec" id="p63">
+<div class="lec-title"><span class="lec-num">63-65</span>金銭債権総則の全体像・人的担保</div>
+<div class="lec-body">
+<p><strong>講義63：</strong>民法423条以下は、本来は貸金返還債権の規定が、金銭債権一般に広がったもの。出発点：「債権の経済的価値は債務者の資力に依存する」。</p>
+<p><strong>講義64（人的担保の序列）：</strong></p>
+<p style="text-align:center;color:var(--accent);font-size:14px;">単独債務 → 分割債務 → 連帯債務 → 保証債務 → <strong>連帯保証</strong></p>
+<p style="text-align:center;font-size:12px;color:var(--text-dim);">←← 担保力が弱い ―――― 担保力が強い →→</p>
+<p><strong>講義65（開始時現存額主義）：</strong>破産手続開始時の債権額を基準に配当計算。手続開始後の弁済で債権額は変動しない。</p>
+</div>
+</div>
+
+<div class="lec" id="p66">
+<div class="lec-title"><span class="lec-num">66-68</span>引渡債務と履行提供</div>
+<div class="lec-body">
+<p><strong>履行不能のなりやすさの序列：</strong></p>
+<p style="text-align:center;color:var(--accent2);font-size:14px;">特定物引渡債権（最も不能になりやすい）> 不特定物債権 > <strong>金銭債権（絶対不能にならない）</strong></p>
+<p><strong>講義66：</strong>特定物引渡債務者は引渡しまで善管注意義務を負う（民400条）。</p>
+<p><strong>講義67：</strong>不特定物（種類物）は、引渡し準備完了の段階で特定物に「集中」する（民401条）。</p>
+<p><strong>講義68：</strong>履行の提供の効果→①遅滞の違法性停止、②不特定物の集中→所有権移転。債権者が受領拒否→受領遅滞。</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART L: Creditor's Subrogation & Fraudulent Conveyance (69-79) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partL">
+<h2>Part L：債権者代位権・詐害行為取消権（講義69-79）</h2>
+<p>債務者が財産を隠したらどうするか？</p>
+</div>
+
+<div class="mindmap">
+<h3>Part L 思維導図：債権の三層構造と保全制度</h3>
+<div class="mm"><span class="root">債権の効力</span>
+├─<span class="l1"> 三階建ての天守閣 = 本来的効力（70-71）</span>
+│  ├─<span class="l2"> 3F 摑取力</span> ← 強制執行の基礎（債務名義）
+│  ├─<span class="l2"> 2F 請求力</span> ← 裁判で給付判決を得る力
+│  └─<span class="l2"> 1F 給付保持力</span> ← 受け取ったものを返さなくていい
+│     └─<span class="l3"> 自然債務＝1Fだけ（カジノの借金等）</span>
+├─<span class="l1"> 保全的効力 = 強制執行の準備（69, 72-78）</span>
+│  ├─<span class="l2"> 債権者代位権（民423条）</span>
+│  │  ├─ 目的：債務者の財産を充実させる
+│  │  ├─ 講義72：仮装売買の登記を抹消させる
+│  │  ├─ 講義75：簡易執行機能（直接取立て）
+│  │  └─ 講義78：<span class="l4">転用</span>（金銭債権以外にも使える！）
+│  └─<span class="l2"> 詐害行為取消権（民424条）</span>
+│     ├─ 目的：流出した財産を取り戻す
+│     ├─ 講義73：第2プラン（代位権が効かない場合）
+│     ├─ 講義74：転得者への取消請求
+│     ├─ 講義76：簡易執行機能
+│     ├─ 講義77：破産管財人の否認権との比較
+│     └─ 講義79：<span class="l4">転用は「ない」</span>
+└─<span class="l1"> 両制度の比較</span>
+   ├─ 代位権：債務者の権利を代わりに行使（転用OK）
+   └─ 取消権：詐害行為を取り消す（転用NG）</div>
+</div>
+
+<div class="lec" id="p69">
+<div class="lec-title"><span class="lec-num">69-71</span>債権の効力の三層構造</div>
+<div class="lec-body">
+<p><strong>三階建ての天守閣（講義70）：</strong></p>
+<table>
+<tr><th>階</th><th>効力</th><th>内容</th></tr>
+<tr><td>3F</td><td>摑取力</td><td>債務名義を成立させ、強制執行の基礎を得る力</td></tr>
+<tr><td>2F</td><td>請求力</td><td>裁判所に給付判決を求めることができる力</td></tr>
+<tr><td>1F</td><td>給付保持力</td><td>弁済として受け取ったものを返さなくていい力</td></tr>
+</table>
+<p><strong>自然債務（1Fのみ）：</strong>裁判で勝てない・強制執行できないが、相手が任意に払ってくれたら有効に受け取れる。例：消滅時効を援用された債権、賭博の借金。</p>
+<p><strong>保全的効力（講義69）：</strong>強制執行が空振りしないように、事前に債務者の財産を確保する制度（代位権・取消権）。</p>
+</div>
+</div>
+
+<div class="lec" id="p72">
+<div class="lec-title"><span class="lec-num">72-78</span>債権者代位権と詐害行為取消権</div>
+<div class="lec-body">
+<p><strong>債権者代位権（民423条）の全体像：</strong></p>
+<p><strong>講義72：</strong>債務者Bが財産を隠すためにCと仮装売買→債権者Aがbに代位してCに登記抹消を請求。</p>
+<p><strong>講義73（詐害行為取消訴訟）：</strong>代位権が効かない場合の第2プラン。債務者の詐害行為自体を取り消す。</p>
+<p><strong>講義74：</strong>転得者（C→Dに渡った場合）への取消請求も可能。</p>
+<p><strong>講義75-76（簡易執行機能）：</strong>代位権・取消権とも、差押え手続を経ずに直接取立て可能＝簡易執行。</p>
+<p><strong>講義77：</strong>偏頗弁済の取消しは破産管財人の否認権と機能が重複→債権者間の公平の問題。</p>
+<p><strong>講義78（代位権の転用）：</strong>金銭債権の執行準備以外にも使える（例：不動産の登記請求権の代位行使）。無資力要件も不要に。</p>
+<div class="analogy">代位権：「お前（債務者）が取りに行かないなら、俺が代わりにお前の権利を行使する」。取消権：「お前がCに財産を移したのは詐欺的だ！その取引自体を取り消す」。</div>
+</div>
+</div>
+
+<div class="lec" id="p79">
+<div class="lec-title"><span class="lec-num">79</span>詐害行為取消権の転用</div>
+<div class="lec-body">
+<p><strong>「ない。ないものはない。以上。」</strong>——講義本文より。代位権は転用あり、取消権は転用なし。取消権はあくまで責任財産の保全に特化。</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART M: Payment Theory (80-84) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partM">
+<h2>Part M：弁済論（講義80-84）</h2>
+<p>債権の本来の「ゴール」＝弁済</p>
+</div>
+
+<div class="mindmap">
+<h3>Part M 思維導図：弁済と弁済者代位</h3>
+<div class="mm"><span class="root">弁済論</span>
+├─<span class="l1"> 弁済の本質（80）</span>
+│  ├─ 物権は存続に意義、<span class="l2">債権は消滅に意義</span>
+│  ├─ 弁済＝債務の履行＝債権の本来の消滅原因
+│  └─ その他：代物弁済・相殺・更改・免除・混同
+├─<span class="l1"> 第三者弁済（81）</span>
+│  ├─<span class="l2"> 原則：第三者弁済は有効</span>
+│  │  └─ 債権者は「誰が払うか」より「本旨に従った給付か」を重視
+│  └─<span class="l2"> 例外：属人的給付（本人しかできない給付）</span>
+├─<span class="l1"> 弁済者代位（82-84）</span>
+│  ├─<span class="l2"> 仕組み（82）</span>
+│  │  ├─ 第三者Aが債務者Sの代わりに弁済
+│  │  ├─ A → Sに対する<span class="l3">求償権</span>を取得
+│  │  └─ Gの原債権・担保権がAに<span class="l3">法定移転</span>
+│  ├─<span class="l2"> 対抗要件：デフォルトケース（83）</span>
+│  │  └─ 債権譲渡の対抗要件（民467条）を流用
+│  │     └─ 確定日付ある通知 or 承諾が必要
+│  └─<span class="l2"> 対抗要件：担保負担者の場合（84）</span>
+│     ├─ 保証人・物上保証人・第三取得者
+│     ├─ 「正当な利益を有する者」の弁済
+│     └─ <span class="l3">対抗要件不要！</span>（法定代位・民500条）</div>
+</div>
+
+<div class="lec" id="p80">
+<div class="lec-title"><span class="lec-num">80-81</span>弁済と第三者弁済</div>
+<div class="lec-body">
+<p><strong>講義80：</strong>「物権は存続することに意義があり、債権は消滅することに意義がある。」弁済＝債務の本旨に従った給付＝債権のゴール。</p>
+<p><strong>講義81（第三者弁済）：</strong>債権者は「誰が払うか」よりも「ちゃんと払われるか」に関心がある。だから第三者が払ってもOK（原則有効）。</p>
+<div class="analogy">レストランで食事をして会計のとき、友人が「俺が払う」と言って全額支払った。レストラン（債権者）は困らない。あなた（債務者）は債務が消滅する。友人（第三者）はあなたに「あとで返してね」と求償権を持つ。</div>
+</div>
+</div>
+
+<div class="lec" id="p82">
+<div class="lec-title"><span class="lec-num">82-84</span>弁済者代位</div>
+<div class="lec-body">
+<p><strong>講義82（基本）：</strong>第三者Aが債権者Gの債務者Sに対する債権を代わりに弁済→Aは①Sへの求償権を取得、②Gの原債権・担保権がAに法定移転（弁済者代位）。</p>
+<p><strong>なぜ必要か：</strong>単なる求償権だけでは、Sに他の債権者がいる場合に債権者平等原則の下で不利。原債権の担保権（抵当権等）も一緒にもらえれば、優先的に回収できる。</p>
+<p><strong>講義83（対抗要件）：</strong>代位弁済者は「あんたダレ？」と言われるので、債権譲渡の対抗要件（確定日付ある通知/承諾）を流用して身分証明する。</p>
+<p><strong>講義84（担保負担者の特則）：</strong>保証人・物上保証人等は「正当な利益を有する者」→代位弁済は誰から見ても予測範囲内→<strong>対抗要件不要で対抗できる</strong>（法定代位・民500条）。</p>
+</div>
+</div>
+
+<div class="quiz">
+<h4>Part M 確認問題</h4>
+<details><summary>Q1. 「物権は存続に意義、債権は消滅に意義」とはどういう意味か？</summary><div class="answer">物権（所有権等）は目的物を継続的に支配することに価値がある。一方、債権は将来の一定時点で目的が実現される（弁済される）ことに価値があり、目的が実現されれば消滅する。債権の存在意義は「いずれ消えること」にある。</div></details>
+<details><summary>Q2. 弁済者代位が認められるのはなぜか？求償権だけでは不十分な理由は？</summary><div class="answer">求償権は単なる一般債権にすぎないため、債務者が無資力の場合は債権者平等原則に服して按分配当しか受けられない。しかし原債権に付いていた抵当権等の担保権も一緒に法定移転されれば、優先弁済権を行使して確実に回収できるため。</div></details>
+<details><summary>Q3. 担保負担者（保証人等）の代位弁済に対抗要件が不要な理由は？</summary><div class="answer">保証人・物上保証人等は「原債権が弁済されないと自らが法的責任を問われる立場」にあり、その代位弁済は誰から見ても予測可能な範囲内だから。つまり「あんたダレ？」と聞く必要がない。</div></details>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART N: Advanced Subrogation (85-88) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partN">
+<h2>Part N：弁済者代位の応用（講義85-88）</h2>
+<p>複数の担保負担者がいる場合の代位割合と特殊問題</p>
+</div>
+
+<div class="mindmap">
+<h3>Part N 思維導図：弁済者代位の応用</h3>
+<div class="mm"><span class="root">弁済者代位の応用問題</span>
+├─<span class="l1"> 代位割合（85）</span>
+│  ├─ 複数の担保負担者（保証人A・B、物上保証人C・D）
+│  ├─ 第三者Eが全額弁済 → 各担保を何割行使できるか？
+│  └─ 民法501-502条：頭数・担保財産の価額で按分
+├─<span class="l1"> 一部弁済による一部代位（86）</span>
+│  ├─ 物上保証人が被担保債権の一部のみ弁済
+│  ├─ 弁済額に応じた割合でのみ代位可能
+│  └─ 残額の債権者Gと代位者の競合問題
+├─<span class="l1"> 第三取得者と代位（87）</span>
+│  ├─<span class="l2"> 「からの代位」</span>：第三取得者が弁済→他の担保へ代位
+│  └─<span class="l2"> 「に対する代位」</span>：他の担保者が弁済→第三取得者の担保へ代位
+└─<span class="l1"> 債権者の担保減損責任（88）</span>
+   ├─ 債権者が担保を放棄・減損 → 担保負担者が代位利益を失う
+   ├─ 民法504条：その限度で担保負担者は免責
+   └─ 実務上の免除特約の問題</div>
+</div>
+
+<div class="lec" id="p85">
+<div class="lec-title"><span class="lec-num">85-86</span>代位割合と一部代位</div>
+<div class="lec-body">
+<p><strong>講義85（代位割合）：</strong>担保負担者が複数いる場合（保証人A・B、物上保証人C・D）、第三者Eが全額弁済しても、特定の担保負担者に全額を求めることはできない。民法501-502条により、頭数や担保財産の価額に応じて按分される。</p>
+<p><strong>講義86（一部代位）：</strong>物上保証人が被担保債権の一部のみ弁済した場合、弁済した金額に応じた割合でのみ代位できる。残りは元の債権者Gのもの。GとD（一部代位者）の間で担保行使の優先順位が問題になる。</p>
+<div class="analogy">4人で共同保証している1000万円の借金。第三者が全額払っても、1人に1000万円を全部請求できるわけではない。4人で250万円ずつ負担するイメージ（実際は担保財産の価額で按分）。</div>
+</div>
+</div>
+
+<div class="lec" id="p87">
+<div class="lec-title"><span class="lec-num">87</span>第三取得者「からの代位」と「に対する代位」</div>
+<div class="lec-body">
+<p>物上保証人C・Dから担保物件を買い取った第三取得者P・Qは、元の担保負担者の地位を引き継ぐ。</p>
+<table>
+<tr><th>方向</th><th>意味</th><th>例</th></tr>
+<tr><td>からの代位</td><td>第三取得者が弁済→他の担保へ代位</td><td>Pが弁済してDの担保に代位</td></tr>
+<tr><td>に対する代位</td><td>他の担保者が弁済→第三取得者の担保へ代位</td><td>Cが弁済してPの担保に代位</td></tr>
+</table>
+</div>
+</div>
+
+<div class="lec" id="p88">
+<div class="lec-title"><span class="lec-num">88</span>債権者の担保減損責任</div>
+<div class="lec-body">
+<p><strong>核心：</strong>担保負担者は「弁済すれば代位で担保を引き継げる」という期待を法的に保護されている。債権者が担保を放棄・減損すると、この期待が裏切られる。</p>
+<p><strong>民法504条：</strong>債権者の担保減損行為があれば、担保負担者はその限度で免責される。ただし実務では「免除特約」（この保護を排除する特約）が問題となる。</p>
+<div class="analogy">あなた（保証人）は「最悪でも土地の抵当権を引き継げる」と思って保証した。ところが銀行（債権者）が勝手に抵当権を放棄した。「話が違う！」→ その分だけ保証債務を免れる（民法504条の保護）。</div>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART O: Payment to Third Parties (89-91) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partO">
+<h2>Part O：弁済の相手方（講義89-91）</h2>
+<p>「誰に払えば債務が消えるか」問題</p>
+</div>
+
+<div class="mindmap">
+<h3>Part O 思維導図：弁済の相手方</h3>
+<div class="mm"><span class="root">弁済の相手方問題</span>
+├─<span class="l1"> 原則（89）</span>
+│  ├─ 債権者Gに払えば弁済は有効
+│  └─ 第三者Aに払っても原則<span class="l2">無効</span>
+│     └─ S → Aに不当利得返還請求
+├─<span class="l1"> 例外：準占有者への弁済（民478条）</span>
+│  ├─ Aが「債権の準占有者」＝受領権者の外観
+│  ├─ Sが善意・無過失で弁済 → <span class="l3">弁済有効</span>
+│  └─ Gの債権は消滅（Gは損害をAに請求）
+├─<span class="l1"> 誤弁済の抗弁問題（90）</span>
+│  └─ Aが「478条でSは免責されてるから損失なし」と抗弁
+│     → <span class="l2">認められない</span>（478条はSの保護規定）
+└─<span class="l1"> 預担貸しの実務（91）</span>
+   ├─ 銀行実務：定期預金を担保に融資
+   └─ 中途解約払戻しが478条で有効か？</div>
+</div>
+
+<div class="lec" id="p89">
+<div class="lec-title"><span class="lec-num">89-90</span>第三者への弁済と誤弁済</div>
+<div class="lec-body">
+<p><strong>講義89（原則）：</strong>債権者以外の人に払っても弁済として無効。ただし<strong>民法478条</strong>の例外あり：受領権者の外観を持つ者（債権の準占有者）に善意・無過失で弁済すれば有効。</p>
+<p><strong>講義90（抗弁の問題）：</strong>Sが誤ってAに弁済→SがAに不当利得返還請求→Aが「478条でSは免責されているから損失がない」と反論。これは認められない。478条はあくまでSを保護する規定であり、Aが自己正当化に使うことはできない。</p>
+<div class="analogy">ATMで振り込み先を間違えた。相手が「銀行が有効な取引として処理したんだから、あなたに損失はないでしょ？返す必要なし」と言い張るようなもの。当然通用しない。</div>
+</div>
+</div>
+
+<div class="lec" id="p91">
+<div class="lec-title"><span class="lec-num">91</span>預担貸しと民法478条</div>
+<div class="lec-body">
+<p><strong>預担貸し：</strong>銀行実務で、定期預金を担保に融資する慣行。定期預金の中途解約・払戻しが行われた際に、民法478条の「準占有者への弁済」として有効となるかが実務上の大問題。</p>
+<p>善意・無過失の判断は、銀行の確認手続の適切さ（本人確認、届出印の照合等）に依存する。</p>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- PART P: Set-off (92-96) -->
+<!-- ============================================================ -->
+<div class="part-header" id="partP">
+<h2>Part P：相殺（講義92-96）</h2>
+<p>債権担保の最終兵器としての相殺</p>
+</div>
+
+<div class="mindmap">
+<h3>Part P 思維導図：相殺の全体像</h3>
+<div class="mm"><span class="root">相殺（民法505条以下）</span>
+├─<span class="l1"> 2つの機能（92）</span>
+│  ├─<span class="l2"> 簡易決済機能</span>
+│  │  └─ 現金の往復を省略して計算上で消滅
+│  └─<span class="l2"> 担保的機能</span>
+│     └─ 相手方の無資力リスクを回避（講義11で既出）
+├─<span class="l1"> 相殺の要件</span>
+│  ├─<span class="l2"> 相殺適状（93）</span>
+│  │  ├─ 双方の債権に弁済期が到来
+│  │  ├─ 自働債権の弁済期到来が本質的
+│  │  └─ 相殺適状の意図的「作出」の可否
+│  ├─<span class="l2"> 自働債権適格（94）</span>
+│  │  ├─ 強制執行で実現できる債権であること
+│  │  └─ 自然債務・責任なき債務 → 適格なし
+│  └─<span class="l2"> 受働債権適格（94）</span>
+│     └─ 差押禁止債権（生活保護費等）→ 受働債権にできない
+└─<span class="l1"> 差押えと相殺（95-96）</span>
+   ├─<span class="l2"> 問題の所在（95）</span>
+   │  ├─ CがAのB銀行への預金債権を差押え
+   │  ├─ B銀行が「Aへの貸金債権と相殺する」と主張
+   │  └─ 差押後の相殺はCに対抗できるか？
+   └─<span class="l2"> 民法511条の解釈（96）</span>
+      ├─ 改正前：「差押後に取得した債権」での相殺は対抗不可
+      ├─ 判例（最大判S45）：差押前の債権なら対抗可
+      └─ 改正後：判例を明文化＋差押前の原因に基づく債権も可</div>
+</div>
+
+<div class="lec" id="p92">
+<div class="lec-title"><span class="lec-num">92-93</span>相殺の機能と相殺適状</div>
+<div class="lec-body">
+<p><strong>講義92（2つの機能）：</strong></p>
+<table>
+<tr><th>機能</th><th>内容</th><th>例</th></tr>
+<tr><td>簡易決済機能</td><td>現金の往復を省略して帳簿上で消滅</td><td>AがBに100万円、BがAに80万円 → 相殺で差額20万円だけ支払い</td></tr>
+<tr><td>担保的機能</td><td>相手の破産時も反対債権で確実に回収</td><td>Bが破産しても、Aは80万円分を相殺で優先回収</td></tr>
+</table>
+<p><strong>種類：</strong>約定相殺（合意による）と法定相殺（一方の意思表示のみ、民505条）。</p>
+<p><strong>講義93（相殺適状）：</strong>法定相殺の要件は<strong>相殺適状</strong>＝双方の弁済期が到来していること。自働債権（自分が攻撃に使う債権）の弁済期到来が本質的。受働債権（相手の債権）は期限前弁済にすぎないとも考えられるが、期限の利益を保護するために双方の到来が要求される。</p>
+<div class="analogy">あなたが友人に100万円貸していて、友人もあなたに80万円貸している。両方とも返済日が来ていれば、「差し引き20万円だけ払えばいいよね」が相殺。友人が破産しても、あなたは80万円分を確実に守れる（担保的機能）。</div>
+</div>
+</div>
+
+<div class="lec" id="p94">
+<div class="lec-title"><span class="lec-num">94</span>自働債権適格・受働債権適格</div>
+<div class="lec-body">
+<table>
+<tr><th></th><th>自働債権（攻撃に使う債権）</th><th>受働債権（相殺される側の債権）</th></tr>
+<tr><td>要件</td><td>強制執行で実現できる債権であること</td><td>差押禁止債権でないこと</td></tr>
+<tr><td>不適格な例</td><td>自然債務（カジノの借金等）、責任なき債務</td><td>生活保護費、給料の一定部分（民510条）</td></tr>
+<tr><td>理由</td><td>強制執行できないものを相殺で強制的に実現するのは矛盾</td><td>受給者に現実の給付を確保する必要</td></tr>
+</table>
+<div class="analogy">自働債権適格：「この借用書は裁判でも認められない」レベルの債権で相殺するのはズルい → ダメ。受働債権適格：生活保護費を相殺で持っていくと受給者が生活できなくなる → ダメ。</div>
+</div>
+</div>
+
+<div class="lec" id="p95">
+<div class="lec-title"><span class="lec-num">95-96</span>差押えと相殺</div>
+<div class="lec-body">
+<p><strong>講義95（問題の設定）：</strong></p>
+<p>AがB銀行に預金100万円。BはAに融資200万円。第三者CがAの預金債権を差押え → B銀行は「Aへの貸金と相殺する」と主張 → 差押えた後の相殺はCに対抗できるか？</p>
+<p><strong>講義96（民法511条の展開）：</strong></p>
+<table>
+<tr><th>時期</th><th>ルール</th></tr>
+<tr><td>改正前</td><td>「差押<strong>後</strong>に取得した債権」での相殺は対抗不可（条文の文言）</td></tr>
+<tr><td>判例（最大判S45.6.24）</td><td>「差押<strong>前</strong>に取得した債権」なら差押後でも相殺可能（相殺の担保的機能を重視）</td></tr>
+<tr><td>改正後（現行法）</td><td>判例を明文化＋「差押前の<strong>原因</strong>に基づく債権」でも対抗可能</td></tr>
+</table>
+<div class="analogy">B銀行がAにお金を貸したのは差押えの前。銀行は「いざとなったら預金と相殺して回収できる」と信じて融資した。その信頼（相殺の担保的機能）を保護すべき → 差押後でも相殺OK。</div>
+</div>
+</div>
+
+<div class="quiz">
+<h4>Part N-P 確認問題</h4>
+<details><summary>Q1. 一部弁済による一部代位とは何か？</summary><div class="answer">被担保債権の一部のみを弁済した場合、弁済者は弁済額に応じた割合でのみ原債権に代位できる制度。残額については元の債権者が依然として債権者であり、代位者と競合関係に立つ。</div></details>
+<details><summary>Q2. 民法478条（準占有者への弁済）の要件は？</summary><div class="answer">(1)弁済の相手方が「債権の準占有者」（受領権者としての外観を持つ者）であること、(2)弁済者が善意・無過失であること。この2要件を満たせば、本来の債権者以外への弁済でも有効となり、債務は消滅する。</div></details>
+<details><summary>Q3. 相殺の「簡易決済機能」と「担保的機能」をそれぞれ説明せよ。</summary><div class="answer">簡易決済機能：互いに債権を持つ当事者が現金のやり取りを省略し、計算上の差引きで債権債務を消滅させる機能。担保的機能：相手方が破産しても、自分の反対債権を用いて相殺することで、債権者平等原則に服さず確実に債権を回収できる機能。</div></details>
+<details><summary>Q4. 改正民法511条のポイントは？</summary><div class="answer">差押前に取得した債権による相殺は差押債権者に対抗できる（判例法理の明文化）。さらに、差押後に取得した債権でも、差押前の原因に基づいて生じた債権であれば対抗可能とされた。相殺の担保的機能を重視する立場を採用。</div></details>
+</div>
+
+<!-- ============================================================ -->
+<!-- FINAL SUMMARY -->
+<!-- ============================================================ -->
+<div class="part-header" style="border-left-color:var(--accent2);">
+<h2>総まとめ：全96講のストーリー</h2>
+<p>全体を一つのストーリーとして理解する</p>
+</div>
+
+<div class="mindmap">
+<h3>最終思維導図：民法のストーリー</h3>
+<div class="mm"><span class="root">民法＝資本主義のゲームルール</span>
+
+<span class="l1">第1幕：世界観の構築 [1-12]</span>
+  民法は市民革命から生まれた資本主義の基本法
+  日本はフランス・ドイツから学んでパンデクテン体系を採用
+  財産関係は「物権」と「債権」の二本柱で説明
+  権利は訴訟→強制執行で実現（三位一体）
+  破産では債権者平等原則で公平分配
+  賢い債権者は抵当権・連帯保証・相殺権で武装
+  <span class="l2">→ 民法の本質＝金銭債権の円滑な満足の促進</span>
+
+<span class="l1">第2幕：物権の世界 [13-55]</span>
+  物権vs債権の実戦（地上権vs賃借権、借地借家法）
+  物権法定主義：物権はカタログ制
+  物権変動論：意思主義＋対抗要件主義＋無権利の法理
+  第三者との関係パターン（無効・取消し・解除・時効・相続）
+  動産の即時取得（占有に公信力あり）
+  占有権・所有権・用益物権・担保物権の各論
+  <span class="l2">→ 物の世界は「登記した者勝ち」が基本</span>
+
+<span class="l1">第3幕：債権の世界 [56-96]</span>
+  金融資本主義時代：債権が主戦場
+  非金銭債権→債務不履行→金銭債権に変身
+  損害賠償は相当因果関係で限定
+  債権の三階建て（給付保持力・請求力・摑取力）
+  債権者代位権（転用あり）と詐害行為取消権（転用なし）
+  弁済＝債権の本来のゴール
+  弁済者代位：第三者弁済後の権利の法定移転
+  代位の応用：一部弁済・物上保証人・共同保証
+  弁済の相手方：受領権者としての外観法理
+  相殺：簡易決済機能と担保的機能
+  <span class="l2">→ お金の世界は「いかに確実に回収するか」が基本</span></div>
+</div>
+
+<div style="text-align:center;padding:40px;color:var(--text-dim);font-size:13px;">
+<p>本ガイドは note.com/msahkie の民法講義に基づいて作成されました。</p>
+<p>Generated: 2026-05-14</p>
+</div>
+
+</div><!-- /main -->
+
+<script>
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});}
+
+// Progress bar
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('scrollTop').classList.toggle('show',h.scrollTop>400);
+});
+document.getElementById('scrollTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+
+// Sidebar toggle
+const sb=document.getElementById('sidebar'),tg=document.getElementById('sidebarToggle');
+tg.onclick=()=>sb.classList.toggle('open');
+</script>
+</body>
+</html>
