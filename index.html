@@ -96,6 +96,14 @@ tr:hover td { background:rgba(108,140,255,.05); }
 /* Scroll top */
 .scroll-top { position:fixed; bottom:24px; right:24px; background:var(--accent); color:#fff; border:none; border-radius:50%; width:44px; height:44px; font-size:20px; cursor:pointer; opacity:0; transition:.3s; z-index:50; }
 .scroll-top.show { opacity:1; }
+
+/* Directory grid */
+.dir-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:14px; margin:24px 0 40px; }
+.dir-card { background:var(--card); border:1px solid var(--border); border-radius:10px; padding:16px 20px; transition:.25s; text-decoration:none; display:block; }
+.dir-card:hover { border-color:var(--accent); background:var(--card-hover); transform:translateY(-2px); text-decoration:none; }
+.dir-card .num { font-size:12px; font-weight:700; color:var(--accent); background:rgba(108,140,255,.12); border-radius:4px; padding:2px 8px; display:inline-block; margin-bottom:6px; }
+.dir-card .card-title { font-size:14px; font-weight:700; color:var(--text); margin-bottom:4px; }
+.dir-card .card-sub { font-size:12px; color:var(--text-dim); }
 </style>
 </head>
 <body>
@@ -226,6 +234,70 @@ tr:hover td { background:rgba(108,140,255,.05); }
 <div class="main">
 <h1>msahkie 民法講義 学習ガイド</h1>
 <p class="subtitle">全108講 | 法律未修者向け | 通俗解説 + 思維導図 + 練習問題</p>
+
+<!-- ===== LECTURE DIRECTORY ===== -->
+<div class="part-header" style="border-left-color:var(--accent4);">
+<h2>分冊学習ガイド</h2>
+<p>各10講ずつの詳細解説 — 講義原文・思維導図付き</p>
+</div>
+
+<div class="dir-grid">
+<a href="lectures_001-010.html" class="dir-card">
+<span class="num">講義 1-10</span>
+<div class="card-title">民法の歴史・体系・債権担保入門</div>
+<div class="card-sub">ブルジョワ法 → パンデクテン体系 → 物権と債権 → 三位一体 → 抵当権・別除権</div>
+</a>
+<a href="lectures_011-020.html" class="dir-card">
+<span class="num">講義 11-20</span>
+<div class="card-title">民法の本質・物権vs債権・賃借権保護</div>
+<div class="card-sub">相殺権 → 民法の本質 → 物権vs債権の実戦 → 借地借家法の保護</div>
+</a>
+<a href="lectures_021-030.html" class="dir-card">
+<span class="num">講義 21-30</span>
+<div class="card-title">物権法体系・物権変動論の基礎</div>
+<div class="card-sub">借家権 → 物権法定主義 → 意思主義・対抗要件主義 → 無権利の法理</div>
+</a>
+<a href="lectures_031-040.html" class="dir-card">
+<span class="num">講義 31-40</span>
+<div class="card-title">無権利の法理・第三者との攻防</div>
+<div class="card-sub">無効・取消し・解除・時効・相続と第三者のパターン集</div>
+</a>
+<a href="lectures_041-050.html" class="dir-card">
+<span class="num">講義 41-50</span>
+<div class="card-title">即時取得制度の全貌</div>
+<div class="card-sub">遺贈と第三者 → 公信力 → 即時取得の要件 → 占有離脱物の猶予</div>
+</a>
+<a href="lectures_051-060.html" class="dir-card">
+<span class="num">講義 51-60</span>
+<div class="card-title">物権各論から債権総則へ</div>
+<div class="card-sub">占有権 → 所有権・共同所有 → 用益物権 → 債権総則 → 相当因果関係</div>
+</a>
+<a href="lectures_061-070.html" class="dir-card">
+<span class="num">講義 61-70</span>
+<div class="card-title">金銭債権・債権の効力三層構造</div>
+<div class="card-sub">金銭債権 → 過失相殺 → 人的担保 → 特定物・不特定物 → 自然債務</div>
+</a>
+<a href="lectures_071-080.html" class="dir-card">
+<span class="num">講義 71-80</span>
+<div class="card-title">債権者代位権・詐害行為取消権・弁済論</div>
+<div class="card-sub">責任なき債務 → 代位訴訟 → 取消訴訟 → 転用 → 弁済論概観</div>
+</a>
+<a href="lectures_081-090.html" class="dir-card">
+<span class="num">講義 81-90</span>
+<div class="card-title">弁済者代位・弁済の相手方</div>
+<div class="card-sub">第三者弁済 → 弁済者代位 → 代位割合 → 担保減損 → 民法478条</div>
+</a>
+<a href="lectures_091-100.html" class="dir-card">
+<span class="num">講義 91-100</span>
+<div class="card-title">相殺・差押えと相殺</div>
+<div class="card-sub">相殺の機能 → 相殺適状 → 差押えと相殺 → 改正511条 → 類推適用</div>
+</a>
+<a href="lectures_101-108.html" class="dir-card">
+<span class="num">講義 101-108</span>
+<div class="card-title">物上代位・債権譲渡の基礎</div>
+<div class="card-sub">物上代位と相殺 → 債権譲渡と相殺 → 譲渡の自由 → 対抗要件の制度設計</div>
+</a>
+</div>
 
 <!-- ===== GRAND MIND MAP ===== -->
 <div class="mindmap">
