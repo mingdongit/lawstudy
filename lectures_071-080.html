@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義71-80：債権者代位権・詐害行為取消権・弁済論</title>
+<style>
+:root {
+  --bg: #0f1117; --card: #1a1d27; --card-hover: #22263a;
+  --accent: #6c8cff; --accent2: #ff6c8c; --accent3: #6cffb8;
+  --accent4: #ffd76c; --accent5: #c96cff;
+  --text: #e0e0e0; --text-dim: #8a8fa8; --border: #2a2e3f; --tag-bg: #252940;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI','Hiragino Sans','Yu Gothic UI','Meiryo',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.sidebar { position:fixed; left:0; top:0; width:260px; height:100vh; background:#13151f; border-right:1px solid var(--border); overflow-y:auto; z-index:100; padding:16px 0; transition:transform .3s; }
+.sidebar .nav-item { display:block; padding:6px 20px 6px 28px; font-size:13px; color:var(--text-dim); cursor:pointer; border-left:3px solid transparent; transition:.2s; }
+.sidebar .nav-item:hover { color:var(--text); background:rgba(108,140,255,.08); border-left-color:var(--accent); }
+.sidebar-toggle { position:fixed; left:8px; top:8px; z-index:200; background:var(--accent); color:#fff; border:none; border-radius:6px; width:36px; height:36px; font-size:18px; cursor:pointer; display:none; }
+@media(max-width:900px) { .sidebar { transform:translateX(-260px); } .sidebar.open { transform:translateX(0); } .sidebar-toggle { display:block; } .main { margin-left:0!important; padding:20px 16px 60px!important; } }
+.main { margin-left:260px; padding:40px 48px 80px; max-width:1000px; }
+h1 { font-size:1.8rem; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px; }
+.subtitle { color:var(--text-dim); margin-bottom:36px; font-size:14px; }
+.part-header { margin:48px 0 24px; padding:20px 28px; background:linear-gradient(135deg, rgba(108,140,255,.12), rgba(255,108,140,.08)); border-radius:12px; border-left:4px solid var(--accent); }
+.part-header h2 { font-size:1.3rem; color:var(--accent); margin-bottom:4px; }
+.part-header p { font-size:14px; color:var(--text-dim); }
+.lec { background:var(--card); border-radius:10px; margin:16px 0; padding:20px 24px; border:1px solid var(--border); transition:.2s; }
+.lec:hover { border-color:var(--accent); background:var(--card-hover); }
+.lec-title { font-size:1.05rem; font-weight:700; color:var(--text); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.lec-num { background:var(--accent); color:#fff; border-radius:6px; padding:2px 8px; font-size:12px; font-weight:700; min-width:32px; text-align:center; }
+.lec-body { font-size:14px; color:var(--text-dim); }
+.lec-body p { margin:6px 0; }
+.lec-body strong { color:var(--text); }
+.mindmap { background:#12141e; border-radius:12px; padding:24px; margin:20px 0; overflow-x:auto; border:1px solid var(--border); }
+.mindmap h3 { font-size:14px; color:var(--accent4); margin-bottom:16px; text-align:center; }
+.mm { font-family:'Cascadia Code','Consolas','Courier New',monospace; font-size:13px; line-height:1.9; white-space:pre; color:var(--text-dim); }
+.mm .root { color:var(--accent); font-weight:700; }
+.mm .l1 { color:var(--accent2); font-weight:700; }
+.mm .l2 { color:var(--accent3); }
+.progress-bar { position:sticky; top:0; z-index:50; height:3px; background:var(--border); }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width .3s; }
+.scroll-top { position:fixed; bottom:24px; right:24px; background:var(--accent); color:#fff; border:none; border-radius:50%; width:44px; height:44px; font-size:20px; cursor:pointer; opacity:0; transition:.3s; z-index:50; }
+.scroll-top.show { opacity:1; }
+.back-link { display:inline-block; margin-bottom:20px; padding:6px 16px; background:var(--tag-bg); border-radius:6px; color:var(--accent); font-size:13px; text-decoration:none; }
+.back-link:hover { background:var(--card-hover); text-decoration:none; }
+.nav-link { display:flex; justify-content:space-between; margin-top:40px; padding-top:20px; border-top:1px solid var(--border); }
+.nav-link a { padding:8px 20px; background:var(--tag-bg); border-radius:8px; color:var(--accent); font-size:14px; text-decoration:none; }
+.nav-link a:hover { background:var(--card-hover); }
+</style>
+</head>
+<body>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<button class="sidebar-toggle" id="sidebarToggle">&#9776;</button>
+<button class="scroll-top" id="scrollTop">&#8593;</button>
+
+<nav class="sidebar" id="sidebar">
+<div style="padding:12px 20px;">
+<strong style="color:var(--accent);font-size:15px;">講義71-80</strong><br>
+<span style="font-size:11px;color:var(--text-dim);">債権者代位権・詐害行為取消権・弁済論</span>
+</div>
+<div class="nav-item" onclick="go('p71')">71. 債権の本来的効力：責任なき債務</div>
+<div class="nav-item" onclick="go('p72')">72. 債権者代位訴訟による登記名義の確保</div>
+<div class="nav-item" onclick="go('p73')">73. 詐害行為取消訴訟</div>
+<div class="nav-item" onclick="go('p74')">74. 対転得者取消請求</div>
+<div class="nav-item" onclick="go('p75')">75. 金銭債権の代位行使：債権者代位権の簡易執…</div>
+<div class="nav-item" onclick="go('p76')">76. 取消請求による金銭回復：詐害行為取消権の…</div>
+<div class="nav-item" onclick="go('p77')">77. 債権者詐害行為取消権と破産管財人の否認権</div>
+<div class="nav-item" onclick="go('p78')">78. 債権者代位権の転用</div>
+<div class="nav-item" onclick="go('p79')">79. 詐害行為取消権の転用</div>
+<div class="nav-item" onclick="go('p80')">80. 債務消滅原因：弁済論概観</div>
+
+</nav>
+
+<div class="main">
+<a href="index.html" class="back-link">← 総合ガイドに戻る</a>
+<h1>民法講義71-80：債権者代位権・詐害行為取消権・弁済論</h1>
+<p class="subtitle">法律未修者向け | 通俗解説 + 思維導図</p>
+
+<div class="mindmap">
+<h3>思維導図：債権回収の実践ツール</h3>
+<div class="mm"><span class="root">債権回収の実践ツール</span>
+├─<span class="l1"> 71. 債権の本来的効力：責任なき債務</span>
+├─<span class="l1"> 72. 債権者代位訴訟による登記名義の確保</span>
+├─<span class="l1"> 73. 詐害行為取消訴訟</span>
+├─<span class="l1"> 74. 対転得者取消請求</span>
+├─<span class="l1"> 75. 金銭債権の代位行使：債権者代位権の簡易執行機能</span>
+├─<span class="l1"> 76. 取消請求による金銭回復：詐害行為取消権の簡易執行機能</span>
+├─<span class="l1"> 77. 債権者詐害行為取消権と破産管財人の否認権</span>
+├─<span class="l1"> 78. 債権者代位権の転用</span>
+├─<span class="l1"> 79. 詐害行為取消権の転用</span>
+└─<span class="l1"> 80. 債務消滅原因：弁済論概観</span>
+</div>
+</div>
+
+<div class="lec" id="p71">
+<div class="lec-title"><span class="lec-num">71</span>債権の本来的効力：責任なき債務</div>
+<div class="lec-body">
+<p>請求力・摑取力は、債権者から見て、もっぱらpassiveな給付保持力と異なり、債務者に対するactiveな攻撃力であり、それぞれ、債務者に対する債務履行請求を認容する判決（給付判決）を取得することができる効力（請求力）、民事執行法２２条に列挙された種類の文書にその存在と範囲が記載されることによって、それら文書を債務名義として成立させる効力（摑取力）である。</p>
+<p>強制執行は、債権の効力としてなされるのではなく、債務名義なる文書に付せられた執行力に基づいて行われる（民執２５条）。債</p>
+
+</div>
+</div>
+<div class="lec" id="p72">
+<div class="lec-title"><span class="lec-num">72</span>債権者代位訴訟による登記名義の確保</div>
+<div class="lec-body">
+<p>〔設例〕ＡがＢに対して金銭債権を有しているところ、Ｂは、Ａによる強制執行を回避するため、Ｂの思惑を知るＣにＢ所有の甲土地を売却した形を仮装して、この売買を原因とする所有権移転登記もＣに備えさせた。Ｂには他にめぼしい財産が見当たらない。
+〔設問〕Ａは、Ｂに対する金銭債権について甲土地に対する強制執行を可能とするためには、どのような法的措置を講ずればよいか。</p>
+<p>という問題が出されたとしよう。刑法96条の2及び同法157条の適用ありうべきことはおいといて、民事の問題。これ以上基本的</p>
+
+</div>
+</div>
+<div class="lec" id="p73">
+<div class="lec-title"><span class="lec-num">73</span>詐害行為取消訴訟</div>
+<div class="lec-body">
+<p>Ｂに代位してＣに対し甲土地の所有権移転登記抹消登記手続を求める訴えを、ＢのＣに対する所有権に基づく妨害排除請求権（としての所有権移転登記抹消登記手続請求権）を訴訟物として提起したＡは、Ｃの登記保持権原の抗弁（ＢＣ間の甲土地売買契約締結の事実主張）が認められてＡの登記保持権原障害の再抗弁（Ｂの意思欠缺及びＣの悪意の事実主張。通謀まで主張すべき理由はない。）が認められないときに備えて、第２プランを用意しておく必要がある。それが、詐害行為取消訴訟である。</p>
+<p>債権者代位訴訟と詐害行為</p>
+
+</div>
+</div>
+<div class="lec" id="p74">
+<div class="lec-title"><span class="lec-num">74</span>対転得者取消請求</div>
+<div class="lec-body">
+<p>債務者と第三者とが関連共同性の下に債務者の責任財産を減少させて債権の満足を困難ならしめた場合には、それら債務者・第三者の主観的悪性とあいまって、債権侵害による共同不法行為と、これに基づく債権者の損害賠償債権が共同不法行為者である債務者・第三者の各自に対して各別に成立する可能性がある。
+この責任財産侵害型の債権侵害による不法行為に基づく損害賠償請求は、無資力債務者に対する関係では、画餅にひとしいから、おのずから法的関心の対象外となる一方、第三者に対する関係では、現物返還（執行対</p>
+
+</div>
+</div>
+<div class="lec" id="p75">
+<div class="lec-title"><span class="lec-num">75</span>金銭債権の代位行使：債権者代位権の簡易執行機能</div>
+<div class="lec-body">
+<p>Ｂに対する金銭債権者Ａが、Ｂ無資力の事態に直面してＢの財産権を代位行使してＢの資力を充実させようという場合において、その先に想定される強制執行が動産執行であるときは、Ａの代位権行使の目標は、基本的には、Ｂに動産の占有を得させることにある。
+不動産執行を想定する場合には、目的不動産の登記名義をＢに得させることが、代位権行使の目標であった。不動産執行は、不動産の登記名義人を所有者であるものと推定して行われるからである。
+これに対し、動産執行は、占有の自主占有推定（民186条1項）</p>
+
+</div>
+</div>
+<div class="lec" id="p76">
+<div class="lec-title"><span class="lec-num">76</span>取消請求による金銭回復：詐害行為取消権の簡易執行機能</div>
+<div class="lec-body">
+<p>債務者Ｂが甲土地をＣに譲渡して移転登記も経由したために債権者Ａに対する関係で無資力となった場合において、甲土地がさらにＣからＤに譲渡されてＤが登記を備えるに至ったとき、Ａは、Ｂを債務者とする不動産執行の準備を目的に、Ｄを被告とする詐害行為取消請求の訴えを提起することを考えてもよいし、これと並行して、登記名義の回復に応ずることがもはやできなくなったＣを被告とする詐害行為取消請求の訴えを提起することを考えてもよい（２つの請求は両立し、併合訴訟とすることも可。択一関係ではない。）。</p>
+
+</div>
+</div>
+<div class="lec" id="p77">
+<div class="lec-title"><span class="lec-num">77</span>債権者詐害行為取消権と破産管財人の否認権</div>
+<div class="lec-body">
+<p>偏波弁済を詐害行為とする取消請求が認容されて、その判決に従って偏波弁済受領者Ｃから取消債権者Ａに受領弁済額相当の金銭が直接に支払われると、あとはＡがＢとの間で相殺を実行することによって自己の債権（被保全債権）を満足させることができる、というのは先に述べたとおりであるが（ＣのＢに対する債権は、ＣのＡに対する支払が完了した時に、復活する。民425条の2）。</p>
+<p>このことは、Ｂに対する債権者たちの自由な債権回収競争の勝敗が、詐害行為取消請求によって逆転させられてしまう、勤勉な債権者Ｃ</p>
+
+</div>
+</div>
+<div class="lec" id="p78">
+<div class="lec-title"><span class="lec-num">78</span>債権者代位権の転用</div>
+<div class="lec-body">
+<p>ここまで、債権者代位権・詐害行為取消権を、強制執行準備を目的とする制度である（プラス簡易執行機能）として説明してきた。</p>
+<p>が、債権者代位権は、機能的に重複する範囲において、債権執行制度の活用に途を譲る傾向がある一方、それ以外の使い方をされることによって、債権者代位権なくてもいいんじゃね？派を押し返している。</p>
+<p>どういうことかというと、金銭債権を被保全債権と想定する限りにおいては、あくまで強制執行（差押え・換価・満足手続による金銭執行）の準備が目的、債務名義を別途取得しておかな</p>
+
+</div>
+</div>
+<div class="lec" id="p79">
+<div class="lec-title"><span class="lec-num">79</span>詐害行為取消権の転用</div>
+<div class="lec-body">
+<p>詐害行為取消権の転用、というのはない。
+ないものはない。
+以上。</p>
+
+</div>
+</div>
+<div class="lec" id="p80">
+<div class="lec-title"><span class="lec-num">80</span>債務消滅原因：弁済論概観</div>
+<div class="lec-body">
+<p>物権は存続することに意義があり、債権は消滅することに意義がある。
+もちろん、債権がただただ消滅するのであれば意義もないが、物権は物支配の法的支持を継続することが目的であるのに対し、債権は将来のある時点でその目的が実現されることに意義があり、目的実現は債権の消滅原因であるから、という文脈での表現である。</p>
+<p>債権が本来予定している目的実現したがって債権消滅原因は、いうまでもなく、弁済である。債務を履行する行為を弁済と言うのだから、弁済によって債務が消滅するというのは、実は、雨が降</p>
+
+</div>
+</div>
+
+
+<div class="nav-link">
+<a href="lectures_061-070.html">← 講義61-70</a>
+<a href="lectures_081-090.html">講義81-90 →</a>
+</div>
+
+<div style="text-align:center;padding:40px;color:var(--text-dim);font-size:13px;">
+<p>本ガイドは note.com/msahkie の民法講義に基づいて作成されました。</p>
+<p>Generated: 2026-05-28</p>
+</div>
+</div>
+
+<script>
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});}
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('scrollTop').classList.toggle('show',h.scrollTop>400);
+});
+document.getElementById('scrollTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+const sb=document.getElementById('sidebar'),tg=document.getElementById('sidebarToggle');
+if(tg) tg.onclick=()=>sb.classList.toggle('open');
+</script>
+</body>
+</html>

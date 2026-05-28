@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義31-40：無権利の法理・第三者との攻防</title>
+<style>
+:root {
+  --bg: #0f1117; --card: #1a1d27; --card-hover: #22263a;
+  --accent: #6c8cff; --accent2: #ff6c8c; --accent3: #6cffb8;
+  --accent4: #ffd76c; --accent5: #c96cff;
+  --text: #e0e0e0; --text-dim: #8a8fa8; --border: #2a2e3f; --tag-bg: #252940;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI','Hiragino Sans','Yu Gothic UI','Meiryo',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.sidebar { position:fixed; left:0; top:0; width:260px; height:100vh; background:#13151f; border-right:1px solid var(--border); overflow-y:auto; z-index:100; padding:16px 0; transition:transform .3s; }
+.sidebar .nav-item { display:block; padding:6px 20px 6px 28px; font-size:13px; color:var(--text-dim); cursor:pointer; border-left:3px solid transparent; transition:.2s; }
+.sidebar .nav-item:hover { color:var(--text); background:rgba(108,140,255,.08); border-left-color:var(--accent); }
+.sidebar-toggle { position:fixed; left:8px; top:8px; z-index:200; background:var(--accent); color:#fff; border:none; border-radius:6px; width:36px; height:36px; font-size:18px; cursor:pointer; display:none; }
+@media(max-width:900px) { .sidebar { transform:translateX(-260px); } .sidebar.open { transform:translateX(0); } .sidebar-toggle { display:block; } .main { margin-left:0!important; padding:20px 16px 60px!important; } }
+.main { margin-left:260px; padding:40px 48px 80px; max-width:1000px; }
+h1 { font-size:1.8rem; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px; }
+.subtitle { color:var(--text-dim); margin-bottom:36px; font-size:14px; }
+.part-header { margin:48px 0 24px; padding:20px 28px; background:linear-gradient(135deg, rgba(108,140,255,.12), rgba(255,108,140,.08)); border-radius:12px; border-left:4px solid var(--accent); }
+.part-header h2 { font-size:1.3rem; color:var(--accent); margin-bottom:4px; }
+.part-header p { font-size:14px; color:var(--text-dim); }
+.lec { background:var(--card); border-radius:10px; margin:16px 0; padding:20px 24px; border:1px solid var(--border); transition:.2s; }
+.lec:hover { border-color:var(--accent); background:var(--card-hover); }
+.lec-title { font-size:1.05rem; font-weight:700; color:var(--text); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.lec-num { background:var(--accent); color:#fff; border-radius:6px; padding:2px 8px; font-size:12px; font-weight:700; min-width:32px; text-align:center; }
+.lec-body { font-size:14px; color:var(--text-dim); }
+.lec-body p { margin:6px 0; }
+.lec-body strong { color:var(--text); }
+.mindmap { background:#12141e; border-radius:12px; padding:24px; margin:20px 0; overflow-x:auto; border:1px solid var(--border); }
+.mindmap h3 { font-size:14px; color:var(--accent4); margin-bottom:16px; text-align:center; }
+.mm { font-family:'Cascadia Code','Consolas','Courier New',monospace; font-size:13px; line-height:1.9; white-space:pre; color:var(--text-dim); }
+.mm .root { color:var(--accent); font-weight:700; }
+.mm .l1 { color:var(--accent2); font-weight:700; }
+.mm .l2 { color:var(--accent3); }
+.progress-bar { position:sticky; top:0; z-index:50; height:3px; background:var(--border); }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width .3s; }
+.scroll-top { position:fixed; bottom:24px; right:24px; background:var(--accent); color:#fff; border:none; border-radius:50%; width:44px; height:44px; font-size:20px; cursor:pointer; opacity:0; transition:.3s; z-index:50; }
+.scroll-top.show { opacity:1; }
+.back-link { display:inline-block; margin-bottom:20px; padding:6px 16px; background:var(--tag-bg); border-radius:6px; color:var(--accent); font-size:13px; text-decoration:none; }
+.back-link:hover { background:var(--card-hover); text-decoration:none; }
+.nav-link { display:flex; justify-content:space-between; margin-top:40px; padding-top:20px; border-top:1px solid var(--border); }
+.nav-link a { padding:8px 20px; background:var(--tag-bg); border-radius:8px; color:var(--accent); font-size:14px; text-decoration:none; }
+.nav-link a:hover { background:var(--card-hover); }
+</style>
+</head>
+<body>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<button class="sidebar-toggle" id="sidebarToggle">&#9776;</button>
+<button class="scroll-top" id="scrollTop">&#8593;</button>
+
+<nav class="sidebar" id="sidebar">
+<div style="padding:12px 20px;">
+<strong style="color:var(--accent);font-size:15px;">講義31-40</strong><br>
+<span style="font-size:11px;color:var(--text-dim);">無権利の法理・第三者との攻防</span>
+</div>
+<div class="nav-item" onclick="go('p31')">31. 無権利の法理の使い方</div>
+<div class="nav-item" onclick="go('p32')">32. 法律行為の無効と第三者</div>
+<div class="nav-item" onclick="go('p33')">33. 法律行為の取消しと第三者</div>
+<div class="nav-item" onclick="go('p34')">34. 取消権者に帰責性のある取消原因</div>
+<div class="nav-item" onclick="go('p35')">35. 法律行為の取消しと第三者：総括</div>
+<div class="nav-item" onclick="go('p36')">36. 契約解除と第三者</div>
+<div class="nav-item" onclick="go('p37')">37. 時効取得と第三者</div>
+<div class="nav-item" onclick="go('p38')">38. 法定共同相続と第三者</div>
+<div class="nav-item" onclick="go('p39')">39. 相続放棄と第三者</div>
+<div class="nav-item" onclick="go('p40')">40. 遺産分割と第三者</div>
+
+</nav>
+
+<div class="main">
+<a href="index.html" class="back-link">← 総合ガイドに戻る</a>
+<h1>民法講義31-40：無権利の法理・第三者との攻防</h1>
+<p class="subtitle">法律未修者向け | 通俗解説 + 思維導図</p>
+
+<div class="mindmap">
+<h3>思維導図：第三者との攻防パターン集</h3>
+<div class="mm"><span class="root">第三者との攻防パターン集</span>
+├─<span class="l1"> 31. 無権利の法理の使い方</span>
+├─<span class="l1"> 32. 法律行為の無効と第三者</span>
+├─<span class="l1"> 33. 法律行為の取消しと第三者</span>
+├─<span class="l1"> 34. 取消権者に帰責性のある取消原因</span>
+├─<span class="l1"> 35. 法律行為の取消しと第三者：総括</span>
+├─<span class="l1"> 36. 契約解除と第三者</span>
+├─<span class="l1"> 37. 時効取得と第三者</span>
+├─<span class="l1"> 38. 法定共同相続と第三者</span>
+├─<span class="l1"> 39. 相続放棄と第三者</span>
+└─<span class="l1"> 40. 遺産分割と第三者</span>
+</div>
+</div>
+
+<div class="lec" id="p31">
+<div class="lec-title"><span class="lec-num">31</span>無権利の法理の使い方</div>
+<div class="lec-body">
+<p>無権利の法理の適用を考えてみる。</p>
+<p>最も単純で典型的な例。Ａが、特定土地（甲土地）をＢに売却し、甲土地についてＢに所有権移転登記を備えさせたが、甲土地の所有者は今も昔もＣである。このとき、Ｃは、所有権に基づく妨害排除請求権を訴訟物として、甲土地の所有権移転登記の抹消登記手続をＢに対して求めることができる。Ａは甲土地の売主ではあっても所有者ではないというのだから、ＢがＡから所有権を取得できたはずもない（無権利の法理）。Ｂの登記具備の事実は法的には無価値である。</p>
+<p>甲土地所有者Ｃ</p>
+
+</div>
+</div>
+<div class="lec" id="p32">
+<div class="lec-title"><span class="lec-num">32</span>法律行為の無効と第三者</div>
+<div class="lec-body">
+<p>Ｃの甲土地所有権をＡがＢに売った。この事実の限りで、Ｂは、ＡからもＣからも、その所有権を承継取得できたはずはない。Ｂに甲土地所有権時効取得はあり得るが、その性質は原始取得（Ｂのところで新しい所有権が誕生し、その反射的効果としてＣの所有権が消滅する。）である。</p>
+<p>ＣがＡに甲土地を売った、との事実があれば、Ｃ→Ａ→Ｂと順次に所有権が移転してきた、との効果を生じるが、そのＣＡ間の売買契約が当然無効の憂き目にあうときには、結局、無権利の法理が貫徹される。</p>
+<p>と、これが前回の話。</p>
+<p>契</p>
+
+</div>
+</div>
+<div class="lec" id="p33">
+<div class="lec-title"><span class="lec-num">33</span>法律行為の取消しと第三者</div>
+<div class="lec-body">
+<p>では、こういう場合はどうか。
+ＡがＢに甲土地を売却した。Ａはというと、Ｃから甲土地を買った者であって、このＣＡ間の契約締結当時、Ｃはたしかに甲土地の所有者であった。
+ＣＡ間・ＡＢ間にそれぞれ民法176条が適用され、Ｃ→Ａ→Ｂという経路で所有権が移転したことになる。</p>
+<p>このままでＣが甲土地の所有権がＣにあることを過去の甲土地所有を原因としてＢに対して主張しても、ＣＡ間売買契約締結の事実の主張による所有権喪失の抗弁によって、Ｃの主張は法的支持を得られなくなる。</p>
+<p>ところがここに、</p>
+
+</div>
+</div>
+<div class="lec" id="p34">
+<div class="lec-title"><span class="lec-num">34</span>取消権者に帰責性のある取消原因</div>
+<div class="lec-body">
+<p>以上、法律行為の取消しと第三者、と呼ばれる論点である。</p>
+<p>さらに、法律行為の取消原因を挙げてみよう。
+当事者が法律行為時に未成年者又は成年被後見人・被保佐人・被補助人であったこと。
+意思表示に重要錯誤又は詐欺・強迫を受けてしたとの瑕疵があったこと。</p>
+<p>これらのいずれについても、「Ａに売ったのを取り消した土地所有者Ｃが、Ａから買った占有者Ｂに対し、所有権に基づく土地明渡請求をする場合、大原則として無権利の法理が適用されて請求が認容され、ただし取消後の第三者に該当するＢには対抗要</p>
+
+</div>
+</div>
+<div class="lec" id="p35">
+<div class="lec-title"><span class="lec-num">35</span>法律行為の取消しと第三者：総括</div>
+<div class="lec-body">
+<p>Ａが、もとの所有者Ｃから買った甲土地をＢに売却したが、ＣからはＣＡ間の契約を取り消された、という場合において、Ｃの取消原因が重要錯誤又は詐欺であったとき、民法は、「無権利の法理による原則と取消後の第三者のための対抗要件主義による特則」という基本構造に重ねて、民法は、落ち度のないＢ（Ｃの取消原因について善意無過失のＢ）に、Ｃから直接に甲土地所有権を承継取得させることとした（民法95条4項・96条3項）。
+取り消されたＣＡ間の契約がＢの登場によって有効に転じるわけではない（もしそ</p>
+
+</div>
+</div>
+<div class="lec" id="p36">
+<div class="lec-title"><span class="lec-num">36</span>契約解除と第三者</div>
+<div class="lec-body">
+<p>このあと、契約解除と第三者、時効取得と第三者、共同相続乃至遺産分割と第三者、という問題がつづいていく。</p>
+<p>Ａが所有者Ｃから買った甲土地をＢに売却する一方で、Ａの代金不払を理由としてＣＡ間の甲土地売買契約を解除したＣが、Ｂに対し、所有権に基づいて甲土地の明渡しを請求する、という事件。</p>
+<p>契約解除の効果は、解除された契約の遡及的無効である。したがって、ＣＢ間の紛争解決のための民法上の基本構造は、法律行為の取消しと第三者の問題と同じく、所有権に基づく請求をめぐって、ＣＡ間契約締結に</p>
+
+</div>
+</div>
+<div class="lec" id="p37">
+<div class="lec-title"><span class="lec-num">37</span>時効取得と第三者</div>
+<div class="lec-body">
+<p>時効取得と第三者。</p>
+<p>甲土地所有者Ａから甲土地を買いとったＢが、占有者Ｃに対し、所有権に基づいて甲土地の明渡しを求める事件。</p>
+<p>Ｃの抗弁。時効取得による所有権喪失の抗弁。Ｃによる甲土地占有の20年以上の継続（ある時点の占有とその後20年以上経過したある時点の占有とによって推定を受けるのでもよい。占有の事実は、それだけで、その占有が平穏公然の所有者らしい占有だと推定される。）及びＣがＢに時効援用の意思表示を到達させたことを主張すればよい。Ｃが時効により甲土地所有権を原資取得し、</p>
+
+</div>
+</div>
+<div class="lec" id="p38">
+<div class="lec-title"><span class="lec-num">38</span>法定共同相続と第三者</div>
+<div class="lec-body">
+<p>相続と第三者。
+というのは大きな括りで、このなかには、法定共同相続と第三者、相続放棄と第三者、遺産分割と第三者、遺言と第三者、という論点が含まれる。めんどくさくておもしろくない。</p>
+<p>まず、法定共同相続と第三者。
+甲土地所有者Ａが死亡して、ＡをＢ・Ｃが均分に共同相続した。これにより、甲土地をＢ・Ｃが２分の１ずつの持分割合で共有することになった。本来であれば甲土地について相続を原因とするＢ・Ｃの共有登記がなされるべきところ、実際には、Ｂが甲土地を単独相続したかのような登記がなされ</p>
+
+</div>
+</div>
+<div class="lec" id="p39">
+<div class="lec-title"><span class="lec-num">39</span>相続放棄と第三者</div>
+<div class="lec-body">
+<p>相続放棄と第三者。
+甲土地所有者Ａが死亡して、ＢとＣが、Ａを均分にて共同相続し、甲土地を各２分の１の持分権で共有することになった。この場合において、Ｂの債権者Ｄが、Ｂに代位してＢに持分権登記を備えさせたうえで、債務名義に基づいてＢの甲土地持分権を差し押さえた（＝執行裁判所に申し立てて差し押さえてもらった。）。前後して、Ｂは有効に相続放棄をしていたので、Ｃが、Ｄを被告として第三者意義の訴えを提起した（民執38条）。Ｃの異議は、Ｂの相続放棄の結果（甲土地のＣ単独所有）についてＣが</p>
+
+</div>
+</div>
+<div class="lec" id="p40">
+<div class="lec-title"><span class="lec-num">40</span>遺産分割と第三者</div>
+<div class="lec-body">
+<p>遺産分割と第三者。
+甲土地所有者Ａが死亡して、ＢとＣがＡを均分共同相続して、甲土地を各２分の１ずつの持分権により共有するところとなり、その旨の相続登記がなされた。
+その後、ＢＣ間の遺産分割により、甲土地はＣの単独所有とすることが決まった。
+他方でＢは、甲土地上のＢ自身の持分権をＤに売却した。
+この場合において甲土地がＣの単独所有物なのかＣ・Ｄの共有なのかが争われ、ＣがＤを被告として、甲土地がＣの単独所有に属することの確認を求める訴えを提起したとする。Ｃの請求は、Ｃが単独所有権</p>
+
+</div>
+</div>
+
+
+<div class="nav-link">
+<a href="lectures_021-030.html">← 講義21-30</a>
+<a href="lectures_041-050.html">講義41-50 →</a>
+</div>
+
+<div style="text-align:center;padding:40px;color:var(--text-dim);font-size:13px;">
+<p>本ガイドは note.com/msahkie の民法講義に基づいて作成されました。</p>
+<p>Generated: 2026-05-28</p>
+</div>
+</div>
+
+<script>
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});}
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('scrollTop').classList.toggle('show',h.scrollTop>400);
+});
+document.getElementById('scrollTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+const sb=document.getElementById('sidebar'),tg=document.getElementById('sidebarToggle');
+if(tg) tg.onclick=()=>sb.classList.toggle('open');
+</script>
+</body>
+</html>

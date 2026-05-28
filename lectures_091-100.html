@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義91-100：相殺・差押えと相殺</title>
+<style>
+:root {
+  --bg: #0f1117; --card: #1a1d27; --card-hover: #22263a;
+  --accent: #6c8cff; --accent2: #ff6c8c; --accent3: #6cffb8;
+  --accent4: #ffd76c; --accent5: #c96cff;
+  --text: #e0e0e0; --text-dim: #8a8fa8; --border: #2a2e3f; --tag-bg: #252940;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI','Hiragino Sans','Yu Gothic UI','Meiryo',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.sidebar { position:fixed; left:0; top:0; width:260px; height:100vh; background:#13151f; border-right:1px solid var(--border); overflow-y:auto; z-index:100; padding:16px 0; transition:transform .3s; }
+.sidebar .nav-item { display:block; padding:6px 20px 6px 28px; font-size:13px; color:var(--text-dim); cursor:pointer; border-left:3px solid transparent; transition:.2s; }
+.sidebar .nav-item:hover { color:var(--text); background:rgba(108,140,255,.08); border-left-color:var(--accent); }
+.sidebar-toggle { position:fixed; left:8px; top:8px; z-index:200; background:var(--accent); color:#fff; border:none; border-radius:6px; width:36px; height:36px; font-size:18px; cursor:pointer; display:none; }
+@media(max-width:900px) { .sidebar { transform:translateX(-260px); } .sidebar.open { transform:translateX(0); } .sidebar-toggle { display:block; } .main { margin-left:0!important; padding:20px 16px 60px!important; } }
+.main { margin-left:260px; padding:40px 48px 80px; max-width:1000px; }
+h1 { font-size:1.8rem; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px; }
+.subtitle { color:var(--text-dim); margin-bottom:36px; font-size:14px; }
+.part-header { margin:48px 0 24px; padding:20px 28px; background:linear-gradient(135deg, rgba(108,140,255,.12), rgba(255,108,140,.08)); border-radius:12px; border-left:4px solid var(--accent); }
+.part-header h2 { font-size:1.3rem; color:var(--accent); margin-bottom:4px; }
+.part-header p { font-size:14px; color:var(--text-dim); }
+.lec { background:var(--card); border-radius:10px; margin:16px 0; padding:20px 24px; border:1px solid var(--border); transition:.2s; }
+.lec:hover { border-color:var(--accent); background:var(--card-hover); }
+.lec-title { font-size:1.05rem; font-weight:700; color:var(--text); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.lec-num { background:var(--accent); color:#fff; border-radius:6px; padding:2px 8px; font-size:12px; font-weight:700; min-width:32px; text-align:center; }
+.lec-body { font-size:14px; color:var(--text-dim); }
+.lec-body p { margin:6px 0; }
+.lec-body strong { color:var(--text); }
+.mindmap { background:#12141e; border-radius:12px; padding:24px; margin:20px 0; overflow-x:auto; border:1px solid var(--border); }
+.mindmap h3 { font-size:14px; color:var(--accent4); margin-bottom:16px; text-align:center; }
+.mm { font-family:'Cascadia Code','Consolas','Courier New',monospace; font-size:13px; line-height:1.9; white-space:pre; color:var(--text-dim); }
+.mm .root { color:var(--accent); font-weight:700; }
+.mm .l1 { color:var(--accent2); font-weight:700; }
+.mm .l2 { color:var(--accent3); }
+.progress-bar { position:sticky; top:0; z-index:50; height:3px; background:var(--border); }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width .3s; }
+.scroll-top { position:fixed; bottom:24px; right:24px; background:var(--accent); color:#fff; border:none; border-radius:50%; width:44px; height:44px; font-size:20px; cursor:pointer; opacity:0; transition:.3s; z-index:50; }
+.scroll-top.show { opacity:1; }
+.back-link { display:inline-block; margin-bottom:20px; padding:6px 16px; background:var(--tag-bg); border-radius:6px; color:var(--accent); font-size:13px; text-decoration:none; }
+.back-link:hover { background:var(--card-hover); text-decoration:none; }
+.nav-link { display:flex; justify-content:space-between; margin-top:40px; padding-top:20px; border-top:1px solid var(--border); }
+.nav-link a { padding:8px 20px; background:var(--tag-bg); border-radius:8px; color:var(--accent); font-size:14px; text-decoration:none; }
+.nav-link a:hover { background:var(--card-hover); }
+</style>
+</head>
+<body>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<button class="sidebar-toggle" id="sidebarToggle">&#9776;</button>
+<button class="scroll-top" id="scrollTop">&#8593;</button>
+
+<nav class="sidebar" id="sidebar">
+<div style="padding:12px 20px;">
+<strong style="color:var(--accent);font-size:15px;">講義91-100</strong><br>
+<span style="font-size:11px;color:var(--text-dim);">相殺・差押えと相殺</span>
+</div>
+<div class="nav-item" onclick="go('p91')">91. 預担貸しと民法478条</div>
+<div class="nav-item" onclick="go('p92')">92. 相殺の機能</div>
+<div class="nav-item" onclick="go('p93')">93. 相殺適状の作出</div>
+<div class="nav-item" onclick="go('p94')">94. 自働債権適格、受働債権適格</div>
+<div class="nav-item" onclick="go('p95')">95. 差押えと相殺：問題の所在</div>
+<div class="nav-item" onclick="go('p96')">96. 差押えと相殺：改正前の民法５１１条とその…</div>
+<div class="nav-item" onclick="go('p97')">97. 差押えと相殺：改正５１１条における判例法…</div>
+<div class="nav-item" onclick="go('p98')">98. 民法５１１条２項ただし書の趣旨</div>
+<div class="nav-item" onclick="go('p99')">99. 正しい民法５１１条</div>
+<div class="nav-item" onclick="go('p100')">100. 民511条2項ただし書の類推適用</div>
+
+</nav>
+
+<div class="main">
+<a href="index.html" class="back-link">← 総合ガイドに戻る</a>
+<h1>民法講義91-100：相殺・差押えと相殺</h1>
+<p class="subtitle">法律未修者向け | 通俗解説 + 思維導図</p>
+
+<div class="mindmap">
+<h3>思維導図：相殺の全貌</h3>
+<div class="mm"><span class="root">相殺の全貌</span>
+├─<span class="l1"> 91. 預担貸しと民法478条</span>
+├─<span class="l1"> 92. 相殺の機能</span>
+├─<span class="l1"> 93. 相殺適状の作出</span>
+├─<span class="l1"> 94. 自働債権適格、受働債権適格</span>
+├─<span class="l1"> 95. 差押えと相殺：問題の所在</span>
+├─<span class="l1"> 96. 差押えと相殺：改正前の民法５１１条とその解釈</span>
+├─<span class="l1"> 97. 差押えと相殺：改正５１１条における判例法理の承継と相殺権保護の拡張</span>
+├─<span class="l1"> 98. 民法５１１条２項ただし書の趣旨</span>
+├─<span class="l1"> 99. 正しい民法５１１条</span>
+└─<span class="l1"> 100. 民511条2項ただし書の類推適用</span>
+</div>
+</div>
+
+<div class="lec" id="p91">
+<div class="lec-title"><span class="lec-num">91</span>預担貸しと民法478条</div>
+<div class="lec-body">
+<p>定期預金、利率などないに等しいくらいだが、定期預金をしていることが、銀行さんに「取引先」すなわち「融資を考えてもよい相手方」と認識してもらうための、基礎的環境である。
+なぜならば、定期預金というのは、銀行さんからすると、満期になるまでは払戻しを要しないオカネであり（民法上は、民662条が民666条によって適用は排除されずに適用されるから、定期預金であっても預金者に中途解約権があるように思われるが、実際には、定期預金約款によって、預金者の中途解約は禁じられている。民662条が任</p>
+
+</div>
+</div>
+<div class="lec" id="p92">
+<div class="lec-title"><span class="lec-num">92</span>相殺の機能</div>
+<div class="lec-body">
+<p>そもそも相殺とは、２当事者間に金銭債権と金銭債権が相対立して存在する場合に、その履行として現金を往復させる労を省き、計算上の処理だけで、お互いに重なり合う範囲の債権債務が消滅したものとすることである。このことを、両当事者の合意によってすること（＝相殺契約＝約定相殺）に、何の妨げもない。</p>
+<p>そのうえで、民法は、２当事者間に金銭債権と金銭債権が相対立して存在する場合に、いずれの債権にも弁済期が到来してどちらからでもいつでも斬りかかっていける、という手に汗にぎる状況（相殺適状）が成</p>
+
+</div>
+</div>
+<div class="lec" id="p93">
+<div class="lec-title"><span class="lec-num">93</span>相殺適状の作出</div>
+<div class="lec-body">
+<p>民法５０５条は、ＡとＢの間に金銭債権が対向する場合に、双方の債権に弁済期が到来していることを、相殺適状の要件と定めている。</p>
+<p>理論的には、相殺は実質上自分の債務を任意に弁済して相手方の債務の弁済を強制することであるから、相殺を仕掛ける側にとって、自分の債権＝自働債権について弁済期が到来してさえいればよく、自分の債務＝受働債権については実質上の期限前弁済をするだけのことだから（期限前に弁済してはならない理由はない。）、受働債権の弁済期到来は不要なはずである。民法５０５条が双方の</p>
+
+</div>
+</div>
+<div class="lec" id="p94">
+<div class="lec-title"><span class="lec-num">94</span>自働債権適格、受働債権適格</div>
+<div class="lec-body">
+<p>相殺というのは、相殺する側の有する債権（自働債権）について、相手方に強制的に弁済させる、という性格を実質的に有する。そうすると、強制執行によって目的を実現することが許されない債権（責任なき債務に対応する債権、自然債務に対応する債権）を自働債権とする相殺を認めるのは、強制実現できない債権を強制実現することができる、という背理に陥ることにほかならない。したがって、強制執行によって目的を実現することが許されない債権は、相殺の自働債権とすることもできない。</p>
+<p>他面、こういうこともある</p>
+
+</div>
+</div>
+<div class="lec" id="p95">
+<div class="lec-title"><span class="lec-num">95</span>差押えと相殺：問題の所在</div>
+<div class="lec-body">
+<p>ＡがＢ銀行に定期預金をしている。つまり、ＡはＢに対する定期預金債権者である。
+Ａに対する金銭債権者Ｃが、債務名義に基づき、日本国司法府をして、ＡのＢに対する定期預金債権を対象とする金銭執行手続を開始させ、民事執行法の与える取立権を原告適格権原とし、ＡのＢに対する定期預金払戻請求権を訴訟物として、第三債務者Ｂに対し、満期を迎えた定期預金の払戻しを取立債権者Ｃに向けてするように、との取立請求を掲げて訴え（取立訴訟。法定訴訟担当の一類型。）を提起した。
+これに対し、Ｂ銀行は、Ａに対</p>
+
+</div>
+</div>
+<div class="lec" id="p96">
+<div class="lec-title"><span class="lec-num">96</span>差押えと相殺：改正前の民法５１１条とその解釈</div>
+<div class="lec-body">
+<p>改正前のことはどーでもええねん、ではなくて、この論点については、「改正前の判例法理と改正民法によるその承継」ということを前提として理解しておかなければ、改正民法５１１条の機能不全を避けることができないので、やむなく改正前のことから説き起こすことにする。</p>
+<p>改正前の民法５１１条は、「支払の差止めを受けた第三債務者は、その後に取得した債権による相殺をもって差押債権者に対抗することができない。」と規定していた。支払の差止めとは、要するに、差押え（の効果）のことである。
+この条文の解</p>
+
+</div>
+</div>
+<div class="lec" id="p97">
+<div class="lec-title"><span class="lec-num">97</span>差押えと相殺：改正５１１条における判例法理の承継と相殺権保護の拡張</div>
+<div class="lec-body">
+<p>判例法理としての無制限説を承継し、かつ、相殺の担保的機能を拡充する方向をもって旧規定を改正したのが、改正民法５１１条である（以下、「改正」を省き、改正前の民法５１１条を、「旧規定」と称することにする。）。</p>
+<p>民法５１１条が、従前の判例法理を捨てて制限説に舵をきる趣旨を含まず、むしろ無制限説を承継するものであることは、立法過程、審議過程から、明らかである（早期の案には、無制限説の射程を限定する規定ぶりも見られたが、それが受容されることは結局なかった。）。</p>
+<p>ところが、その文理、</p>
+
+</div>
+</div>
+<div class="lec" id="p98">
+<div class="lec-title"><span class="lec-num">98</span>民法５１１条２項ただし書の趣旨</div>
+<div class="lec-body">
+<p>差押債権者の取立請求に対し、第三債務者が相殺の抗弁を主張する場合においては、その自働債権の取得経過もまた要件事実として主張されなければならない（主張されなければ抗弁が成立しない）。その取得経過から、自働債権が、執行債務者Ａと第三債務者Ｂとの間で発生したものではなく、第三者Ｄが有していた債権をＢが承継取得したことが判明するときには、再抗弁として主張されるべき事由について、特別の考慮を必要とする。</p>
+<p>自己の債権について強制執行を受けるようなＡが、他にも潤沢な資力を有しているという</p>
+
+</div>
+</div>
+<div class="lec" id="p99">
+<div class="lec-title"><span class="lec-num">99</span>正しい民法５１１条</div>
+<div class="lec-body">
+<p>民法５１１条は、正しくは、次のような規定であるべきである。</p>
+<p>差押えを受けた債権の第三債務者は、差押え後の原因に基づいて取得した債権又は差押え後に他人から取得した債権による相殺をもって差押債権者に対抗することはできない。</p>
+<p>条文の機能は、取立訴訟において相殺の抗弁に対する相殺障害の再抗弁事由を定めることにある。</p>
+<p>以上。
+立法者、しっかりしろ。</p>
+
+</div>
+</div>
+<div class="lec" id="p100">
+<div class="lec-title"><span class="lec-num">100</span>民511条2項ただし書の類推適用</div>
+<div class="lec-body">
+<p>問）
+Ｃが、債務名義に基づいてＡのＢに対する金銭債権を対象とする金銭執行を申し立て、第三債務者Ｂに対して適法に取立訴訟を提起した場合において、Ｂが、ＧのＡに対する債権の保証人としてその保証債務を弁済したことによって取得した、Ａに対する求償権を自働債権とする相殺の抗弁を主張したとき、Ｃは、民法５１１条の範囲で、どのような主張をもって再抗弁とすることができるか。</p>
+<p>答え）
+保証人Ｂが、（ア）Ａから保証委託を受けて保証人になったことが認められる場合の再抗弁は、受働債権の差押えがＧＢ</p>
+
+</div>
+</div>
+
+
+<div class="nav-link">
+<a href="lectures_081-090.html">← 講義81-90</a>
+<a href="lectures_101-108.html">講義101-108 →</a>
+</div>
+
+<div style="text-align:center;padding:40px;color:var(--text-dim);font-size:13px;">
+<p>本ガイドは note.com/msahkie の民法講義に基づいて作成されました。</p>
+<p>Generated: 2026-05-28</p>
+</div>
+</div>
+
+<script>
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});}
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('scrollTop').classList.toggle('show',h.scrollTop>400);
+});
+document.getElementById('scrollTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+const sb=document.getElementById('sidebar'),tg=document.getElementById('sidebarToggle');
+if(tg) tg.onclick=()=>sb.classList.toggle('open');
+</script>
+</body>
+</html>

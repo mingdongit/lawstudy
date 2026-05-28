@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義41-50：即時取得制度の全貌</title>
+<style>
+:root {
+  --bg: #0f1117; --card: #1a1d27; --card-hover: #22263a;
+  --accent: #6c8cff; --accent2: #ff6c8c; --accent3: #6cffb8;
+  --accent4: #ffd76c; --accent5: #c96cff;
+  --text: #e0e0e0; --text-dim: #8a8fa8; --border: #2a2e3f; --tag-bg: #252940;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI','Hiragino Sans','Yu Gothic UI','Meiryo',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.sidebar { position:fixed; left:0; top:0; width:260px; height:100vh; background:#13151f; border-right:1px solid var(--border); overflow-y:auto; z-index:100; padding:16px 0; transition:transform .3s; }
+.sidebar .nav-item { display:block; padding:6px 20px 6px 28px; font-size:13px; color:var(--text-dim); cursor:pointer; border-left:3px solid transparent; transition:.2s; }
+.sidebar .nav-item:hover { color:var(--text); background:rgba(108,140,255,.08); border-left-color:var(--accent); }
+.sidebar-toggle { position:fixed; left:8px; top:8px; z-index:200; background:var(--accent); color:#fff; border:none; border-radius:6px; width:36px; height:36px; font-size:18px; cursor:pointer; display:none; }
+@media(max-width:900px) { .sidebar { transform:translateX(-260px); } .sidebar.open { transform:translateX(0); } .sidebar-toggle { display:block; } .main { margin-left:0!important; padding:20px 16px 60px!important; } }
+.main { margin-left:260px; padding:40px 48px 80px; max-width:1000px; }
+h1 { font-size:1.8rem; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px; }
+.subtitle { color:var(--text-dim); margin-bottom:36px; font-size:14px; }
+.part-header { margin:48px 0 24px; padding:20px 28px; background:linear-gradient(135deg, rgba(108,140,255,.12), rgba(255,108,140,.08)); border-radius:12px; border-left:4px solid var(--accent); }
+.part-header h2 { font-size:1.3rem; color:var(--accent); margin-bottom:4px; }
+.part-header p { font-size:14px; color:var(--text-dim); }
+.lec { background:var(--card); border-radius:10px; margin:16px 0; padding:20px 24px; border:1px solid var(--border); transition:.2s; }
+.lec:hover { border-color:var(--accent); background:var(--card-hover); }
+.lec-title { font-size:1.05rem; font-weight:700; color:var(--text); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.lec-num { background:var(--accent); color:#fff; border-radius:6px; padding:2px 8px; font-size:12px; font-weight:700; min-width:32px; text-align:center; }
+.lec-body { font-size:14px; color:var(--text-dim); }
+.lec-body p { margin:6px 0; }
+.lec-body strong { color:var(--text); }
+.mindmap { background:#12141e; border-radius:12px; padding:24px; margin:20px 0; overflow-x:auto; border:1px solid var(--border); }
+.mindmap h3 { font-size:14px; color:var(--accent4); margin-bottom:16px; text-align:center; }
+.mm { font-family:'Cascadia Code','Consolas','Courier New',monospace; font-size:13px; line-height:1.9; white-space:pre; color:var(--text-dim); }
+.mm .root { color:var(--accent); font-weight:700; }
+.mm .l1 { color:var(--accent2); font-weight:700; }
+.mm .l2 { color:var(--accent3); }
+.progress-bar { position:sticky; top:0; z-index:50; height:3px; background:var(--border); }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width .3s; }
+.scroll-top { position:fixed; bottom:24px; right:24px; background:var(--accent); color:#fff; border:none; border-radius:50%; width:44px; height:44px; font-size:20px; cursor:pointer; opacity:0; transition:.3s; z-index:50; }
+.scroll-top.show { opacity:1; }
+.back-link { display:inline-block; margin-bottom:20px; padding:6px 16px; background:var(--tag-bg); border-radius:6px; color:var(--accent); font-size:13px; text-decoration:none; }
+.back-link:hover { background:var(--card-hover); text-decoration:none; }
+.nav-link { display:flex; justify-content:space-between; margin-top:40px; padding-top:20px; border-top:1px solid var(--border); }
+.nav-link a { padding:8px 20px; background:var(--tag-bg); border-radius:8px; color:var(--accent); font-size:14px; text-decoration:none; }
+.nav-link a:hover { background:var(--card-hover); }
+</style>
+</head>
+<body>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<button class="sidebar-toggle" id="sidebarToggle">&#9776;</button>
+<button class="scroll-top" id="scrollTop">&#8593;</button>
+
+<nav class="sidebar" id="sidebar">
+<div style="padding:12px 20px;">
+<strong style="color:var(--accent);font-size:15px;">講義41-50</strong><br>
+<span style="font-size:11px;color:var(--text-dim);">即時取得制度の全貌</span>
+</div>
+<div class="nav-item" onclick="go('p41')">41. 遺贈・相続させる遺言と第三者</div>
+<div class="nav-item" onclick="go('p42')">42. 登記を信頼しても救われない。</div>
+<div class="nav-item" onclick="go('p43')">43. 動産即時取得制度の必要性</div>
+<div class="nav-item" onclick="go('p44')">44. 公信力の有無</div>
+<div class="nav-item" onclick="go('p45')">45. 即時取得による所有権喪失の抗弁とその要件…</div>
+<div class="nav-item" onclick="go('p46')">46. 占有改定では即時取得は成立せず</div>
+<div class="nav-item" onclick="go('p47')">47. 即時取得は売主無権利を要件としない。</div>
+<div class="nav-item" onclick="go('p48')">48. 指図引渡しによる即時取得が成立しない事例</div>
+<div class="nav-item" onclick="go('p49')">49. 占有離脱２年間の即時取得猶予</div>
+<div class="nav-item" onclick="go('p50')">50. お店に払った代金額で買い戻してくれますか…</div>
+
+</nav>
+
+<div class="main">
+<a href="index.html" class="back-link">← 総合ガイドに戻る</a>
+<h1>民法講義41-50：即時取得制度の全貌</h1>
+<p class="subtitle">法律未修者向け | 通俗解説 + 思維導図</p>
+
+<div class="mindmap">
+<h3>思維導図：即時取得の全貌</h3>
+<div class="mm"><span class="root">即時取得の全貌</span>
+├─<span class="l1"> 41. 遺贈・相続させる遺言と第三者</span>
+├─<span class="l1"> 42. 登記を信頼しても救われない。</span>
+├─<span class="l1"> 43. 動産即時取得制度の必要性</span>
+├─<span class="l1"> 44. 公信力の有無</span>
+├─<span class="l1"> 45. 即時取得による所有権喪失の抗弁とその要件事実</span>
+├─<span class="l1"> 46. 占有改定では即時取得は成立せず</span>
+├─<span class="l1"> 47. 即時取得は売主無権利を要件としない。</span>
+├─<span class="l1"> 48. 指図引渡しによる即時取得が成立しない事例</span>
+├─<span class="l1"> 49. 占有離脱２年間の即時取得猶予</span>
+└─<span class="l1"> 50. お店に払った代金額で買い戻してくれますかの抗弁、盗難遺失から１年も経ってないのに質屋たる者そんなこと言っていいのかの再抗弁</span>
+</div>
+</div>
+
+<div class="lec" id="p41">
+<div class="lec-title"><span class="lec-num">41</span>遺贈・相続させる遺言と第三者</div>
+<div class="lec-body">
+<p>遺言と第三者。
+まず遺贈と第三者、つぎに相続させる遺言と第三者。</p>
+<p>遺贈と第三者。
+死亡した甲土地所有者Ａは、甲土地をＣに遺贈する旨の遺言をのこしていた。他方、Ａの単独相続人Ｂは、甲土地をＤに売却した。
+この場合、ＢはＡの財産的地位を包括的に承継したのだから、Ｃに対してもＡと同じ地位に立つ。したがって、甲土地所有権は、遺贈によりＡ＝ＢからＣに、売買によりＢからＤに、それぞれ移転したものであって、ＣとＤとは対抗関係に立つ。ＣがＣの甲土地所有権の確認を求めてＤに対し訴えを提起した</p>
+
+</div>
+</div>
+<div class="lec" id="p42">
+<div class="lec-title"><span class="lec-num">42</span>登記を信頼しても救われない。</div>
+<div class="lec-body">
+<p>甲土地の所有者Ａが、占有者Ｂに対して、所有権に基づく目的物返還請求として甲土地の明渡しを求める訴えを提起した。この場合において、Ｂは、甲土地を登記名義人Ｃから買って引渡しを受けたのだ、と主張して抗弁とすることができるか。</p>
+<p>できるはずがない。登記簿に所有者だと記載されていても、所有者だとはぜんぜん限らない。登記簿に所有者だと記載されているから所有者になるわけでもない。</p>
+<p>登記簿が偽造されたとかいうこともありうるけれど、たとえば、ＣがＡに甲土地をちゃんと売却してちゃんと移転登記</p>
+
+</div>
+</div>
+<div class="lec" id="p43">
+<div class="lec-title"><span class="lec-num">43</span>動産即時取得制度の必要性</div>
+<div class="lec-body">
+<p>ここまでの物権変動論は、目的物が動産であっても基本的に何も変わらない。動産譲渡の対抗要件が、一般には「引渡し」である、というだけのちがいである（動産譲渡債権譲渡特例法に従って動産譲渡登記をするのでもよい。）。</p>
+<p>ちなみに、引渡しには、４つのパターンがある。
+基本中の基本は「現実の引渡し」＝目的物の所持をＡの意思に基づいて物理的にＡからＢに移すこと、「簡易の引渡し」＝もともとＢが所持している物をＡとＢの合意によってＡからＢに引き渡したことにすること、「占有改定」＝Ａが所持する物</p>
+
+</div>
+</div>
+<div class="lec" id="p44">
+<div class="lec-title"><span class="lec-num">44</span>公信力の有無</div>
+<div class="lec-body">
+<p>不動産登記には公信力がない、とどの教科書にも書いてある。
+「登記には公信力がない」というのはどの条文に書いてあるのかね、と質問されたら、当然の法理なので条文はありません、と答えればよい。
+日本の立法技術では、当然のことはいちいち条文にしないののだから。</p>
+<p>「動産占有には公信力がある」のは、民法１９２条のおかげである。民法192条なくして動産占有の公信力なし。本来ないはずのものを、わが国のシステム上はあることにする、ために、法律の力が用いられているのである。</p>
+
+</div>
+</div>
+<div class="lec" id="p45">
+<div class="lec-title"><span class="lec-num">45</span>即時取得による所有権喪失の抗弁とその要件事実</div>
+<div class="lec-body">
+<p>結論的に言うと、甲なる特定動産の所有者Ｃが、その占有者Ｂに対し、所有権に基づく返還請求として甲の引渡しを訴訟上求めるとき、Ｂは、「甲をＡから買って、買ったから（占有改定以外の方法で）その引渡しを受けた。」と主張することができれば、これを抗弁（所有権喪失の抗弁）として、Ｃの請求は棄却される。再抗弁以下については後述。</p>
+<p>民法192条には、Aから動産甲を買って平穏公然に引き渡してもらったBは、善意無過失であったならば、即時に甲の所有権を取得する、と書いてある。分解してみれば、ＡＢ</p>
+
+</div>
+</div>
+<div class="lec" id="p46">
+<div class="lec-title"><span class="lec-num">46</span>占有改定では即時取得は成立せず</div>
+<div class="lec-body">
+<p>即時取得の制度が、動産取引の動的安全を保護するためにどうしても必要なのだというのはそのとおりなのだが、そんな高尚な理想を説いても、所有権を失わされるＣの心には響かない。
+どういう観点でＣにあきらめてもらうか。判例通説は、ＣはＡに裏切られたのだ、という観点をもちこもうとする。</p>
+<p>裏切りの観点は、民法１９４条が、甲がＡの意思に基づかずにＡの占有を離れた物（占有離脱物）である場合にはその占有離脱から２年間は民法１９２条による即時取得の、その即時の成立が猶予されるのだ、と定めているこ</p>
+
+</div>
+</div>
+<div class="lec" id="p47">
+<div class="lec-title"><span class="lec-num">47</span>即時取得は売主無権利を要件としない。</div>
+<div class="lec-body">
+<p>Ｃ所有の特定動産甲をＡがＢに売却し、売主としてＢに（占有改定以外の方法によって）引き渡した。これだけで甲所有権をＢが原始取得した、という効果が導かれ、動産取引の動的安全は確保される。これが、民法１９２条の解釈の結果である。</p>
+<p>民法の教科書には、即時取得の要件としてＡ無権利を挙げるものがあるが、それは間違いである。動産取引の動的安全を確保するために、なぜ、ＢがＡ無権利の主張証明責任を負担する必要があるのか。Ａが権利者（甲の所有者）であったかなかったかを問うことなく、ということで</p>
+
+</div>
+</div>
+<div class="lec" id="p48">
+<div class="lec-title"><span class="lec-num">48</span>指図引渡しによる即時取得が成立しない事例</div>
+<div class="lec-body">
+<p>ところで、こんな場合はどうか。
+Ｃ所有の甲をＡがＢに売却し、占有改定の方法による引渡しがなされた。この場合に民法192条はいまだ適用されない、ということを先に述べたが、その後、Ｂが甲をＥに売却し、Ｂが甲を占有するままでＥに引き渡したことにする旨、ＢＥ間で合意した。
+Ｃの所有権に基づく目的物返還請求に対してＥは、「Ｂから買って、買ったから指図引渡しを受けた。」と主張して、民法192条の即時取得によるＣの所有権喪失の抗弁とすることができるか。</p>
+<p>ＢＥ間の甲売買に基づく引渡しは指図</p>
+
+</div>
+</div>
+<div class="lec" id="p49">
+<div class="lec-title"><span class="lec-num">49</span>占有離脱２年間の即時取得猶予</div>
+<div class="lec-body">
+<p>占有委託物であれば、即時取得制度の歴史的背後にある Hand wahre Hand のルール（ゲルマン古法上の規範。手は手を守れ。自分が占有を直接委ねた相手方以外の者にその動産の返還を期待するな、という意味。）に従って、裏切るような奴を信じた自分がわるい、あきらめろ、と言える。</p>
+<p>ところが、占有離脱物だと、いくら、ＡがＢに特定動産甲を売却して引渡しまですませたのであっても、本来の所有者Ｃに、あきらめなさいと言うべき理由がない。</p>
+<p>立法上の論理としては、占有離脱物には即時取得制</p>
+
+</div>
+</div>
+<div class="lec" id="p50">
+<div class="lec-title"><span class="lec-num">50</span>お店に払った代金額で買い戻してくれますかの抗弁、盗難遺失から１年も経ってないのに質屋たる者そんなこと言っていいのかの再抗弁</div>
+<div class="lec-body">
+<p>ＣのＢに対する所有権に基づく目的物返還請求に対し、民法192条に基づくＢの抗弁、民法193条に基づくＣの再抗弁ときて、Ｂには、「お店で同じような物をたくさん売っているなかのひとつを買っただけなのに。」という言い分もあろう。このとき、Ｂは、「同じような品物を売っているお店で代金100万円を払って甲を買った。」という事実主張と、「その100万円の弁償と引換えでなければ甲の返還を拒絶する。」との権利主張によって、同時履行の抗弁（再抗弁事実が認められないことを解除条件とする抗弁＝予備</p>
+
+</div>
+</div>
+
+
+<div class="nav-link">
+<a href="lectures_031-040.html">← 講義31-40</a>
+<a href="lectures_051-060.html">講義51-60 →</a>
+</div>
+
+<div style="text-align:center;padding:40px;color:var(--text-dim);font-size:13px;">
+<p>本ガイドは note.com/msahkie の民法講義に基づいて作成されました。</p>
+<p>Generated: 2026-05-28</p>
+</div>
+</div>
+
+<script>
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});}
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('scrollTop').classList.toggle('show',h.scrollTop>400);
+});
+document.getElementById('scrollTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+const sb=document.getElementById('sidebar'),tg=document.getElementById('sidebarToggle');
+if(tg) tg.onclick=()=>sb.classList.toggle('open');
+</script>
+</body>
+</html>

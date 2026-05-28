@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義11-20：民法の本質・物権vs債権・賃借権保護</title>
+<style>
+:root {
+  --bg: #0f1117; --card: #1a1d27; --card-hover: #22263a;
+  --accent: #6c8cff; --accent2: #ff6c8c; --accent3: #6cffb8;
+  --accent4: #ffd76c; --accent5: #c96cff;
+  --text: #e0e0e0; --text-dim: #8a8fa8; --border: #2a2e3f; --tag-bg: #252940;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI','Hiragino Sans','Yu Gothic UI','Meiryo',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.sidebar { position:fixed; left:0; top:0; width:260px; height:100vh; background:#13151f; border-right:1px solid var(--border); overflow-y:auto; z-index:100; padding:16px 0; transition:transform .3s; }
+.sidebar .nav-item { display:block; padding:6px 20px 6px 28px; font-size:13px; color:var(--text-dim); cursor:pointer; border-left:3px solid transparent; transition:.2s; }
+.sidebar .nav-item:hover { color:var(--text); background:rgba(108,140,255,.08); border-left-color:var(--accent); }
+.sidebar-toggle { position:fixed; left:8px; top:8px; z-index:200; background:var(--accent); color:#fff; border:none; border-radius:6px; width:36px; height:36px; font-size:18px; cursor:pointer; display:none; }
+@media(max-width:900px) { .sidebar { transform:translateX(-260px); } .sidebar.open { transform:translateX(0); } .sidebar-toggle { display:block; } .main { margin-left:0!important; padding:20px 16px 60px!important; } }
+.main { margin-left:260px; padding:40px 48px 80px; max-width:1000px; }
+h1 { font-size:1.8rem; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px; }
+.subtitle { color:var(--text-dim); margin-bottom:36px; font-size:14px; }
+.part-header { margin:48px 0 24px; padding:20px 28px; background:linear-gradient(135deg, rgba(108,140,255,.12), rgba(255,108,140,.08)); border-radius:12px; border-left:4px solid var(--accent); }
+.part-header h2 { font-size:1.3rem; color:var(--accent); margin-bottom:4px; }
+.part-header p { font-size:14px; color:var(--text-dim); }
+.lec { background:var(--card); border-radius:10px; margin:16px 0; padding:20px 24px; border:1px solid var(--border); transition:.2s; }
+.lec:hover { border-color:var(--accent); background:var(--card-hover); }
+.lec-title { font-size:1.05rem; font-weight:700; color:var(--text); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.lec-num { background:var(--accent); color:#fff; border-radius:6px; padding:2px 8px; font-size:12px; font-weight:700; min-width:32px; text-align:center; }
+.lec-body { font-size:14px; color:var(--text-dim); }
+.lec-body p { margin:6px 0; }
+.lec-body strong { color:var(--text); }
+.mindmap { background:#12141e; border-radius:12px; padding:24px; margin:20px 0; overflow-x:auto; border:1px solid var(--border); }
+.mindmap h3 { font-size:14px; color:var(--accent4); margin-bottom:16px; text-align:center; }
+.mm { font-family:'Cascadia Code','Consolas','Courier New',monospace; font-size:13px; line-height:1.9; white-space:pre; color:var(--text-dim); }
+.mm .root { color:var(--accent); font-weight:700; }
+.mm .l1 { color:var(--accent2); font-weight:700; }
+.mm .l2 { color:var(--accent3); }
+.progress-bar { position:sticky; top:0; z-index:50; height:3px; background:var(--border); }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width .3s; }
+.scroll-top { position:fixed; bottom:24px; right:24px; background:var(--accent); color:#fff; border:none; border-radius:50%; width:44px; height:44px; font-size:20px; cursor:pointer; opacity:0; transition:.3s; z-index:50; }
+.scroll-top.show { opacity:1; }
+.back-link { display:inline-block; margin-bottom:20px; padding:6px 16px; background:var(--tag-bg); border-radius:6px; color:var(--accent); font-size:13px; text-decoration:none; }
+.back-link:hover { background:var(--card-hover); text-decoration:none; }
+.nav-link { display:flex; justify-content:space-between; margin-top:40px; padding-top:20px; border-top:1px solid var(--border); }
+.nav-link a { padding:8px 20px; background:var(--tag-bg); border-radius:8px; color:var(--accent); font-size:14px; text-decoration:none; }
+.nav-link a:hover { background:var(--card-hover); }
+</style>
+</head>
+<body>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<button class="sidebar-toggle" id="sidebarToggle">&#9776;</button>
+<button class="scroll-top" id="scrollTop">&#8593;</button>
+
+<nav class="sidebar" id="sidebar">
+<div style="padding:12px 20px;">
+<strong style="color:var(--accent);font-size:15px;">講義11-20</strong><br>
+<span style="font-size:11px;color:var(--text-dim);">民法の本質・物権vs債権・賃借権保護</span>
+</div>
+<div class="nav-item" onclick="go('p11')">11. 債権の物的担保：相殺権</div>
+<div class="nav-item" onclick="go('p12')">12. 民法の本質</div>
+<div class="nav-item" onclick="go('p13')">13. 物権</div>
+<div class="nav-item" onclick="go('p14')">14. 債権</div>
+<div class="nav-item" onclick="go('p15')">15. 地上権者ｖｓ賃借人</div>
+<div class="nav-item" onclick="go('p16')">16. 賃借権ｖｓ占有者</div>
+<div class="nav-item" onclick="go('p17')">17. 地上権vs地上権</div>
+<div class="nav-item" onclick="go('p18')">18. 新所有者ｖｓ賃借人</div>
+<div class="nav-item" onclick="go('p19')">19. 不動産賃借権の保護</div>
+<div class="nav-item" onclick="go('p20')">20. 借地権の第三者対抗力</div>
+
+</nav>
+
+<div class="main">
+<a href="index.html" class="back-link">← 総合ガイドに戻る</a>
+<h1>民法講義11-20：民法の本質・物権vs債権・賃借権保護</h1>
+<p class="subtitle">法律未修者向け | 通俗解説 + 思維導図</p>
+
+<div class="mindmap">
+<h3>思維導図：物権と債権の激突パターン</h3>
+<div class="mm"><span class="root">物権と債権の激突パターン</span>
+├─<span class="l1"> 11. 債権の物的担保：相殺権</span>
+├─<span class="l1"> 12. 民法の本質</span>
+├─<span class="l1"> 13. 物権</span>
+├─<span class="l1"> 14. 債権</span>
+├─<span class="l1"> 15. 地上権者ｖｓ賃借人</span>
+├─<span class="l1"> 16. 賃借権ｖｓ占有者</span>
+├─<span class="l1"> 17. 地上権vs地上権</span>
+├─<span class="l1"> 18. 新所有者ｖｓ賃借人</span>
+├─<span class="l1"> 19. 不動産賃借権の保護</span>
+└─<span class="l1"> 20. 借地権の第三者対抗力</span>
+</div>
+</div>
+
+<div class="lec" id="p11">
+<div class="lec-title"><span class="lec-num">11</span>債権の物的担保：相殺権</div>
+<div class="lec-body">
+<p>相殺権もまた、物的担保のひとつである。債権者が、債務者の反対債権を、自己の債権の担保のために独占することを可能とする仕組みだからである。</p>
+<p>ＡとＢとが互いに債権を有している場合において、Ａが破産した場合、ＢのＡに対する債権は一般に破産債権として遇され、したがって破産手続上の配当をひたすら待つのみとなるが、破産者Ａに対するＢの反対債務については、Ｂは、破産管財人の請求により、弁済期にある以上、直ちに全部履行しなければならなくなる、というのが、本来の筋道のはずである。</p>
+<p>ところが</p>
+
+</div>
+</div>
+<div class="lec" id="p12">
+<div class="lec-title"><span class="lec-num">12</span>民法の本質</div>
+<div class="lec-body">
+<p>かくして、「民法とは、近代私法の一般法として資本主義経済社会の存続発展を支持することを目的とし、民事手続法と不可分一体の協働関係を通じて、抵当権と連帯保証債権と相殺権とにより金銭債権の円滑な満足を促進する実体法体系の全体である。」と考えることができる。</p>
+<p>それでは以下、民法の定める具体的制度の理解のために講述することにしよう。</p>
+
+</div>
+</div>
+<div class="lec" id="p13">
+<div class="lec-title"><span class="lec-num">13</span>物権</div>
+<div class="lec-body">
+<p>民法は、人の財産関係を物権と債権とによって説明できると考えている。この間には、商品交換取引について「債権（売買契約に基づく所有権移転債権など）は物権（売主又は第三者の所有権など）に到達するための手段である。」という関係、また、金融取引について「物権（土地所有権など）は債権（金銭消費貸借契約に基づく貸金返還債権など）の満足に奉仕する手段である。」という関係が認められる。</p>
+<p>他面、物権と債権とのどこがどのように違うのかを、その概念に従って理解することもまた、民法全体の理解のために</p>
+
+</div>
+</div>
+<div class="lec" id="p14">
+<div class="lec-title"><span class="lec-num">14</span>債権</div>
+<div class="lec-body">
+<p>債権。
+債権の矛先は債務者という「人」。債権者も人。人が人を支配することは、奴隷制度を廃止した近代法上あってはならないから、人が人に対してできることといえば、せいぜい、その人の意思に働きかけて一定の行為をするように誘うことにとどまる。一定の行為をするように他人の意思に働きかけることを、「請求」と言う。だから債権は、支配権ではありえずに、「特定の人に対して一定の行為を請求する権利」にとどまる。</p>
+<p>賃貸借契約を締結すると、賃借人は賃貸人に対し、賃借権という名の債権を取得する。賃借</p>
+
+</div>
+</div>
+<div class="lec" id="p15">
+<div class="lec-title"><span class="lec-num">15</span>地上権者ｖｓ賃借人</div>
+<div class="lec-body">
+<p>さて。
+地上権者が土地占有者に対して地上権に基づく明渡請求権を行使し、あるいは、賃貸人が賃貸人がたまたま土地所有者でもあることによって有する所有権に基づく明渡請求権を代位行使する場合、その請求を受けた土地占有者のほうからは、「何を言うか。自分は土地所有者と賃貸借契約を締結してこの土地を占有しているのだ。」という言い分がでてくるかもしれない。</p>
+<p>民法177条は、物権乃至物権的請求権の主張に対し、その物権と同一目的物の支配を争う法的地位にある者に、その物権に本来内在する対抗力をそ</p>
+
+</div>
+</div>
+<div class="lec" id="p16">
+<div class="lec-title"><span class="lec-num">16</span>賃借権ｖｓ占有者</div>
+<div class="lec-body">
+<p>賃借権という債権の目的物たる土地が他人に占有されている場合、賃借権に基づいて土地占有者に対する立退請求をすることができるか、というと、単に、できるはずねえじゃねえか、というに尽きる。債権だから、賃貸人に対してしか主張できない権利たから、である。</p>
+<p>賃貸人が土地所有者でもあるからというので、その所有権に基づく請求権を賃借権の目的実現につなげるために代位行使する、ことはできる。
+できるのだが、その土地所有者と占有者との間に賃貸借契約が締結されたこと及び占有者はその契約に基づいて土</p>
+
+</div>
+</div>
+<div class="lec" id="p17">
+<div class="lec-title"><span class="lec-num">17</span>地上権vs地上権</div>
+<div class="lec-body">
+<p>地上権者（原告）から請求を受ける土地占有者（被告）もまた土地所有者と地上権設定契約を締結して土地の引渡しを受けた者だとすると・・・</p>
+<p>地上権に基づく土地明渡請求を受けた土地占有者（被告）が、自身の地上権者の地位に基づいて 対抗要件の抗弁を主張するのに対し、原告地上権者は、対抗要件具備（地上権設定登記具備）を再抗弁として主張することができる。これは、被告土地占有者が賃借人である場合と同様である。</p>
+<p>他方、
+被告土地占有者が地上権者である場合、地上権は物権すなわち絶対権（誰にでも</p>
+
+</div>
+</div>
+<div class="lec" id="p18">
+<div class="lec-title"><span class="lec-num">18</span>新所有者ｖｓ賃借人</div>
+<div class="lec-body">
+<p>借地借家法とは、不動産利用権のうち、建物所有目的の土地賃借権及び地上権（あわせて借地権）並びに建物賃借権（借家権）につき、存続力を強化し（法定更新・正当事由主義）、第三者対抗要件の自力具備を可能とし、流通障害の克服を容易にする（借地権移転の代諾許可）ことにより、不動産賃借人保護を図る、民法の特別法である。</p>
+<p>民法は、不動産賃借権に登記が備わっていれば、その不動産の所有権を賃貸人から譲り受けた第三者が所有権に基づく明渡請求をしてきても、債権であるにすぎない賃借権をその第三者に対</p>
+
+</div>
+</div>
+<div class="lec" id="p19">
+<div class="lec-title"><span class="lec-num">19</span>不動産賃借権の保護</div>
+<div class="lec-body">
+<p>ところがしかし、わが国の社会において、不動産賃貸借関係は不動産利用の枢要な部分を占め、しかもしばしば不動産賃借人に不可欠の生活基盤となっている。</p>
+<p>にもかかわらず「売買は賃貸借を破る」構造をそのままにすることは、国家が市民社会の安定確保の任務を放棄することを意味する。</p>
+<p>そこで立法府は、不動産賃借人保護のため、民法の特別法として借地借家法を制定し（借地法、建物保護法、借家法を不動産の利用及び流通に柔軟性をもたせる観点から単行法に集約した。）、建物所有目的の土地賃借権及び地上権</p>
+
+</div>
+</div>
+<div class="lec" id="p20">
+<div class="lec-title"><span class="lec-num">20</span>借地権の第三者対抗力</div>
+<div class="lec-body">
+<p>およそある措置がある権利の対抗要件として機能するには、その措置によって誰しもがその権利の存在又は変動の情報にアクセスできる、ということが必要である。アクセスすれば知れたでしょ（しないのは自己責任）、というのである。</p>
+<p>借地権（建物所有目的の土地賃借権又は地上権）に第三者対抗要件を備えたければ、借地人が、契約目的にしたがって借地上に建物を建てて所有し、その建物について自己の名で所有権保存登記を備えればよい（借地借家10条）。借地は他人所有だが、その上の建物が借地人所有なら、建物</p>
+
+</div>
+</div>
+
+
+<div class="nav-link">
+<a href="lectures_001-010.html">← 講義1-10</a>
+<a href="lectures_021-030.html">講義21-30 →</a>
+</div>
+
+<div style="text-align:center;padding:40px;color:var(--text-dim);font-size:13px;">
+<p>本ガイドは note.com/msahkie の民法講義に基づいて作成されました。</p>
+<p>Generated: 2026-05-28</p>
+</div>
+</div>
+
+<script>
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});}
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('scrollTop').classList.toggle('show',h.scrollTop>400);
+});
+document.getElementById('scrollTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+const sb=document.getElementById('sidebar'),tg=document.getElementById('sidebarToggle');
+if(tg) tg.onclick=()=>sb.classList.toggle('open');
+</script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義101-108：物上代位・債権譲渡の基礎</title>
+<style>
+:root {
+  --bg: #0f1117; --card: #1a1d27; --card-hover: #22263a;
+  --accent: #6c8cff; --accent2: #ff6c8c; --accent3: #6cffb8;
+  --accent4: #ffd76c; --accent5: #c96cff;
+  --text: #e0e0e0; --text-dim: #8a8fa8; --border: #2a2e3f; --tag-bg: #252940;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI','Hiragino Sans','Yu Gothic UI','Meiryo',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.sidebar { position:fixed; left:0; top:0; width:260px; height:100vh; background:#13151f; border-right:1px solid var(--border); overflow-y:auto; z-index:100; padding:16px 0; transition:transform .3s; }
+.sidebar .nav-item { display:block; padding:6px 20px 6px 28px; font-size:13px; color:var(--text-dim); cursor:pointer; border-left:3px solid transparent; transition:.2s; }
+.sidebar .nav-item:hover { color:var(--text); background:rgba(108,140,255,.08); border-left-color:var(--accent); }
+.sidebar-toggle { position:fixed; left:8px; top:8px; z-index:200; background:var(--accent); color:#fff; border:none; border-radius:6px; width:36px; height:36px; font-size:18px; cursor:pointer; display:none; }
+@media(max-width:900px) { .sidebar { transform:translateX(-260px); } .sidebar.open { transform:translateX(0); } .sidebar-toggle { display:block; } .main { margin-left:0!important; padding:20px 16px 60px!important; } }
+.main { margin-left:260px; padding:40px 48px 80px; max-width:1000px; }
+h1 { font-size:1.8rem; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px; }
+.subtitle { color:var(--text-dim); margin-bottom:36px; font-size:14px; }
+.part-header { margin:48px 0 24px; padding:20px 28px; background:linear-gradient(135deg, rgba(108,140,255,.12), rgba(255,108,140,.08)); border-radius:12px; border-left:4px solid var(--accent); }
+.part-header h2 { font-size:1.3rem; color:var(--accent); margin-bottom:4px; }
+.part-header p { font-size:14px; color:var(--text-dim); }
+.lec { background:var(--card); border-radius:10px; margin:16px 0; padding:20px 24px; border:1px solid var(--border); transition:.2s; }
+.lec:hover { border-color:var(--accent); background:var(--card-hover); }
+.lec-title { font-size:1.05rem; font-weight:700; color:var(--text); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.lec-num { background:var(--accent); color:#fff; border-radius:6px; padding:2px 8px; font-size:12px; font-weight:700; min-width:32px; text-align:center; }
+.lec-body { font-size:14px; color:var(--text-dim); }
+.lec-body p { margin:6px 0; }
+.lec-body strong { color:var(--text); }
+.mindmap { background:#12141e; border-radius:12px; padding:24px; margin:20px 0; overflow-x:auto; border:1px solid var(--border); }
+.mindmap h3 { font-size:14px; color:var(--accent4); margin-bottom:16px; text-align:center; }
+.mm { font-family:'Cascadia Code','Consolas','Courier New',monospace; font-size:13px; line-height:1.9; white-space:pre; color:var(--text-dim); }
+.mm .root { color:var(--accent); font-weight:700; }
+.mm .l1 { color:var(--accent2); font-weight:700; }
+.mm .l2 { color:var(--accent3); }
+.progress-bar { position:sticky; top:0; z-index:50; height:3px; background:var(--border); }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width .3s; }
+.scroll-top { position:fixed; bottom:24px; right:24px; background:var(--accent); color:#fff; border:none; border-radius:50%; width:44px; height:44px; font-size:20px; cursor:pointer; opacity:0; transition:.3s; z-index:50; }
+.scroll-top.show { opacity:1; }
+.back-link { display:inline-block; margin-bottom:20px; padding:6px 16px; background:var(--tag-bg); border-radius:6px; color:var(--accent); font-size:13px; text-decoration:none; }
+.back-link:hover { background:var(--card-hover); text-decoration:none; }
+.nav-link { display:flex; justify-content:space-between; margin-top:40px; padding-top:20px; border-top:1px solid var(--border); }
+.nav-link a { padding:8px 20px; background:var(--tag-bg); border-radius:8px; color:var(--accent); font-size:14px; text-decoration:none; }
+.nav-link a:hover { background:var(--card-hover); }
+</style>
+</head>
+<body>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<button class="sidebar-toggle" id="sidebarToggle">&#9776;</button>
+<button class="scroll-top" id="scrollTop">&#8593;</button>
+
+<nav class="sidebar" id="sidebar">
+<div style="padding:12px 20px;">
+<strong style="color:var(--accent);font-size:15px;">講義101-108</strong><br>
+<span style="font-size:11px;color:var(--text-dim);">物上代位・債権譲渡の基礎</span>
+</div>
+<div class="nav-item" onclick="go('p101')">101. 抵当権者の物上代位権行使による差押えと相…</div>
+<div class="nav-item" onclick="go('p102')">102. 動産先取特権者の物上代位権行使による差押…</div>
+<div class="nav-item" onclick="go('p103')">103. 債権譲渡と相殺</div>
+<div class="nav-item" onclick="go('p104')">104. 転付命令と相殺</div>
+<div class="nav-item" onclick="go('p105')">105. 債権譲渡の意義と機能</div>
+<div class="nav-item" onclick="go('p106')">106. 債権譲渡の自由とその制限</div>
+<div class="nav-item" onclick="go('p107')">107. 債権譲渡の債務者対抗要件</div>
+<div class="nav-item" onclick="go('p108')">108. 債権譲渡の第三者対抗要件の制度設計</div>
+
+</nav>
+
+<div class="main">
+<a href="index.html" class="back-link">← 総合ガイドに戻る</a>
+<h1>民法講義101-108：物上代位・債権譲渡の基礎</h1>
+<p class="subtitle">法律未修者向け | 通俗解説 + 思維導図</p>
+
+<div class="mindmap">
+<h3>思維導図：債権譲渡の世界</h3>
+<div class="mm"><span class="root">債権譲渡の世界</span>
+├─<span class="l1"> 101. 抵当権者の物上代位権行使による差押えと相殺</span>
+├─<span class="l1"> 102. 動産先取特権者の物上代位権行使による差押えと相殺</span>
+├─<span class="l1"> 103. 債権譲渡と相殺</span>
+├─<span class="l1"> 104. 転付命令と相殺</span>
+├─<span class="l1"> 105. 債権譲渡の意義と機能</span>
+├─<span class="l1"> 106. 債権譲渡の自由とその制限</span>
+├─<span class="l1"> 107. 債権譲渡の債務者対抗要件</span>
+└─<span class="l1"> 108. 債権譲渡の第三者対抗要件の制度設計</span>
+</div>
+</div>
+
+<div class="lec" id="p101">
+<div class="lec-title"><span class="lec-num">101</span>抵当権者の物上代位権行使による差押えと相殺</div>
+<div class="lec-body">
+<p>原告Ｃが差押債権者としてする取立請求に対し、被告第三債務者Ｂが相殺の抗弁を主張し、Ｃが相殺障害の再抗弁を主張する、再抗弁いかにあるべきや、という問題について、ここまでは、受働債権の差押えがＣの債務名義に基づく強制執行（金銭執行）の一環としてなされたものであるとして話をすすめてきた。</p>
+<p>しかし、債権の差押えは、債務名義に基づく強制執行の一環としてなされるのに限ったわけではない。いまひとつの代表例は、抵当権に基づく物上代位の一環としてなされる場合である。</p>
+<p>というので、物上代位に</p>
+
+</div>
+</div>
+<div class="lec" id="p102">
+<div class="lec-title"><span class="lec-num">102</span>動産先取特権者の物上代位権行使による差押えと相殺</div>
+<div class="lec-body">
+<p>債権の差押えが債務名義に基づくのでなく抵当権の物上代位効に基づくのでもなく、動産先取特権の物上代位効に基づくものであるときは、どうか。
+たとえば動産売買契約が締結されたとする。この契約に基づいて生ずる売買代金債権は、動産売買代金債権だというだけで、もれなく自動的に、売主も買主も何も知らなくとも、動産売買先取特権という名の、その特定動産の上の担保物権が付いてくる。
+だから基本的には、売主は、代金債権の満足を目指して、買主に引き渡した売買目的動産に対し、動産競売（動産担保権の実行</p>
+
+</div>
+</div>
+<div class="lec" id="p103">
+<div class="lec-title"><span class="lec-num">103</span>債権譲渡と相殺</div>
+<div class="lec-body">
+<p>相殺の担保的機能を民法はどのように、どこまで保護しようとしているのかという観点からは、差押えと相殺の論点と並んで、債権譲渡と相殺の論点をおさえておかなければならない。
+民法４６９条の定めるところであるが、これがまたもや欠陥条文というか生煮え条文というか、解釈論的読解を必要とする。</p>
+<p>ＡのＢに対する金銭債権を、Ｃが譲り受けた（具体的には、譲渡人から見た債権譲渡の３機能＝債権回収機能・代物弁済機能・債権担保機能＝に合わせて、Ｃが買い取ったか、もとからあるＡに対する債権の代物弁済と</p>
+
+</div>
+</div>
+<div class="lec" id="p104">
+<div class="lec-title"><span class="lec-num">104</span>転付命令と相殺</div>
+<div class="lec-body">
+<p>金銭支払請求権の満足を目的とする強制執行（金銭執行）であって差押え・換価の対象が金銭債権であるものを、債権執行という。
+債権執行において被差押債権の強制換価の原則的な方法は、差押債権者が執行法上付与された取立権に基づき第三債務者に対して取立請求をすることによって第三債務者に金銭を支払わせる、というものである。
+が、それだけではなくて、いくつかの方法が民事執行法上定められている中で、上記の取立権ルートと並んでよく理解されるべきなのが、転付命令ルートによる債権換価である。</p>
+<p>そこ</p>
+
+</div>
+</div>
+<div class="lec" id="p105">
+<div class="lec-title"><span class="lec-num">105</span>債権譲渡の意義と機能</div>
+<div class="lec-body">
+<p>まず、債権譲渡の意義と機能。
+法律行為によって債権を他人に承継取得させること又は債権を他人に承継取得させることを目的とする法律行為を、債権譲渡という。
+ここにいう法律行為は処分行為であって、観念上、その原因行為（債権売買契約等）とは区別されるが、いずれも要式行為でない限りにおいて、実際上、一個の法律行為として行われることに妨げはない（物権行為の独自性が否定されるのと同じ理屈である。債権売買契約の締結時に売主が売買目的債権の主体であったならば、意思主義により、原則として契約締結</p>
+
+</div>
+</div>
+<div class="lec" id="p106">
+<div class="lec-title"><span class="lec-num">106</span>債権譲渡の自由とその制限</div>
+<div class="lec-body">
+<p>債権とは、特定の人に対して一定の行為を請求する権利であり、物権とは、特定の物を直接かつ排他的に支配する権利である。ゆえに、物権はこれを譲渡するのも自由だが（目的物はもっぱら支配の対象だから文句を言えない。）、債権はこれを債務者の同意を得ずしては譲渡することができない（債務者の意思に基づかずに債務者の法律関係を変動させることはできない。人の意思を他人が支配することは許されない。私的自治の原則。）。債権は人と人との間の法鎖である、とも言う。</p>
+<p>ところが取引社会が広範化し、経済の中</p>
+
+</div>
+</div>
+<div class="lec" id="p107">
+<div class="lec-title"><span class="lec-num">107</span>債権譲渡の債務者対抗要件</div>
+<div class="lec-body">
+<p>すでにどこかで説明した気がするが、繰返しをいとわず講述していこう。</p>
+<p>債権譲渡行為の効果として生ずる債権移転は、そのままでは不可視であり、不可視なままに第三者一般に対抗することができるものとすれば、取引の安全を脅かすこと著しいから、民法は、物権変動におけると同じく、債権譲渡の結果が一定の方法によって可視化（＝公示）されることによって、第三者に対抗することができるものとした。
+このとき、物権変動であれば、目的物の重複譲受人、差押債権者、賃借人らを一律に第三者として処遇すれば足り</p>
+
+</div>
+</div>
+<div class="lec" id="p108">
+<div class="lec-title"><span class="lec-num">108</span>債権譲渡の第三者対抗要件の制度設計</div>
+<div class="lec-body">
+<p>物権変動の対抗要件主義と債権譲渡の対抗要件主義とは、物権が物の支配権、債権が人に対する請求権であるのに即して、債務者に対する対抗の問題が債権譲渡特有の問題であるのに対し、債務者以外の第三者に対する対抗の問題は、基本的に共通同様の問題である。
+債権の二重譲受人では、一方が弁済をうけたことに対する他方の不当利得返還請求の当否や、債権の譲受人とその債権に対する差押債権者の間では、譲受人による第三者異議の訴えの当否が問題になる。
+債権譲渡特有の局面としては、債権の二重譲受人の一方から</p>
+
+</div>
+</div>
+
+
+<div class="nav-link">
+<a href="lectures_091-100.html">← 講義91-100</a>
+<span></span>
+</div>
+
+<div style="text-align:center;padding:40px;color:var(--text-dim);font-size:13px;">
+<p>本ガイドは note.com/msahkie の民法講義に基づいて作成されました。</p>
+<p>Generated: 2026-05-28</p>
+</div>
+</div>
+
+<script>
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});}
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('scrollTop').classList.toggle('show',h.scrollTop>400);
+});
+document.getElementById('scrollTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+const sb=document.getElementById('sidebar'),tg=document.getElementById('sidebarToggle');
+if(tg) tg.onclick=()=>sb.classList.toggle('open');
+</script>
+</body>
+</html>

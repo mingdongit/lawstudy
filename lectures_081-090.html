@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義81-90：弁済者代位・弁済の相手方</title>
+<style>
+:root {
+  --bg: #0f1117; --card: #1a1d27; --card-hover: #22263a;
+  --accent: #6c8cff; --accent2: #ff6c8c; --accent3: #6cffb8;
+  --accent4: #ffd76c; --accent5: #c96cff;
+  --text: #e0e0e0; --text-dim: #8a8fa8; --border: #2a2e3f; --tag-bg: #252940;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI','Hiragino Sans','Yu Gothic UI','Meiryo',sans-serif; background:var(--bg); color:var(--text); line-height:1.7; }
+a { color:var(--accent); text-decoration:none; }
+a:hover { text-decoration:underline; }
+.sidebar { position:fixed; left:0; top:0; width:260px; height:100vh; background:#13151f; border-right:1px solid var(--border); overflow-y:auto; z-index:100; padding:16px 0; transition:transform .3s; }
+.sidebar .nav-item { display:block; padding:6px 20px 6px 28px; font-size:13px; color:var(--text-dim); cursor:pointer; border-left:3px solid transparent; transition:.2s; }
+.sidebar .nav-item:hover { color:var(--text); background:rgba(108,140,255,.08); border-left-color:var(--accent); }
+.sidebar-toggle { position:fixed; left:8px; top:8px; z-index:200; background:var(--accent); color:#fff; border:none; border-radius:6px; width:36px; height:36px; font-size:18px; cursor:pointer; display:none; }
+@media(max-width:900px) { .sidebar { transform:translateX(-260px); } .sidebar.open { transform:translateX(0); } .sidebar-toggle { display:block; } .main { margin-left:0!important; padding:20px 16px 60px!important; } }
+.main { margin-left:260px; padding:40px 48px 80px; max-width:1000px; }
+h1 { font-size:1.8rem; background:linear-gradient(135deg,var(--accent),var(--accent2)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; margin-bottom:8px; }
+.subtitle { color:var(--text-dim); margin-bottom:36px; font-size:14px; }
+.part-header { margin:48px 0 24px; padding:20px 28px; background:linear-gradient(135deg, rgba(108,140,255,.12), rgba(255,108,140,.08)); border-radius:12px; border-left:4px solid var(--accent); }
+.part-header h2 { font-size:1.3rem; color:var(--accent); margin-bottom:4px; }
+.part-header p { font-size:14px; color:var(--text-dim); }
+.lec { background:var(--card); border-radius:10px; margin:16px 0; padding:20px 24px; border:1px solid var(--border); transition:.2s; }
+.lec:hover { border-color:var(--accent); background:var(--card-hover); }
+.lec-title { font-size:1.05rem; font-weight:700; color:var(--text); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+.lec-num { background:var(--accent); color:#fff; border-radius:6px; padding:2px 8px; font-size:12px; font-weight:700; min-width:32px; text-align:center; }
+.lec-body { font-size:14px; color:var(--text-dim); }
+.lec-body p { margin:6px 0; }
+.lec-body strong { color:var(--text); }
+.mindmap { background:#12141e; border-radius:12px; padding:24px; margin:20px 0; overflow-x:auto; border:1px solid var(--border); }
+.mindmap h3 { font-size:14px; color:var(--accent4); margin-bottom:16px; text-align:center; }
+.mm { font-family:'Cascadia Code','Consolas','Courier New',monospace; font-size:13px; line-height:1.9; white-space:pre; color:var(--text-dim); }
+.mm .root { color:var(--accent); font-weight:700; }
+.mm .l1 { color:var(--accent2); font-weight:700; }
+.mm .l2 { color:var(--accent3); }
+.progress-bar { position:sticky; top:0; z-index:50; height:3px; background:var(--border); }
+.progress-fill { height:100%; background:linear-gradient(90deg,var(--accent),var(--accent2)); width:0%; transition:width .3s; }
+.scroll-top { position:fixed; bottom:24px; right:24px; background:var(--accent); color:#fff; border:none; border-radius:50%; width:44px; height:44px; font-size:20px; cursor:pointer; opacity:0; transition:.3s; z-index:50; }
+.scroll-top.show { opacity:1; }
+.back-link { display:inline-block; margin-bottom:20px; padding:6px 16px; background:var(--tag-bg); border-radius:6px; color:var(--accent); font-size:13px; text-decoration:none; }
+.back-link:hover { background:var(--card-hover); text-decoration:none; }
+.nav-link { display:flex; justify-content:space-between; margin-top:40px; padding-top:20px; border-top:1px solid var(--border); }
+.nav-link a { padding:8px 20px; background:var(--tag-bg); border-radius:8px; color:var(--accent); font-size:14px; text-decoration:none; }
+.nav-link a:hover { background:var(--card-hover); }
+</style>
+</head>
+<body>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<button class="sidebar-toggle" id="sidebarToggle">&#9776;</button>
+<button class="scroll-top" id="scrollTop">&#8593;</button>
+
+<nav class="sidebar" id="sidebar">
+<div style="padding:12px 20px;">
+<strong style="color:var(--accent);font-size:15px;">講義81-90</strong><br>
+<span style="font-size:11px;color:var(--text-dim);">弁済者代位・弁済の相手方</span>
+</div>
+<div class="nav-item" onclick="go('p81')">81. 第三者弁済有効の原則</div>
+<div class="nav-item" onclick="go('p82')">82. 弁済者代位のキホン</div>
+<div class="nav-item" onclick="go('p83')">83. 弁済者代位の対抗要件：デフォルトケース</div>
+<div class="nav-item" onclick="go('p84')">84. 担保負担者の弁済者代位の対抗要件</div>
+<div class="nav-item" onclick="go('p85')">85. 弁済者代位の割合</div>
+<div class="nav-item" onclick="go('p86')">86. 弁済者代位：一部弁済による一部代位</div>
+<div class="nav-item" onclick="go('p87')">87. 第三取得者「からの代位」と「に対する代位</div>
+<div class="nav-item" onclick="go('p88')">88. 債権者の担保減損責任とその免除特約</div>
+<div class="nav-item" onclick="go('p89')">89. 第三者への弁済</div>
+<div class="nav-item" onclick="go('p90')">90. 誤弁済金返還請求に対する抗弁の成否</div>
+
+</nav>
+
+<div class="main">
+<a href="index.html" class="back-link">← 総合ガイドに戻る</a>
+<h1>民法講義81-90：弁済者代位・弁済の相手方</h1>
+<p class="subtitle">法律未修者向け | 通俗解説 + 思維導図</p>
+
+<div class="mindmap">
+<h3>思維導図：弁済のメカニズム</h3>
+<div class="mm"><span class="root">弁済のメカニズム</span>
+├─<span class="l1"> 81. 第三者弁済有効の原則</span>
+├─<span class="l1"> 82. 弁済者代位のキホン</span>
+├─<span class="l1"> 83. 弁済者代位の対抗要件：デフォルトケース</span>
+├─<span class="l1"> 84. 担保負担者の弁済者代位の対抗要件</span>
+├─<span class="l1"> 85. 弁済者代位の割合</span>
+├─<span class="l1"> 86. 弁済者代位：一部弁済による一部代位</span>
+├─<span class="l1"> 87. 第三取得者「からの代位」と「に対する代位</span>
+├─<span class="l1"> 88. 債権者の担保減損責任とその免除特約</span>
+├─<span class="l1"> 89. 第三者への弁済</span>
+└─<span class="l1"> 90. 誤弁済金返還請求に対する抗弁の成否</span>
+</div>
+</div>
+
+<div class="lec" id="p81">
+<div class="lec-title"><span class="lec-num">81</span>第三者弁済有効の原則</div>
+<div class="lec-body">
+<p>債権者は、債務の本旨に従った給付がなされさえすればよいので、債務の本旨の要素でない給付主体についての関心は一般に法的保護の対象と認めるに足りない（債務者に属人的な給付は、債務者自身によるのでなければ債務の本旨に従ったことにならない、というだけである。）。したがって、第三者（債権者・債務者及びその包括承継人以外の者）が債務の本旨に従った給付（給付の提供も同じ。以下同様。）をするのであれば、そこには債務者がしたのと同じ法律効果を生ずる。
+民法は、債権者の意思に反する第三者弁済の有</p>
+
+</div>
+</div>
+<div class="lec" id="p82">
+<div class="lec-title"><span class="lec-num">82</span>弁済者代位のキホン</div>
+<div class="lec-body">
+<p>債権者Ｇの債務者Ｓに対する債権について、Ｓのすべき弁済をＳになり代わってした第三者Ａは、特段の事情のない限り、Ｓに対する求償権を取得する。</p>
+<p>求償権の範囲は、デフォルトケースである事務管理費用償還請求権としてなら民法702条1項3項、債務者から委託されて弁済した場合なら委任事務処理費用償還請求権として民法650条1項、連帯債務者として弁済した場合なら民法442条1項2項、単純保証人（主債務者から委託された事実が認定されない保証人）として弁済した場合なら民法462条1項2項、受</p>
+
+</div>
+</div>
+<div class="lec" id="p83">
+<div class="lec-title"><span class="lec-num">83</span>弁済者代位の対抗要件：デフォルトケース</div>
+<div class="lec-body">
+<p>見ず知らずの代位弁済者から権利行使を受ける債務者や保証人や物上保証人としては、あんたダレ？と問い返さざるを得ない。対抗要件の抗弁。</p>
+<p>ならば再抗弁として主張されるべき対抗要件具備の事実は何か。</p>
+<p>弁済者代位の効果は原債権の法定移転である。法定移転は譲渡ではないが、債権が異主体間に承継されて債権者が交代することにおいて同様であるから、債権譲渡の対抗要件を弁済者代位の対抗要件に流用できそうである。</p>
+<p>つまり、あんたダレ？というのに答えればよいのだが、代位弁済者が自分で名乗ったとこ</p>
+
+</div>
+</div>
+<div class="lec" id="p84">
+<div class="lec-title"><span class="lec-num">84</span>担保負担者の弁済者代位の対抗要件</div>
+<div class="lec-body">
+<p>原債権の保証人、物上保証人、債務者からの担保目的物（主に抵当不動産）の直接又は間接の第三取得者、物上保証人からの担保目的物の直接又は間接の第三取得者、要するに、原債権が弁済されないと自らが法的責任を問われる立場にある者（ひと言で言えば担保負担者。原債権の弁済につき正当の利益を有する者。）が代位弁済者となった場合には、その代位弁済は、債務者にも、他の担保負担者にも、債務者から独立して代位弁済者への原債権帰属を争う正当利益を有する第三者にも、対抗要件なしに対抗することができる、と</p>
+
+</div>
+</div>
+<div class="lec" id="p85">
+<div class="lec-title"><span class="lec-num">85</span>弁済者代位の割合</div>
+<div class="lec-body">
+<p>債権者Ｇ、債務者Ｓ、1000万円の貸金返還債権（約定利息は考えない。）が、Ａに対する全部連帯保証債権、Ｂに対する全部連帯保証債権、Ｃ所有の甲土地（価額1000万円）上の抵当権、及び、Ｄ所有の乙土地（価額600万円）によって担保されているところ、第三者ＥがＳのために1000万円を弁済した。</p>
+<p>Ｅは、Ｓに対し1000万円の求償権を取得するとともに、Ｇに代位して、Ｇの原債権並びに上記の各保証債権及び各抵当権を取得した。</p>
+<p>Ｅは、Ｓに対して1000万円の求償請求ができるのと並んで、Ｇ</p>
+
+</div>
+</div>
+<div class="lec" id="p86">
+<div class="lec-title"><span class="lec-num">86</span>弁済者代位：一部弁済による一部代位</div>
+<div class="lec-body">
+<p>債権者Ｇ、債務者Ｓ、1000万円の貸金返還債権（約定利息は考えない。）が、Ａに対する全部連帯保証債権、Ｂに対する全部連帯保証債権、Ｃ所有の甲土地（価額1000万円）上の抵当権、及び、Ｄ所有の乙土地（価額600万円）によって担保されている場合において、Ｄが乙土地上の抵当権を実行されて、売却代金600万円を弁済金交付としてＧにもっていかれてしまったとき（又は抵当権実行を受けずに任意に600万円を弁済したとき）は、どうなるであろうか。</p>
+<p>この場合に特徴的なのは、Ｄの弁済がＧの100</p>
+
+</div>
+</div>
+<div class="lec" id="p87">
+<div class="lec-title"><span class="lec-num">87</span>第三取得者「からの代位」と「に対する代位</div>
+<div class="lec-body">
+<p>債権者Ｇ、債務者Ｓ、1000万円の貸金返還債権（約定利息は考えない。）が、Ａに対する全部連帯保証債権、Ｂに対する全部連帯保証債権、Ｃ所有の甲土地（価額1000万円）上の抵当権、及び、Ｄ所有の乙土地（価額600万円）によって担保されている場合において、Ｃから甲土地をＧの抵当権の負担が付着したままで譲り受けた者Ｐ、Ｄから乙土地をＧの抵当権の負担が付着したままで譲り受けた者Ｑがいるとする。
+これらＰ、Ｑは、いずれも、物上保証人Ｃ、Ｄの特定承継人であり、共同担保負担者のなかで、Ｃ、Ｄ</p>
+
+</div>
+</div>
+<div class="lec" id="p88">
+<div class="lec-title"><span class="lec-num">88</span>債権者の担保減損責任とその免除特約</div>
+<div class="lec-body">
+<p>債権者Ｇは、その債権のための担保負担者Ａ～Ｄがいる場合に、そのいずれかが弁済してくれれば、全部弁済か一部弁済かに応じて、債権者席を全面的に又は部分的に弁済者に明け渡さなければならない（債権証書を引き渡すなどの所作も必要となる。民503条。）。
+担保負担者Ａ～Ｄにすれば、弁済すればＧに代位してその担保権を承継することができ、それだけ求償利益回復の蓋然性が高まる、という期待を持っており、その期待が、法的に保護されているわけである。</p>
+<p>そこで、民法は、債権者Ｇが、担保負担者による代</p>
+
+</div>
+</div>
+<div class="lec" id="p89">
+<div class="lec-title"><span class="lec-num">89</span>第三者への弁済</div>
+<div class="lec-body">
+<p>Ｇを債権者とする100万円の金銭債務者Ｓが、その債務の弁済として第三者Ａに100万円を支払った。</p>
+<p>いちばんおおもとの原則は、そんな弁済が有効（Gの債権＝Sの債務が消滅する、という効果を生ずる）はずはなく、間違って支払った金額100万円を不当利得として返還するようＳはＡに請求することができ、したがって、Ａの無資力危険を負担するのはＳである、というところにある（そのうえで、Ａが、「これ、Ｇさんが受け取るはずのオカネですわ。」と言ってＧにオカネを渡したならば、その金額の範囲で、Ｇ</p>
+
+</div>
+</div>
+<div class="lec" id="p90">
+<div class="lec-title"><span class="lec-num">90</span>誤弁済金返還請求に対する抗弁の成否</div>
+<div class="lec-body">
+<p>Ｇを債権者とする100万円の金銭債務者Ｓが、その債務の弁済として第三者Ａに100万円を支払った。</p>
+<p>Ｓは、Ａに対し、その受領した100万円の金額につき、不当利得としてＳに返還するよう求めることができる。</p>
+<p>さてその請求に対し、被告Ａは、「民法４７８条の適用により原告ＳはＧの債務を免れたのだからＳに損失は生じていない。」との趣旨で、民法４７８条の適用要件事実を主張し、ＳのＡに対する不当利得返還請求権の障害の抗弁とすることができるであろうか。</p>
+<p>常識的に、ナニヲアツカマシイコトユ</p>
+
+</div>
+</div>
+
+
+<div class="nav-link">
+<a href="lectures_071-080.html">← 講義71-80</a>
+<a href="lectures_091-100.html">講義91-100 →</a>
+</div>
+
+<div style="text-align:center;padding:40px;color:var(--text-dim);font-size:13px;">
+<p>本ガイドは note.com/msahkie の民法講義に基づいて作成されました。</p>
+<p>Generated: 2026-05-28</p>
+</div>
+</div>
+
+<script>
+function go(id){document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'});}
+window.addEventListener('scroll',()=>{
+  const h=document.documentElement;
+  const pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+  document.getElementById('progressFill').style.width=pct+'%';
+  document.getElementById('scrollTop').classList.toggle('show',h.scrollTop>400);
+});
+document.getElementById('scrollTop').onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+const sb=document.getElementById('sidebar'),tg=document.getElementById('sidebarToggle');
+if(tg) tg.onclick=()=>sb.classList.toggle('open');
+</script>
+</body>
+</html>
