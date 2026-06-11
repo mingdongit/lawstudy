@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>msahkie民法講義 学習ガイド（全117講）</title>
+<title>msahkie民法講義 学習ガイド（全121講）</title>
 <style>
 :root {
   --bg: #0f1117;
@@ -242,12 +242,18 @@ tr:hover td { background:rgba(108,140,255,.05); }
 <div class="nav-item" onclick="go('p115')">115. 給付危険の分配</div>
 <div class="nav-item" onclick="go('p116')">116. 対価危険の分配</div>
 <div class="nav-item" onclick="go('p117')">117. 契約の解除：総論</div>
+
+<div class="nav-group">Part V 契約の解除・同時履行の抗弁権 (118-121)</div>
+<div class="nav-item" onclick="go('p118')">118. 手付契約</div>
+<div class="nav-item" onclick="go('p119')">119. 法定解除権の根拠事実</div>
+<div class="nav-item" onclick="go('p120')">120. 契約解除の効果</div>
+<div class="nav-item" onclick="go('p121')">121. 同時履行の抗弁権</div>
 </nav>
 
 <!-- Main Content -->
 <div class="main">
 <h1>msahkie 民法講義 学習ガイド</h1>
-<p class="subtitle">全117講 | 法律未修者向け | 通俗解説 + 思維導図 + 練習問題</p>
+<p class="subtitle">全121講 | 法律未修者向け | 通俗解説 + 思維導図 + 練習問題</p>
 
 <!-- ===== LECTURE DIRECTORY ===== -->
 <div class="part-header" style="border-left-color:var(--accent4);">
@@ -320,7 +326,7 @@ tr:hover td { background:rgba(108,140,255,.05); }
 
 <!-- ===== GRAND MIND MAP ===== -->
 <div class="mindmap">
-<h3>全117講 総合思維導図</h3>
+<h3>全121講 総合思維導図</h3>
 <div class="mm"><span class="root">民法（ブルジョワ法＝資本主義の基本法）</span>
 ├─<span class="l1"> A 歴史と体系 [1-3]</span>
 │  ├─ 市民革命 → 資本主義社会の成立
@@ -1913,10 +1919,126 @@ AさんがBさんに100万円を貸している。BさんもAさんに80万円�
 </div>
 
 <!-- ============================================================ -->
+<!-- PART V -->
+<!-- ============================================================ -->
+<div class="part-header">
+<h2>Part V：契約の解除と同時履行の抗弁権（講義118-121）</h2>
+<p>手付による解除 → 法定解除の要件 → 解除の効果 → 同時履行の抗弁権</p>
+</div>
+
+<div class="mindmap">
+<h3>Part V 思維導図：解除と同時履行の抗弁権</h3>
+<div class="mm"><span class="root">契約の解除と同時履行の抗弁権 [118-121]</span>
+├─<span class="l1"> 手付契約 [118]</span>
+│  ├─ 売買の<span class="l2">従たる契約</span>（要物契約：金銭交付で成立）
+│  ├─ 解約手付の推定（民法557条）
+│  └─ 買主＝手付放棄／売主＝<span class="l2">倍額償還</span>で解除可
+├─<span class="l1"> 法定解除権の根拠事実 [119]</span>
+│  ├─ <span class="l2">民法541条</span>：催告による解除（軽微な不履行を除く）
+│  ├─ <span class="l2">民法542条</span>：催告によらない解除（履行不能等）
+│  ├─ 540条＝一方的意思表示で行使／544条＝解除権の不可分性
+│  └─ 543条＝債権者に帰責事由があれば解除不可
+├─<span class="l1"> 契約解除の効果 [120]</span>
+│  ├─ <span class="l2">原状回復義務</span>（民法545条1項本文）
+│  ├─ 効果論：直接効果説（判例通説）vs 間接効果説 vs 折衷説
+│  └─ 第三者保護（545条1項但書）
+└─<span class="l1"> 同時履行の抗弁権 [121]</span>
+   ├─ 双務契約の牽連性（民法533条）
+   ├─ 「相手が履行するまで自分も履行しない」と主張できる
+   └─ 効果＝<span class="l2">引換給付判決</span>（全面敗訴ではない）</div>
+</div>
+
+<div class="lec" id="p118">
+<div class="lec-title"><span class="lec-num">118</span>手付契約：約定解除権留保の推定</div>
+<div class="lec-body">
+<p><strong>テーマ：</strong>手付金を交付すると何が起きるのか</p>
+<p>不動産売買では、買主から売主に<strong>手付金</strong>（代金の1〜2割が多いが法的制約はない）を交付するのが通例。法的には、売買契約を主たる契約とし、その<strong>従たる契約</strong>として手付契約を締結したと説明されます。手付契約は<strong>要物契約</strong>——金銭の交付があって初めて成立します。</p>
+<p>手付の趣旨が不明な場合、民法557条により<strong>解約手付</strong>（約定解除権の留保）と推定されます。つまり、相手方が履行に着手するまでは、<strong>買主は手付を放棄</strong>して、<strong>売主は倍額を現実に提供</strong>して、理由なく契約を解除できます。</p>
+
+<div class="analogy">
+<div class="analogy-title">たとえ話</div>
+ホテルの予約金のようなもの。「キャンセルしたら予約金は返ってきません。逆にホテル側の都合でキャンセルするなら倍額返します」——お互いに「お金を払えば撤退できる権利」を買っているイメージ。
+</div>
+</div>
+</div>
+
+<div class="lec" id="p119">
+<div class="lec-title"><span class="lec-num">119</span>法定解除権の根拠事実</div>
+<div class="lec-body">
+<p><strong>テーマ：</strong>債務不履行を理由とする解除の条文構造</p>
+<p>契約総則上の法定解除権の根拠規定は<strong>民法541条と542条</strong>。541条は<strong>催告による解除</strong>（相当期間を定めて催告し、期間内に履行がないとき。ただし不履行が軽微なら不可）、542条は<strong>催告によらない解除</strong>（履行不能・明確な履行拒絶など）です。</p>
+<p>これに、解除権の行使方法を定める<strong>540条</strong>（一方的意思表示による）と、<strong>544条</strong>（解除権の不可分性——当事者が複数なら全員から全員へ意思表示が必要）を併せた4ヵ条が効果発生要件規定。<strong>543条</strong>は、不履行が債権者の帰責事由によるときは解除できないという例外を定めます。</p>
+
+<table class="compare">
+<tr><th>条文</th><th>内容</th></tr>
+<tr><td>民法540条</td><td>解除権の行使＝一方的意思表示（撤回不可）</td></tr>
+<tr><td>民法541条</td><td>催告による解除（軽微な不履行を除く）</td></tr>
+<tr><td>民法542条</td><td>催告によらない解除（履行不能等）</td></tr>
+<tr><td>民法543条</td><td>債権者に帰責事由があれば解除不可</td></tr>
+<tr><td>民法544条</td><td>解除権の不可分性（全員から全員へ）</td></tr>
+</table>
+
+<div class="analogy">
+<div class="analogy-title">たとえ話</div>
+541条は「イエローカード方式」——まず警告（催告）して、それでもダメなら退場（解除）。542条は「レッドカード方式」——履行不能など決定的な違反は警告なしで即退場。
+</div>
+</div>
+</div>
+
+<div class="lec" id="p120">
+<div class="lec-title"><span class="lec-num">120</span>契約解除の効果</div>
+<div class="lec-body">
+<p><strong>テーマ：</strong>解除されたら契約はどうなるのか</p>
+<p>契約が法定解除・約定解除されると、当事者間に<strong>原状回復義務</strong>（相手方の財産状態を契約締結当時の状態に戻す義務）が生じます（民法545条1項本文）。</p>
+<p>解除と原状回復義務の関係をどう説明するかが<strong>解除の効果論</strong>。<strong>直接効果説</strong>（解除により契約は締結時に遡って効力を失う——取消しと同様の遡及的消滅）、<strong>間接効果説</strong>、<strong>折衷説</strong>がありますが、判例通説は一貫して<strong>直接効果説</strong>です。</p>
+
+<table class="compare">
+<tr><th>学説</th><th>考え方</th></tr>
+<tr><td>直接効果説（判例通説）</td><td>契約は遡及的に消滅。給付済みのものは不当利得的に返還（545条はその特則）</td></tr>
+<tr><td>間接効果説</td><td>契約は消滅せず、新たに原状回復義務が発生するだけ</td></tr>
+<tr><td>折衷説</td><td>未履行債務は消滅、既履行部分には返還義務が発生</td></tr>
+</table>
+
+<div class="analogy">
+<div class="analogy-title">たとえ話</div>
+直接効果説は「録画を巻き戻して最初からなかったことにする」イメージ。だから受け取ったものは「本来受け取る理由がなかったもの」として返さなければならない。
+</div>
+</div>
+</div>
+
+<div class="lec" id="p121">
+<div class="lec-title"><span class="lec-num">121</span>同時履行の抗弁権の行使とその効果</div>
+<div class="lec-body">
+<p><strong>テーマ：</strong>「相手が払うまで渡さない」は法的にどう主張するか</p>
+<p>売買などの<strong>双務契約</strong>では、売主の給付と買主の給付が対価関係に立ちます（有償契約）。売主から代金請求された買主は、<strong>同時履行の抗弁権</strong>（民法533条）——「あなたが目的物を引き渡すまで、私は代金を支払わない」——を行使できます。逆もまた同じ。</p>
+<p>重要なのはその<strong>訴訟上の効果</strong>。抗弁が認められても請求棄却（全面敗訴）にはならず、<strong>引換給付判決</strong>——「被告は、原告から目的物の引渡しを受けるのと引換えに、代金を支払え」——が下されます。</p>
+
+<table class="compare">
+<tr><th>主張</th><th>判決</th></tr>
+<tr><td>買主が何も主張しない</td><td>単純な支払判決（全面敗訴）</td></tr>
+<tr><td>同時履行の抗弁権を行使</td><td>引換給付判決（引渡しと引換えに支払え）</td></tr>
+</table>
+
+<div class="analogy">
+<div class="analogy-title">たとえ話</div>
+コンビニのレジと同じ。「お金を先に」「いや商品を先に」ではなく、「同時交換」が公平。同時履行の抗弁権は、この「せーので交換しよう」を法的に主張する権利。
+</div>
+</div>
+</div>
+
+<div class="quiz">
+<h4>Part V 確認問題</h4>
+<details><summary>Q1. 手付の趣旨が不明な場合、どう推定されるか？その効果は？</summary><div class="answer">民法557条により解約手付（約定解除権の留保）と推定される。相手方が履行に着手するまでは、買主は手付を放棄して、売主はその倍額を現実に提供して、理由なく契約を解除できる。手付契約は売買の従たる契約であり、要物契約（金銭の交付で成立）である。</div></details>
+<details><summary>Q2. 民法541条と542条の解除の違いは？</summary><div class="answer">541条は催告による解除：相当期間を定めて履行を催告し、期間内に履行がないときに解除できる（ただし不履行が軽微なときは不可）。542条は催告によらない解除：履行不能や明確な履行拒絶など、催告しても無意味な場合に直ちに解除できる。</div></details>
+<details><summary>Q3. 解除の効果論における判例通説の立場は？</summary><div class="answer">直接効果説。解除された契約は締結時に遡って効力を失う（法律行為の取消しと同様の遡及的消滅）。その結果、当事者間に原状回復義務（民法545条1項本文）が生じる。</div></details>
+<details><summary>Q4. 同時履行の抗弁権が訴訟で認められた場合の判決は？</summary><div class="answer">請求棄却（全面敗訴）ではなく、引換給付判決が下される。「被告は、原告から反対給付を受けるのと引換えに、給付せよ」という形の判決で、双務契約の牽連性（民法533条）を訴訟上反映したもの。</div></details>
+</div>
+
+<!-- ============================================================ -->
 <!-- FINAL SUMMARY -->
 <!-- ============================================================ -->
 <div class="part-header" style="border-left-color:var(--accent2);">
-<h2>総まとめ：全117講のストーリー</h2>
+<h2>総まとめ：全121講のストーリー</h2>
 <p>全体を一つのストーリーとして理解する</p>
 </div>
 
@@ -1942,7 +2064,7 @@ AさんがBさんに100万円を貸している。BさんもAさんに80万円�
   占有権・所有権・用益物権・担保物権の各論
   <span class="l2">→ 物の世界は「登記した者勝ち」が基本</span>
 
-<span class="l1">第3幕：債権の世界 [56-117]</span>
+<span class="l1">第3幕：債権の世界 [56-121]</span>
   金融資本主義時代：債権が主戦場
   非金銭債権→債務不履行→金銭債権に変身
   損害賠償は相当因果関係で限定
@@ -1955,12 +2077,14 @@ AさんがBさんに100万円を貸している。BさんもAさんに80万円�
   債務引受：併存的vs免責的
   債権各則：契約・事務管理・不当利得・不法行為
   契約法：申込み承諾→危険分配→解除
+  解除の深化：手付・法定解除の要件・直接効果説
+  同時履行の抗弁権：双務契約の牽連性→引換給付判決
   <span class="l2">→ お金の世界は「いかに確実に回収するか」が基本</span></div>
 </div>
 
 <div style="text-align:center;padding:40px;color:var(--text-dim);font-size:13px;">
 <p>本ガイドは note.com/msahkie の民法講義に基づいて作成されました。</p>
-<p>Generated: 2026-06-04</p>
+<p>Generated: 2026-06-11</p>
 </div>
 
 </div><!-- /main -->
