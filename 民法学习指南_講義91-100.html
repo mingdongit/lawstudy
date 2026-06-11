@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義91〜100 学習ガイド（法律未修者向け）</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --primary: #2c5f8a;
+    --secondary: #e8f0f8;
+    --accent: #d4740e;
+    --accent-light: #fff5eb;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #dfe6e9;
+    --success: #00b894;
+    --danger: #e17055;
+    --info: #74b9ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #2c5f8a 0%, #1a3a5c 100%);
+    color: white;
+    border-radius: 16px;
+    margin-bottom: 30px;
+  }
+  .header h1 { font-size: 2em; margin-bottom: 10px; }
+  .header p { opacity: 0.9; font-size: 1.05em; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+
+  /* Navigation */
+  .nav {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav:hover, .nav:focus-within {
+    max-height: 600px;
+  }
+  .nav h3 { margin-bottom: 10px; color: var(--primary); font-size: 0.95em; cursor: pointer; }
+  .nav h3::after { content: " ▼"; font-size: 0.7em; }
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .nav a {
+    display: block;
+    padding: 8px 12px;
+    background: var(--secondary);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.88em;
+    transition: all 0.2s;
+  }
+  .nav a:hover { background: var(--primary); color: white; }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--secondary);
+  }
+  .section-num {
+    background: var(--primary);
+    color: white;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 1.35em; color: var(--primary); }
+
+  /* Subsection */
+  h3 {
+    color: var(--primary);
+    font-size: 1.1em;
+    margin: 24px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  h4 {
+    color: var(--accent);
+    font-size: 1em;
+    margin: 16px 0 8px;
+  }
+
+  /* Analogy box */
+  .analogy {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .analogy::before {
+    content: "💡 たとえ話";
+    display: block;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Key point */
+  .key {
+    background: #eef7ee;
+    border-left: 4px solid var(--success);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .key::before {
+    content: "✅ 重要ポイント";
+    display: block;
+    font-weight: bold;
+    color: var(--success);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Warning */
+  .warn {
+    background: #fff3f0;
+    border-left: 4px solid var(--danger);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .warn::before {
+    content: "⚠️ 注意・よくある誤解";
+    display: block;
+    font-weight: bold;
+    color: var(--danger);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Term */
+  .term {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .term::before {
+    content: "📖 用語解説";
+    display: block;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Quiz */
+  .quiz {
+    background: #f0eeff;
+    border: 2px dashed #6c5ce7;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .quiz::before {
+    content: "🧪 理解度チェック";
+    display: block;
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+  .quiz details {
+    margin-top: 8px;
+  }
+  .quiz summary {
+    cursor: pointer;
+    color: #6c5ce7;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .quiz details p {
+    margin-top: 6px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92em;
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:nth-child(even) { background: var(--secondary); }
+  tr:hover { background: #dbeafe; }
+
+  /* Mind map */
+  .mindmap {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .mindmap-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 16px;
+    font-size: 1.05em;
+  }
+
+  /* Tree structure */
+  .tree { padding-left: 0; list-style: none; }
+  .tree ul { padding-left: 28px; list-style: none; position: relative; }
+  .tree ul::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 12px;
+    border-left: 2px solid var(--border);
+  }
+  .tree li {
+    position: relative;
+    padding: 4px 0 4px 0;
+  }
+  .tree ul > li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 14px;
+    width: 14px;
+    border-top: 2px solid var(--border);
+  }
+  .tree .node {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+  .node.root { background: var(--primary); color: white; font-size: 1em; padding: 8px 20px; }
+  .node.l1 { background: #4a90c4; color: white; }
+  .node.l2 { background: var(--secondary); color: var(--primary); border: 1px solid #b0cfe0; }
+  .node.l3 { background: #f1f5f1; color: var(--text); border: 1px solid #c8d6c8; font-size: 0.85em; }
+  .node.accent { background: var(--accent-light); color: #b35c00; border: 1px solid #f0c8a0; }
+  .node.danger { background: #fff0ee; color: #c0392b; border: 1px solid #f0b0a0; }
+
+  /* Flow diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 16px 0;
+    justify-content: center;
+  }
+  .flow-item {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 0.88em;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-arrow {
+    font-size: 1.4em;
+    color: var(--text-light);
+    padding: 0 4px;
+  }
+  .flow .f-blue { background: var(--secondary); color: var(--primary); border: 2px solid #a0c4e0; }
+  .flow .f-green { background: #e8f8e8; color: #1e7e34; border: 2px solid #a0d8a0; }
+  .flow .f-orange { background: var(--accent-light); color: #b35c00; border: 2px solid #f0c8a0; }
+  .flow .f-red { background: #fff0ee; color: #c0392b; border: 2px solid #f0b0a0; }
+
+  /* Comparison */
+  .vs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: start;
+    margin: 16px 0;
+  }
+  .vs-box {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid;
+  }
+  .vs-box.left { border-color: #4a90c4; background: #f0f6fc; }
+  .vs-box.right { border-color: #e0a040; background: #fdf8f0; }
+  .vs-box h4 { margin-top: 0; text-align: center; }
+  .vs-mid {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--text-light);
+    align-self: center;
+  }
+
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 24px; }
+  li { margin: 4px 0; }
+  strong { color: var(--primary); }
+
+  @media (max-width: 768px) {
+    body { padding: 10px; }
+    .section { padding: 18px; }
+    .header h1 { font-size: 1.4em; }
+    .nav-grid { grid-template-columns: 1fr 1fr; }
+    .vs { grid-template-columns: 1fr; }
+    .vs-mid { text-align: center; }
+    .flow { flex-direction: column; align-items: center; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== Header ========== -->
+<div class="header">
+  <h1>民法講義 91〜100 学習ガイド</h1>
+  <p>相殺の担保的機能と「差押えと相殺」の優劣 — 預担貸し・478条から改正511条まで</p>
+  <div class="badge">msahkie先生の講義に基づく整理・拡展</div>
+</div>
+
+<!-- ========== Navigation ========== -->
+<div class="nav">
+  <h3>📑 目次（クリックでジャンプ）</h3>
+  <div class="nav-grid">
+    <a href="#overview">全体マップ</a>
+    <a href="#lec91">㉛ 預担貸しと478条</a>
+    <a href="#lec92">㉜ 相殺の機能</a>
+    <a href="#lec93">㉝ 相殺適状の作出</a>
+    <a href="#lec94">㉞ 自働・受働債権適格</a>
+    <a href="#lec95">㉟ 差押えと相殺：問題の所在</a>
+    <a href="#lec96">㊱ 改正前511条とその解釈</a>
+    <a href="#lec97">㊲ 改正511条：承継と拡張</a>
+    <a href="#lec98">㊳ 511条2項ただし書の趣旨</a>
+    <a href="#lec99">㊴ 正しい民法511条</a>
+    <a href="#lec100">㊵ ただし書の類推適用</a>
+    <a href="#glossary">用語集</a>
+  </div>
+</div>
+
+<!-- ========== 全体マップ ========== -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-num">📍</div>
+    <h2>全体マップ：講義91〜100は何を学ぶのか</h2>
+  </div>
+
+  <p>このブロックの主役は<strong>「相殺（そうさい）」</strong>です。といっても単なる「差し引き計算」の話ではありません。相殺は、債権者にとって<strong>「最も簡単で、最も強力な担保」</strong>として機能します。そして、その担保としての強さが試される究極の場面が、<strong>「差押え vs 相殺」の対決</strong>です。10回の講義は、銀行実務の入口（預担貸し）から始まり、相殺の基礎理論を固めたうえで、改正民法511条をめぐる判例・立法の攻防へと一直線に進みます。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">🗺️ 講義91〜100 全体思維導図</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">相殺の担保的機能と差押えとの優劣</span>
+        <ul>
+          <li>
+            <span class="node l1">Part A：銀行実務の入口（講義91）</span>
+            <ul>
+              <li><span class="node l2">㉛ 預担貸し（定期預金担保貸付）と民法478条</span></li>
+              <li><span class="node l3">→ 銀行は「預金」を引当てに貸し、最後は相殺で回収する</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part B：相殺の基礎理論（講義92-94）</span>
+            <ul>
+              <li><span class="node l2">㉜ 相殺の3つの機能（簡易決済・公平・担保）</span></li>
+              <li><span class="node l2">㉝ 相殺適状（505条）と期限の利益の放棄・喪失</span></li>
+              <li><span class="node l2">㉞ 自働債権・受働債権になれる資格（509〜511条）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part C：差押え vs 相殺（講義95-99）</span>
+            <ul>
+              <li><span class="node l2">㉟ 問題の所在 — 取立訴訟と相殺の抗弁</span></li>
+              <li><span class="node l2">㊱ 旧511条：制限説 vs 無制限説（最大判昭45.6.24）</span></li>
+              <li><span class="node l2">㊲ 改正511条：無制限説の承継＋相殺権保護の拡張</span></li>
+              <li><span class="node l2">㊳ 2項ただし書の趣旨 — 「債権の買い集め」の遮断</span></li>
+              <li><span class="node accent">㊴ 「正しい511条」— 先生の立法批判</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part D：応用問題（講義100）</span>
+            <ul>
+              <li><span class="node l2">㊵ 保証人の求償権と2項ただし書の類推適用</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="analogy">
+    トランプの「ばば抜き」ならぬ「<strong>カードの取り合い</strong>」にたとえると：<br>
+    AのB銀行に対する預金債権という1枚のカードを、<strong>差押債権者C</strong>と<strong>B銀行（相殺で回収したい）</strong>が取り合います。<br>
+    <strong>Part A・B</strong> ＝ B銀行が持っている「相殺」というカードの性能を知る<br>
+    <strong>Part C</strong> ＝ CとBがぶつかったとき、どちらが勝つかのルール（511条）を学ぶ<br>
+    <strong>Part D</strong> ＝ 変則ルール（保証人の求償権）でも勝敗判定ができるようになる
+  </div>
+
+  <div class="key">
+    このブロックを貫く一本の糸：<br>
+    <strong>「相殺は、受働債権（自分が負っている債務）を“質草”にした事実上の担保である」</strong><br>
+    → だからこそ、差押債権者が現れても、<strong>正当な相殺の期待</strong>は保護されるべきだ（無制限説→改正511条）。<br>
+    → 逆に、差押えを見てから慌てて作った相殺の機会は保護に値しない（511条の対抗不能ルール）。
+  </div>
+
+  <h3>時系列で考えるクセをつけよう</h3>
+  <p>このブロックの勝敗判定は、ほぼすべて<strong>「差押えより前か、後か」</strong>という時間軸で決まります。次のような時系列フロー図を頭に常備してください。</p>
+  <div class="flow">
+    <div class="flow-item f-green">差押え<strong>前</strong>に<br>自働債権を取得<br><small>→ 相殺で対抗できる</small></div>
+    <div class="flow-arrow">｜</div>
+    <div class="flow-item f-red">⚡ 差押え ⚡<br><small>ここが分水嶺</small></div>
+    <div class="flow-arrow">｜</div>
+    <div class="flow-item f-orange">差押え<strong>後</strong>に取得<br><small>原則対抗できない<br>（例外：前の原因）</small></div>
+  </div>
+</div>
+
+<!-- ========== 講義91 ========== -->
+<div class="section" id="lec91">
+  <div class="section-header">
+    <div class="section-num">91</div>
+    <h2>預担貸しと民法478条</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>銀行は定期預金を「担保」にお金を貸す（<strong>預担貸し</strong>）。もし<strong>預金者でないニセモノ</strong>に貸してしまっても、銀行が無過失なら<strong>民法478条の類推適用</strong>で相殺による回収が認められる、という話です。</p>
+
+  <div class="analogy">
+    ゲームセンターのメダル預かりにたとえると：<br>
+    あなたがゲームセンターに1000枚のメダルを預けている（＝定期預金）。店は「メダルを預けてくれている常連さんなら信用できる」と考え、メダルを引当てに500枚を貸し出すサービスをしている（＝預担貸し）。<br>
+    ある日、あなたの会員カードを拾った<strong>ニセモノ</strong>が「オレだよ」と言って500枚借りていった。店が本人確認を尽くしていた（無過失）なら、店は後日、あなたの預けたメダルから500枚を差し引いて精算できる — これが478条類推適用の世界です。
+  </div>
+
+  <h3>そもそも：定期預金はなぜ「融資の入口」なのか</h3>
+  <p>講義は意外な視点から始まります。低金利時代、定期預金の利息はほぼゼロ。それでも定期預金には意味がある — それは、銀行に<strong>「取引先＝融資を考えてもよい相手」と認識してもらうための基礎的環境</strong>だからです。</p>
+  <div class="key">
+    銀行から見た定期預金の正体：<br>
+    ① <strong>満期まで払戻し不要の安定資金</strong>。民法上は消費寄託（民666条・662条）で預金者にいつでも返還請求権がありそうだが、実際は<strong>定期預金約款で中途解約が禁じられている</strong>（民662条は任意規定だから約款で排除できる）。<br>
+    ② 預金は銀行にとって<strong>「自分が負っている債務」</strong>。つまり、貸付金が焦げ付いたら<strong>相殺で回収できる引当て（事実上の担保）</strong>になる。
+  </div>
+
+  <h3>預担貸し（定期預金担保貸付）の仕組み</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">Aが B銀行に<br>定期預金100万円<br><small>A＝預金債権者</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">Bが Aに<br>90万円を貸付け<br><small>預金を担保に（質権設定等）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">満期到来<br>貸付債権と預金債権を<strong>相殺</strong><br><small>差額だけ精算</small></div>
+  </div>
+  <p>定期預金は中途解約できない建前なので、「満期前にお金が要る」預金者に、銀行は解約させる代わりに<strong>預金額の範囲内で貸し付け</strong>、満期に相殺で回収します。これが<strong>預担貸し</strong>です。</p>
+
+  <h3>事件：ニセモノに貸してしまったら？</h3>
+  <p>問題は、預金証書や印鑑を持った<strong>無権限者（冒名者）</strong>が預担貸しを受けてしまった場合です。銀行は本物の預金者Aに預金を払い戻さなければならないのか、それとも相殺で処理できるのか。</p>
+
+  <div class="term">
+    <strong>民法478条（受領権者としての外観を有する者に対する弁済）</strong>：取引上の社会通念に照らして「受領権者らしい外観」を持つ者にした弁済は、弁済者が<strong>善意かつ無過失</strong>であれば有効になる。<br>
+    典型例：通帳と印鑑を持参した他人に銀行が預金を払い戻した場合、銀行が無過失なら弁済は有効＝本物の預金者は預金を失う。
+  </div>
+
+  <div class="warn">
+    預担貸しは「弁済（払戻し）」ではなく「<strong>貸付け＋相殺</strong>」です。478条は文言上「弁済」の規定なので、そのままでは適用できません。<br>
+    → そこで判例は、預担貸しが<strong>実質的に定期預金の期限前払戻しと同視できる</strong>ことを理由に、478条を<strong>類推適用</strong>しました（最判昭48.3.27、最判昭59.2.23）。
+  </div>
+
+  <h3>判例のポイント：無過失はいつの時点で判断？</h3>
+  <table>
+    <tr><th>論点</th><th>判例の立場</th><th>理由</th></tr>
+    <tr><td>478条の類推適用の可否</td><td>肯定（最判昭48.3.27）</td><td>預担貸し＋相殺は、経済的実質において定期預金の期限前解約・払戻しと同じ</td></tr>
+    <tr><td>銀行の無過失の判断時点</td><td><strong>貸付時</strong>を基準（最判昭59.2.23）</td><td>銀行が外観を信頼して取引に入るのは貸付けの時点。相殺はその清算にすぎない</td></tr>
+    <tr><td>保護の効果</td><td>銀行は相殺をもって真の預金者に対抗できる</td><td>真の預金者は貸付金相当額について預金の払戻しを受けられなくなる</td></tr>
+  </table>
+
+  <div class="key">
+    講義91の位置づけ：ここで初めて<strong>「銀行は預金（＝自分の債務）を引当てに貸し、相殺で回収する」</strong>という構図が登場します。この<strong>相殺の担保的機能</strong>こそ、講義92以降のテーマであり、講義95以降の「差押え vs 相殺」の伏線です。
+  </div>
+
+  <div class="quiz">
+    Q1: 預担貸しに民法478条を「適用」ではなく「類推適用」するのはなぜ？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>478条は「弁済」を有効にする規定だが、預担貸しの場面で銀行がしたのは弁済（払戻し）ではなく「貸付け」であり、その後の「相殺」で清算される。つまり条文の文言が直接予定する場面ではない。しかし、定期預金を担保に預金額の範囲内で貸し付けて満期に相殺する取引は、経済的実質において定期預金の期限前払戻しと同視できるため、条文の趣旨（外観への正当な信頼の保護）を及ぼして類推適用する。</p>
+    </details>
+    Q2: 銀行の善意・無過失は「貸付時」と「相殺時」のどちらで判断する？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p><strong>貸付時</strong>（最判昭59.2.23）。銀行が「この人は預金者本人だ」という外観を信頼して財産的決定（貸付け）をするのは貸付けの時点だから。相殺は既にした貸付けの回収手段にすぎず、相殺時に銀行が真実を知っていても保護は失われない。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義92 ========== -->
+<div class="section" id="lec92">
+  <div class="section-header">
+    <div class="section-num">92</div>
+    <h2>相殺の機能</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>相殺とは、向かい合う金銭債権を<strong>「現金を往復させずに、計算上チャラにする」</strong>制度。便利な決済手段であると同時に、実は<strong>最強クラスの担保</strong>として働きます。</p>
+
+  <div class="analogy">
+    友だち同士の貸し借りにたとえると：<br>
+    あなたはAくんに1000円貸していて、Aくんからは800円借りている。わざわざ「1000円返して」「はい800円返すね」と現金を往復させるのはバカバカしい。<br>
+    「<strong>差し引き200円もらえば終わりにしよう</strong>」— これが相殺です。<br>
+    しかも、もしAくんが無一文になっても、あなたは「800円返す義務」を盾に1000円のうち800円分は<strong>確実に回収</strong>できる。これが「担保的機能」です。
+  </div>
+
+  <h3>相殺の基本構造</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">A → B<br>100万円の債権<br><small>Aから見て「自働債権」</small></div>
+    <div class="flow-arrow">⇄</div>
+    <div class="flow-item f-orange">B → A<br>80万円の債権<br><small>Aから見て「受働債権」</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">Aの相殺の意思表示<br><small>重なる80万円分が消滅<br>残り20万円だけ請求</small></div>
+  </div>
+
+  <div class="term">
+    <strong>自働債権（じどうさいけん）</strong>：相殺を仕掛ける側が<strong>持っている</strong>債権（攻撃の剣）。<br>
+    <strong>受働債権（じゅどうさいけん）</strong>：相殺を仕掛ける側が<strong>負っている</strong>債務に対応する相手の債権（受け身の盾）。<br>
+    覚え方：「自分が働かせる債権」＝自働債権。相殺の意思表示は<strong>一方的な単独行為</strong>でよく（民506条1項）、相手の同意は不要。条件・期限は付けられず、効果は<strong>相殺適状時に遡及</strong>する（506条2項）。
+  </div>
+
+  <h3>相殺の3つの機能</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：相殺はなぜ存在するのか</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">相殺の機能</span>
+        <ul>
+          <li>
+            <span class="node l1">① 簡易決済機能</span>
+            <ul>
+              <li><span class="node l2">現金を往復させる手間・コスト・危険を省く</span></li>
+              <li><span class="node l3">例：銀行間の決済、企業間の継続的取引</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">② 当事者間の公平（清算的機能）</span>
+            <ul>
+              <li><span class="node l2">自分だけ全額払わされ、相手からは回収できない不公平を防ぐ</span></li>
+              <li><span class="node l3">「お互い様」の関係は差し引きで清算するのが公平</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">③ 担保的機能 ★このブロックの主役</span>
+            <ul>
+              <li><span class="node accent">自分が負っている債務（受働債権）が「質草」になる</span></li>
+              <li><span class="node accent">相手が無資力でも、相殺の範囲では100％回収できる</span></li>
+              <li><span class="node l3">登記も占有も契約も不要の「最も手軽な担保」</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>法定相殺と約定相殺</h3>
+  <table>
+    <tr><th></th><th>法定相殺（民505条以下）</th><th>約定相殺（相殺契約）</th></tr>
+    <tr><td>根拠</td><td>法律の規定。<strong>一方的意思表示</strong>でできる</td><td>当事者の合意。契約自由の原則上、当然に有効</td></tr>
+    <tr><td>要件</td><td>相殺適状（対立する金銭債権＋双方弁済期など）</td><td>合意内容しだいで自由に設計できる</td></tr>
+    <tr><td>実務例</td><td>突然の一方的相殺通知</td><td>銀行取引約定書の相殺条項・交互計算</td></tr>
+    <tr><td>このブロックでの主戦場</td><td>◎（505条・511条の解釈論）</td><td>前提として確認するのみ</td></tr>
+  </table>
+
+  <div class="key">
+    <strong>担保的機能が「効く」場面を具体的にイメージしよう</strong>：<br>
+    B銀行はAに1000万円を貸し、AはBに800万円の預金を持っている。Aが破産しても、Bは<strong>預金800万円との相殺</strong>で貸付金のうち800万円を満額回収できる。他の債権者が数％の配当しか受けられない中、Bだけが優先的に満足を得る — まるで<strong>預金に質権を持っているのと同じ</strong>。<br>
+    講義10で学んだ「別除権」と並ぶ、債権者の生命線です（破産法上も相殺権は手厚く保護される。破産法67条）。
+  </div>
+
+  <div class="warn">
+    「相殺＝単なる計算の便宜」と思っていると、講義95以降が理解できません。<br>
+    銀行が定期預金を喜んで受け入れ、預金者に融資をするのは、<strong>「いざとなれば預金と相殺できる」という期待</strong>があるから。この<strong>合理的期待を法がどこまで保護するか</strong>が、差押えと相殺の優劣問題の核心です。
+  </div>
+
+  <div class="quiz">
+    Q1: 相殺の「担保的機能」とは何か、抵当権と比べて説明してみよう。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>抵当権は債務者の不動産という「積極財産」を引当てにするが、相殺は債権者自身が債務者に対して負う債務（受働債権）を引当てにする。債務者が無資力になっても、対立する債権の重なる範囲では確実に回収できるので、事実上の優先弁済を受けたのと同じ結果になる。登記などの公示も設定契約も不要な点で、最も簡便な担保といえる。</p>
+    </details>
+    Q2: 相殺は相手の同意なしにできる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>できる。法定相殺は<strong>一方的な意思表示</strong>による単独行為（民506条1項）。相手への通知（意思表示の到達）だけで効力が生じ、効果は相殺適状が生じた時点に遡る（506条2項）。なお、当事者の合意による相殺契約（約定相殺）も契約自由の原則上、当然に有効。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義93 ========== -->
+<div class="section" id="lec93">
+  <div class="section-header">
+    <div class="section-num">93</div>
+    <h2>相殺適状の作出</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>民法505条は「双方の債権の弁済期到来」を相殺の要件とするが、<strong>受働債権の弁済期は「期限の利益の放棄」で自分で到来させられる</strong>。実務では「期限の利益喪失条項」によって、いつでも相殺に持ち込める状態が人為的に作り出されています。</p>
+
+  <div class="analogy">
+    決闘にたとえると：<br>
+    相殺適状とは「<strong>お互いに刀を抜いていつでも斬りかかれる状態</strong>」。<br>
+    自分の刀（自働債権）は、弁済期が来ていないと抜けない — 相手には「まだ払わなくていい」という権利（期限の利益）があるから、勝手に抜いて斬りつけてはいけない。<br>
+    でも相手の刀（受働債権＝自分の債務）は、「<strong>自分が早めに払う分には誰も困らない</strong>」ので、自分から鞘を捨てる（期限の利益を放棄する）ことができる。つまり、決闘開始のタイミングは<strong>事実上、自働債権の弁済期だけで決まる</strong>のです。
+  </div>
+
+  <h3>相殺適状の要件（民505条1項）</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：相殺適状の4要件</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">相殺適状（505条）</span>
+        <ul>
+          <li>
+            <span class="node l1">① 債権の対立</span>
+            <ul>
+              <li><span class="node l2">同じ2当事者間で債権が向かい合っていること</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">② 同種の目的（実際上は金銭債権どうし）</span>
+            <ul>
+              <li><span class="node l2">「100万円」と「80万円」のように差引計算できること</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">③ 双方の弁済期の到来 ★今回の主題</span>
+            <ul>
+              <li><span class="node accent">自働債権：弁済期到来が絶対に必要</span></li>
+              <li><span class="node accent">受働債権：期限の利益を放棄すれば不要にできる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">④ 債権の性質・法律が相殺を許すこと</span>
+            <ul>
+              <li><span class="node l3">→ 509〜511条の相殺禁止（講義94・95以降）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>なぜ受働債権の弁済期到来は「不要なはず」なのか</h3>
+  <p>講義の理論的な核心です。相殺の実質は、<strong>「自分の債務を任意に弁済して、引き換えに相手の債務の弁済を強制する」</strong>こと。</p>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>⚔️ 自働債権（相手に払わせる側）</h4>
+      <p><strong>弁済期到来が必須</strong></p>
+      <ul>
+        <li>相手には「期限まで払わなくてよい」という<strong>期限の利益</strong>がある（民136条1項）</li>
+        <li>弁済期前に相殺を許すと、相手の期限の利益を<strong>一方的に奪う</strong>ことになる → ダメ</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🛡️ 受働債権（自分が払う側）</h4>
+      <p><strong>弁済期到来は不要にできる</strong></p>
+      <ul>
+        <li>期限前に払うのは<strong>実質上の期限前弁済</strong>にすぎない</li>
+        <li>自分の期限の利益は<strong>自分で放棄できる</strong>（民136条2項）</li>
+        <li>→ 期限の利益を放棄して相殺すればよい</li>
+      </ul>
+    </div>
+  </div>
+  <p>つまり、505条が「双方の弁済期到来」と書いているのは厳格すぎる表現で、判例・通説も、<strong>受働債権については期限の利益を放棄して相殺できる</strong>ことを認めています。</p>
+
+  <h3>実務の知恵：期限の利益喪失条項で「適状を作る」</h3>
+  <p>では逆に、<strong>自働債権の弁済期がまだ先</strong>のときはどうにもならないのか？ — ここで銀行実務の知恵が登場します。</p>
+  <div class="flow">
+    <div class="flow-item f-blue">B銀行がAに融資<br><small>弁済期は1年後<br>（自働債権はまだ抜けない）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">Aの信用悪化<br><small>差押え・破産申立てなど</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">期限の利益喪失条項が発動<br><small>貸付債権の弁済期が直ちに到来</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">相殺適状が成立<br><small>Bは預金と相殺して回収</small></div>
+  </div>
+
+  <div class="term">
+    <strong>期限の利益喪失条項（期限の利益喪失約款）</strong>：「債務者の財産に差押えがあったとき、破産手続開始の申立てがあったとき等は、債務者は当然に期限の利益を失い、直ちに全額を弁済する」という契約条項。銀行取引約定書には必ず入っている。民法137条（法定の喪失事由）を契約で大幅に拡張したもの。<br>
+    これにより銀行は、<strong>債務者が危なくなった瞬間に相殺適状を「作出」して</strong>、預金との相殺に持ち込める。
+  </div>
+
+  <div class="key">
+    まとめ：相殺適状の発生タイミングは、<br>
+    ① 受働債権側 → <strong>期限の利益の放棄</strong>でいつでも前倒し可能<br>
+    ② 自働債権側 → <strong>期限の利益喪失条項</strong>で危機時に自動的に前倒しされる<br>
+    → 結果として、債権者（とくに銀行）は<strong>「いざというとき必ず相殺できる」体制</strong>を契約で完備している。これが講義95以降の「相殺の期待は保護に値する」という議論の現実的基盤。
+  </div>
+
+  <div class="warn">
+    よくある誤解：「505条に『双方の弁済期到来』と書いてあるから、受働債権の弁済期が来るまで相殺は絶対できない」→ <strong>誤り</strong>。受働債権については期限の利益を放棄して相殺できる。505条の文言は、期限の利益の放棄と組み合わせて読む必要がある。<br>
+    逆の誤解：「自働債権も期限の利益を放棄すれば弁済期前に相殺できる」→ <strong>誤り</strong>。自働債権の期限の利益は<strong>債務者（相手方）</strong>のものだから、債権者が勝手に放棄することはできない。
+  </div>
+
+  <div class="quiz">
+    Q1: なぜ自働債権の弁済期到来は必須で、受働債権の弁済期到来は不要にできるのか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>相殺は実質上「自分の債務を任意に弁済して、相手方の債務の弁済を強制する」行為。受働債権について期限前に「払う」のは単なる期限前弁済であり、自分の期限の利益（民136条2項）を自分で放棄するだけだから問題ない。これに対し自働債権の弁済期前の相殺は、相手方が持つ期限の利益を一方的に奪って「期限前に払え」と強制することになるから許されない。</p>
+    </details>
+    Q2: B銀行のAへの貸付金の弁済期は1年後。Aの預金が差し押さえられた。Bは相殺できるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>銀行取引約定書の<strong>期限の利益喪失条項</strong>により、差押えがあった時点でAは当然に期限の利益を失い、貸付債権（自働債権）の弁済期が直ちに到来する。預金債権（受働債権）についても期限の利益を放棄できるから、相殺適状が成立し、Bは相殺できる。差押えとの優劣は511条の問題（講義95〜）になるが、自働債権の取得が差押え前なら対抗できる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義94 ========== -->
+<div class="section" id="lec94">
+  <div class="section-header">
+    <div class="section-num">94</div>
+    <h2>自働債権適格、受働債権適格</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>どんな債権でも相殺の「剣」（自働債権）や「盾」（受働債権）になれるわけではありません。<strong>強制実現できない債権は剣になれず</strong>、<strong>現実に支払わせる必要のある債権は盾（相殺の的）にできない</strong>のです。</p>
+
+  <div class="analogy">
+    剣と盾の資格試験にたとえると：<br>
+    <strong>剣（自働債権）の試験</strong>：「その剣、本当に斬れるの？」— 裁判所でも強制実現できない“なまくら”（自然債務など）は、相殺という形でも人を斬ってはいけない。<br>
+    <strong>盾（受働債権）の試験</strong>：「その支払い、本当に帳簿上の処理で済ませていいの？」— 被害者の治療費や生活費のように<strong>現金が現実に手元に届かなければ意味がない</strong>債権は、相殺の盾にしてはいけない（現実に払え！）。
+  </div>
+
+  <h3>自働債権になれない債権（剣の失格）</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：自働債権適格のルール</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">自働債権適格</span>
+        <ul>
+          <li>
+            <span class="node l1">原理：相殺＝自働債権の「強制実現」</span>
+            <ul>
+              <li><span class="node l2">相殺する側は、相手に強制的に弁済させたのと同じ結果を得る</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node danger">失格① 強制執行で実現できない債権</span>
+            <ul>
+              <li><span class="node l2">自然債務に対応する債権（裁判で請求できない約束）</span></li>
+              <li><span class="node l2">責任なき債務に対応する債権（執行対象財産がないと合意）</span></li>
+              <li><span class="node l3">理由：強制実現できない債権を相殺で強制実現できたら背理</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node danger">失格② 抗弁権が付着した債権</span>
+            <ul>
+              <li><span class="node l2">同時履行の抗弁権（民533条）・保証人の催告検索の抗弁など</span></li>
+              <li><span class="node l3">理由：相殺を許すと相手の抗弁権を一方的に奪うことになる</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    講義の核心ロジック：<br>
+    <strong>「強制執行によって目的を実現することが許されない債権を自働債権とする相殺を認めるのは、強制実現できない債権を強制実現できる、という背理に陥る」</strong><br>
+    相殺は“私的な強制執行”の顔を持つ。だから、国家の強制執行で通らないものは、相殺という抜け道でも通してはいけない。
+  </div>
+
+  <h3>受働債権にできない債権（盾の失格）</h3>
+  <p>他面、逆方向の規制もあります。<strong>債権者に現実のお金を渡すことに意味がある債権</strong>は、相殺で「払ったことにする」のを禁じられます。</p>
+
+  <table>
+    <tr><th>条文</th><th>受働債権にできない債権</th><th>趣旨</th></tr>
+    <tr><td>民509条1号</td><td>悪意（積極的な加害意思）による不法行為に基づく損害賠償債権</td><td>不法行為の誘発防止（「貸金を回収できないから殴って相殺」を許さない）</td></tr>
+    <tr><td>民509条2号</td><td>人の生命・身体の侵害による損害賠償債権（債務不履行によるものも含む）</td><td>被害者に<strong>現実の弁済</strong>（治療費・生活費）を確保させる</td></tr>
+    <tr><td>民510条</td><td>差押禁止債権（給料の一定部分、年金など）</td><td>債務者の<strong>生活保障</strong>。現実に受け取らせる必要がある</td></tr>
+    <tr><td>民511条</td><td>差押えを受けた債権（一定の場合）</td><td>差押えの実効性の確保 → 講義95〜100の主戦場</td></tr>
+  </table>
+
+  <div class="warn">
+    向きを間違えないこと！ 509条・510条が禁じるのは、これらの債権を<strong>受働債権</strong>とする相殺だけです。<br>
+    例：交通事故の<strong>被害者の側から</strong>、損害賠償債権を<strong>自働債権</strong>として、加害者への借金と相殺するのは<strong>OK</strong>（被害者が自ら現実の受領を不要と判断したのだから問題ない）。<br>
+    同様に、差押禁止債権の<strong>債権者の側から</strong>相殺を仕掛けるのも自由。禁止は常に「現実に受け取るべき人を守る」方向にだけ働く。
+  </div>
+
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>⚔️ 自働債権サイドの規制</h4>
+      <p>守られるのは<strong>相殺される側（相手方）</strong></p>
+      <ul>
+        <li>強制実現できない債権 → ✕</li>
+        <li>抗弁権付き債権 → ✕</li>
+        <li>キーワード：「<strong>強制実現の背理</strong>」「<strong>抗弁権の剥奪</strong>」</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🛡️ 受働債権サイドの規制</h4>
+      <p>守られるのは<strong>現実の支払いを受けるべき債権者</strong></p>
+      <ul>
+        <li>悪意の不法行為・生命身体侵害の賠償債権 → ✕（509条）</li>
+        <li>差押禁止債権 → ✕（510条）</li>
+        <li>差押え後取得債権との関係 → 511条</li>
+        <li>キーワード：「<strong>現実の弁済の確保</strong>」</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quiz">
+    Q1: 同時履行の抗弁権が付着した債権を自働債権とする相殺が許されないのはなぜ？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>同時履行の抗弁権は「相手が履行を提供するまで自分も履行を拒める」という相手方の防御手段。これが付着した債権で相殺を許すと、相手方は反対給付を受けないまま一方的に「弁済した」扱いにされ、抗弁権を行使する機会を奪われる。だから抗弁権付き債権は自働債権適格を欠く。なお、自分の側の抗弁権を自分で放棄して受働債権にするのは自由。</p>
+    </details>
+    Q2: 交通事故でケガをしたXは、加害者Yから以前50万円を借りていた。①Yから「賠償金と貸金を相殺する」と言える？ ②Xからは？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>① 言えない。生命・身体の侵害による損害賠償債権を<strong>受働債権</strong>とする相殺は民509条2号で禁止される（Xに現実の治療費等を確保させる趣旨）。<br>
+      ② 言える。Xが賠償債権を<strong>自働債権</strong>として相殺するのは、現実の受領による保護を自ら不要としただけなので禁止されない。</p>
+    </details>
+    Q3: 差押禁止債権（例：給料債権の4分の3）を受働債権とする相殺が禁止される（民510条）のはなぜ？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>給料等の差押禁止債権は、債務者とその家族の生活を維持するために<strong>現実に受領させる</strong>必要があるから差押えが禁じられている。使用者などがこれを受働債権として相殺で消滅させられるなら、差押禁止の趣旨が没却される。よって相殺の的（受働債権）にすることも禁止される。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義95 ========== -->
+<div class="section" id="lec95">
+  <div class="section-header">
+    <div class="section-num">95</div>
+    <h2>差押えと相殺：問題の所在</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>Aの預金債権を差し押さえた<strong>債権者C</strong>と、Aへの貸付金との<strong>相殺で回収したいB銀行</strong>。1つの預金をめぐる三つ巴の対決 — これが「差押えと相殺」問題です。戦いの舞台は<strong>取立訴訟</strong>、Bの武器は<strong>相殺の抗弁</strong>です。</p>
+
+  <div class="analogy">
+    冷蔵庫のプリンにたとえると：<br>
+    AはB銀行という冷蔵庫にプリン（定期預金）を預けている。<br>
+    Aにお金を貸しているCが「Aの財産はあのプリンしかない！」と差押えにきた。<br>
+    ところが冷蔵庫の持ち主Bが言う —「ちょっと待った。<strong>Aはウチにも借金がある。このプリンはその引当てとして当てにしていたんだ</strong>。差し引き（相殺）させてもらう」。<br>
+    プリンは1つ。CとB、どちらの言い分が通るのか？
+  </div>
+
+  <h3>事案の構図（このブロック共通の登場人物）</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">A（執行債務者）<br><small>B銀行に定期預金<br>＝Bに対する預金債権者</small></div>
+    <div class="flow-arrow">←</div>
+    <div class="flow-item f-orange">B銀行（第三債務者）<br><small>Aに貸付債権を持つ<br>＝相殺したい</small></div>
+    <div class="flow-arrow">⚡</div>
+    <div class="flow-item f-red">C（差押債権者）<br><small>Aへの債権の回収のため<br>A→Bの預金債権を差押え</small></div>
+  </div>
+
+  <h3>手続の流れ：取立訴訟とは</h3>
+  <p>講義95は、この対決が<strong>どの法廷で、どんな形式で</strong>行われるかを民事執行法のレベルから正確に描きます。講義5〜6で学んだ「権利実現の手続」の知識がここで生きてきます。</p>
+  <div class="flow">
+    <div class="flow-item f-blue">Cが債務名義を取得<br><small>Aに対する勝訴判決など</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">A→Bの預金債権を差押え<br><small>債権執行（民執145条）<br>裁判所がBに支払禁止を命令</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">Cが取立権を取得<br><small>民執155条<br>CがBに直接「払え」と言える</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">Bが拒否 → 取立訴訟<br><small>民執157条</small></div>
+  </div>
+
+  <div class="term">
+    <strong>取立訴訟（とりたてそしょう）</strong>：差押債権者Cが、第三債務者Bに対し「差し押さえた債権を私に支払え」と求める訴訟。<br>
+    訴訟法的に正確に言うと — Cは民事執行法が与える<strong>取立権を原告適格の権原</strong>とし、<strong>AのBに対する預金払戻請求権を訴訟物</strong>として、自分への支払いを請求する。<strong>他人（A）の権利を自分の名で訴訟追行する</strong>ので、<strong>法定訴訟担当</strong>の一類型である。
+  </div>
+
+  <h3>Bの反撃：相殺の抗弁</h3>
+  <p>取立訴訟でB銀行はこう主張します。</p>
+  <div class="key">
+    「私はAに対して貸付債権（自働債権）を持っている。これとAの預金債権（受働債権）を<strong>相殺</strong>した。だから預金債権はもう消滅しており、Cに支払うべきものはない」<br>
+    → これが<strong>相殺の抗弁</strong>。認められれば、Cの差押えは空振りに終わる。
+  </div>
+
+  <h3>対立する利益：何と何がぶつかっているのか</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🏛️ 差押債権者Cの言い分</h4>
+      <ul>
+        <li>「国家の執行手続で適法に差し押さえた。<strong>差押えの実効性</strong>を守れ」</li>
+        <li>「差押え後に相殺で債権を消されたら、執行制度が骨抜きになる」</li>
+        <li>守りたいもの：<strong>強制執行制度への信頼</strong></li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🏦 第三債務者B銀行の言い分</h4>
+      <ul>
+        <li>「Aに貸したのは、<strong>預金と相殺できる</strong>と期待していたからだ」</li>
+        <li>「後から現れた差押債権者に、先にあった担保的期待を壊されてたまるか」</li>
+        <li>守りたいもの：<strong>相殺の担保的機能への合理的期待</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn">
+    この問題は「どちらかが100％正しい」話ではありません。<br>
+    Bの相殺期待を<strong>無限定に</strong>保護すれば、債権差押えという執行手段（とくに預金差押え）はほぼ無力化します。逆に相殺を<strong>全面的に</strong>封じれば、講義91〜93で見た銀行実務（預金を引当てとする与信）の基盤が崩れます。<br>
+    → 法は<strong>「時間軸で線を引く」</strong>ことで調整しました。その線引きのルールが民法511条（講義96〜99）。
+  </div>
+
+  <div class="quiz">
+    Q1: 取立訴訟の訴訟物は誰のどんな権利？ なぜCが原告になれる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>訴訟物は<strong>AのBに対する預金払戻請求権</strong>（C自身のAに対する債権ではない）。Cは差押えによって民事執行法155条の<strong>取立権</strong>を取得し、これを権原として他人Aの権利を自分の名で訴訟上行使する。これは<strong>法定訴訟担当</strong>の一類型である。</p>
+    </details>
+    Q2: 「差押えと相殺」問題で対立している2つの利益を一言ずつで言うと？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>①差押債権者側：<strong>強制執行（差押え）の実効性</strong>。②第三債務者側：<strong>相殺の担保的機能に対する合理的期待</strong>。511条は、自働債権の取得が差押えの前か後かという時間軸でこの両者の優劣を画する。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義96 ========== -->
+<div class="section" id="lec96">
+  <div class="section-header">
+    <div class="section-num">96</div>
+    <h2>差押えと相殺：改正前の民法511条とその解釈</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>旧511条をめぐっては<strong>制限説</strong>（弁済期の先後で絞る）と<strong>無制限説</strong>（差押え前に取得した債権なら常に相殺可）が激突し、<strong>最高裁大法廷昭和45年6月24日判決が無制限説を採用</strong>しました。改正法を理解するには、この判例法理の理解が不可欠です。</p>
+
+  <div class="analogy">
+    行列の割り込みルールにたとえると：<br>
+    人気店の行列（Aの預金という獲物）に、B銀行は<strong>ずっと前から並んでいた</strong>（差押え前から貸付債権を持っていた）。そこへCが差押えという整理券を持って現れた。<br>
+    <strong>制限説</strong>：「Bさん、並んでいたのは認めるけど、あなたの整理券の時刻（自働債権の弁済期）がCの整理券（差押え）より遅いなら、Cが先ね」<br>
+    <strong>無制限説</strong>：「<strong>Cが来る前から並んでいた</strong>なら、整理券の時刻なんて関係ない。Bが先」<br>
+    最高裁は無制限説を採りました。
+  </div>
+
+  <h3>旧511条の文言と、それが答えていなかったこと</h3>
+  <div class="term">
+    <strong>旧民法511条</strong>：「支払の差止めを受けた第三債務者は、<strong>その後に取得した債権</strong>による相殺をもって差押債権者に対抗することができない。」<br>
+    ※「支払の差止め」＝差押えの効果のこと。
+  </div>
+  <p>この条文から確実に読み取れるのは2つだけです。</p>
+  <ul>
+    <li><strong>差押え後に取得</strong>した債権を自働債権とする相殺 → 対抗<strong>できない</strong>（明文）</li>
+    <li>では<strong>差押え前に取得</strong>していた債権なら？ → 反対解釈すれば「対抗できる」はずだが、<strong>無条件にそう言ってよいのか</strong>が条文からは不明 → ここで解釈が割れた</li>
+  </ul>
+
+  <h3>制限説 vs 無制限説</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>制限説（最判昭39.12.23）</h4>
+      <ul>
+        <li>差押え前に取得した債権でも、<strong>自働債権の弁済期が受働債権の弁済期より後</strong>に来るなら相殺で対抗できない</li>
+        <li>発想：差押え時点で「先に支払うべきは第三債務者の側」だったのなら、相殺への期待はまだ確定的でない</li>
+        <li>差押えの実効性を重視</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>無制限説（最大判昭45.6.24）★判例</h4>
+      <ul>
+        <li><strong>差押え前に自働債権を取得</strong>してさえいれば、<strong>双方の弁済期の前後を問わず</strong>、相殺適状に達しさえすれば相殺で対抗できる</li>
+        <li>発想：対立する債権を持つ者は、いつでも相殺で清算できるという<strong>担保的機能への期待</strong>を持つ。この期待は差押えより前に成立していた以上、保護すべき</li>
+        <li>相殺の担保的機能を重視</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>時系列フロー図で比較する</h3>
+  <h4>ケース：貸付債権（自働債権）の弁済期が、預金（受働債権）の弁済期より後の場合</h4>
+  <div class="flow">
+    <div class="flow-item f-green">①Bが貸付け<br><small>自働債権の取得</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">②Cが差押え</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">③預金の弁済期</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">④貸付金の弁済期</div>
+  </div>
+  <table>
+    <tr><th>学説</th><th>このケースの結論</th><th>理由</th></tr>
+    <tr><td>制限説</td><td>相殺で対抗<strong>できない</strong></td><td>自働債権の弁済期（④）が受働債権の弁済期（③）より後。差押え時点では「Bが先に払う」関係だった</td></tr>
+    <tr><td>無制限説</td><td>相殺で対抗<strong>できる</strong></td><td>自働債権の取得（①）が差押え（②）より前である以上、弁済期の前後は問わない</td></tr>
+  </table>
+
+  <div class="key">
+    <strong>最大判昭45.6.24（無制限説）の意義</strong>：<br>
+    ① 差押え前に取得した債権であれば、弁済期の前後を問わず、第三債務者は相殺をもって差押債権者に対抗できる。<br>
+    ② さらに、銀行取引約定書の<strong>期限の利益喪失条項</strong>（差押えがあれば貸付金の期限が直ちに到来する：講義93）の有効性も是認した。<br>
+    → ①＋②の合わせ技で、銀行は<strong>「差押え前からの貸付債権がありさえすれば、ほぼ常に相殺で勝てる」</strong>体制が完成。預金担保金融の実務はこの判例の上に築かれている。
+  </div>
+
+  <div class="warn">
+    「改正前のことはどうでもいい」は通用しません。先生が強調するとおり、改正511条は<strong>「判例法理（無制限説）の承継」を前提として読まなければ機能不全に陥る</strong>条文です（講義97・99）。旧法下の対立構図を知らないと、改正法の文言の不出来さに気づくことすらできません。
+  </div>
+
+  <div class="quiz">
+    Q1: 制限説と無制限説の違いを「線を引く基準」の違いとして説明してみよう。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>両説とも「差押え後に取得した自働債権では対抗できない」点は共通（旧511条の明文）。違いは差押え<strong>前</strong>に取得した債権の扱い。制限説はさらに<strong>双方の弁済期の先後</strong>という第2の基準を持ち込み、自働債権の弁済期が受働債権より後なら対抗を否定する。無制限説は<strong>取得時期が差押え前か</strong>という1本の基準だけで判定し、弁済期の前後は問わない。最大判昭45.6.24は無制限説を採用。</p>
+    </details>
+    Q2: 無制限説が相殺の期待を保護する実質的理由は？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>互いに債権を対立させている当事者は、「いざとなれば相殺で確実に回収できる」という<strong>担保的機能への合理的期待</strong>のもとに信用を供与している（銀行が預金者に融資するのが典型）。この期待は差押えの前から存在していた以上、後から登場した差押債権者に劣後する理由はない。差押債権者は債務者が持つ以上の地位を取得できない、という発想でもある。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義97 ========== -->
+<div class="section" id="lec97">
+  <div class="section-header">
+    <div class="section-num">97</div>
+    <h2>改正511条：判例法理の承継と相殺権保護の拡張</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>2017年改正（2020年施行）の民法511条は、①<strong>無制限説を明文化</strong>し（1項）、さらに②<strong>「差押え前の原因」から生じた債権なら差押え後の取得でも相殺OK</strong>と保護を<strong>拡張</strong>しました（2項本文）。ただし③<strong>差押え後に他人から取得した債権はダメ</strong>（2項ただし書）。</p>
+
+  <div class="analogy">
+    コンサートの入場ルールにたとえると：<br>
+    差押えの瞬間に会場のゲートが閉まるとイメージしてください。<br>
+    <strong>1項</strong>＝ゲートが閉まる<strong>前に入場済み</strong>の人（差押え前に取得した債権）→ 文句なしOK<br>
+    <strong>2項本文</strong>＝ゲートは閉まった後に着いたが、<strong>閉まる前にチケットを買ってあった</strong>人（差押え前の原因に基づき差押え後に生じた債権）→ OK（ここが旧法からの拡張！）<br>
+    <strong>2項ただし書</strong>＝ゲートが閉まってから<strong>他人のチケットを買い取って</strong>入ろうとする人（差押え後に他人の債権を譲り受けた）→ ✕ それは転売ヤー、認めない
+  </div>
+
+  <h3>改正511条の構造</h3>
+  <div class="term">
+    <strong>民法511条</strong><br>
+    <strong>1項</strong>：差押えを受けた債権の第三債務者は、<strong>差押え後に取得した債権</strong>による相殺をもって差押債権者に対抗することは<strong>できない</strong>が、<strong>差押え前に取得した債権</strong>による相殺をもって対抗することが<strong>できる</strong>。<br>
+    <strong>2項本文</strong>：前項の規定にかかわらず、差押え後に取得した債権が<strong>差押え前の原因に基づいて生じたもの</strong>であるときは、その第三債務者は、その債権による相殺をもって差押債権者に対抗することが<strong>できる</strong>。<br>
+    <strong>2項ただし書</strong>：ただし、第三債務者が差押え後に<strong>他人の債権を取得したとき</strong>は、この限りでない。
+  </div>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：改正511条による勝敗判定</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">B（第三債務者）の自働債権は…</span>
+        <ul>
+          <li>
+            <span class="node l1">差押え前に取得していた</span>
+            <ul>
+              <li><span class="node l2">→ 1項後段：相殺で対抗できる ◯</span></li>
+              <li><span class="node l3">弁済期の前後は不問＝無制限説の明文化</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">差押え後に取得した</span>
+            <ul>
+              <li>
+                <span class="node l2">差押え前の原因に基づいて生じた？</span>
+                <ul>
+                  <li><span class="node accent">YES → 2項本文：対抗できる ◯（保護の拡張）</span></li>
+                  <li><span class="node danger">YES でも他人から承継取得 → 2項ただし書：✕</span></li>
+                  <li><span class="node danger">NO（差押え後の原因）→ 1項前段：✕</span></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>「差押え前の原因」とは？ — 2項本文の具体例</h3>
+  <div class="flow">
+    <div class="flow-item f-green">①差押え前<br>BがAの委託で<br>保証人になる<br><small>＝原因（保証契約）の成立</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">②Cが<br>Aの預金を差押え</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">③Bが保証債務を弁済<br><small>Aへの求償権が発生<br>＝債権の取得は差押え後</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">④求償権を自働債権に相殺<br><small>2項本文で対抗できる ◯</small></div>
+  </div>
+  <p>求償権そのものは差押え<strong>後</strong>に発生していますが、その<strong>原因（保証契約・委託）は差押え前</strong>に存在しました。Bは「保証人として払わされたら、Aの預金と相殺すればいい」という期待を差押え前から持っていた — この期待を保護するのが2項本文です。旧法・判例下では争いがあった部分を、立法で明確に<strong>相殺権者有利に拡張</strong>しました。</p>
+
+  <h3>旧法・改正法の比較表</h3>
+  <table>
+    <tr><th>自働債権の状況</th><th>旧511条＋判例（無制限説）</th><th>改正511条</th></tr>
+    <tr><td>差押え前に取得（弁済期は差押え後）</td><td>対抗できる（最大判昭45.6.24）</td><td>対抗できる（1項で明文化）</td></tr>
+    <tr><td>差押え後に取得・差押え前の原因に基づく</td><td>明文なし（解釈に争い）</td><td><strong>対抗できる（2項本文・拡張）</strong></td></tr>
+    <tr><td>差押え後に他人から承継取得</td><td>対抗できない</td><td>対抗できない（2項ただし書）</td></tr>
+    <tr><td>差押え後の原因に基づき取得</td><td>対抗できない</td><td>対抗できない（1項）</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>条文の文理には問題がある</strong> — 先生の指摘の核心です。<br>
+    1項前段は「差押え後に取得した債権による相殺は対抗できない」と<strong>広く</strong>書き、2項本文がそこから「差押え前の原因」のものを<strong>救済し</strong>、ただし書が救済から「他人から取得したもの」を<strong>除外する</strong>…という三段構えの迂遠な構造です。立法経緯からは無制限説の承継＋拡張という趣旨は明らかなのに、文理だけを素直に読むと適用関係を誤りかねない。この問題意識が講義99の「正しい511条」につながります。
+  </div>
+
+  <div class="quiz">
+    Q1: 改正511条1項は判例法理とどういう関係にある？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>最大判昭45.6.24の<strong>無制限説を承継・明文化</strong>したもの。立法過程では無制限説の射程を限定する案（制限説的な規定ぶり）も検討されたが採用されず、「差押え前に取得した債権による相殺をもって対抗することができる」と、弁済期の前後を問わない形で確定した。</p>
+    </details>
+    Q2: 2項本文は旧法と比べて何を「拡張」した？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>旧法の明文では、差押え<strong>後</strong>に取得した債権による相殺は一律対抗不能と読めた。改正2項本文は、債権の発生（取得）自体は差押え後でも、その<strong>原因が差押え前</strong>に存在していれば（例：差押え前の保証委託に基づき差押え後の弁済で発生した求償権）相殺で対抗できるとし、相殺の担保的機能の保護を取得時期基準から<strong>原因時期基準へと拡張</strong>した。</p>
+    </details>
+    Q3: 差押え後、BがDからD・A間の債権を譲り受けて相殺を主張した。結論は？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>対抗できない。その債権の発生原因が差押え前にあったとしても、Bが<strong>差押え後に他人Dから取得</strong>した以上、511条2項ただし書により相殺をもって差押債権者に対抗できない。趣旨は講義98で扱う「債権買い集めによる執行妨害の防止」。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義98 ========== -->
+<div class="section" id="lec98">
+  <div class="section-header">
+    <div class="section-num">98</div>
+    <h2>民法511条2項ただし書の趣旨</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>差押え後に<strong>他人から債権を買い集めて</strong>相殺するのは、保護すべき「相殺の期待」がもともと存在しないうえ、<strong>執行妨害の道具</strong>になる。だから2項ただし書はこれを遮断します。訴訟の場では、これは<strong>再抗弁</strong>として現れます。</p>
+
+  <div class="analogy">
+    閉店セールの抜け駆けにたとえると：<br>
+    Aの店が差押えを受けた（＝もうすぐ財産が換価される）。Aに対する債権はもはや満額回収が怪しいので、市場では<strong>額面100円の債権が30円で投げ売り</strong>されている。<br>
+    そこへ第三債務者Bが現れて、Dから100円の債権を30円で買い取り、「Aへの100円の債務（預金）と相殺します」— Bは差額70円の丸儲け、差押債権者Cの獲物はゼロに。<br>
+    こんな「<strong>債権の安値買い集めによる相殺」</strong>を許せば、差押えは誰でも簡単に骨抜きにできてしまう。だから禁止。
+  </div>
+
+  <h3>なぜ「他人から取得した債権」だけ除外されるのか</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>◯ 2項本文が守るもの</h4>
+      <p><strong>A・B間で発生した債権</strong>（差押え前の原因に基づく）</p>
+      <ul>
+        <li>BはA との<strong>直接の取引関係</strong>の中で「いざとなれば相殺できる」という期待を差押え前から形成していた</li>
+        <li>保護に値する<strong>正当な相殺期待</strong>がある</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>✕ ただし書が遮断するもの</h4>
+      <p><strong>第三者Dから承継取得した債権</strong></p>
+      <ul>
+        <li>差押え前のB自身には、その債権による相殺の期待など<strong>存在しなかった</strong></li>
+        <li>差押え後の取得は、<strong>無資力者への債権を安く買って額面で相殺する</strong>投機・執行妨害にすぎない</li>
+        <li>差押えの実効性（債権者平等）を害する</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    講義の鋭い指摘：<strong>自己の債権について強制執行を受けるようなAが、他にも潤沢な資力を持っていることは通常ない</strong>。<br>
+    つまり差押えの時点で、Aに対する債権の実価値は額面を大きく割っている。それを額面どおりの「相殺の弾」として使わせれば、第三債務者に不当な利得を与え、差押債権者を害するだけ。ただし書は、この<strong>濫用の経済的構造</strong>を見抜いて線を引いている。
+  </div>
+
+  <h3>訴訟ではどう現れるか：要件事実の攻防</h3>
+  <p>講義98のもう一つの柱は、<strong>取立訴訟における主張立証の構造</strong>です。これは講義99の「条文の機能は再抗弁事由を定めることにある」という理解に直結します。</p>
+  <div class="flow">
+    <div class="flow-item f-blue">請求原因（C）<br><small>Aの預金債権の存在<br>＋差押え・取立権</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">抗弁（B）<br><small>相殺：自働債権の<br><strong>取得経過</strong>＋相殺の意思表示</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">再抗弁（C）<br><small>相殺障害事由：<br>取得が差押え後／<br>他人からの承継取得</small></div>
+  </div>
+
+  <div class="term">
+    <strong>抗弁・再抗弁</strong>：抗弁＝被告が請求原因と両立する別の事実で請求を排斥する主張（ここではBの相殺）。再抗弁＝原告が抗弁と両立する別の事実で抗弁の効果を覆す主張（ここではCの「相殺障害」の主張）。<br>
+    ポイント：Bが相殺の抗弁を出すには<strong>自働債権の取得経過</strong>まで主張しなければならない。その取得経過から「第三者Dからの承継取得」が判明したとき、Cが何を再抗弁として主張すべきかに<strong>特別の考慮</strong>が必要になる — これが講義100の応用問題の予告です。
+  </div>
+
+  <div class="warn">
+    よくある誤解：「差押え前の原因に基づく債権なら、誰から取得しても2項本文で相殺できる」→ <strong>誤り</strong>。<br>
+    D・A間で差押え前に発生していた債権（原因は差押え前！）でも、Bがそれを<strong>差押え後にDから譲り受けた</strong>のなら、ただし書で対抗不能。2項本文の保護は、<strong>B自身の差押え前からの法律関係</strong>に由来する債権に限られると理解すべき。
+  </div>
+
+  <div class="quiz">
+    Q1: 2項ただし書がなかったら、どんな悪用が可能になる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>差押えを受けた債務者Aに対する債権は、Aの無資力ゆえに額面を大きく割った価格で取引される。第三債務者Bがこれを安価で買い集め、額面どおりの自働債権として預金債務と相殺すれば、Bは差額を利得し、差押債権者Cの執行は空振りになる。債務者A側と通謀すれば意図的な<strong>執行妨害スキーム</strong>にもなる。ただし書はこれを遮断する。</p>
+    </details>
+    Q2: 取立訴訟で、Bの相殺の抗弁に対しCが出しうる再抗弁（511条関係）を整理せよ。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>①自働債権の取得が差押え後であり、かつ差押え後の原因に基づくこと（1項・2項本文の不適用）。②自働債権の取得が差押え後であり、それが<strong>他人からの承継取得</strong>であること（2項ただし書）。Bの抗弁段階で主張される「取得経過」の内容に応じて、Cが主張すべき再抗弁事由が決まる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義99 ========== -->
+<div class="section" id="lec99">
+  <div class="section-header">
+    <div class="section-num">99</div>
+    <h2>正しい民法511条 — 先生の立法批判</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>現行511条の三段構え（1項→2項本文→ただし書）は回りくどく、誤読を招く。先生いわく、511条は本来<strong>「対抗できない場合」だけを端的に書けば足りる</strong> — 「差押え後の原因に基づいて取得した債権」と「差押え後に他人から取得した債権」の2つです。</p>
+
+  <div class="analogy">
+    入場規則の書き方にたとえると：<br>
+    <strong>現行法の書き方</strong>：「閉門後に来た人は入れません（1項）。ただし閉門前にチケットを買っていた人は入れます（2項本文）。ただしそのチケットが転売品なら入れません（ただし書）」— 3回読まないと結論が分からない。<br>
+    <strong>先生の書き方</strong>：「<strong>入れないのは次の2種類だけ：①閉門後にチケットを買った人、②閉門後に転売品を手に入れた人</strong>」— 1回で分かる。<br>
+    ルールの中身は同じでも、書き方で条文の使い勝手は天と地ほど違う。
+  </div>
+
+  <h3>先生の提案する「正しい511条」</h3>
+  <div class="key">
+    <strong>「差押えを受けた債権の第三債務者は、①差押え後の原因に基づいて取得した債権 又は ②差押え後に他人から取得した債権 による相殺をもって差押債権者に対抗することはできない。」</strong><br><br>
+    この一文だけでよい。なぜなら：<br>
+    ・対抗<strong>できる</strong>場合をいちいち書く必要はない（相殺は本来自由。禁止されない限りできるのが原則）<br>
+    ・無制限説（弁済期の前後不問）も、2項本文の拡張（差押え前の原因なら可）も、<strong>「禁止リストに載っていない」という形で自動的に実現</strong>される
+  </div>
+
+  <h3>現行法と「正しい511条」の対照</h3>
+  <table>
+    <tr><th>ケース</th><th>現行511条の道筋</th><th>正しい511条の道筋</th><th>結論</th></tr>
+    <tr><td>差押え前に取得した債権</td><td>1項後段「対抗できる」</td><td>禁止リスト外 → 当然できる</td><td>◯</td></tr>
+    <tr><td>差押え後取得・差押え前の原因</td><td>1項前段でいったん✕ → 2項本文で◯に救済</td><td>禁止リスト外 → 当然できる</td><td>◯</td></tr>
+    <tr><td>差押え後の原因に基づき取得</td><td>1項前段「対抗できない」</td><td>禁止①に該当</td><td>✕</td></tr>
+    <tr><td>差押え後に他人から取得</td><td>2項本文でいったん◯ → ただし書で✕に再反転</td><td>禁止②に該当</td><td>✕</td></tr>
+  </table>
+  <p>結論は完全に同じ。しかし現行法は「✕→◯→✕」と<strong>2回も結論が反転する</strong>読み方を強います。これが先生の言う<strong>「機能不全」</strong>の正体です。</p>
+
+  <h3>条文の真の機能：再抗弁事由のカタログ</h3>
+  <div class="term">
+    <strong>先生の喝破</strong>：「条文の機能は、<strong>取立訴訟において相殺の抗弁に対する相殺障害の再抗弁事由を定めること</strong>にある。」<br>
+    つまり511条は「相殺できる場合の一覧表」ではなく、差押債権者Cが法廷で使う<strong>「再抗弁の武器リスト」</strong>。武器は2つ — ①「その自働債権、差押え後の原因で取得したものですよね」②「その自働債権、差押え後に他人から買ったものですよね」。リストならリストらしく、端的に2項目書けばよい。
+  </div>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：511条を「武器リスト」として読み直す</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">取立訴訟の攻防と511条</span>
+        <ul>
+          <li>
+            <span class="node l1">B（第三債務者）の抗弁：相殺</span>
+            <ul>
+              <li><span class="node l2">自働債権の発生原因事実＋取得経過</span></li>
+              <li><span class="node l2">相殺適状＋相殺の意思表示</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">C（差押債権者）の再抗弁：相殺障害</span>
+            <ul>
+              <li><span class="node danger">武器① 自働債権が差押え後の原因に基づくこと</span></li>
+              <li><span class="node danger">武器② 自働債権が差押え後の他人からの取得であること</span></li>
+              <li><span class="node l3">→ どちらかが立てば、Bの相殺はCに対抗できない</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="warn">
+    「立法者、しっかりしろ。」— 講義99の結語です。<br>
+    初学者へのメッセージとして受け取るべきは、<strong>条文は無謬ではない</strong>ということ。条文の文言を盲信して三段構えを機械的に適用するのではなく、「この条文は<strong>何のために</strong>あるのか（趣旨・機能）」から逆算して読む訓練をすること。判例法理の承継という立法経緯を知らずに文理だけ読むと、511条は容易に誤読されます。
+  </div>
+
+  <div class="quiz">
+    Q1: 先生の「正しい511条」では、相殺で「対抗できる」場合の規定が消えている。それでなぜ困らないのか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>相殺は相殺適状があれば本来自由にできるのが原則であり、511条のような規定は<strong>例外的に対抗を遮断する場面</strong>を定めればそれで足りる。「対抗できない場合」を限定列挙すれば、それ以外の場合（差押え前の取得、差押え前の原因に基づく取得）は当然に対抗できることになり、無制限説も2項本文の拡張もすべて含意される。</p>
+    </details>
+    Q2: 「条文の機能は再抗弁事由を定めることにある」とはどういう意味？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>511条が現実に働く場面は、差押債権者Cの取立訴訟において第三債務者Bが相殺の抗弁を出したとき。このときCが相殺の効果を覆すために主張する<strong>相殺障害事由（再抗弁）</strong>の内容を定めるのが511条の実務上の役割である。だから条文は、再抗弁として主張すべき事実（＝対抗できない場合）を端的に列挙する形で書かれるべき、というのが先生の立法論。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義100 ========== -->
+<div class="section" id="lec100">
+  <div class="section-header">
+    <div class="section-num">100</div>
+    <h2>民511条2項ただし書の類推適用 — 保証人の求償権</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>記念すべき第100講は応用問題。第三債務者Bが<strong>保証債務の弁済で取得した求償権</strong>で相殺を主張したとき、差押債権者Cは何を再抗弁できるか — 鍵は、<strong>保証委託の有無</strong>と<strong>保証契約・弁済の時期</strong>、そして<strong>2項ただし書の類推適用</strong>です。</p>
+
+  <div class="analogy">
+    肩代わりのタイミング問題にたとえると：<br>
+    Bは、Aの借金（G銀行から）の<strong>保証人</strong>になっていて、Aの代わりにGに払った。払った分は当然Aに請求できる（<strong>求償権</strong>）。Bはこの求償権で、Aの預金（Cが差押え済み）と相殺したい。<br>
+    問題はタイミングと経緯：<br>
+    ・<strong>Aに頼まれて</strong>（保証委託）、差押えの<strong>前から</strong>保証人だった → 「いざ払わされたら預金と相殺」という期待は差押え前からあった。保護してよい。<br>
+    ・差押えの<strong>後に</strong>保証人になった／<strong>頼まれてもいない</strong>のに勝手に払った → それは「閉門後のチケット購入・転売品の持ち込み」と同じニオイがする。遮断すべきでは？
+  </div>
+
+  <h3>設例（講義100の問題）</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">G銀行 → A<br>貸付債権<br><small>BがAの保証人に</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">CがA→Bの<br>金銭債権を差押え<br><small>取立訴訟を提起</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">BがGに保証債務を弁済<br><small>Aへの求償権を取得</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">Bが求償権を自働債権として<br>相殺の抗弁<br><small>Cの再抗弁は？</small></div>
+  </div>
+
+  <h3>場合分け①：Aの委託を受けた保証（委託保証）の場合</h3>
+  <p>BがAから<strong>保証委託を受けて</strong>保証人になっていた場合、求償権（民459条）の<strong>発生原因は保証委託契約・保証契約</strong>です。すると勝敗は<strong>その契約がいつ結ばれたか</strong>で決まります。</p>
+  <table>
+    <tr><th>保証契約（G・B間）の締結時期</th><th>511条の適用</th><th>結論</th></tr>
+    <tr><td>差押え<strong>前</strong></td><td>求償権は差押え後に発生しても「<strong>差押え前の原因</strong>に基づいて生じた債権」＝2項本文</td><td>相殺で対抗<strong>できる</strong>（Cの再抗弁は立たない）</td></tr>
+    <tr><td>差押え<strong>後</strong></td><td>原因（保証契約）自体が差押え後 → 2項本文の保護なし</td><td>相殺で対抗<strong>できない</strong></td></tr>
+  </table>
+  <div class="key">
+    したがって、<strong>委託保証の場合のCの再抗弁</strong>は：<br>
+    「受働債権の差押えが、<strong>G・B間の保証契約の締結より前</strong>にされたこと（＝保証契約の締結が差押えの後であること）」<br>
+    これが立証されれば、求償権は「差押え前の原因に基づく債権」でなくなり、Bの相殺はCに対抗できない。
+  </div>
+
+  <h3>場合分け②：委託を受けない保証（無委託保証）の場合</h3>
+  <p>BがAに<strong>頼まれずに</strong>保証人となり弁済した場合（求償権は民462条）、話が変わります。Aの関与なしに、B（と G）の行動だけで、Aに対する債権（求償権）が作り出されてしまうからです。</p>
+  <div class="warn">
+    無委託保証の構造的な危険：<br>
+    Aの預金が差し押さえられた後でも、Bは勝手にAの債務の保証人になって（あるいは保証人として）弁済し、求償権を取得できてしまう。これは経済的実質において、<strong>差押え後にGの債権を買い取って相殺の弾にするのと同じ</strong>こと（講義98の「債権買い集め」と同じ構造）。<br>
+    形式的には「他人の債権の取得」ではなく「自分の求償権の原始取得」なので2項ただし書の<strong>直接適用はできない</strong> — そこで<strong>類推適用</strong>の出番。
+  </div>
+  <div class="key">
+    <strong>2項ただし書の類推適用</strong>：無委託保証人の弁済による求償権の取得は、債務者Aの意思と無関係に第三債務者が相殺の資を作出できる点で、「差押え後に他人の債権を取得した」場合と利益状況が同じ。よって、<strong>差押え後の（無委託の）弁済により取得した求償権</strong>による相殺は、ただし書の類推によりCに対抗できない、と解すべきである。<br>
+    ※平仄の合う先例として、破産の場面では最判平24.5.28が、無委託保証人が破産手続開始<strong>後</strong>に弁済して取得した求償権による相殺を、破産法72条1項1号の<strong>類推適用</strong>で否定している。同じ発想を差押えの場面に持ち込むのが講義100の解答。
+  </div>
+
+  <h3>Cの再抗弁・総まとめ</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：求償権相殺に対するCの再抗弁</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">Bの相殺の抗弁（自働債権＝Aへの求償権）</span>
+        <ul>
+          <li>
+            <span class="node l1">（ア）委託を受けた保証と判明</span>
+            <ul>
+              <li><span class="node danger">再抗弁：差押えがG・B間の保証契約締結より前であること</span></li>
+              <li><span class="node l3">→ 「差押え前の原因」（2項本文）を否定する事実</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">（イ）委託を受けない保証と判明</span>
+            <ul>
+              <li><span class="node danger">再抗弁：Bの弁済（求償権の取得）が差押え後であること</span></li>
+              <li><span class="node l3">→ 2項ただし書の類推適用による相殺障害</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="quiz">
+    Q1: 委託保証の場合、「求償権の発生は差押え後」なのにBの相殺が認められうるのはなぜ？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>511条2項本文により、差押え後に取得した債権でも「<strong>差押え前の原因</strong>に基づいて生じたもの」なら相殺で対抗できる。委託保証では、求償権の原因（保証委託・保証契約）が差押え前に成立していれば、Bは差押え前から「保証債務を履行したらAの預金と相殺して回収する」という合理的期待を有していたといえ、この期待が保護される。</p>
+    </details>
+    Q2: 無委託保証の場合に2項ただし書を「類推適用」するのはなぜ？ 直接適用ではダメ？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>ただし書の文言は「他人の債権を取得したとき」＝債権譲渡などの<strong>承継取得</strong>を予定する。無委託保証人の求償権は弁済によって自分に<strong>原始的に発生</strong>する債権なので文言に当たらず、直接適用はできない。しかし、債務者の意思と無関係に差押え後に相殺の資を作出できる点で、債権の買い集めと利益状況が同一だから、趣旨を及ぼして類推適用する（破産の場面の最判平24.5.28と同じ発想）。</p>
+    </details>
+    Q3: 講義100の問いに対する答えを、（ア）（イ）に分けて一文ずつで言ってみよう。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>（ア）Bが委託を受けた保証人であった場合、Cは「受働債権の差押えがG・B間の<strong>保証契約締結前</strong>にされたこと」を再抗弁として主張できる（原因が差押え後となり2項本文の保護が外れる）。<br>
+      （イ）Bが委託を受けない保証人であった場合、Cは「Bの<strong>弁済による求償権取得が差押え後</strong>であること」を主張し、511条2項ただし書の<strong>類推適用</strong>により相殺の対抗を阻止できる。</p>
+    </details>
+  </div>
+
+  <div class="key">
+    <strong>講義91〜100の総決算</strong>：<br>
+    ① 相殺は登記不要・契約不要の「最も手軽な担保」である（92）。<br>
+    ② その担保力は、期限の利益の操作で「いつでも発動可能」にできる（93）。<br>
+    ③ ただし剣（自働債権）と盾（受働債権）には資格制限がある（94）。<br>
+    ④ 差押えと衝突したら、時間軸（差押えの前か後か）で勝敗を決める（95〜97）。<br>
+    ⑤ 「後出しで作った・買った相殺の機会」は保護しない（98・100）。<br>
+    ⑥ 条文は趣旨・機能（再抗弁事由のカタログ）から読み解け（99）。<br>
+    — この6点が頭に入っていれば、差押えと相殺のどんな応用問題にも立ち向かえます。
+  </div>
+</div>
+
+<!-- ========== 用語集 ========== -->
+<div class="section" id="glossary">
+  <div class="section-header">
+    <div class="section-num">📖</div>
+    <h2>初学者向け用語集</h2>
+  </div>
+
+  <table>
+    <tr><th>用語</th><th>読み</th><th>意味（やさしく）</th><th>登場講義</th></tr>
+    <tr><td>相殺</td><td>そうさい</td><td>向かい合う債権を、現金を動かさず計算上チャラにすること</td><td>㉜〜</td></tr>
+    <tr><td>自働債権</td><td>じどうさいけん</td><td>相殺を仕掛ける側が持っている債権（攻撃の剣）</td><td>㉜</td></tr>
+    <tr><td>受働債権</td><td>じゅどうさいけん</td><td>相殺を仕掛けられる側の債権＝仕掛ける側の債務（受けの盾）</td><td>㉜</td></tr>
+    <tr><td>相殺適状</td><td>そうさいてきじょう</td><td>いつでも相殺に踏み切れる状態（債権の対立＋同種＋双方弁済期など）</td><td>㉜㉝</td></tr>
+    <tr><td>担保的機能</td><td>たんぽてききのう</td><td>自分の債務を質草に、相手が無資力でも確実に回収できる相殺の働き</td><td>㉜</td></tr>
+    <tr><td>預担貸し</td><td>よたんがし</td><td>定期預金を担保にした貸付け。満期に相殺で回収する銀行実務</td><td>㉛</td></tr>
+    <tr><td>民法478条</td><td>—</td><td>受領権者らしい外観の者への弁済を、善意無過失なら有効とする規定</td><td>㉛</td></tr>
+    <tr><td>類推適用</td><td>るいすいてきよう</td><td>条文の文言には当たらないが、利益状況が同じ場面に趣旨を及ぼすこと</td><td>㉛㊵</td></tr>
+    <tr><td>期限の利益</td><td>きげんのりえき</td><td>「期限まで払わなくてよい」という債務者の利益（民136条）</td><td>㉝</td></tr>
+    <tr><td>期限の利益喪失条項</td><td>きげんのりえきそうしつじょうこう</td><td>差押え等があれば直ちに全額弁済期到来とする契約条項。相殺適状を作出する</td><td>㉝</td></tr>
+    <tr><td>自然債務</td><td>しぜんさいむ</td><td>払えば有効だが、裁判で請求・強制はできない債務</td><td>㉞</td></tr>
+    <tr><td>抗弁権の付着</td><td>こうべんけんのふちゃく</td><td>同時履行の抗弁権などが付いた債権。自働債権にできない</td><td>㉞</td></tr>
+    <tr><td>差押禁止債権</td><td>さしおさえきんしさいけん</td><td>給料の一定部分など、生活保障のため差押えできない債権。相殺の的にもできない（510条）</td><td>㉞</td></tr>
+    <tr><td>第三債務者</td><td>だいさんさいむしゃ</td><td>差し押さえられた債権の債務者（預金なら銀行）</td><td>㉟〜</td></tr>
+    <tr><td>取立訴訟</td><td>とりたてそしょう</td><td>差押債権者が第三債務者に「差押え債権を私に払え」と求める訴訟（民執157条）</td><td>㉟㊳</td></tr>
+    <tr><td>法定訴訟担当</td><td>ほうていそしょうたんとう</td><td>法律の定めにより、他人の権利を自分の名で訴訟追行すること</td><td>㉟</td></tr>
+    <tr><td>制限説</td><td>せいげんせつ</td><td>差押え前取得の債権でも、弁済期の先後によっては相殺対抗を認めない説</td><td>㊱</td></tr>
+    <tr><td>無制限説</td><td>むせいげんせつ</td><td>差押え前に取得した債権なら弁済期の前後を問わず相殺対抗を認める説。最大判昭45.6.24が採用、改正511条1項が承継</td><td>㊱㊲</td></tr>
+    <tr><td>差押え前の原因</td><td>さしおさえまえのげんいん</td><td>債権の発生は差押え後でも、その発生原因（契約等）が差押え前にあること。511条2項本文で相殺保護が及ぶ</td><td>㊲</td></tr>
+    <tr><td>抗弁／再抗弁</td><td>こうべん／さいこうべん</td><td>被告の反撃の主張／それを覆す原告の再反撃の主張。511条は再抗弁事由のカタログ</td><td>㊳㊴</td></tr>
+    <tr><td>相殺障害</td><td>そうさいしょうがい</td><td>相殺の効力を差押債権者に対抗できなくする事由（差押え後の原因・他人からの取得）</td><td>㊳㊴</td></tr>
+    <tr><td>求償権</td><td>きゅうしょうけん</td><td>保証人が肩代わり弁済した分を主債務者に請求する権利（民459条・462条）</td><td>㊵</td></tr>
+    <tr><td>保証委託</td><td>ほしょういたく</td><td>主債務者が「保証人になってください」と頼むこと。委託の有無で求償権の扱いが変わる</td><td>㊵</td></tr>
+    <tr><td>承継取得／原始取得</td><td>しょうけいしゅとく／げんししゅとく</td><td>他人から引き継いで取得する／自分のところで新たに発生して取得する。ただし書の直接適用か類推かの分かれ目</td><td>㊵</td></tr>
+  </table>
+</div>
+
+<!-- ========== Footer ========== -->
+<div style="text-align:center; padding: 30px; color: var(--text-light); font-size: 0.85em;">
+  <p>msahkie先生の民法講義に基づく学習ガイド</p>
+  <p>法律未修者向け知識点整理・拡展</p>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>

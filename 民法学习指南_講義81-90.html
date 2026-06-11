@@ -1,0 +1,1478 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義81〜90 学習ガイド（法律未修者向け）</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --primary: #2c5f8a;
+    --secondary: #e8f0f8;
+    --accent: #d4740e;
+    --accent-light: #fff5eb;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #dfe6e9;
+    --success: #00b894;
+    --danger: #e17055;
+    --info: #74b9ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #2c5f8a 0%, #1a3a5c 100%);
+    color: white;
+    border-radius: 16px;
+    margin-bottom: 30px;
+  }
+  .header h1 { font-size: 2em; margin-bottom: 10px; }
+  .header p { opacity: 0.9; font-size: 1.05em; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+
+  /* Navigation */
+  .nav {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav:hover, .nav:focus-within {
+    max-height: 600px;
+  }
+  .nav h3 { margin-bottom: 10px; color: var(--primary); font-size: 0.95em; cursor: pointer; }
+  .nav h3::after { content: " ▼"; font-size: 0.7em; }
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .nav a {
+    display: block;
+    padding: 8px 12px;
+    background: var(--secondary);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.88em;
+    transition: all 0.2s;
+  }
+  .nav a:hover { background: var(--primary); color: white; }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--secondary);
+  }
+  .section-num {
+    background: var(--primary);
+    color: white;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 1.35em; color: var(--primary); }
+
+  /* Subsection */
+  h3 {
+    color: var(--primary);
+    font-size: 1.1em;
+    margin: 24px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  h4 {
+    color: var(--accent);
+    font-size: 1em;
+    margin: 16px 0 8px;
+  }
+
+  /* Analogy box */
+  .analogy {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .analogy::before {
+    content: "💡 たとえ話";
+    display: block;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Key point */
+  .key {
+    background: #eef7ee;
+    border-left: 4px solid var(--success);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .key::before {
+    content: "✅ 重要ポイント";
+    display: block;
+    font-weight: bold;
+    color: var(--success);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Warning */
+  .warn {
+    background: #fff3f0;
+    border-left: 4px solid var(--danger);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .warn::before {
+    content: "⚠️ 注意・よくある誤解";
+    display: block;
+    font-weight: bold;
+    color: var(--danger);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Term */
+  .term {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .term::before {
+    content: "📖 用語解説";
+    display: block;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Quiz */
+  .quiz {
+    background: #f0eeff;
+    border: 2px dashed #6c5ce7;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .quiz::before {
+    content: "🧪 理解度チェック";
+    display: block;
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+  .quiz details {
+    margin-top: 8px;
+  }
+  .quiz summary {
+    cursor: pointer;
+    color: #6c5ce7;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .quiz details p {
+    margin-top: 6px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92em;
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:nth-child(even) { background: var(--secondary); }
+  tr:hover { background: #dbeafe; }
+
+  /* Mind map */
+  .mindmap {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .mindmap-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 16px;
+    font-size: 1.05em;
+  }
+
+  /* Tree structure */
+  .tree { padding-left: 0; list-style: none; }
+  .tree ul { padding-left: 28px; list-style: none; position: relative; }
+  .tree ul::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 12px;
+    border-left: 2px solid var(--border);
+  }
+  .tree li {
+    position: relative;
+    padding: 4px 0 4px 0;
+  }
+  .tree ul > li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 14px;
+    width: 14px;
+    border-top: 2px solid var(--border);
+  }
+  .tree .node {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+  .node.root { background: var(--primary); color: white; font-size: 1em; padding: 8px 20px; }
+  .node.l1 { background: #4a90c4; color: white; }
+  .node.l2 { background: var(--secondary); color: var(--primary); border: 1px solid #b0cfe0; }
+  .node.l3 { background: #f1f5f1; color: var(--text); border: 1px solid #c8d6c8; font-size: 0.85em; }
+  .node.accent { background: var(--accent-light); color: #b35c00; border: 1px solid #f0c8a0; }
+  .node.danger { background: #fff0ee; color: #c0392b; border: 1px solid #f0b0a0; }
+
+  /* Flow diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 16px 0;
+    justify-content: center;
+  }
+  .flow-item {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 0.88em;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-arrow {
+    font-size: 1.4em;
+    color: var(--text-light);
+    padding: 0 4px;
+  }
+  .flow .f-blue { background: var(--secondary); color: var(--primary); border: 2px solid #a0c4e0; }
+  .flow .f-green { background: #e8f8e8; color: #1e7e34; border: 2px solid #a0d8a0; }
+  .flow .f-orange { background: var(--accent-light); color: #b35c00; border: 2px solid #f0c8a0; }
+  .flow .f-red { background: #fff0ee; color: #c0392b; border: 2px solid #f0b0a0; }
+
+  /* Comparison */
+  .vs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: start;
+    margin: 16px 0;
+  }
+  .vs-box {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid;
+  }
+  .vs-box.left { border-color: #4a90c4; background: #f0f6fc; }
+  .vs-box.right { border-color: #e0a040; background: #fdf8f0; }
+  .vs-box h4 { margin-top: 0; text-align: center; }
+  .vs-mid {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--text-light);
+    align-self: center;
+  }
+
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 24px; }
+  li { margin: 4px 0; }
+  strong { color: var(--primary); }
+
+  @media (max-width: 768px) {
+    body { padding: 10px; }
+    .section { padding: 18px; }
+    .header h1 { font-size: 1.4em; }
+    .nav-grid { grid-template-columns: 1fr 1fr; }
+    .vs { grid-template-columns: 1fr; }
+    .vs-mid { text-align: center; }
+    .flow { flex-direction: column; align-items: center; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== Header ========== -->
+<div class="header">
+  <h1>民法講義 81〜90 学習ガイド</h1>
+  <p>弁済者代位の深化と弁済の相手方 — 「他人が払う」「他人に払う」の法律学</p>
+  <div class="badge">msahkie先生の講義に基づく整理・拡展</div>
+</div>
+
+<!-- ========== Navigation ========== -->
+<div class="nav">
+  <h3>📑 目次（クリックでジャンプ）</h3>
+  <div class="nav-grid">
+    <a href="#overview">全体マップ</a>
+    <a href="#lec81">81 第三者弁済有効の原則</a>
+    <a href="#lec82">82 弁済者代位のキホン</a>
+    <a href="#lec83">83 代位の対抗要件（任意代位）</a>
+    <a href="#lec84">84 担保負担者の代位（法定代位）</a>
+    <a href="#lec85">85 弁済者代位の割合</a>
+    <a href="#lec86">86 一部弁済による一部代位</a>
+    <a href="#lec87">87 第三取得者と代位</a>
+    <a href="#lec88">88 債権者の担保保存義務</a>
+    <a href="#lec89">89 第三者への弁済</a>
+    <a href="#lec90">90 誤弁済金返還への抗弁</a>
+    <a href="#glossary">用語集</a>
+  </div>
+</div>
+
+<!-- ========== 全体マップ ========== -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-num">📍</div>
+    <h2>全体マップ：講義81〜90は何を学ぶのか</h2>
+  </div>
+
+  <p>このブロックのテーマは「弁済」をめぐる2つの応用問題です。<br>
+  前半（81〜88）は<strong>「他人が代わりに払う」</strong>場面 — 第三者弁済と、払った人が債権者の地位を引き継ぐ<strong>弁済者代位</strong>。<br>
+  後半（89〜90）は<strong>「間違った相手に払う」</strong>場面 — 弁済の相手方の問題（民478条）です。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">🗺️ 講義81〜90 全体思維導図</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">弁済の応用：誰が払う？誰に払う？</span>
+        <ul>
+          <li>
+            <span class="node l1">Part A：第三者が「払う」側になる（講義81-88）</span>
+            <ul>
+              <li><span class="node l2">81 入口：第三者弁済は原則有効（民474条）</span></li>
+              <li><span class="node l2">82 効果：払った人は求償権＋代位を取得（民499条）</span></li>
+              <li>
+                <span class="node l2">83-84 対抗要件：代位を誰にどう主張するか</span>
+                <ul>
+                  <li><span class="node l3">83 正当な利益なし → 通知・承諾が必要</span></li>
+                  <li><span class="node l3">84 担保負担者 → 対抗要件なしでOK</span></li>
+                </ul>
+              </li>
+              <li>
+                <span class="node l2">85-87 代位の範囲と調整（民501条3項）</span>
+                <ul>
+                  <li><span class="node l3">85 保証人・物上保証人間の割合計算</span></li>
+                  <li><span class="node l3">86 一部弁済なら一部代位（民502条）</span></li>
+                  <li><span class="node l3">87 第三取得者の特別ルール</span></li>
+                </ul>
+              </li>
+              <li><span class="node accent">88 債権者側の義務：担保保存義務（民504条）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part B：第三者が「受け取る」側になる（講義89-90）</span>
+            <ul>
+              <li><span class="node l2">89 無権限者への弁済は原則無効・例外478条</span></li>
+              <li><span class="node l2">90 誤弁済金の返還請求と受領者の抗弁</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="analogy">
+    レストランの会計にたとえると：<br>
+    <strong>Part A</strong> = 友達の食事代を<strong>代わりに払ってあげた</strong>場面。「立て替えたお金、どうやって取り戻す？」がテーマ。レジ（債権者）の持っていた「請求する権利」と「担保」をそっくり引き継げる — それが弁済者代位。<br>
+    <strong>Part B</strong> = 店員の制服を着た<strong>ニセ店員に支払ってしまった</strong>場面。「その支払い、有効？お金は取り戻せる？」がテーマ。
+  </div>
+
+  <div class="key">
+    このブロックの主役は<strong>「ＧＳＡＢＣＤ」の共通設例</strong>。講義85〜88はすべて同じ登場人物で話が進みます：<br>
+    債権者<strong>Ｇ</strong>、債務者<strong>Ｓ</strong>、1000万円の貸金債権。担保は ① <strong>Ａ</strong>の連帯保証、② <strong>Ｂ</strong>の連帯保証、③ <strong>Ｃ</strong>所有の甲土地（価額1000万円）の抵当権、④ <strong>Ｄ</strong>所有の乙土地（価額600万円）の抵当権。<br>
+    この設例を頭に入れれば、85〜88は一本の物語として読めます。
+  </div>
+</div>
+
+<!-- ========== 講義81 ========== -->
+<div class="section" id="lec81">
+  <div class="section-header">
+    <div class="section-num">81</div>
+    <h2>第三者弁済有効の原則（民474条）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>借金は<strong>本人以外が払っても原則として有効</strong>です。債権者にとって大事なのは「中身どおりの給付がされること」であって、「誰が払うか」は原則どうでもいいからです。</p>
+
+  <div class="analogy">
+    コンビニのレジで、あなたの代わりに友達が支払っても、店は何も困りません。レジに入る1000円は誰の財布から出ても同じ1000円。<br>
+    債権者も同じで、<strong>「債務の本旨に従った給付」</strong>（約束どおりの中身の給付）さえ受け取れれば満足です。給付の「主体」は債務の本旨の要素ではない — だから第三者が払っても、債務者本人が払ったのと同じ効果（債務消滅）が生じるのです。
+  </div>
+
+  <h3>原則と例外の構造</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：第三者弁済（民474条）の原則と例外</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">第三者弁済は有効（474条1項）</span>
+        <ul>
+          <li>
+            <span class="node l1">例外①：性質上のNG（474条4項前段)</span>
+            <ul>
+              <li><span class="node l2">債務の性質が第三者弁済を許さないもの</span></li>
+              <li><span class="node l3">例：有名画家が絵を描く債務、歌手が歌う債務</span></li>
+              <li><span class="node l3">→ 本人がやらなければ「債務の本旨に従った給付」にならない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">例外②：当事者の意思表示によるNG（474条4項後段）</span>
+            <ul>
+              <li><span class="node l2">当事者が「第三者弁済禁止・制限」を合意した場合</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">例外③：債務者の意思に反する弁済（474条2項）</span>
+            <ul>
+              <li><span class="node danger">正当な利益を有しない第三者は、債務者の意思に反して弁済できない</span></li>
+              <li><span class="node accent">ただし：債務者の意思に反することを債権者が知らなかったときは有効</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">例外④：債権者の意思に反する弁済（474条3項）</span>
+            <ul>
+              <li><span class="node danger">正当な利益を有しない第三者の弁済は、債権者が受領を拒める</span></li>
+              <li><span class="node accent">ただし：債務者の委託を受けた第三者で、債権者がそれを知っていたときは拒めない</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>キーワード：「弁済をするについて正当な利益を有する者」</h3>
+  <div class="term">
+    <strong>正当な利益を有する第三者</strong>とは、その債務が弁済されないと<strong>自分が法的な不利益を受ける立場</strong>にある人のこと。<br>
+    典型例：
+    <ul>
+      <li><strong>保証人・物上保証人</strong> — 弁済されないと自分が責任を問われる／自分の財産が競売される</li>
+      <li><strong>担保目的物の第三取得者</strong> — 弁済されないと買った不動産の抵当権が実行される</li>
+      <li><strong>後順位抵当権者</strong> — 先順位が実行されると自分の配当が減る</li>
+    </ul>
+    逆に、単なる親・兄弟・友人は「事実上の利害」しかないので、ここでいう正当な利益<strong>なし</strong>。この区別が講義83・84の対抗要件の分かれ目にもなります。
+  </div>
+
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>👨‍👩‍👧 正当な利益のない第三者</h4>
+      <ul>
+        <li>例：債務者の親、友人、愛人</li>
+        <li>債務者の意思に反する弁済は<strong>原則無効</strong>（474条2項）</li>
+        <li>債権者は受領を<strong>拒否できる</strong>（474条3項）</li>
+        <li>代位には<strong>対抗要件が必要</strong>（講義83）</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🛡️ 正当な利益のある第三者</h4>
+      <ul>
+        <li>例：保証人、物上保証人、第三取得者</li>
+        <li>債務者の意思に<strong>反しても弁済できる</strong></li>
+        <li>債権者は受領を<strong>拒否できない</strong></li>
+        <li>代位に<strong>対抗要件は不要</strong>（講義84）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn">
+    「親が子の借金を払うのは当然有効でしょ？」と思いがちですが、親は法律上の「正当な利益」を持ちません（あるのは情愛という事実上の利害だけ）。<br>
+    したがって、<strong>子（債務者）が「払うな！」と反対していれば、親の弁済は原則として無効</strong>になりえます（債権者がその反対を知らなければ有効。474条2項ただし書）。<br>
+    なぜこんなルールがあるか？ — 弁済されると債務者は弁済者から<strong>求償</strong>される（講義82）。「誰に借りを作るかは自分で決めたい」という債務者の意思にも一定の配慮をしたのです。
+  </div>
+
+  <div class="key">
+    整理すると、第三者弁済のルール設計は3者の利益のバランス：<br>
+    ① <strong>債権者</strong>：中身さえ受け取れれば満足 → 原則有効でOK<br>
+    ② <strong>債務者</strong>：「求償の相手を押し付けられたくない」→ 意思に反する押しかけ弁済を制限（2項）<br>
+    ③ <strong>第三者</strong>：正当な利益がある者は自分を守るために弁済が必要 → 誰の反対があっても弁済できる
+  </div>
+
+  <div class="quiz">
+    <p>Q1: ピアニストＳが演奏会で演奏する債務を負っている。Ｓの友人Ａ（アマチュア奏者）が「私が代わりに弾きます」と申し出た。この第三者弁済は有効？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>無効。演奏債務はＳの個性に着目した債務（属人的給付）であり、「債務の性質が第三者の弁済を許さないもの」（474条4項）にあたる。Ａが弾いても「債務の本旨に従った給付」にならない。</p>
+    </details>
+    <p>Q2: Ｓの友人Ａ（保証人ではない）が、Ｓの反対を押し切って債権者Ｇに弁済した。Ｇは反対の事実を知らなかった。弁済は有効？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>有効。Ａは正当な利益を有しない第三者なので債務者の意思に反する弁済は原則無効だが（474条2項本文）、<strong>債務者の意思に反することを債権者が知らなかったとき</strong>は有効（同項ただし書）。債権者の取引安全への配慮である。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義82 ========== -->
+<div class="section" id="lec82">
+  <div class="section-header">
+    <div class="section-num">82</div>
+    <h2>弁済者代位のキホン（民499条・501条）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>他人の借金を代わりに払った人は、①債務者への<strong>求償権</strong>を取得し、さらに②その回収を確実にするため、<strong>債権者が持っていた債権と担保をまるごと引き継ぐ</strong>（＝弁済による代位、民499条）。</p>
+
+  <div class="analogy">
+    弁済者代位は<strong>「債権者席への着席権」</strong>です。<br>
+    映画館で、Ｇさんが「最前列VIP席」（債権＋抵当権＋保証というフル装備の席）に座っていた。Ａさんがチケット代を肩代わりして払ってあげたら、Ｇさんは席を立ち、<strong>ＡさんがそのVIP席にそのまま座れる</strong>。<br>
+    席（権利のパッケージ）は同じまま、座る人だけが入れ替わる — これが「代位」のイメージです。新しい席を作るのではなく、<strong>既存の席を引き継ぐ</strong>のがポイント。
+  </div>
+
+  <h3>弁済がもたらす2つの権利</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">第三者Ａが<br>Ｓの債務を弁済</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">① 求償権<br><small>Ｓに「返して」と言える<br>新しい権利</small></div>
+    <div class="flow-arrow">＋</div>
+    <div class="flow-item f-orange">② 弁済者代位<br><small>Ｇの原債権・担保権が<br>Ａに法定移転</small></div>
+  </div>
+
+  <h3>求償権の法的根拠は「立場」によって違う</h3>
+  <p>「いくら求償できるか」の根拠条文は、弁済者がどんな立場で払ったかで変わります。</p>
+  <table>
+    <tr><th>弁済者の立場</th><th>求償権の根拠</th><th>条文</th></tr>
+    <tr><td>頼まれていない第三者（デフォルト）</td><td>事務管理の費用償還請求権</td><td>民702条1項・3項</td></tr>
+    <tr><td>債務者から頼まれた第三者</td><td>委任事務処理費用の償還請求権</td><td>民650条1項</td></tr>
+    <tr><td>連帯債務者の一人</td><td>連帯債務者間の求償権</td><td>民442条1項・2項</td></tr>
+    <tr><td>委託を受けた保証人</td><td>受託保証人の求償権</td><td>民459条</td></tr>
+    <tr><td>委託を受けない保証人</td><td>無委託保証人の求償権</td><td>民462条1項・2項</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>「求償権」と「代位で取得した原債権」は別物</strong>。これがこの単元最大の混同ポイントです。<br>
+    ・<strong>求償権</strong>＝弁済によって新しく生まれた、弁済者自身の権利<br>
+    ・<strong>原債権</strong>＝もともとＧが持っていた債権が、法律上当然にＡへ移転したもの<br>
+    両者は利息・消滅時効・担保の有無がそれぞれ別に決まります。代位した原債権とその担保権は、<strong>求償権の範囲内でのみ</strong>行使できる（民501条2項）— 原債権はあくまで求償権回収の「道具」だからです。
+  </div>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：弁済者代位の構造</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">弁済者代位（民499条）</span>
+        <ul>
+          <li>
+            <span class="node l1">目的</span>
+            <ul>
+              <li><span class="node l2">求償権の回収を確実にする（担保の引継ぎ）</span></li>
+              <li><span class="node l3">求償権だけだと無担保の一般債権 → 回収不安</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">効果：原債権の法定移転</span>
+            <ul>
+              <li><span class="node l2">原債権そのものがＡに移る（譲渡契約は不要）</span></li>
+              <li><span class="node accent">担保権も随伴して移転：抵当権・保証債権・違約金etc.</span></li>
+              <li><span class="node l3">担保物権の随伴性のあらわれ</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">行使の限界（501条2項）</span>
+            <ul>
+              <li><span class="node danger">求償権の範囲内でのみ行使可能</span></li>
+              <li><span class="node l3">例：求償できるのが800万なら原債権も800万分しか使えない</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    なぜ代位制度があるのか？ — <strong>第三者弁済を促進するため</strong>。<br>
+    「払ってあげても、無担保の求償権しか手に入らない」のでは誰も肩代わりしません。「払えば債権者のフル装備（抵当権・保証付き）を引き継げる」とすれば、保証人や物上保証人は安心して弁済でき、結果として債権者も早く回収できる。みんなが得をする制度設計です。<br>
+    2017年改正前は「任意代位」（債権者の承諾が必要）と「法定代位」の区別がありましたが、<strong>改正後はどんな弁済者も当然に代位</strong>します（499条）。残った区別は「対抗要件の要否」だけ（講義83・84）。
+  </div>
+
+  <div class="quiz">
+    <p>Q1: 保証人Ａが主債務1000万円を全額弁済した。債権Ｇは債務者Ｓの土地に抵当権を持っていた。Ａはこの抵当権を使える？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>使える。Ａは弁済により当然にＧに代位し（499条）、原債権とともにその担保である抵当権を法律上当然に取得する。Ａは求償権の範囲内で抵当権を実行してＳの土地から優先回収できる（501条1項・2項）。</p>
+    </details>
+    <p>Q2: 「求償権」と「代位取得した原債権」の関係を一言で説明すると？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>原債権は求償権を回収するための「手段・道具」。だから原債権の行使は求償権の範囲内に限定される（501条2項）。求償権が時効消滅すれば、手段にすぎない原債権・担保権も行使できなくなる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義83 ========== -->
+<div class="section" id="lec83">
+  <div class="section-header">
+    <div class="section-num">83</div>
+    <h2>弁済者代位の対抗要件：デフォルトケース（民500条）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>正当な利益のない第三者が代位する場合、債務者側から見れば<strong>「あんたダレ？」</strong>状態。だから債権譲渡と同じ対抗要件（<strong>債権者からの通知 or 債務者の承諾</strong>）が必要です（民500条による467条の準用）。</p>
+
+  <div class="analogy">
+    家賃の振込先が突然変わる場面を想像してください。<br>
+    見ず知らずの人から「私が大家さんに立て替え払いしたので、今月から私に家賃を払ってください」という手紙が届いたら、あなたは当然<strong>「あんたダレ？証拠は？」</strong>と思うはず。本人の自称だけ信じて払って、ウソだったら二重払いの危険があります。<br>
+    信用できるのは<strong>元の大家さん本人からの「この人に払って」という連絡</strong>。これが「債権者からの通知」が対抗要件とされる理由です。
+  </div>
+
+  <h3>なぜ債権譲渡のルールを借りるのか</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">弁済者代位の効果<br><small>原債権の法定移転</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">譲渡ではないが<br><small>債権者の交代という点で<br>債権譲渡と同じ構造</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">債権譲渡の対抗要件<br>（467条）を準用<br><small>民500条</small></div>
+  </div>
+
+  <div class="key">
+    民500条の構造：<br>
+    「第499条の場合には、第467条の規定を準用する。<strong>（弁済をするについて正当な利益を有する者が債権者に代位する場合を除く。）</strong>」<br>
+    つまり：<br>
+    ・<strong>正当な利益なし</strong>（友人・親など）→ 対抗要件<strong>必要</strong>（今回のデフォルトケース）<br>
+    ・<strong>正当な利益あり</strong>（保証人・物上保証人など）→ 対抗要件<strong>不要</strong>（講義84）
+  </div>
+
+  <h3>対抗要件の中身（467条の準用）</h3>
+  <table>
+    <tr><th>誰に対抗するか</th><th>必要な対抗要件</th><th>ポイント</th></tr>
+    <tr><td>債務者Ｓ・保証人・物上保証人など</td><td><strong>債権者Ｇからの通知</strong> または <strong>債務者の承諾</strong>（467条1項）</td><td>通知は「元の債権者」がするから信用できる。代位弁済者の自称ではダメ</td></tr>
+    <tr><td>債務者以外の第三者（原債権の譲受人・差押債権者など）</td><td><strong>確定日付ある証書</strong>による通知・承諾（467条2項）</td><td>内容証明郵便などで日付を客観化し、抜け駆け・偽装を防ぐ</td></tr>
+  </table>
+
+  <div class="warn">
+    通知をするのは<strong>債権者Ｇ</strong>であって、代位弁済者Ａではありません。<br>
+    理由は債権譲渡と同じ：権利を失う側（Ｇ）からの通知なら信用できるが、権利を得たと主張する側（Ａ）の自己申告は信用できない（ウソをつく動機がある）。<br>
+    債務者Ｓの側から見たこの問題は、訴訟では「<strong>対抗要件の抗弁</strong>」（あんたダレ？権利主張するなら対抗要件を備えてからにして、という主張）として現れ、Ａ側が対抗要件具備の事実を<strong>再抗弁</strong>として主張・立証することになります。
+  </div>
+
+  <div class="quiz">
+    <p>Q1: Ｓの友人Ａ（正当な利益なし）がＳの債務を弁済し、Ｓに「代位したから私に払え」と請求した。Ｓは何と反論できる？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>「債権者Ｇからの通知または自分（Ｓ）の承諾があるまで支払わない」という<strong>対抗要件の抗弁</strong>を主張できる（500条・467条1項）。Ａが再抗弁としてＧからの通知等の事実を主張立証しない限り、Ａの請求は認められない。</p>
+    </details>
+    <p>Q2: なぜ「弁済者代位は譲渡ではない」のに債権譲渡の対抗要件ルールを使えるの？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>代位の効果は原債権の「法定移転」であり、契約による譲渡とは発生原因が違う。しかし「債権が別の主体に承継されて債権者が交代する」という構造は譲渡と同じで、債務者の「誰に払えばいいのか分からない」という困惑も同じ。だから同じ解決（467条の対抗要件）を準用するのが合理的。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義84 ========== -->
+<div class="section" id="lec84">
+  <div class="section-header">
+    <div class="section-num">84</div>
+    <h2>担保負担者の弁済者代位の対抗要件 — 不要！</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>保証人・物上保証人・第三取得者のような<strong>「担保負担者」</strong>（弁済しないと自分が責任を問われる人＝正当な利益を有する者）が代位する場合は、<strong>対抗要件なしで誰にでも代位を対抗できます</strong>（民500条かっこ書）。</p>
+
+  <div class="term">
+    <strong>担保負担者</strong>（講義の先生のネーミング）＝原債権が弁済されないと<strong>自らが法的責任を問われる立場</strong>にある者の総称。具体的には：
+    <ul>
+      <li><strong>保証人</strong>（弁済しないと保証債務の履行を迫られる）</li>
+      <li><strong>物上保証人</strong>（弁済しないと自分の不動産が競売される）</li>
+      <li><strong>債務者からの担保目的物の第三取得者</strong>（直接・間接を問わない）</li>
+      <li><strong>物上保証人からの担保目的物の第三取得者</strong></li>
+    </ul>
+    ＝「弁済をするについて<strong>正当な利益を有する者</strong>」（500条かっこ書）とほぼ同義。
+  </div>
+
+  <div class="analogy">
+    講義83が「見ず知らずの人からの突然の手紙」だったのに対し、こちらは<strong>「登場人物リストに最初から載っている人」</strong>。<br>
+    保証人や物上保証人は、債務者にとっても他の関係者にとっても「この人がいつか払うかもしれない」と<strong>最初から予測できる顔ぶれ</strong>です。クラスの席替えで「転校生が来た！誰？」と驚くのが講義83、「隣の席の子と入れ替わった」だけなのが講義84。驚きがないから、本人確認の手続（対抗要件）を省略してよいのです。
+  </div>
+
+  <h3>誰に対しても対抗要件不要</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：担保負担者の代位は誰に対しても「素通し」</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">担保負担者の代位弁済（法定代位）</span>
+        <ul>
+          <li>
+            <span class="node l1">対抗要件なしに対抗できる相手</span>
+            <ul>
+              <li><span class="node l2">債務者Ｓ</span></li>
+              <li><span class="node l2">他の担保負担者（保証人・物上保証人・第三取得者）</span></li>
+              <li><span class="node l2">原債権の帰属を争う正当利益ある第三者（差押債権者等）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">理由：予測可能性</span>
+            <ul>
+              <li><span class="node accent">担保負担者の存在は債権関係の「初期設定」に組み込まれている</span></li>
+              <li><span class="node accent">登記（抵当権）や保証契約から代位の可能性は皆が予測できる</span></li>
+              <li><span class="node l3">→ 不意打ちにならない → 公示・通知の必要なし</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">条文上の根拠</span>
+            <ul>
+              <li><span class="node l2">民500条かっこ書（正当な利益を有する者を467条準用から除外）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>講義83との対比</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>講義83：正当な利益なし（任意代位）</h4>
+      <ul>
+        <li>友人・親族など</li>
+        <li>登場が<strong>予測不可能</strong>＝不意打ちの危険</li>
+        <li>→ 対抗要件（Ｇの通知 or Ｓの承諾）<strong>必要</strong></li>
+        <li>第三者対抗には確定日付ある証書も必要</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>講義84：担保負担者（法定代位）</h4>
+      <ul>
+        <li>保証人・物上保証人・第三取得者</li>
+        <li>登場が<strong>最初から予測可能</strong></li>
+        <li>→ 対抗要件<strong>一切不要</strong></li>
+        <li>弁済の瞬間から誰にでも代位を主張できる</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    試験・実務での思考順序：<br>
+    ① 弁済者は「弁済をするについて正当な利益」を有するか？（＝担保負担者か？）<br>
+    ② YES → 対抗要件不要。弁済の事実だけで代位を全面主張できる<br>
+    ③ NO → 500条本文により467条準用。Ｇからの通知またはＳの承諾（第三者には確定日付）が必要<br>
+    <strong>抵当権の代位</strong>については、担保負担者なら<strong>代位の付記登記なしでも</strong>抵当権を行使できる（登記は対抗要件ではなく、移転の公示にすぎない）のが現在の理解です。
+  </div>
+
+  <div class="quiz">
+    <p>Q1: 物上保証人Ｃが債務全額を弁済した。Ｃは、Ｇからの通知なしに、保証人Ａに対して代位した保証債権を行使できるか？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>できる。Ｃは弁済をするについて正当な利益を有する者（担保負担者）なので、民500条かっこ書により467条の準用が除外され、<strong>対抗要件なしに</strong>債務者にも他の担保負担者にも代位を対抗できる。ただし行使できる「割合」には制限がある（→講義85）。</p>
+    </details>
+    <p>Q2: なぜ担保負担者には対抗要件が不要とされるのか、制度趣旨から説明せよ。</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>対抗要件制度の目的は、債権者交代の不意打ちから債務者・第三者を守ること。担保負担者は保証契約・抵当権設定登記などを通じて関係者全員にその存在が知られており、「この人が弁済して代位するかもしれない」ことは最初から予測できる。不意打ちの危険がない以上、対抗要件を要求する理由がない。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義85 ========== -->
+<div class="section" id="lec85">
+  <div class="section-header">
+    <div class="section-num">85</div>
+    <h2>弁済者代位の割合（民501条3項）— 数字で理解する</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>担保負担者が複数いるとき、お互いの間では<strong>「公平な負担割合」の限度でしか代位できません</strong>。割合の決め方：<strong>保証人と物上保証人の間は頭数で平等、物上保証人同士は財産の価額に応じて</strong>按分します（民501条3項4号）。</p>
+
+  <h3>共通設例（講義85〜88で使い回す）</h3>
+  <div class="term">
+    <strong>登場人物の整理</strong>：
+    <ul>
+      <li>債権者<strong>Ｇ</strong> → 債務者<strong>Ｓ</strong>に対する<strong>1000万円</strong>の貸金債権（利息は考えない）</li>
+      <li><strong>Ａ</strong>：全部連帯保証人</li>
+      <li><strong>Ｂ</strong>：全部連帯保証人</li>
+      <li><strong>Ｃ</strong>：物上保証人（甲土地・価額<strong>1000万円</strong>に抵当権）</li>
+      <li><strong>Ｄ</strong>：物上保証人（乙土地・価額<strong>600万円</strong>に抵当権）</li>
+      <li>第三者<strong>Ｅ</strong>がＳのために1000万円を全額弁済した</li>
+    </ul>
+  </div>
+
+  <div class="analogy">
+    飲み会の割り勘にたとえると：<br>
+    Ｓの飲み代1000万円（豪遊！）を、立場上「Ｓが払えなければ自分たちが被る」運命共同体が4人（Ａ・Ｂ・Ｃ・Ｄ）いる。誰か一人が全額払わされたら不公平なので、<strong>「最終的に各自いくら被るか」の内部分担表</strong>をあらかじめ法律が決めておいた — それが501条3項です。<br>
+    分担表の作り方：①まず<strong>頭数で人数割り</strong>（保証人は体ひとつで責任を負うので平等）、②ただし<strong>物上保証人同士</strong>は差し出した財産の大きさが違うから、<strong>財産の価額比</strong>で調整。
+  </div>
+
+  <h3>負担割合の計算（501条3項4号）</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">STEP1<br>頭数で割る<br><small>4人 → 各1/4</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">STEP2<br>保証人の取り分確定<br><small>Ａ＝250万、Ｂ＝250万</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">STEP3<br>物上保証人の残額500万を<br>財産価額比で按分<br><small>甲1000：乙600＝5：3</small></div>
+  </div>
+
+  <table>
+    <tr><th>担保負担者</th><th>立場</th><th>計算式</th><th>負担部分</th></tr>
+    <tr><td>Ａ</td><td>連帯保証人</td><td>1000万 × 1/4</td><td><strong>250万円</strong></td></tr>
+    <tr><td>Ｂ</td><td>連帯保証人</td><td>1000万 × 1/4</td><td><strong>250万円</strong></td></tr>
+    <tr><td>Ｃ</td><td>物上保証人（甲1000万）</td><td>500万 × 1000/(1000+600)</td><td><strong>312.5万円</strong></td></tr>
+    <tr><td>Ｄ</td><td>物上保証人（乙600万）</td><td>500万 × 600/(1000+600)</td><td><strong>187.5万円</strong></td></tr>
+    <tr><td colspan="3">合計</td><td><strong>1000万円</strong></td></tr>
+  </table>
+
+  <div class="key">
+    <strong>第三者Ｅ（担保負担者ではない）が全額弁済した場合</strong>：<br>
+    Ｅは①Ｓに対する1000万円の<strong>求償権</strong>を取得し、②Ｇに代位して<strong>原債権・Ａ Ｂへの各保証債権・甲乙への各抵当権をすべて取得</strong>します。Ｅは担保負担者間の内部分担とは無関係の「外部の人」なので、Ｓに全額請求できるのと並んで、引き継いだ担保もフルに使えます（もちろん回収総額は求償権の額＝1000万円まで）。<br>
+    一方、<strong>担保負担者同士の間</strong>（たとえばＡがＣに代位する場合）は、上の表の<strong>負担部分の限度</strong>でしか代位できない。たとえばＡが1000万円全額弁済しても、Ｃに対しては312.5万円、Ｄに対しては187.5万円、Ｂに対しては250万円の限度でのみ担保権・保証債権を行使できます（Ａ自身の負担部分250万円は自腹）。
+  </div>
+
+  <h3>501条3項の割合ルール一覧</h3>
+  <table>
+    <tr><th>誰と誰の間</th><th>ルール</th><th>号</th></tr>
+    <tr><td>保証人 ⇔ 保証人</td><td>頭数で平等（465条・442条の共同保証人間求償と連動）</td><td>—</td></tr>
+    <tr><td>保証人 ⇔ 物上保証人</td><td><strong>頭数</strong>に応じて代位</td><td>4号本文</td></tr>
+    <tr><td>物上保証人 ⇔ 物上保証人</td><td>保証人の負担分を除いた残額につき<strong>各財産の価額</strong>に応じて</td><td>4号ただし書</td></tr>
+    <tr><td>第三取得者 ⇔ 第三取得者</td><td>各財産の価額に応じて</td><td>2号</td></tr>
+    <tr><td>第三取得者 → 保証人・物上保証人</td><td>代位<strong>できない</strong>（→講義87）</td><td>1号</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>保証人兼物上保証人</strong>（保証もして自分の土地も担保に出した人）は、頭数の計算で「2人分」と数えるのではなく、<strong>1人として数える</strong>のが判例（最判昭61.11.27）。二重の資格でも頭はひとつ、という覚え方でOK。<br>
+    また、この割合は<strong>特約で変更可能</strong>（任意規定）。銀行実務では代位割合を変更する特約がよく使われます。
+  </div>
+
+  <div class="quiz">
+    <p>Q1: 上の設例で、連帯保証人Ａが1000万円全額を弁済した。Ａは物上保証人Ｄの乙土地の抵当権を、いくらの限度で実行できるか？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p><strong>187.5万円</strong>の限度。担保負担者間の代位は各自の負担部分の限度に制限される（501条3項4号）。Ｄの負担部分＝（1000万−保証人2人分500万）× 600/1600 ＝ 187.5万円。なおＡはＳに対しては全額（1000万円から自己負担なしで）求償できる — 内部割合の制限は担保負担者「相互間」だけの話。</p>
+    </details>
+    <p>Q2: なぜ保証人と物上保証人の間は「頭数」で、物上保証人同士は「財産価額」で割るのか？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>保証人は全財産で無限定に責任を負うため「責任の大きさ」を金額で測れない。そこで人単位（頭数）で平等とした。これに対し物上保証人は差し出した特定財産の価額が責任の上限なので、その価額の比で按分するのが公平。測れるものは価額で、測れないものは頭数で、という発想。</p>
+    </details>
+    <p>Q3: 設例を変えて、保証人が3人（Ａ・Ｂ・Ｆ）、物上保証人がＣ（甲1000万）だけだったら、各自の負担部分は？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>頭数4人で各1/4＝250万円ずつ。物上保証人はＣ1人なので、財産価額による再按分は不要で、Ｃの負担部分はそのまま250万円（甲土地の価額1000万円の範囲内なので全額負担）。Ａ・Ｂ・Ｆも各250万円。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義86 ========== -->
+<div class="section" id="lec86">
+  <div class="section-header">
+    <div class="section-num">86</div>
+    <h2>一部弁済による一部代位（民502条）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>債務の<strong>一部だけ</strong>弁済した人は、その<strong>割合に応じて一部だけ</strong>代位します。ただし権利行使には<strong>債権者の同意</strong>が必要で、競合したら<strong>債権者が優先</strong>（債権者優先主義）です。</p>
+
+  <h3>設例：Ｄの乙土地が競売された</h3>
+  <p>共通設例（Ｇ→Ｓ 1000万円、Ａ・Ｂ連帯保証、Ｃ甲土地1000万、Ｄ乙土地600万）で、Ｇが乙土地の抵当権を実行し、<strong>売却代金600万円</strong>を回収した（またはＤが任意に600万円弁済した）とします。</p>
+  <div class="flow">
+    <div class="flow-item f-red">Ｄの乙土地が競売<br><small>600万円をＧが回収</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">債権は600万円分だけ消滅<br><small>Ｇにはまだ400万円残る</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">Ｄは600万円分だけ<br>一部代位<br><small>Ｇと「相席」状態に</small></div>
+  </div>
+
+  <div class="analogy">
+    弁済者代位が「債権者席への着席」なら、一部代位は<strong>「席の相席」</strong>です。<br>
+    Ｄは600万円分払ったので席の6割に座りたい。でもＧはまだ400万円回収できておらず、席を完全には明け渡せない。そこで法律はこう決めました：<br>
+    ① 相席はしてよい。ただし席の使い方（権利行使）は<strong>先客Ｇの同意</strong>が必要（502条1項）<br>
+    ② Ｇは相席者に気兼ねなく<strong>単独で</strong>権利行使できる（502条2項）<br>
+    ③ 競売代金の配当という「料理」が来たら、<strong>Ｇが先に取り、残りがＤ</strong>（502条3項）<br>
+    一言でいえば「<strong>全額回収するまで債権者がボス</strong>」。
+  </div>
+
+  <h3>一部代位の3つのルール（民502条）</h3>
+  <table>
+    <tr><th>項</th><th>ルール</th><th>意味</th></tr>
+    <tr><td>1項</td><td>一部代位者は、<strong>債権者の同意を得て</strong>、債権者<strong>とともに</strong>権利行使できる</td><td>単独行使は不可。あくまで債権者のお供</td></tr>
+    <tr><td>2項</td><td>債権者は<strong>単独で</strong>権利を行使できる</td><td>一部代位者の同意は不要</td></tr>
+    <tr><td>3項</td><td>担保目的物の売却代金等については<strong>債権者が代位者に優先</strong>する</td><td>債権者優先主義。配当はまずＧ、残りがＤ</td></tr>
+  </table>
+
+  <h3>数字で確認：甲土地（Ｃ所有・1000万円）が競売されたら</h3>
+  <p>Ｄの600万円弁済後、残債権400万円。その後、甲土地の抵当権が実行され1000万円で売れたとすると：</p>
+  <table>
+    <tr><th>受取人</th><th>金額</th><th>理由</th></tr>
+    <tr><td>① Ｇ（債権者）</td><td><strong>400万円</strong></td><td>残債権を最優先で全額回収（502条3項・債権者優先主義）</td></tr>
+    <tr><td>② Ｄ（一部代位者）</td><td><strong>187.5万円</strong></td><td>残額600万円から、ただしＣに対する代位はＤの負担部分超過分に限られる※</td></tr>
+    <tr><td>③ Ｃ（所有者）</td><td>残額</td><td>剰余金は目的物所有者へ</td></tr>
+  </table>
+  <p style="font-size:0.9em; color:var(--text-light);">※Ｄの代位額の計算：Ｄは自己の負担部分187.5万円（講義85）を<strong>超えて</strong>払った分（600−187.5＝412.5万円）について他の担保負担者に代位できる。その412.5万円を、Ａ250万・Ｂ250万・Ｃ312.5万の負担部分の割合（4:4:5）で割り付けると、Ｃへの代位は 412.5 × 312.5/812.5 ≒ <strong>158.7万円</strong>とする計算もある。担保負担者間の具体的配分には複数の考え方があり得るところで、ここでは「①Ｇが絶対優先、②Ｄの代位は自己負担部分の超過分のみ、③相手方の負担部分の限度まで」という3原則を押さえれば十分。</p>
+
+  <div class="warn">
+    よくある誤解：「半分払ったから担保も半分は自分のもの。勝手に競売申立てできる」→ <strong>できません</strong>。<br>
+    一部代位者が単独で抵当権を実行できるとすると、債権者は中途半端な時期に競売されて残債権の回収を害されかねない。だから2017年改正で「債権者の同意」要件が明文化されました（502条1項）。判例（最判昭60.5.23）由来の債権者優先主義も3項に明文化。<br>
+    もう一つの注意：<strong>保証人の一部弁済でも理屈は同じ</strong>。「全額払って初めて完全な代位」「中途半端な弁済では債権者の風下に立つ」と覚えましょう。
+  </div>
+
+  <div class="key">
+    制度趣旨の核心：<strong>代位制度は債権者を害してまで弁済者を保護するものではない</strong>。<br>
+    代位は「債権者が満足を得たから席を譲る」制度。一部しか満足していない債権者の地位は最後まで保護される。この「債権者の地位を害さない」という発想は、次の講義88（担保保存義務はその裏返し＝債権者が代位への期待を害してはならない）との対比で立体的に理解できます。
+  </div>
+
+  <div class="quiz">
+    <p>Q1: 物上保証人Ｄが600万円を一部弁済した。Ｄは単独で甲土地の抵当権（代位取得分）を実行できるか？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>できない。一部代位者は<strong>債権者Ｇの同意を得て、Ｇとともに</strong>でなければ権利行使できない（502条1項）。逆にＧは単独で実行でき（2項）、配当でもＧが優先する（3項）。</p>
+    </details>
+    <p>Q2: 一部代位で「債権者優先主義」が採られる理由は？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>代位制度は弁済者の求償を助ける制度だが、それは債権者の完全な満足を犠牲にしてよい理由にはならない。一部弁済を受けただけの債権者には残債権があり、担保はもともとその全部を担保していた。代位者が配当を食い合うと債権者は「一部弁済を受けたせいでかえって回収できなくなる」という本末転倒が生じるため、債権者を優先させる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義87 ========== -->
+<div class="section" id="lec87">
+  <div class="section-header">
+    <div class="section-num">87</div>
+    <h2>第三取得者「からの代位」と「に対する代位」</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>抵当不動産を買った人（第三取得者）の代位ルールは「<strong>誰から買ったか</strong>」で決まります。<strong>債務者から</strong>買った人は債務者と同視され（保証人らに代位<strong>できない</strong>）、<strong>物上保証人から</strong>買った人は物上保証人と<strong>みなされ</strong>ます（501条3項5号）。</p>
+
+  <h3>設例：ＰとＱの登場</h3>
+  <div class="term">
+    共通設例に新キャラ追加：
+    <ul>
+      <li><strong>Ｐ</strong>：物上保証人Ｃから、抵当権付きのまま<strong>甲土地</strong>を譲り受けた者</li>
+      <li><strong>Ｑ</strong>：物上保証人Ｄから、抵当権付きのまま<strong>乙土地</strong>を譲り受けた者</li>
+    </ul>
+    Ｐ・Ｑはいずれも物上保証人Ｃ・Ｄの<strong>特定承継人</strong>。共同担保負担者の中でＣ・Ｄの「席」をそのまま受け継いだ存在です。<br>
+    （※債務者Ｓ自身から担保目的物を買った人は、これとは別枠の「債務者からの第三取得者」）
+  </div>
+
+  <div class="analogy">
+    リレーのバトンにたとえると：<br>
+    担保負担者のチームには「債務者枠」と「物上保証人枠」の走者がいます。第三取得者は前の走者から<strong>バトン（負担付きの土地）ごと走順を受け継ぐ</strong>。<br>
+    ・<strong>債務者Ｓからバトンを受けた人</strong> → Ｓの走順＝アンカー（最終責任者）の位置。最終責任者は誰にも「肩代わり分を返せ」と言えない。<br>
+    ・<strong>物上保証人Ｃからバトンを受けたＰ</strong> → Ｃの走順をそのまま承継。Ｃが持っていた「頭数1人分＋財産価額按分」の地位で代位できる。<br>
+    バトンと一緒に「チーム内での立ち位置」も引き継がれるのです。
+  </div>
+
+  <h3>2方向で考える：「からの代位」と「に対する代位」</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>➡️ 第三取得者「からの」代位<br><small>（第三取得者が弁済した場合）</small></h4>
+      <ul>
+        <li><strong>債務者からの第三取得者</strong>：弁済しても保証人・物上保証人に代位<strong>できない</strong>（501条3項1号）</li>
+        <li>理由：債務者の財産には最終負担が予定されている。それを買った人は負担込みの値段で買ったはず（代価から債務分を差し引ける立場）</li>
+        <li><strong>物上保証人からの第三取得者（Ｐ・Ｑ）</strong>：物上保証人と<strong>みなされる</strong>（5号）→ Ｃ・Ｄと同じ割合で代位<strong>できる</strong></li>
+      </ul>
+    </div>
+    <div class="vs-mid">⇄</div>
+    <div class="vs-box right">
+      <h4>⬅️ 第三取得者「に対する」代位<br><small>（他の担保負担者が弁済した場合）</small></h4>
+      <ul>
+        <li>保証人・物上保証人が弁済 → <strong>債務者からの第三取得者に対しては全額</strong>代位できる（債務者と同視されるから）</li>
+        <li>物上保証人からの第三取得者（Ｐ・Ｑ）に対しては → Ｃ・Ｄに対するのと<strong>同じ負担割合の限度</strong>で代位できる</li>
+        <li>第三取得者同士（債務者からの取得者間）→ 各不動産の<strong>価額に応じて</strong>代位（2号）</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>地位の整理表（501条3項）</h3>
+  <table>
+    <tr><th>誰から取得したか</th><th>扱い</th><th>からの代位（弁済したら）</th><th>に対する代位（請求されたら）</th></tr>
+    <tr><td>債務者Ｓから取得</td><td>債務者の分身扱い（1号）</td><td>保証人・物上保証人へは<strong>代位不可</strong>。Ｓへの求償のみ</td><td>保証人らから<strong>全額</strong>代位される</td></tr>
+    <tr><td>物上保証人Ｃ・Ｄから取得（Ｐ・Ｑ）</td><td>物上保証人と<strong>みなす</strong>（5号）</td><td>Ｃ・Ｄと同じ割合で<strong>代位可</strong>（頭数＋価額按分）</td><td>Ｃ・Ｄの負担部分の<strong>限度で</strong>代位される</td></tr>
+  </table>
+
+  <h3>数字で確認：Ｐが1000万円全額弁済したら</h3>
+  <p>Ｐは物上保証人Ｃとみなされるので、講義85の表がそのまま使えます。</p>
+  <table>
+    <tr><th>相手</th><th>Ｐが代位できる額</th><th>根拠</th></tr>
+    <tr><td>債務者Ｓ</td><td>1000万円（全額）</td><td>求償権＋原債権の代位</td></tr>
+    <tr><td>保証人Ａ</td><td>250万円</td><td>頭数1/4（Ｐ＝Ｃの地位）</td></tr>
+    <tr><td>保証人Ｂ</td><td>250万円</td><td>同上</td></tr>
+    <tr><td>Ｑ（＝Ｄの地位）</td><td>187.5万円</td><td>物上保証人間は財産価額比 5:3</td></tr>
+    <tr><td>（Ｐ自身の負担部分）</td><td>312.5万円は自腹</td><td>Ｃの負担部分を承継</td></tr>
+  </table>
+
+  <div class="warn">
+    「第三取得者」と聞いて全部同じ扱いだと思うのは誤り。<strong>出どころ（債務者ルートか物上保証人ルートか）で天と地の差</strong>があります。<br>
+    債務者からの第三取得者が保証人に代位できない理由：保証人は「最終的には債務者の財産から回収できる」と期待して保証した。債務者の財産（抵当不動産）が転売されてもその期待は保護されるべきで、転売先（第三取得者）は抵当権の負担を覚悟して（その分安く）買っている。一方、物上保証人の財産にはそんな最終負担の予定はないから、その承継人Ｐ・Ｑは前主と同じ保護を受けられるのです。
+  </div>
+
+  <div class="key">
+    暗記の合言葉：<strong>「人は替わっても席次は変わらない」</strong>。<br>
+    特定承継人は前主の「担保負担チーム内での地位（席次・負担割合）」をそのまま承継する。①債務者ルート＝最下位（誰にも代位できない）、②物上保証人ルート＝前主と同格。この一点を押さえれば、501条3項1号・2号・5号は全部導けます。
+  </div>
+
+  <div class="quiz">
+    <p>Q1: 債務者Ｓ所有の抵当不動産をＴが買い取った。Ｔが債務全額を弁済した場合、保証人Ａに代位できるか？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>できない（501条3項1号）。債務者からの第三取得者は債務者と同視される。Ｔは抵当権の負担を前提に（負担分を価格に織り込んで）買ったはずで、弁済はいわば「自分の買い物の後始末」。保証人へ転嫁することは許されない。Ｔにできるのは売主Ｓへの求償（および売買契約上の処理）のみ。</p>
+    </details>
+    <p>Q2: 物上保証人Ｄから乙土地を買ったＱが債務全額1000万円を弁済した。Ｑは保証人Ａ・Ｂおよび甲土地（Ｃ→Ｐに譲渡済み）にいくら代位できる？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>ＱはＤ（物上保証人）とみなされる（5号）。負担割合は講義85と同じ：Ａ・Ｂへ各250万円、Ｐ（Ｃの地位の承継人）へ312.5万円の限度で代位できる。Ｑ自身の負担部分187.5万円は自己負担。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義88 ========== -->
+<div class="section" id="lec88">
+  <div class="section-header">
+    <div class="section-num">88</div>
+    <h2>債権者の担保減損責任とその免除特約（民504条）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>担保負担者は「弁済すれば債権者の担保を引き継げる」と期待しています。債権者がその担保を<strong>わざと・うっかり減らしたら</strong>、担保負担者は<strong>減った分だけ責任を免れます</strong>（担保保存義務、民504条）。ただし実務ではこの責任を<strong>免除する特約</strong>が広く使われ、原則有効とされています。</p>
+
+  <h3>前提：担保負担者の「代位への期待」は法的保護に値する</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">担保負担者Ａ〜Ｄ<br><small>「弁済すればＧの担保を<br>引き継げるはず」</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">この期待は法的に保護される<br><small>Ｇは弁済を受けたら債権者席を<br>明け渡す義務（債権証書交付等・民503条）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">Ｇが担保を故意・過失で<br>喪失・減少させたら？<br><small>→ 民504条の出番</small></div>
+  </div>
+
+  <div class="analogy">
+    担保は<strong>「みんなで担ぐ神輿（みこし）」</strong>です。<br>
+    Ａ・Ｂ・Ｃ・Ｄの4人で1000万円の神輿を担いでいる。各自の持ち場（負担部分）は決まっている（講義85）。ところが胴元のＧが「Ｃさん、もう担がなくていいよ」と勝手にＣを帰らせた（＝Ｃの抵当権を放棄した）。<br>
+    残った3人の肩に、Ｃの分の重さがズシッと乗ってくる — これは不公平。そこで法律は「<strong>Ｇが勝手に担ぎ手を減らしたなら、増えた分の重さは残りの担ぎ手が拒否できる</strong>（その分は胴元Ｇの自腹）」と決めました。これが担保保存義務です。
+  </div>
+
+  <h3>民504条の構造</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：担保保存義務（民504条）</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">債権者の担保保存義務（504条）</span>
+        <ul>
+          <li>
+            <span class="node l1">要件（1項前段）</span>
+            <ul>
+              <li><span class="node l2">弁済をするについて正当な利益を有する者（代位権者）がいること</span></li>
+              <li><span class="node l2">債権者が故意・過失により担保を喪失・減少させたこと</span></li>
+              <li><span class="node l3">例：抵当権の放棄、登記の抹消、保証人の免除、担保差替えの失敗</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">効果（1項）</span>
+            <ul>
+              <li><span class="node accent">代位権者は「代位して受けられたはずの償還額」の限度で責任を免れる</span></li>
+              <li><span class="node accent">免責の効果は、代位権者からの第三取得者・特定承継人にも及ぶ（1項後段）</span></li>
+              <li><span class="node l3">物的担保なら「責任が減る」＝抵当権の被担保債権額が縮む</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">適用除外（2項・2017年改正で明文化）</span>
+            <ul>
+              <li><span class="node l2">担保の喪失・減少が「取引上の社会通念に照らして合理的な理由」がある場合は免責なし</span></li>
+              <li><span class="node l3">例：担保物件の正常な入替え、事業再建のための一部解放</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">免除特約（担保保存義務免除特約）</span>
+            <ul>
+              <li><span class="node danger">「Ｇが担保を変更・解除しても異議なし」という特約 → 原則有効（判例）</span></li>
+              <li><span class="node l3">ただし信義則違反・権利濫用となる場合は効力が制限される（最判平7.6.23）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>数字で確認：Ｇが甲土地の抵当権を放棄したら</h3>
+  <p>共通設例で、Ｇが故意にＣの甲土地の抵当権を放棄したとします。Ｃの負担部分は312.5万円（講義85）でした。</p>
+  <table>
+    <tr><th>担保負担者</th><th>放棄前の負担部分</th><th>放棄後の責任</th><th>説明</th></tr>
+    <tr><td>Ａ（保証人）</td><td>250万円</td><td>変わらず250万円が上限を画する</td><td rowspan="3">Ａ・Ｂ・Ｄは「Ｃに代位できたはずの312.5万円」の利益を失った。その分（各自がＣから償還を受けられたはずの額）について<strong>責任を免れる</strong>。たとえばＡが全額弁済を強いられる場面では、Ｃへ代位できたはずの312.5万円分につきＧへの保証債務の履行を拒める。</td></tr>
+    <tr><td>Ｂ（保証人）</td><td>250万円</td><td>同上</td></tr>
+    <tr><td>Ｄ（物上保証人）</td><td>187.5万円</td><td>乙土地の責任が縮減</td></tr>
+    <tr><td>Ｃ</td><td>312.5万円</td><td>担保が消えて事実上離脱</td><td>Ｃの離脱分はＧの自腹（Ｇは他の担保負担者に転嫁できない）</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>免除特約をめぐる現実</strong>：銀行取引約定書には、ほぼ必ず「銀行が担保・保証を変更、解除しても保証人は免責を主張しない」という<strong>担保保存義務免除特約</strong>が入っています。判例はこの特約を原則として有効としつつ、担保の喪失が<strong>金融取引上の通念から合理性を欠き</strong>、保証人の正当な期待を著しく害するような場合には、特約の援用が<strong>信義則違反・権利濫用</strong>として許されないとします（最判平7.6.23）。<br>
+    「特約があれば常に銀行の勝ち」ではない — 特約の効力にも信義則という天井がある、と押さえましょう。
+  </div>
+
+  <div class="key">
+    講義86との対比で立体的に理解：<br>
+    ・講義86（502条）＝<strong>代位は債権者を害してはならない</strong>（債権者優先主義）<br>
+    ・講義88（504条）＝<strong>債権者も代位への期待を害してはならない</strong>（担保保存義務）<br>
+    つまり、債権者と代位権者は「互いの正当な利益を尊重し合う」関係に立つ。504条はその債権者側の義務、502条は代位者側の限界。セットで覚えると忘れません。
+  </div>
+
+  <div class="quiz">
+    <p>Q1: Ｇが過失により甲土地の抵当権設定登記を抹消してしまい、甲土地は善意の第三者に渡って抵当権を対抗できなくなった。保証人Ａは何を主張できる？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>民504条1項により、Ａは「Ｃの甲土地に代位できたはずの額」（Ｃの負担部分312.5万円）の限度で保証責任を免れると主張できる。Ｇの担保保存義務違反（過失による担保の喪失）が要件であり、抗弁として機能する。</p>
+    </details>
+    <p>Q2: 担保保存義務免除特約があれば、債権者はどんな担保放棄をしても免責の主張を封じられるか？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>封じられない。特約自体は原則有効だが、担保の喪失・減少が取引上の社会通念に照らして合理性を欠き、担保負担者の代位への正当な期待を著しく害する態様である場合には、特約を援用することが信義則に反し権利濫用として許されない（最判平7.6.23の趣旨）。</p>
+    </details>
+    <p>Q3: なぜ免責の効果は代位権者からの第三取得者にも及ぶ（504条1項後段）のか？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>免責によって縮減した責任（例：縮んだ抵当権の負担）を前提に目的物を取得した特定承継人の地位を保護するため。もし承継で免責の効果が消えるなら、担保不動産の取引価格が安定せず、第三取得者は安心して買えなくなる。「人は替わっても席次は変わらない」（講義87）の発想がここでも貫かれている。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義89 ========== -->
+<div class="section" id="lec89">
+  <div class="section-header">
+    <div class="section-num">89</div>
+    <h2>第三者への弁済 — 間違った相手に払ったら（民478条・479条）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>ここから視点が反転。「第三者<strong>が</strong>払う」ではなく「第三者<strong>に</strong>払う」話です。受領権限のない第三者Ａへの弁済は<strong>原則無効</strong>。例外は、①Ａが<strong>受領権者らしい外観</strong>を持ち弁済者が<strong>善意無過失</strong>のとき（民478条）、②債権者が<strong>現実に利益を受けた</strong>限度（民479条）。</p>
+
+  <h3>大原則：無権限者への弁済は無効</h3>
+  <div class="flow">
+    <div class="flow-item f-red">ＳがＡに100万円支払い<br><small>Ａは受領権限なし</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">弁済は無効<br><small>Ｇの債権は消えない<br>Ｓは二重払いの危険</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">ＳはＡに不当利得返還請求<br><small>Ａの無資力リスクはＳが負担</small></div>
+  </div>
+
+  <div class="analogy">
+    宅配便の誤配にたとえると：<br>
+    Ｇさん宛ての荷物（弁済）を、隣の家のＡさんに渡してしまった。当然Ｇさんは「私は受け取っていない」と言えるし、配達員Ｓは改めてＧさんに届け直さなければならない（＝二重払い）。誤配した荷物はＡさんから取り返すしかなく、<strong>Ａさんが夜逃げしたら損するのは配達員Ｓ</strong>。<br>
+    ただし例外が2つ。①Ａさんが<strong>Ｇさんの制服を着た本物そっくりの家政婦</strong>で、誰が見ても受取人に見えた場合（478条）— このときは配達完了扱いにしてＳを守る。②ＡさんがそのままＧさんに荷物を届けてくれた場合（479条）— 結果オーライなので、その限度で有効。
+  </div>
+
+  <h3>例外①：受領権者としての外観を有する者への弁済（民478条）</h3>
+  <div class="term">
+    <strong>民478条</strong>：「受領権者<strong>以外の者であって取引上の社会通念に照らして受領権者としての外観を有するもの</strong>」に対してした弁済は、弁済者が<strong>善意・無過失</strong>のときに限り、<strong>有効</strong>とする。<br><br>
+    ・「受領権者」＝債権者＋法令の規定または当事者の意思表示によって受領権限を与えられた第三者<br>
+    ・旧法の「債権の準占有者」という分かりにくい言葉が、2017年改正でこの表現に改められた<br><br>
+    典型例：
+    <ul>
+      <li>預金通帳と届出印を持参した<strong>無権限者</strong>への銀行の払戻し</li>
+      <li><strong>偽造</strong>のキャッシュカードによるATM払戻し（判例は478条の枠組みで処理）</li>
+      <li>債権譲渡が無効だった場合の<strong>譲受人（と称する者）</strong>への弁済</li>
+      <li>相続人らしく見えた<strong>表見相続人</strong>への弁済</li>
+    </ul>
+  </div>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：弁済の相手方の全体像</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">誰に払えば債務は消える？</span>
+        <ul>
+          <li>
+            <span class="node l1">受領権者への弁済 → 当然有効</span>
+            <ul>
+              <li><span class="node l2">債権者本人</span></li>
+              <li><span class="node l2">法令上の受領権限者（代理人・破産管財人など）</span></li>
+              <li><span class="node l2">債権者から授権された者</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">無権限の第三者への弁済 → 原則無効</span>
+            <ul>
+              <li>
+                <span class="node accent">例外①478条：外観＋善意無過失なら有効</span>
+                <ul>
+                  <li><span class="node l3">債権は消滅し、真の債権者Ｇは受領者Ａに不当利得返還請求</span></li>
+                  <li><span class="node l3">弁済者Ｓは保護され、Ａの無資力リスクはＧへ移る</span></li>
+                </ul>
+              </li>
+              <li>
+                <span class="node accent">例外②479条：債権者が利益を受けた限度で有効</span>
+                <ul>
+                  <li><span class="node l3">ＡがＧに「これＧさんのお金です」と引き渡せばその範囲で消滅</span></li>
+                </ul>
+              </li>
+              <li>
+                <span class="node danger">どの例外にも当たらない → 無効</span>
+                <ul>
+                  <li><span class="node l3">ＳはＡに不当利得返還請求（Ａの無資力危険はＳ負担）</span></li>
+                  <li><span class="node l3">Ｇには改めて弁済しなければならない</span></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>478条が適用されると「リスクの引受人」が交代する</h3>
+  <table>
+    <tr><th></th><th>原則（弁済無効）</th><th>478条適用（弁済有効）</th></tr>
+    <tr><td>Ｇの債権</td><td>存続（Ｓに再請求できる）</td><td><strong>消滅</strong>（Ｓにはもう請求できない）</td></tr>
+    <tr><td>Ｓの立場</td><td>二重払いの危険。Ａへ不当利得返還請求</td><td><strong>免責</strong>。もう払わなくてよい</td></tr>
+    <tr><td>Ｇの救済</td><td>不要（Ｓに請求すればよい）</td><td>Ａへ<strong>不当利得返還請求</strong></td></tr>
+    <tr><td>Ａの無資力リスク</td><td><strong>Ｓ</strong>が負担</td><td><strong>Ｇ</strong>が負担</td></tr>
+  </table>
+
+  <div class="key">
+    478条の本質は<strong>「Ａの無資力リスクをＳとＧのどちらに負わせるか」の振り分け装置</strong>。<br>
+    ・外観を信じた点でＳに落ち度がない（善意無過失）→ Ｓを守り、リスクをＧへ<br>
+    ・Ｓに落ち度がある（悪意または過失）→ 原則どおりＳの自己責任<br>
+    表見代理（109条等）や即時取得（192条）と同じ<strong>外観法理（権利外観理論）</strong>の仲間です。「外観＋信頼＋（帰責性）」という共通の骨格で整理しておくと民法全体の見通しがよくなります。
+  </div>
+
+  <div class="warn">
+    479条を忘れがち：478条が使えなくても、<strong>受領者Ａが受け取ったお金を現実にＧへ渡した（Ｇが利益を受けた）なら、その限度で弁済は有効</strong>になります（479条）。<br>
+    例：Ａが「これ、Ｇさんが受け取るはずのオカネですわ」と言って100万円をＧに渡した → Ｓの債務はその範囲で消滅。結果としてＧが満足した以上、無効を貫く理由がないからです。
+  </div>
+
+  <div class="quiz">
+    <p>Q1: 銀行の窓口に、盗んだ通帳と届出印を持ったＸが現れ、預金の払戻しを受けた。銀行は本人確認手続を尽くしていた。預金者Ｇは銀行に改めて払戻しを請求できるか？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>できない。Ｘは「取引上の社会通念に照らして受領権者としての外観を有する者」にあたり、銀行（弁済者）が善意・無過失であれば払戻し（弁済）は有効（478条）。Ｇの預金債権はその範囲で消滅し、ＧはＸに対して不当利得返還（または不法行為）を請求するほかない。Ｘの無資力リスクはＧが負う。</p>
+    </details>
+    <p>Q2: 478条の要件を満たさない第三者Ａへの弁済でも有効になる場合があるか？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>ある。受領者Ａが受領した金銭を債権者Ｇに引き渡すなどして<strong>Ｇが現実に利益を受けた限度</strong>では、弁済は有効になる（479条）。結果的に債権者が満足を得た範囲で債務を消滅させるのが公平だからである。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義90 ========== -->
+<div class="section" id="lec90">
+  <div class="section-header">
+    <div class="section-num">90</div>
+    <h2>誤弁済金返還請求に対する抗弁の成否 — 478条は誰のための条文か</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>誤って受け取ったＡが、返還請求してきたＳに向かって「478条であなたの債務は消えたんだから損失はないでしょ。返さないよ」と言えるか？ — 先生いわく<strong>「ナニヲアツカマシイコトユウテンネン」</strong>。478条は<strong>弁済者を守る盾</strong>であって、<strong>受領者が利得を抱え込むための剣ではない</strong>のです。</p>
+
+  <h3>問題の場面</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">ＳがＡに誤って<br>100万円を弁済</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">ＳがＡに<br>不当利得返還請求<br><small>（民703条）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">Ａの抗弁？<br><small>「478条で弁済有効＝<br>Ｓの債務消滅＝Ｓに損失なし」</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">この抗弁は<br>認められるか？</div>
+  </div>
+
+  <div class="analogy">
+    傘の貸し借りにたとえると：<br>
+    478条は、雨（二重払いの危険）に降られた<strong>Ｓのために用意された傘</strong>です。Ｓが「傘はいらない、濡れてもいいからＡから直接お金を取り返したい」と言っているのに、<strong>横からＡが勝手にその傘を奪って</strong>「ほら、あなたは濡れない（損しない）はずだから、私はお金を返さなくていい」と主張する — 図々しいにもほどがある、という話。<br>
+    保護のための制度は、<strong>保護される本人のために</strong>使われるべきで、相手方の居直りの道具にしてはならないのです。
+  </div>
+
+  <h3>Ａの抗弁の構造と、その問題点</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：Ａの「478条抗弁」は成り立つか</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">ＳのＡに対する不当利得返還請求（703条）</span>
+        <ul>
+          <li>
+            <span class="node l1">請求の要件事実</span>
+            <ul>
+              <li><span class="node l2">①Ａの受益（100万円受領）</span></li>
+              <li><span class="node l2">②Ｓの損失（100万円支払）</span></li>
+              <li><span class="node l2">③受益と損失の因果関係</span></li>
+              <li><span class="node l2">④法律上の原因がないこと</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Ａの抗弁の理屈</span>
+            <ul>
+              <li><span class="node l2">「478条で弁済有効 → Ｓの債務は消滅した」</span></li>
+              <li><span class="node l2">「債務消滅という利益を得た以上、Ｓに『損失』はない」</span></li>
+              <li><span class="node l3">→ 478条の適用要件事実を主張して請求障害の抗弁とする構成</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">この抗弁への評価</span>
+            <ul>
+              <li><span class="node danger">478条は弁済者保護の制度 — 保護を受けるか否かは弁済者側の利益のための仕組み</span></li>
+              <li><span class="node danger">無権限で受領したＡが、自らの利得保持のために援用するのは制度趣旨の濫用</span></li>
+              <li><span class="node accent">Ｓが弁済の無効を前提にＡへ返還請求すること自体は、Ｇとの関係で改めて弁済すべき立場を引き受けるということ — Ａに文句を言う筋合いはない</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>整理：478条を「誰が」持ち出せるのか</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>⭕ 弁済者Ｓが援用する場面</h4>
+      <ul>
+        <li>Ｇから「まだ払ってもらってない」と請求された</li>
+        <li>Ｓ：「Ａへの弁済は478条で有効。債務は消滅した」</li>
+        <li>→ <strong>本来の使い方</strong>。Ｓの二重払いを防ぐ盾</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>❌ 受領者Ａが援用する場面</h4>
+      <ul>
+        <li>Ｓから「間違って払った。返して」と請求された</li>
+        <li>Ａ：「478条で弁済は有効だから君に損失はない」</li>
+        <li>→ <strong>制度趣旨に反する濫用的援用</strong>。無権限受領者の利得保持を正当化する根拠にはならない</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    この講義の本当の学びは、個別の結論よりも<strong>「条文の制度趣旨から援用の可否を考える」という思考法</strong>です。<br>
+    ① その条文は<strong>誰を保護するため</strong>の制度か？（478条 → 善意無過失の弁済者）<br>
+    ② 援用しようとしているのは<strong>保護の名宛人か</strong>？（Ａは違う。むしろ保護の「反射」で得をしようとしている）<br>
+    ③ 援用を認めると<strong>制度目的に反する結果</strong>にならないか？（無権限受領者が利得を確保 → 本末転倒）<br>
+    この3ステップは、時効・無効・取消しなど他の「援用権」の問題にもそのまま使えます。
+  </div>
+
+  <div class="warn">
+    深入り注意ポイント：仮に478条の効果が「確定的に」生じて債権が消滅すると考えると、理論上は「Ｓの損失は何か」という難問が残ります（債務消滅という利益とＡへの出捐の差引き）。学説には、弁済者Ｓが<strong>有効・無効いずれを主張するか選択できる</strong>と説く見解もあります。未修段階では、(a)原則：誤弁済は不当利得で巻き戻し、(b)478条はＳの保護のための例外、(c)Ａからの居直り援用は許されない — の3点を押さえれば十分です。
+  </div>
+
+  <div class="quiz">
+    <p>Q1: Ｓが無権限者Ａに誤って弁済し、Ａに不当利得返還を請求した。Ａは「478条によりＳの債務は消滅しており、Ｓに損失はない」と抗弁した。この抗弁は認められるべきか？</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>認められるべきでない。478条は善意無過失の<strong>弁済者を二重払いの危険から守る</strong>制度であり、その保護を受けるかどうかは弁済者の利益のための仕組みである。無権限で金銭を受領したＡが、自己の利得を保持する目的でこれを援用するのは制度趣旨に反する（信義則上許されない）。Ｓが弁済の無効を前提にＡへ返還を求め、Ｇへ改めて弁済する道を選ぶことは妨げられない。</p>
+    </details>
+    <p>Q2: 講義89と90を通じて、「Ａの無資力リスク」は場面ごとに誰が負うか整理せよ。</p>
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>①原則（弁済無効）：ＳがＡに不当利得返還請求 → <strong>Ｓ</strong>がＡの無資力リスクを負う。②478条適用（Ｓ善意無過失）：弁済有効・債権消滅、ＧがＡに不当利得返還請求 → <strong>Ｇ</strong>がリスクを負う。③479条（Ｇが利益を受けた限度）：その範囲で弁済有効となり、リスク問題自体が消える。「誰が外観への信頼を保護されるか」でリスクの落ち着き先が変わる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 用語集 ========== -->
+<div class="section" id="glossary">
+  <div class="section-header">
+    <div class="section-num">📖</div>
+    <h2>初学者向け用語集</h2>
+  </div>
+
+  <table>
+    <tr><th>用語</th><th>読み</th><th>意味（やさしく）</th><th>登場講義</th></tr>
+    <tr><td>第三者弁済</td><td>だいさんしゃべんさい</td><td>債務者以外の人が代わりに債務を払うこと。原則有効（民474条）</td><td>81</td></tr>
+    <tr><td>債務の本旨</td><td>さいむのほんし</td><td>債務の本来の内容・趣旨。「約束どおりの中身」のこと</td><td>81</td></tr>
+    <tr><td>正当な利益を有する者</td><td>せいとうなりえきをゆうするもの</td><td>弁済しないと自分が法的不利益を受ける人（保証人・物上保証人・第三取得者など）</td><td>81・83・84</td></tr>
+    <tr><td>属人的給付</td><td>ぞくじんてききゅうふ</td><td>その人がやらないと意味がない給付（演奏・執筆など）。第三者弁済不可</td><td>81</td></tr>
+    <tr><td>求償権</td><td>きゅうしょうけん</td><td>立て替えた分を「返して」と債務者に請求する権利</td><td>82</td></tr>
+    <tr><td>弁済による代位（弁済者代位）</td><td>べんさいによるだいい</td><td>弁済した人が債権者の債権・担保をまるごと引き継ぐ制度（民499条）</td><td>82〜88</td></tr>
+    <tr><td>原債権</td><td>げんさいけん</td><td>もともと債権者が持っていた債権。代位により弁済者へ法定移転する</td><td>82</td></tr>
+    <tr><td>法定移転</td><td>ほうていいてん</td><td>契約なしに法律の規定で権利が自動的に移ること</td><td>82・83</td></tr>
+    <tr><td>事務管理</td><td>じむかんり</td><td>頼まれていないのに他人のために事務を行うこと（民697条〜）。無委託の第三者弁済の求償根拠</td><td>82</td></tr>
+    <tr><td>対抗要件の抗弁</td><td>たいこうようけんのこうべん</td><td>「あんたダレ？対抗要件を備えるまで払わない」という債務者側の反論</td><td>83</td></tr>
+    <tr><td>確定日付ある証書</td><td>かくていひづけあるしょうしょ</td><td>内容証明郵便など、日付を後から偽装できない文書。第三者対抗の道具</td><td>83</td></tr>
+    <tr><td>担保負担者</td><td>たんぽふたんしゃ</td><td>債務が弁済されないと自分が責任を問われる人々の総称（保証人・物上保証人・第三取得者）</td><td>84〜88</td></tr>
+    <tr><td>物上保証人</td><td>ぶつじょうほしょうにん</td><td>他人の借金のために自分の財産に担保権を設定した人。責任は財産の価額が上限</td><td>84〜88</td></tr>
+    <tr><td>第三取得者</td><td>だいさんしゅとくしゃ</td><td>抵当権などの担保が付いたままの不動産を買い取った人</td><td>84・87</td></tr>
+    <tr><td>負担部分</td><td>ふたんぶぶん</td><td>担保負担者の内部関係で「最終的に自分が被る額」。代位の限度を画する</td><td>85</td></tr>
+    <tr><td>頭数</td><td>あたまかず</td><td>人数のこと。保証人がからむ代位割合は人数割りが基本（501条3項4号）</td><td>85</td></tr>
+    <tr><td>一部代位</td><td>いちぶだいい</td><td>一部弁済した人が、その割合に応じて債権者と「相席」する状態（民502条）</td><td>86</td></tr>
+    <tr><td>債権者優先主義</td><td>さいけんしゃゆうせんしゅぎ</td><td>一部代位者と債権者が競合したら債権者が先に回収できるルール（502条3項）</td><td>86</td></tr>
+    <tr><td>特定承継人</td><td>とくていしょうけいにん</td><td>売買などで個別の権利・物を引き継いだ人。前主の「席次」も引き継ぐ</td><td>87・88</td></tr>
+    <tr><td>担保保存義務</td><td>たんぽほぞんぎむ</td><td>債権者は代位権者のために担保を故意・過失で減らしてはならない義務（民504条）</td><td>88</td></tr>
+    <tr><td>担保保存義務免除特約</td><td>たんぽほぞんぎむめんじょとくやく</td><td>「担保を変更・解除しても文句を言わない」という特約。原則有効だが信義則の限界あり</td><td>88</td></tr>
+    <tr><td>受領権者</td><td>じゅりょうけんじゃ</td><td>弁済を受け取る権限がある人。債権者＋法令・授権により権限を持つ者</td><td>89</td></tr>
+    <tr><td>受領権者としての外観を有する者</td><td>じゅりょうけんじゃとしてのがいかんをゆうするもの</td><td>本当は権限がないのに、受領権者に見える人（旧「債権の準占有者」）。善意無過失の弁済は有効（民478条）</td><td>89・90</td></tr>
+    <tr><td>外観法理</td><td>がいかんほうり</td><td>見た目を信頼した人を保護する考え方。表見代理・即時取得・478条に共通</td><td>89</td></tr>
+    <tr><td>不当利得</td><td>ふとうりとく</td><td>法律上の原因なく得た利益。返還しなければならない（民703条）</td><td>89・90</td></tr>
+  </table>
+</div>
+
+<!-- ========== Footer ========== -->
+<div style="text-align:center; padding: 30px; color: var(--text-light); font-size: 0.85em;">
+  <p>msahkie先生の民法講義に基づく学習ガイド</p>
+  <p>法律未修者向け知識点整理・拡展</p>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>

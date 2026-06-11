@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義71〜80 学習ガイド（法律未修者向け）</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --primary: #2c5f8a;
+    --secondary: #e8f0f8;
+    --accent: #d4740e;
+    --accent-light: #fff5eb;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #dfe6e9;
+    --success: #00b894;
+    --danger: #e17055;
+    --info: #74b9ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #2c5f8a 0%, #1a3a5c 100%);
+    color: white;
+    border-radius: 16px;
+    margin-bottom: 30px;
+  }
+  .header h1 { font-size: 2em; margin-bottom: 10px; }
+  .header p { opacity: 0.9; font-size: 1.05em; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+
+  /* Navigation */
+  .nav {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav:hover, .nav:focus-within {
+    max-height: 600px;
+  }
+  .nav h3 { margin-bottom: 10px; color: var(--primary); font-size: 0.95em; cursor: pointer; }
+  .nav h3::after { content: " ▼"; font-size: 0.7em; }
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .nav a {
+    display: block;
+    padding: 8px 12px;
+    background: var(--secondary);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.88em;
+    transition: all 0.2s;
+  }
+  .nav a:hover { background: var(--primary); color: white; }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--secondary);
+  }
+  .section-num {
+    background: var(--primary);
+    color: white;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 1.35em; color: var(--primary); }
+
+  /* Subsection */
+  h3 {
+    color: var(--primary);
+    font-size: 1.1em;
+    margin: 24px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  h4 {
+    color: var(--accent);
+    font-size: 1em;
+    margin: 16px 0 8px;
+  }
+
+  /* Analogy box */
+  .analogy {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .analogy::before {
+    content: "💡 たとえ話";
+    display: block;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Key point */
+  .key {
+    background: #eef7ee;
+    border-left: 4px solid var(--success);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .key::before {
+    content: "✅ 重要ポイント";
+    display: block;
+    font-weight: bold;
+    color: var(--success);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Warning */
+  .warn {
+    background: #fff3f0;
+    border-left: 4px solid var(--danger);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .warn::before {
+    content: "⚠️ 注意・よくある誤解";
+    display: block;
+    font-weight: bold;
+    color: var(--danger);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Term */
+  .term {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .term::before {
+    content: "📖 用語解説";
+    display: block;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Quiz */
+  .quiz {
+    background: #f0eeff;
+    border: 2px dashed #6c5ce7;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .quiz::before {
+    content: "🧪 理解度チェック";
+    display: block;
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+  .quiz details {
+    margin-top: 8px;
+  }
+  .quiz summary {
+    cursor: pointer;
+    color: #6c5ce7;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .quiz details p {
+    margin-top: 6px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92em;
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:nth-child(even) { background: var(--secondary); }
+  tr:hover { background: #dbeafe; }
+
+  /* Mind map */
+  .mindmap {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .mindmap-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 16px;
+    font-size: 1.05em;
+  }
+
+  /* Tree structure */
+  .tree { padding-left: 0; list-style: none; }
+  .tree ul { padding-left: 28px; list-style: none; position: relative; }
+  .tree ul::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 12px;
+    border-left: 2px solid var(--border);
+  }
+  .tree li {
+    position: relative;
+    padding: 4px 0 4px 0;
+  }
+  .tree ul > li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 14px;
+    width: 14px;
+    border-top: 2px solid var(--border);
+  }
+  .tree .node {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+  .node.root { background: var(--primary); color: white; font-size: 1em; padding: 8px 20px; }
+  .node.l1 { background: #4a90c4; color: white; }
+  .node.l2 { background: var(--secondary); color: var(--primary); border: 1px solid #b0cfe0; }
+  .node.l3 { background: #f1f5f1; color: var(--text); border: 1px solid #c8d6c8; font-size: 0.85em; }
+  .node.accent { background: var(--accent-light); color: #b35c00; border: 1px solid #f0c8a0; }
+  .node.danger { background: #fff0ee; color: #c0392b; border: 1px solid #f0b0a0; }
+
+  /* Flow diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 16px 0;
+    justify-content: center;
+  }
+  .flow-item {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 0.88em;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-arrow {
+    font-size: 1.4em;
+    color: var(--text-light);
+    padding: 0 4px;
+  }
+  .flow .f-blue { background: var(--secondary); color: var(--primary); border: 2px solid #a0c4e0; }
+  .flow .f-green { background: #e8f8e8; color: #1e7e34; border: 2px solid #a0d8a0; }
+  .flow .f-orange { background: var(--accent-light); color: #b35c00; border: 2px solid #f0c8a0; }
+  .flow .f-red { background: #fff0ee; color: #c0392b; border: 2px solid #f0b0a0; }
+
+  /* Comparison */
+  .vs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: start;
+    margin: 16px 0;
+  }
+  .vs-box {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid;
+  }
+  .vs-box.left { border-color: #4a90c4; background: #f0f6fc; }
+  .vs-box.right { border-color: #e0a040; background: #fdf8f0; }
+  .vs-box h4 { margin-top: 0; text-align: center; }
+  .vs-mid {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--text-light);
+    align-self: center;
+  }
+
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 24px; }
+  li { margin: 4px 0; }
+  strong { color: var(--primary); }
+
+  @media (max-width: 768px) {
+    body { padding: 10px; }
+    .section { padding: 18px; }
+    .header h1 { font-size: 1.4em; }
+    .nav-grid { grid-template-columns: 1fr 1fr; }
+    .vs { grid-template-columns: 1fr; }
+    .vs-mid { text-align: center; }
+    .flow { flex-direction: column; align-items: center; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== Header ========== -->
+<div class="header">
+  <h1>民法学習ガイド 講義71〜80</h1>
+  <p>責任財産の保全 — 債権者代位権と詐害行為取消権、そして弁済論へ</p>
+  <div class="badge">msahkie先生の講義に基づく整理・拡展</div>
+</div>
+
+<!-- ========== Navigation ========== -->
+<div class="nav">
+  <h3>📑 目次（クリックでジャンプ）</h3>
+  <div class="nav-grid">
+    <a href="#overview">全体マップ</a>
+    <a href="#lec71">㉑ 責任なき債務</a>
+    <a href="#lec72">㉒ 代位訴訟で登記確保</a>
+    <a href="#lec73">㉓ 詐害行為取消訴訟</a>
+    <a href="#lec74">㉔ 対転得者取消請求</a>
+    <a href="#lec75">㉕ 代位権の簡易執行機能</a>
+    <a href="#lec76">㉖ 取消権の簡易執行機能</a>
+    <a href="#lec77">㉗ 取消権と否認権</a>
+    <a href="#lec78">㉘ 代位権の転用</a>
+    <a href="#lec79">㉙ 取消権の転用？</a>
+    <a href="#lec80">㉚ 弁済論概観</a>
+    <a href="#bigvs">総まとめ：代位権 vs 取消権</a>
+    <a href="#glossary">用語集</a>
+  </div>
+</div>
+
+<!-- ========== 全体マップ ========== -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-num">📍</div>
+    <h2>全体マップ：講義71〜80は何を学ぶのか</h2>
+  </div>
+
+  <p>このブロックのテーマは<strong>「責任財産の保全」</strong>です。債権者がいざ強制執行しようとしたとき、債務者の財布（責任財産）が空っぽだったら勝訴判決も紙切れ。そこで民法は、債務者の財布を守る2つの武器 — <strong>債権者代位権（423条）</strong>と<strong>詐害行為取消権（424条）</strong> — を債権者に与えました。講義71〜79でこの2つの武器を徹底的に使いこなし、講義80からは舞台を変えて「債権はどう消えるのか」＝<strong>弁済論</strong>に入ります。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">🗺️ 講義71〜80 全体思維導図</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">責任財産の保全 → 弁済論へ</span>
+        <ul>
+          <li>
+            <span class="node l1">Part A：前提の確認（講義71）</span>
+            <ul>
+              <li><span class="node l2">㉑ 債権の効力＝請求力・摑取力・給付保持力</span></li>
+              <li><span class="node l3">「責任なき債務」— 攻撃力が欠けた債権もある</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part B：2つの武器の基本形（講義72〜74）</span>
+            <ul>
+              <li><span class="node l2">㉒ 仮装売買 → 代位権で登記名義を取り戻す</span></li>
+              <li><span class="node l2">㉓ 仮装でなく本当の売買なら → 詐害行為取消訴訟</span></li>
+              <li><span class="node l2">㉔ 物がさらに転売されたら → 転得者への取消請求</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part C：簡易執行機能（講義75〜76）</span>
+            <ul>
+              <li><span class="node l2">㉕ 代位権で金銭を「直接自分に」払わせる</span></li>
+              <li><span class="node l2">㉖ 取消権で金銭を「直接自分に」払わせる</span></li>
+              <li><span class="node accent">→ 相殺を通じた「事実上の優先弁済」</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part D：制度の限界と応用（講義77〜79）</span>
+            <ul>
+              <li><span class="node l2">㉗ 破産になったら？ → 否認権との交代</span></li>
+              <li><span class="node l2">㉘ 代位権の転用 — 金銭債権以外にも使える</span></li>
+              <li><span class="node l2">㉙ 取消権の転用 — 「ない」。なぜないのか</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part E：新章のはじまり（講義80）</span>
+            <ul>
+              <li><span class="node l2">㉚ 債権はどう消滅するか — 弁済論概観</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="analogy">
+    銀行強盗映画にたとえると：<br>
+    <strong>Part A</strong> ＝ 「警察（債権者）にはどんな権限があるか」の確認<br>
+    <strong>Part B</strong> ＝ 犯人（債務者）が財産を仲間に横流しした！取り戻す2つの捜査手法<br>
+    <strong>Part C</strong> ＝ 取り戻した現金を、手続を省略して被害者が直接受け取るウラ技<br>
+    <strong>Part D</strong> ＝ 事件が「破産」という大事件に発展したら捜査権は管財人に移る<br>
+    <strong>Part E</strong> ＝ 事件解決（＝弁済）とは何か、という次のシーズンの予告編
+  </div>
+
+  <div class="key">
+    このブロック最大の学習目標はただ1つ：<br>
+    <strong>債権者代位権（423条）と詐害行為取消権（424条）を、いつでも対比して説明できるようになること。</strong><br>
+    「債務者が権利行使を<strong>サボっている</strong>なら代位権、債務者が財産を<strong>積極的に流出させた</strong>なら取消権」— この一文を合言葉に読み進めてください。
+  </div>
+</div>
+
+<!-- ========== 講義71 ========== -->
+<div class="section" id="lec71">
+  <div class="section-header">
+    <div class="section-num">71</div>
+    <h2>債権の本来的効力：責任なき債務</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>債権には「<strong>守りの力（給付保持力）</strong>」と「<strong>攻めの力（請求力・摑取力）</strong>」があり、まれに<strong>攻めの力だけが欠けた債権</strong>（責任なき債務）が存在します。</p>
+
+  <div class="analogy">
+    債権を「ゲームのキャラクター」にたとえると：<br>
+    <strong>給付保持力</strong>＝受け取ったアイテムを没収されない「所持スキル」（守り）<br>
+    <strong>請求力</strong>＝裁判所に「払えという判決」を出してもらえる「攻撃スキル」<br>
+    <strong>摑取力（かくしゅりょく）</strong>＝判決を武器に債務者の財産をつかみ取る「必殺技」<br>
+    「責任なき債務」は、攻撃スキルと必殺技を封印された<strong>守り専門キャラ</strong>。受け取ったものは自分のものにできるが、自分から取り立てには行けない。
+  </div>
+
+  <h3>債権の3つの効力</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：債権の効力の内訳</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">債権の効力</span>
+        <ul>
+          <li>
+            <span class="node l1">給付保持力（passive・守り）</span>
+            <ul>
+              <li><span class="node l2">受け取った給付を適法に保持できる</span></li>
+              <li><span class="node l3">＝返せ（不当利得返還）と言われない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">請求力（active・攻め①）</span>
+            <ul>
+              <li><span class="node l2">履行請求を認容する給付判決を得られる効力</span></li>
+              <li><span class="node l3">訴求力とも呼ばれる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">摑取力（active・攻め②）</span>
+            <ul>
+              <li><span class="node l2">民執22条の文書（債務名義）に記載されることで、その文書を債務名義として成立させる効力</span></li>
+              <li><span class="node accent">注意：強制執行自体は債務名義の「執行力」に基づく（民執25条）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="warn">
+    よくある誤解：「強制執行は債権の効力として行われる」— 違います。<br>
+    強制執行は<strong>債務名義という文書に付与された執行力</strong>に基づいて行われます（民執25条）。債権の摑取力は、あくまで「債務名義を成立させる力」まで。<br>
+    たとえるなら、債権はパスポートを「発行してもらう資格」であり、実際に国境を越えさせてくれるのは<strong>パスポートそのもの</strong>（債務名義）です。
+  </div>
+
+  <h3>効力が欠けるパターン</h3>
+  <table>
+    <tr><th>類型</th><th>欠ける効力</th><th>代表例</th><th>結果</th></tr>
+    <tr><td>自然債務</td><td>請求力（訴求力）</td><td>カフェー丸玉事件（昭和10年判例）の「特殊の債務」、消滅時効完成後に援用された債務（任意弁済は有効・705条参照）</td><td>訴えても勝てないが、任意に払われれば受け取ってよい</td></tr>
+    <tr><td>責任なき債務</td><td>摑取力（執行力）</td><td>破産免責後の債務、相続の限定承認で責任が相続財産に限定された部分、不執行の合意</td><td>判決は取れる（または債務は残る）が、財産への強制執行ができない</td></tr>
+    <tr><td>債務なき責任</td><td>—（裏返し）</td><td>物上保証人・抵当不動産の第三取得者</td><td>自分は債務を負わないのに、自分の物が摑取の対象になる</td></tr>
+  </table>
+
+  <div class="term">
+    <strong>責任なき債務</strong>：債務（Schuld）は存在するのに責任（Haftung）＝財産的裏付けへの摑取が及ばない状態。ドイツ法学由来の「債務と責任の分離」の考え方です。代表例の<strong>破産免責</strong>では、免責許可決定により債務の「責任」が消え、債権者は強制執行できなくなりますが、債務者が任意に払えばそれは有効な弁済として受け取れます。
+  </div>
+
+  <div class="key">
+    なぜこの講義がブロックの先頭にあるのか：<br>
+    講義72以降の主役「責任財産の保全」は、<strong>摑取力の対象＝債務者の責任財産</strong>を空っぽにさせないための制度です。つまり「摑取力とは何か」「責任とは何か」を確認しておかないと、保全する対象が何なのかが分からない。<strong>責任財産＝摑取力が及ぶ債務者の総財産</strong>、これがこのブロック全体のキーワードです。
+  </div>
+
+  <div class="quiz">
+    Q1: 「自然債務」と「責任なき債務」の違いを、欠けている効力の観点から説明してみましょう。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>自然債務は<strong>請求力（訴求力）</strong>が欠ける債務で、訴えを提起しても請求は認容されない。責任なき債務は<strong>摑取力（執行力）</strong>が欠ける債務で、債務自体は存在するが債務者の財産に対する強制執行ができない。両者とも<strong>給付保持力は残る</strong>ため、債務者が任意に弁済すれば債権者はそれを有効に受け取り、保持できる（不当利得にならない）。</p>
+    </details>
+    Q2: 破産手続で免責許可決定を受けた債務者が、「申し訳ないから」と旧債権者に任意に100万円を支払った。債務者は後から「あれは返して」と言えるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>言えない。免責によって失われるのは債務の<strong>責任（摑取力・執行力）</strong>であり、債務そのもの＝給付保持力は残る（責任なき債務）。したがって任意の支払いは有効な弁済であり、非債弁済（不当利得）にはならず、返還請求はできない。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義72 ========== -->
+<div class="section" id="lec72">
+  <div class="section-header">
+    <div class="section-num">72</div>
+    <h2>債権者代位訴訟による登記名義の確保</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>債務者が強制執行逃れのために<strong>ニセの売買（仮装売買）</strong>で土地の登記名義を他人に移したとき、債権者は<strong>債務者に代わって（＝代位して）</strong>登記を取り戻す訴訟を起こせます。</p>
+
+  <h3>設例：基本の事案</h3>
+  <div class="term">
+    <strong>〔設例〕</strong>AがBに対して金銭債権を持っている。Bは、Aの強制執行を回避するため、事情を知るCに甲土地を売却した<strong>形を仮装</strong>し、所有権移転登記もCに備えさせた。Bには他にめぼしい財産がない。<br>
+    <strong>〔問題〕</strong>Aは甲土地への強制執行を可能にするために、どんな法的手段を取ればよいか？
+  </div>
+
+  <div class="analogy">
+    かくれんぼのたとえ：<br>
+    借金取りから逃げるBくんが、自分の宝物（甲土地）を友達Cのロッカーに隠して「これはCのものです」という名札（登記）まで貼った。<br>
+    でも不動産執行は<strong>「名札が貼ってある人の物」しか差し押さえられない</strong>ルール。<br>
+    そこで債権者Aは、寝たふりをしているBの代わりに「その名札を剥がせ！」とCに請求する — これが<strong>債権者代位訴訟</strong>です。
+  </div>
+
+  <h3>なぜ「代位」が必要なのか — 論理の組み立て</h3>
+  <div class="flow">
+    <div class="flow-item f-red">仮装売買は<br>虚偽表示で無効<br><small>民94条1項</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">甲土地の所有権は<br>今もBにある</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">Bは所有権に基づき<br>Cに登記抹消を<br>請求できるはず</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">でもBは<br>請求しない<br><small>（執行逃れが目的だから）</small></div>
+  </div>
+  <div class="flow">
+    <div class="flow-item f-green">そこでAが民423条により、Bの抹消登記請求権を代位行使！</div>
+  </div>
+
+  <div class="key">
+    Aの訴訟の構造（債権者代位訴訟）：<br>
+    ・原告＝A（債権者）、被告＝C（登記名義人）<br>
+    ・<strong>訴訟物＝BのCに対する所有権に基づく妨害排除請求権</strong>（としての所有権移転登記抹消登記手続請求権）<br>
+    ・Aは「他人（B）の権利」を、自分の名前で行使している＝<strong>法定訴訟担当</strong><br>
+    ・登記名義がBに戻れば、Aは甲土地に不動産執行をかけられる
+  </div>
+
+  <h3>債権者代位権（民423条）の要件</h3>
+  <table>
+    <tr><th>要件</th><th>内容</th><th>本設例では</th></tr>
+    <tr><td>① 被保全債権の存在</td><td>AがBに対して債権を持っていること（原則、履行期到来後。保存行為は例外）</td><td>金銭債権あり ✅</td></tr>
+    <tr><td>② 保全の必要性（無資力）</td><td>債務者が無資力＝代位しないと債権回収ができないこと</td><td>「他にめぼしい財産がない」✅</td></tr>
+    <tr><td>③ 債務者の権利不行使</td><td>債務者が自ら権利を行使していないこと</td><td>Bは抹消請求する気ゼロ ✅</td></tr>
+    <tr><td>④ 被代位権利が一身専属権・差押禁止債権でない</td><td>例：慰謝料請求権（行使前）、年金受給権などは代位できない（423条1項ただし書）</td><td>抹消登記請求権はOK ✅</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>「Aが直接94条で無効主張すればいいのでは？」</strong>という疑問について。<br>
+    登記を抹消できるのは原則として<strong>登記上の利害関係人や真の権利者（B）</strong>です。Aは甲土地について自分自身の物権を持たないので、自分の権利としてCに抹消を請求する根拠がない。だからこそ「<strong>Bの請求権を借りる</strong>」＝代位という迂回路が必要になります。<br>
+    また、2017年改正で新設された<strong>423条の6</strong>により、代位訴訟を起こした債権者は遅滞なく債務者Bに訴訟告知をしなければなりません（Bに手続保障を与えるため）。
+  </div>
+
+  <div class="quiz">
+    Q1: 債権者代位権の行使に「債務者の無資力」が原則として要求されるのはなぜでしょう？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>債権者代位権は、債務者の財産管理への<strong>例外的な干渉</strong>だから。債務者に十分な財産があるなら、債権者はそこから回収すればよく、債務者が自分の権利をいつ・どう行使するかは本来債務者の自由（財産管理の自由）。無資力で「代位を認めないと債権が絵に描いた餅になる」場合に限って、この干渉が正当化される（保全の必要性）。</p>
+    </details>
+    Q2: 代位訴訟の係属中、債務者B自身はもはや抹消登記請求権を行使できなくなるか？（2017年改正のポイント）
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>行使できる。改正民法<strong>423条の5</strong>は、債権者が代位行使しても「債務者は自ら取立てその他の処分をすることを妨げられない」と明記した（旧判例法理を変更）。相手方Cも、Bに対して履行することができる。代位はあくまでBの権利の行使であり、Bから管理処分権を奪う制度ではない。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義73 ========== -->
+<div class="section" id="lec73">
+  <div class="section-header">
+    <div class="section-num">73</div>
+    <h2>詐害行為取消訴訟</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>BC間の売買が仮装ではなく<strong>本物の売買</strong>だったら、94条無効ルートは使えない。そこで「その売買、債権者を害するから<strong>取り消せ</strong>」と裁判所に求めるのが<strong>詐害行為取消権（民424条）</strong>です。代位訴訟が失敗したときの<strong>第2プラン</strong>でもあります。</p>
+
+  <div class="analogy">
+    講義72のかくれんぼの続き：<br>
+    <strong>第1プラン（代位訴訟）</strong>＝「その名札はニセモノだ！」と主張する作戦。でもCが「いや、本当に買ったんです」と証明したら（登記保持権原の抗弁）、作戦失敗。<br>
+    <strong>第2プラン（詐害行為取消訴訟）</strong>＝「じゃあ本当の売買だとしても、借金まみれのBが唯一の財産を売り払うなんて、債権者への<strong>計画的な妨害行為</strong>だ。裁判所さん、その売買自体を<strong>なかったことにして</strong>ください」という作戦。<br>
+    ニセモノなら作戦1、ホンモノなら作戦2。二段構えです。
+  </div>
+
+  <h3>訴訟戦略：第1プランと第2プラン</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">A、代位訴訟を提起<br><small>訴訟物：Bの抹消登記請求権</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">Cの抗弁：<br>「BC売買は有効」<br><small>登記保持権原の抗弁</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">Aの再抗弁<br>（Bの意思欠缺＋Cの悪意）<br>が認められないと敗訴</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">第2プラン：<br>詐害行為取消訴訟へ</div>
+  </div>
+
+  <h3>詐害行為取消権（民424条）の要件</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：詐害行為取消権の要件</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">詐害行為取消権の要件（424条）</span>
+        <ul>
+          <li>
+            <span class="node l1">債権者側の要件</span>
+            <ul>
+              <li><span class="node l2">被保全債権が詐害行為の「前の原因」に基づき発生（424条3項）</span></li>
+              <li><span class="node l2">被保全債権が金銭債権など強制執行で実現可能（424条4項）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">客観的要件（詐害性）</span>
+            <ul>
+              <li><span class="node l2">債務者の財産権を目的とする行為（財産行為）</span></li>
+              <li><span class="node l2">債権者を害すること＝行為により無資力になる/無資力が深まる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">主観的要件</span>
+            <ul>
+              <li><span class="node l2">債務者の詐害意思（債権者を害することを知ってした）</span></li>
+              <li><span class="node accent">受益者の悪意（善意なら取消し不可：424条1項ただし書）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">行使方法</span>
+            <ul>
+              <li><span class="node danger">必ず裁判上の行使（訴え）。裁判外ではダメ</span></li>
+              <li><span class="node l3">出訴期間：知った時から2年・行為時から10年（426条）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>代位訴訟との構造の違い</h3>
+  <table>
+    <tr><th>比較項目</th><th>債権者代位訴訟（第1プラン）</th><th>詐害行為取消訴訟（第2プラン）</th></tr>
+    <tr><td>前提となる事実</td><td>BC売買が仮装（94条で無効）</td><td>BC売買は有効に成立している</td></tr>
+    <tr><td>行使する権利</td><td>Bの権利（抹消登記請求権）を借りる</td><td>A自身の権利（取消権）を行使する</td></tr>
+    <tr><td>裁判は必須か</td><td>不要（裁判外でも代位行使できる）</td><td><strong>必須</strong>（424条1項「裁判所に請求」）</td></tr>
+    <tr><td>被告</td><td>C（第三債務者・相手方）</td><td>C（受益者）。<strong>債務者Bは被告にしない</strong>（424条の7第1項）</td></tr>
+    <tr><td>債務者への手続保障</td><td>訴訟告知（423条の6）</td><td>訴訟告知（424条の7第2項）</td></tr>
+    <tr><td>判決の効力</td><td>当事者と債務者に及ぶ</td><td>債務者＋全債権者に及ぶ（425条）</td></tr>
+  </table>
+
+  <div class="key">
+    2017年改正の重要ポイント：<strong>認容判決の効力は債務者Bにも及ぶ</strong>（425条）。だからこそ被告にはしないがBへの訴訟告知が義務化されました。「Bの知らないところでBの売買が取り消される」事態を防ぐ手続保障です。
+  </div>
+
+  <div class="warn">
+    「取消し」といっても、総則の詐欺取消し（96条）とは別物です。詐害行為取消しは<strong>債権者の責任財産を回復するための取消し</strong>で、取消しの効果も「責任財産への回復」に必要な限度にとどまります（相対的効力の考え方を改正法が修正し、債務者・全債権者に効力が及ぶ形に整理）。BC間の取引を全面的に巻き戻して当事者の世界を元通りにする制度ではありません。
+  </div>
+
+  <div class="quiz">
+    Q1: 詐害行為取消権はなぜ「裁判上でしか行使できない」とされているのでしょう？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>詐害行為取消権は、<strong>有効に成立した他人（債務者と受益者）間の法律行為を、契約当事者でもない債権者が覆す</strong>という極めて強力な制度だから。要件（詐害性・悪意など）の存否を裁判所が慎重に審査してからでないと行使を認めるべきでない。代位権が「債務者の権利をそのまま行使するだけ」なのと比べ、取引安全への影響が格段に大きいことの表れ。</p>
+    </details>
+    Q2: AのBに対する債権が、BC間の売買の「後」に発生した場合、Aは取消請求できるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>できない。424条3項により、被保全債権は<strong>詐害行為の前の原因に基づいて生じたもの</strong>であることが必要。後から債権者になった者は、すでに減少した責任財産を前提に取引したのだから、その行為によって「害された」とは言えないため。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義74 ========== -->
+<div class="section" id="lec74">
+  <div class="section-header">
+    <div class="section-num">74</div>
+    <h2>対転得者取消請求</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>詐害行為で流出した財産が、受益者Cから<strong>さらにDへ転売</strong>されてしまったら？ 債権者Aは一定の要件の下で<strong>転得者Dに対して</strong>取消請求ができます（民424条の5）。</p>
+
+  <div class="analogy">
+    盗品の転売にたとえると（あくまでイメージ）：<br>
+    Bが宝石を不当に安くCへ流し、CがそれをDに転売した。<br>
+    宝石を取り戻したい側から見ると、いま宝石を持っているのは<strong>D</strong>。Cに「返せ」と言っても、Cの手元にはもう宝石がない。<br>
+    そこで「Dさん、あなたが<strong>事情を知って</strong>受け取ったのなら、返してもらいますよ」と請求する — ただしDが事情を知らない善意の買主なら、取引の安全のため保護される。この「知っていたかどうか」のチェックが二重に必要になるのがポイントです。
+  </div>
+
+  <h3>講義74のもう一つの視点：不法行為構成との比較</h3>
+  <p>講義では、転得者への請求を考える前提として、<strong>債権侵害の不法行為（709条・719条）</strong>という別ルートにも触れられています。</p>
+  <div class="term">
+    債務者Bと第三者Cが<strong>関連共同性</strong>をもってBの責任財産を減少させ、債権の満足を困難にした場合、両者の主観的悪性とあいまって、<strong>責任財産侵害型の債権侵害</strong>として共同不法行為が成立し、A はB・C各自に損害賠償債権を取得しうる。<br>
+    しかし — <strong>無資力のBに対する損害賠償債権は「画餅」</strong>（絵に描いた餅）。意味があるのはCへの請求だが、金銭賠償よりも<strong>現物（執行対象財産そのもの）を取り戻す</strong>方が確実。だからこそ詐害行為取消権という現物返還型の制度に存在意義がある。
+  </div>
+
+  <h3>転得者に対する取消請求の要件（424条の5）</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">B（債務者）</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">C（受益者）<br><small>悪意が必要</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">D（転得者）<br><small>転得時に債務者の詐害を<br>知っていたことが必要</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">E（再転得者）<br><small>D・E全員の悪意が必要</small></div>
+  </div>
+
+  <div class="key">
+    424条の5の構造（2017年改正で明文化）：<br>
+    ① <strong>受益者Cに対して取消請求できる場合であること</strong>（＝Cが悪意）が大前提<br>
+    ② その上で、転得者Dが<strong>転得の当時、債務者の行為が債権者を害することを知っていた</strong>こと<br>
+    ③ 再転得者なら、<strong>中間の転得者全員</strong>が悪意であること<br>
+    → 鎖の途中に1人でも善意者が入ると、その先には請求できない。<strong>「悪意の連鎖」が途切れたらアウト</strong>。
+  </div>
+
+  <div class="warn">
+    改正前の判例は「転得者自身の悪意」だけで足りるとしていましたが（受益者が善意でも転得者が悪意なら取消し可）、改正法は<strong>受益者への取消可能性を前提条件</strong>に変えました。受益者Cが善意なら、たとえDが悪意でも取消請求は不可。古い教科書・過去問を読むときは要注意です。
+  </div>
+
+  <h3>転得者への請求で何を返してもらえるか</h3>
+  <table>
+    <tr><th>場面</th><th>請求内容</th><th>根拠</th></tr>
+    <tr><td>Dが現物（甲土地）を保有</td><td>詐害行為（BC売買）の取消し＋D名義登記の抹消／B への移転登記</td><td>424条の6第2項</td></tr>
+    <tr><td>現物返還が困難</td><td>価額償還</td><td>424条の6第2項後段</td></tr>
+    <tr><td>Dが保護される（善意）</td><td>悪意の受益者Cに対する価額償還請求を検討</td><td>424条の6第1項後段（→講義76）</td></tr>
+  </table>
+
+  <div class="quiz">
+    Q1: 受益者Cは善意だが、転得者Dは「Bの執行逃れだ」と知った上で安く買い取った。AはDに取消請求できるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>できない。424条の5は「<strong>受益者に対して詐害行為取消請求をすることができる場合</strong>」であることを前提要件とする。Cが善意である以上（424条1項ただし書）、Cへの取消請求ができず、したがってDへの請求もできない。改正前判例（転得者の悪意だけで可）とは結論が異なる点に注意。</p>
+    </details>
+    Q2: 無資力の債務者Bに対する損害賠償請求が「画餅にひとしい」と言われるのはなぜ？それは責任財産保全制度の必要性とどうつながる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>損害賠償債権も金銭債権である以上、実現には債務者の責任財産への強制執行が必要だが、無資力のBには摑取すべき財産がなく、判決を取っても回収できない（絵に描いた餅）。だからこそ、<strong>流出した財産そのものを責任財産に取り戻す</strong>詐害行為取消権（現物返還型）が、損害賠償構成では代替できない固有の存在意義を持つ。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義75 ========== -->
+<div class="section" id="lec75">
+  <div class="section-header">
+    <div class="section-num">75</div>
+    <h2>金銭債権の代位行使：債権者代位権の簡易執行機能</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>債務者Bが第三債務者Cに金銭債権を持っているとき、債権者Aは代位行使で<strong>「Cよ、私（A）に直接払え」</strong>と請求できます（民423条の3）。そして受け取った金銭の返還債務とBへの債権を<strong>相殺</strong>すれば、強制執行を経ずに回収完了 — これが<strong>簡易執行機能</strong>です。</p>
+
+  <div class="analogy">
+    又貸しされたお金の回収にたとえると：<br>
+    AはBに10万円貸した。BはCに10万円貸している。Bは「Cから返ってきたら払うよ」と言うだけで何もしない。<br>
+    本来の正規ルートは「裁判→BのC への債権を差押え→取立て」という長い行列。<br>
+    代位権を使うと、AはCに「Bの代わりに取り立てます。<strong>私に直接払ってください</strong>」と言える。受け取った10万円は本来Bに渡すべきものだが、AはBに10万円の債権がある → 「渡す債務」と「貸金債権」を<strong>相殺</strong> → 行列に並ばずに回収完了！
+  </div>
+
+  <h3>講義の出発点：執行の種類ごとに代位の「目標」が違う</h3>
+  <table>
+    <tr><th>想定する強制執行</th><th>執行の前提</th><th>代位権行使の目標</th></tr>
+    <tr><td>不動産執行（講義72）</td><td>登記名義人＝所有者と推定して実施</td><td>目的不動産の<strong>登記名義をBに</strong>得させる</td></tr>
+    <tr><td>動産執行</td><td>占有の自主占有推定（民186条1項）を基礎に、債務者の占有する動産を差し押さえる</td><td>Bに動産の<strong>占有</strong>を得させる</td></tr>
+    <tr><td>債権執行</td><td>差押命令→取立て・転付</td><td>本来は債権執行でやれる…が、代位ならもっと簡単（→本講義）</td></tr>
+  </table>
+
+  <h3>直接引渡し（423条の3）と相殺のコンボ</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">A、BのCに対する<br>金銭債権を代位行使</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">「Aに直接支払え」<br>と請求できる<br><small>民423条の3</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">AがCから受領<br><small>Cの債務は消滅</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">AのBへの返還債務<br>と被保全債権を相殺</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">事実上の<br>優先弁済！</div>
+  </div>
+
+  <div class="key">
+    なぜ「直接自分に払え」と言えるのか（423条の3の趣旨）：<br>
+    債務者Bが受領を拒否したら代位行使が空振りに終わってしまう。そこで金銭・動産については<strong>債権者への直接の支払・引渡し</strong>を認めた。<br>
+    その結果として、受領した金銭の返還債務との<strong>相殺による事実上の優先弁済</strong>が可能になる。これは「差押え→取立て」という債権執行（民執155条）とほぼ同じ結果を、<strong>債務名義なしで</strong>実現できることを意味する。だから「<strong>簡易執行機能</strong>」「執行制度のバイパス」と呼ばれます。
+  </div>
+
+  <div class="warn">
+    この簡易執行機能には批判もあります：<br>
+    ① 債権者平等の原則との緊張 — 早い者勝ちの「抜け駆け」を許す<br>
+    ② <strong>債務名義（判決等）なし</strong>で執行類似の結果が得られてしまう<br>
+    2017年改正の議論でも相殺禁止案が検討されましたが、結局<strong>相殺は禁止されず</strong>、判例実務どおり事実上の優先弁済は維持されました。「機能的に債権執行と重複する範囲では、債権執行制度に途を譲るべきだ」という指摘（講義78参照）はこの文脈の話です。
+  </div>
+
+  <div class="quiz">
+    Q1: 423条の3が金銭・動産について「債権者自身への支払・引渡し」を認めた直接の理由は何？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>債務者が受領しない（受領を拒む・受け取りに行かない）場合、第三債務者に「債務者へ払え」と命じても代位権行使の目的が達成できないから。債権者が受領できるようにしないと、無資力で非協力的な債務者の下では制度が機能しない。その副産物として相殺による事実上の優先弁済が生じる。</p>
+    </details>
+    Q2: 被代位債権が200万円、Aの被保全債権が80万円のとき、AはCにいくらの支払いを請求できる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>80万円まで。民423条の2により、被代位権利の目的が可分であるときは、<strong>自己の債権（被保全債権）の額の限度</strong>でのみ代位行使できる。代位権は責任財産保全＝自己の債権回収に必要な範囲でだけ認められる制度だから。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義76 ========== -->
+<div class="section" id="lec76">
+  <div class="section-header">
+    <div class="section-num">76</div>
+    <h2>取消請求による金銭回復：詐害行為取消権の簡易執行機能</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>詐害行為取消権でも、取り戻す対象が<strong>金銭や価額償還</strong>なら「<strong>私（取消債権者）に直接払え</strong>」と請求でき（民424条の9）、相殺によって事実上の優先弁済が可能。代位権と同じ<strong>簡易執行機能</strong>がここにもあります。</p>
+
+  <div class="analogy">
+    講義75が「又貸しの回収のショートカット」なら、こちらは「<strong>横流しされたお金の回収のショートカット</strong>」。<br>
+    BがCに不当に流したお金を取り戻すとき、本来なら「いったんBの財布に戻す→Bの財布を差し押さえる」という二度手間のはず。<br>
+    でも無資力のBの財布に戻したら、Bがまた隠すかもしれないし、他の債権者も群がってくる。<br>
+    そこで法は「<strong>Aが直接受け取ってよし</strong>」とした。受け取ったAは、Bへの返還債務と自分の債権を相殺して、列に並ばず回収完了。
+  </div>
+
+  <h3>講義の設例：C・D双方への並行攻撃</h3>
+  <div class="term">
+    Bが甲土地をCに譲渡して移転登記を経由し（Aに対する関係で無資力に）、甲土地がさらに<strong>C→Dに転売されDが登記</strong>を備えた場合：<br>
+    ・<strong>Dへの請求</strong>：不動産執行の準備として、Dを被告に詐害行為取消請求（現物返還＝登記の回復）<br>
+    ・<strong>Cへの請求</strong>：現物を返せなくなったCを被告に、<strong>価額償還</strong>の取消請求（424条の6第1項後段）<br>
+    この2つの請求は<strong>両立し、併合訴訟も可</strong>（択一関係ではない）。ただし二重に満足を得ることはできない。
+  </div>
+
+  <h3>金銭回復のフロー（424条の9）</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">取消認容判決<br><small>金銭支払 or 価額償還</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">受益者C等は<br>Aに直接支払う<br><small>民424条の9</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">A、Bへの返還債務と<br>被保全債権を相殺</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">事実上の優先弁済</div>
+  </div>
+
+  <div class="key">
+    代位権（423条の3）とのパラレル構造：<br>
+    ・金銭・動産 → 取消債権者への直接の支払・引渡しOK（424条の9）<br>
+    ・不動産 → 直接自分名義への移転登記は<strong>不可</strong>。登記は債務者B名義に戻すのみ（その後は通常の不動産執行へ）<br>
+    つまり「<strong>不動産は執行準備機能まで、金銭は簡易執行機能まで</strong>」。この対応関係は代位権と取消権で完全に共通です。
+  </div>
+
+  <div class="warn">
+    取消しの範囲にも注意：金銭の支払いや可分な給付については、取消債権者は<strong>自己の債権額の限度</strong>でのみ取り消せます（424条の8）。一方、甲土地のような<strong>不可分な不動産の現物返還</strong>を求める場合は、債権額を超えても行為全部の取消しが可能（判例法理）。<br>
+    また、認容判決の効力は総債権者に及ぶ（425条）のに、直接受領＋相殺で取消債権者だけが満足する — この「建前（総債権者のための制度）と本音（早い者勝ち）」のねじれは、次の講義77で破産法との関係として正面から問題になります。
+  </div>
+
+  <div class="quiz">
+    Q1: 取り戻す対象が「不動産の登記名義」のとき、なぜAは自分への移転登記を請求できないのでしょう？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>詐害行為取消権は<strong>債務者の責任財産を回復するための制度</strong>であり、債権者に満足を与える制度そのものではないから。不動産はB名義に戻した上で、Aは改めて不動産執行（差押え・競売・配当）という正規の手続で回収する。金銭について直接受領が認められるのは、Bが受領しないと制度が機能しないという技術的必要からの例外。</p>
+    </details>
+    Q2: AがDへの現物返還請求とCへの価額償還請求を両方提起し、両方認容された。Aは両方から満足を受けられる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>受けられない。2つの請求は併存しうる（択一関係ではない）が、いずれも同一の責任財産侵害の回復を目的とするから、一方から満足（回復）を得れば他方はその限度で目的を失う。二重取りは認められない。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義77 ========== -->
+<div class="section" id="lec77">
+  <div class="section-header">
+    <div class="section-num">77</div>
+    <h2>債権者詐害行為取消権と破産管財人の否認権</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>取消権の「早い者勝ち」ゲームは、債務者が<strong>破産</strong>すると強制終了。流出財産の取戻しは破産管財人の<strong>否認権</strong>（破産法160条以下）に一本化され、取り戻した財産は<strong>全債権者の平等な配当</strong>に回ります。</p>
+
+  <div class="analogy">
+    椅子取りゲームと先生の登場：<br>
+    破産前は、債権者たちが「取消権＋相殺」で<strong>早い者勝ちの椅子取りゲーム</strong>をしてもよい（個別回収の自由）。<br>
+    しかし債務者が破産した瞬間、先生（破産管財人）が教室に入ってきて「<strong>はい、ゲーム終了！</strong>みんな椅子から降りて。流出したお菓子は私が全部回収して（＝否認権）、<strong>全員で公平に分けます</strong>（＝債権者平等の配当）」と宣言する。<br>
+    抜け駆けが許されるのは、破産という「集団的清算の世界」が始まる前まで。
+  </div>
+
+  <h3>講義の問題提起：偏頗弁済の取消しと「逆転」</h3>
+  <div class="term">
+    <strong>偏頗（へんぱ）弁済</strong>：無資力の債務者Bが、特定の債権者Cに<strong>だけ</strong>弁済すること（他の債権者を害する「えこひいき弁済」）。<br>
+    これが詐害行為として取り消されると（424条の3：支払不能時＋通謀的害意が要件）、Cは受領した金銭をAに直接支払い（424条の9）、Aは相殺で自分の債権を回収。なお<strong>CのBに対する債権は、CがAへの支払いを完了した時に復活する</strong>（民425条の2）。<br>
+    → 結果：先に回収した<strong>勤勉な債権者C</strong>の勝ちが、後から来たAの取消請求で<strong>逆転</strong>されてしまう。自由競争（早い者勝ち）の原則と、どう折り合いをつけるのか？— これが本講義の問題意識です。
+  </div>
+
+  <h3>取消権 vs 否認権</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>⚔️ 詐害行為取消権（民424条〜）</h4>
+      <ul>
+        <li>行使者：<strong>個々の債権者</strong></li>
+        <li>場面：平時（破産手続外）</li>
+        <li>手続：取消訴訟（受益者・転得者が被告）</li>
+        <li>成果の帰属：直接受領＋相殺で<strong>事実上、取消債権者が独り占め</strong>可能</li>
+        <li>発想：個別的権利行使の世界</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🛡️ 否認権（破産法160条〜）</h4>
+      <ul>
+        <li>行使者：<strong>破産管財人</strong>のみ</li>
+        <li>場面：破産手続開始後</li>
+        <li>手続：否認の訴え・否認の請求・抗弁</li>
+        <li>成果の帰属：<strong>破産財団に回復</strong>→全債権者へ平等配当</li>
+        <li>発想：集団的清算（債権者平等）の世界</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>破産手続開始による「切り替え」</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">平時：各債権者が<br>詐害行為取消権を行使</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">B、破産手続開始</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">係属中の取消訴訟は中断<br><small>破産法45条</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">管財人が否認権で<br>財団に回復→平等配当</div>
+  </div>
+
+  <div class="key">
+    否認権の2類型（破産法）— 詐害行為取消権の規定と対応しています：<br>
+    ① <strong>詐害行為否認</strong>（160条）：財産を減少させる行為の否認 ↔ 民424条<br>
+    ② <strong>偏頗行為否認</strong>（162条）：支払不能後の偏頗弁済・担保供与の否認 ↔ 民424条の3<br>
+    2017年民法改正は、詐害行為取消権の要件を<strong>破産法の否認権の要件に揃える</strong>方向で整備しました（例：偏頗弁済の取消しに「支払不能」を要求）。平時と破産時で取り戻せる範囲がズレると、駆け込みの抜け駆けや不公平が生じるからです。
+  </div>
+
+  <div class="warn">
+    「取消権で勝ったのに破産で台無し？」— その通りのことが起こりえます。取消訴訟の途中でBが破産すれば訴訟は中断し、管財人が受継すれば成果は<strong>財団＝みんなのもの</strong>に。取消権の簡易執行機能（独り占め）は、<strong>破産しない限りで通用する「平時限定のボーナス」</strong>だと理解しておきましょう。
+  </div>
+
+  <div class="quiz">
+    Q1: 偏頗弁済が取り消された場合、受益者CのBに対する債権はどうなる？（民425条の2）
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>CがA（取消債権者）への金銭の支払いを完了した時に、CのBに対する債権が<strong>復活する</strong>。Cは受け取った弁済を吐き出す代わりに、元の債権者の地位に戻る。吐き出したのに債権も消えたままでは、Cだけが一方的に損をする不当な結果になるため。</p>
+    </details>
+    Q2: 詐害行為取消権と否認権は、なぜ別々の制度として併存しているのでしょう？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>適用場面が違うから。取消権は<strong>破産手続が開始されていない平時</strong>に個々の債権者が使う武器、否認権は<strong>破産手続開始後</strong>に管財人が総債権者のために使う武器。平時は個別回収の自由（早い者勝ち）が原則だが、破産後は債権者平等が支配する。同じ「流出財産の取戻し」でも、成果が個人に帰属するか財団に帰属するかが決定的に異なる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義78 ========== -->
+<div class="section" id="lec78">
+  <div class="section-header">
+    <div class="section-num">78</div>
+    <h2>債権者代位権の転用</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>債権者代位権は本来「金銭債権のための強制執行準備」の制度ですが、<strong>金銭債権以外の特定の債権（登記請求権や妨害排除請求権など）を実現するための道具</strong>としても使われます。これが<strong>転用</strong>。転用の場面では<strong>無資力要件が不要</strong>です。</p>
+
+  <div class="analogy">
+    十徳ナイフのたとえ：<br>
+    債権者代位権は本来「執行準備」という用途のナイフ。ところが債権執行制度という高性能な専用工具が登場し、「本来の用途ならそっちでよくない？」と言われがち（代位権不要論）。<br>
+    しかし、このナイフには<strong>栓抜きやドライバー（＝転用）</strong>も付いていた。専用工具にはできない仕事をこなせるから、「やっぱり捨てられない」— 講義の言葉でいえば、転用が「<strong>代位権なくてもいいんじゃね？派を押し返している</strong>」のです。
+  </div>
+
+  <h3>本来型 vs 転用型</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🏦 本来型（責任財産保全型）</h4>
+      <ul>
+        <li>被保全債権：<strong>金銭債権</strong></li>
+        <li>目的：強制執行（金銭執行）の<strong>準備</strong>＋簡易執行</li>
+        <li>無資力要件：<strong>必要</strong></li>
+        <li>債務名義：執行には別途必要</li>
+        <li>例：講義72・75の事案</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🔧 転用型（特定債権保全型）</h4>
+      <ul>
+        <li>被保全債権：<strong>特定の債権</strong>（登記請求権・賃借権など）</li>
+        <li>目的：その<strong>債権自体の実現</strong>（執行準備ではない）</li>
+        <li>無資力要件：<strong>不要</strong></li>
+        <li>責任財産の大小と無関係</li>
+        <li>例：登記請求権の代位・妨害排除の代位</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>転用の代表例</h3>
+  <h4>例①：登記請求権の代位行使（423条の7で明文化）</h4>
+  <div class="flow">
+    <div class="flow-item f-blue">甲土地<br>A → B → C と転売<br><small>登記はまだA名義</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">CはBへの移転登記請求権を保全するため<br>BのAに対する登記請求権を代位行使</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">A→B→Cへ<br>順次移転登記が実現</div>
+  </div>
+  <p>中間者Bが登記手続に協力しない場合の定番スキーム。Bの資力は一切関係ない（Cが欲しいのはお金ではなく<strong>登記</strong>だから）。2017年改正で<strong>423条の7</strong>として明文化されました。</p>
+
+  <h4>例②：賃借人による妨害排除請求権の代位行使</h4>
+  <div class="flow">
+    <div class="flow-item f-blue">Aの土地をBが賃借<br><small>Bの賃借権＝債権</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">不法占拠者Cが<br>土地に居座る</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">Bは賃借権を被保全債権に<br>Aの所有権に基づく<br>妨害排除請求権を代位行使</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">Cを追い出せる<br><small>大判昭4.12.16</small></div>
+  </div>
+  <p>債権にすぎない賃借権には本来、第三者への妨害排除力がない。そこで大家Aの<strong>所有権の力を借りる</strong>という発想です（なお現在は、対抗要件を備えた不動産賃借権につき605条の4が賃借人自身の妨害停止請求権を明文で認めており、代位構成の出番は減っています）。</p>
+
+  <div class="key">
+    転用型で<strong>無資力要件が不要</strong>な理由：<br>
+    無資力要件は「金銭債権の引当て＝責任財産が足りないこと」を意味する要件。転用型では債権者が実現したいのは<strong>金銭ではなく特定の給付</strong>（登記・土地の利用）であり、債務者の財布の中身は関係ない。必要なのは「代位を認めないと自分の債権が実現できない」という<strong>保全の必要性</strong>そのもの。
+  </div>
+
+  <div class="warn">
+    本来型（金銭債権の保全）の領域では、債権執行（差押え・取立訴訟、民執155条・157条）と機能が重複するため「<strong>債権執行制度の活用に途を譲る傾向</strong>」があります。債務名義を取ってしまえば債権執行の方が手続保障も整っているからです。代位権の現代的な存在意義の重心は、むしろ転用型にある — これが講義78のメッセージです。
+  </div>
+
+  <div class="quiz">
+    Q1: 転用型の代位権行使で無資力要件が不要とされるのはなぜ？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>無資力要件は、被保全債権が金銭債権の場合に「責任財産が不足し、代位しなければ債権回収できない」という保全の必要性を画する基準。転用型では被保全債権は特定債権であり、その実現は債務者の資力と無関係（登記が欲しい人にとって債務者の預金残高は関係ない）。保全の必要性は「被代位権利を行使しないと特定債権が実現できない」という関係自体から基礎づけられる。</p>
+    </details>
+    Q2: 不動産がA→B→Cと転売されたが登記はA名義のまま。CがAに対して「直接C名義に移転登記せよ」と請求することはできる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>できない（判例：中間省略登記請求は原則否定）。物権変動の過程を登記に忠実に反映させる必要があるため、CはBのAに対する登記請求権を<strong>代位行使してまずB名義の登記を実現</strong>し、その上で自分のBに対する登記請求権を行使してC名義にする、という二段階を踏む。423条の7はこの代位構成を明文化したもの。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義79 ========== -->
+<div class="section" id="lec79">
+  <div class="section-header">
+    <div class="section-num">79</div>
+    <h2>詐害行為取消権の転用</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>講義原文はわずか3行 — 「<strong>詐害行為取消権の転用、というのはない。ないものはない。以上。</strong>」。短いですが、ここには深い理屈があります。<strong>なぜ代位権には転用があって、取消権には転用がないのか</strong>を考えることが、この講義の本当の課題です。</p>
+
+  <div class="analogy">
+    ハサミとシュレッダーのたとえ：<br>
+    <strong>代位権</strong>はハサミ。本来は執行準備用だけど、紙を切る以外（封筒を開ける＝転用）にも使える穏やかな道具。他人の権利を「そのまま行使するだけ」だから応用が利く。<br>
+    <strong>取消権</strong>はシュレッダー。他人同士の有効な契約を<strong>破壊する</strong>劇物。危険だから「責任財産の回復」という一つの目的のためにしか起動できないよう、安全装置（厳格な要件・裁判上の行使・出訴期間）がガチガチにかかっている。<br>
+    シュレッダーを「封筒開け」に転用する人はいません。
+  </div>
+
+  <h3>なぜ転用が「ない」のか — 条文と理屈</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：取消権に転用がない理由</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">詐害行為取消権の転用がない理由</span>
+        <ul>
+          <li>
+            <span class="node l1">① 条文上の歯止め</span>
+            <ul>
+              <li><span class="node l2">424条4項：被保全債権は「強制執行により実現できる」債権に限る</span></li>
+              <li><span class="node l2">424条1項：「債権者を害する」＝責任財産の減少が中核要件</span></li>
+              <li><span class="node l3">→ 特定債権の実現目的（責任財産と無関係）では要件を満たしようがない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">② 制度の性質</span>
+            <ul>
+              <li><span class="node l2">有効な取引を覆す劇薬 → 目的外使用を認めると取引安全が崩壊</span></li>
+              <li><span class="node l2">代位権＝債務者の権利の行使（穏当）⇔ 取消権＝他人間の行為の否定（強烈）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">③ 判例の確認</span>
+            <ul>
+              <li><span class="node l2">最大判昭36.7.19：特定物債権者も取消権を行使できるが、それは目的物の引渡しを求めるためではなく、債務不履行による損害賠償債権＝<strong>金銭債権として</strong>責任財産の保全を求める限りにおいて</span></li>
+              <li><span class="node l3">→ 一見「転用」に見える場面も、結局は金銭債権保全＝本来型に回収される</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    対比で覚える：<br>
+    ・<strong>代位権</strong>＝被保全債権の種類を選ばない柔軟な制度 → 特定債権保全（転用）あり、無資力不要の世界あり<br>
+    ・<strong>取消権</strong>＝「金銭債権×責任財産の減少×無資力」が制度のDNAに刻まれている → 転用の余地なし<br>
+    特定物の売主が二重譲渡したケースで第一買主が取消権を使えるのも、「目的物をよこせ」のためではなく「<strong>損害賠償（金銭）債権の引当て財産を守る</strong>」ためだけ。取消権は最初から最後まで「お金の回収」のための制度です。
+  </div>
+
+  <div class="warn">
+    試験での引っかけポイント：「特定物債権者は詐害行為取消権を行使できない」— これは<strong>誤り</strong>です。行使は<strong>できる</strong>（昭和36年大法廷判決）。ただしそれは特定物債権が究極的に損害賠償債権（金銭債権）に転化しうるからであり、行使の目的・効果はあくまで<strong>責任財産の保全</strong>に限られる。「行使できる／ただし転用ではない」— この二段構えで正確に押さえましょう。
+  </div>
+
+  <div class="quiz">
+    Q1: 債権者代位権には転用があるのに、詐害行為取消権に転用がないのはなぜ？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>①取消権は424条1項「債権者を害する」・同4項「強制執行により実現可能な債権」という要件により、<strong>責任財産の保全（金銭債権の引当て確保）という目的に構造的に縛られている</strong>から。②また、他人間の有効な法律行為を覆すという強烈な効果を持つため、目的を拡張すれば取引安全を過度に害する。代位権が「債務者の権利をそのまま行使するだけ」の穏当な制度であるのと対照的。</p>
+    </details>
+    Q2: AはBから甲建物を買ったが、Bは甲建物をCに二重譲渡して登記も移した。Aは詐害行為取消権でBC売買を取り消し、甲建物の引渡しを受けられるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>取消権の行使自体は、Bが無資力であれば可能（最大判昭36.7.19）。ただしAが取消権で実現できるのは<strong>履行不能による損害賠償債権（金銭債権）の引当てとなる責任財産の回復</strong>まで。甲建物そのものを自分への給付として確保すること（特定債権の実現）はできない。対抗関係（177条）でCに負けたAは、原則として金銭賠償で満足するほかない。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義80 ========== -->
+<div class="section" id="lec80">
+  <div class="section-header">
+    <div class="section-num">80</div>
+    <h2>債務消滅原因：弁済論概観</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>「<strong>物権は存続することに意義があり、債権は消滅することに意義がある</strong>」。債権の本来予定されたゴール＝目的の実現が<strong>弁済</strong>であり、弁済によって債権は消滅します。ここから新しい章「弁済論」が始まります。</p>
+
+  <div class="analogy">
+    切符のたとえ：<br>
+    <strong>物権</strong>＝定期券。ずっと手元にあって使い続けることに意味がある（支配の継続）。<br>
+    <strong>債権</strong>＝片道切符。改札を通る（＝目的の実現＝弁済）ために存在し、<strong>使った瞬間に役目を終えて消える</strong>。<br>
+    切符が永遠に使われないなら意味がないし、使われれば消えるのが本望。「債権は消滅することに意義がある」とはそういうことです。
+  </div>
+
+  <h3>名言の意味を分解する</h3>
+  <div class="key">
+    「物権は存続に意義、債権は消滅に意義」の正確な読み方：<br>
+    ・物権＝<strong>物支配の法的支持を継続する</strong>ことが目的 → 存続してこそ価値がある<br>
+    ・債権＝<strong>将来のある時点で目的が実現される</strong>ことに意義がある → そして目的実現は同時に債権の消滅原因である<br>
+    ・「弁済によって債務が消滅する」というのは、講義いわく<strong>「雨が降れば地面が濡れる」級の当たり前</strong>（弁済＝債務を履行する行為、と定義した時点で論理必然）。473条はこの当然のことを確認的に定めた条文です。
+  </div>
+
+  <h3>債権（債務）の消滅原因の全体像</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：債務消滅原因のマップ（第3編第1章第6節）</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">債権の消滅原因</span>
+        <ul>
+          <li>
+            <span class="node l1">目的の実現による消滅（本来型）</span>
+            <ul>
+              <li><span class="node accent">弁済（473条）— 債務の本旨に従った履行 ★主役</span></li>
+              <li><span class="node l2">代物弁済（482条）— 別の給付で代える合意＋給付</span></li>
+              <li><span class="node l2">供託（494条）— 受け取ってくれないとき法務局に預けて消滅</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">目的実現と同視できる消滅</span>
+            <ul>
+              <li><span class="node l2">相殺（505条）— 対立する債権同士を差引きでチャラに</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">目的を実現せずに消滅</span>
+            <ul>
+              <li><span class="node l2">更改（513条）— 旧債務を消して新債務に置き換える</span></li>
+              <li><span class="node l2">免除（519条）— 債権者が「もういいよ」と一方的に放棄</span></li>
+              <li><span class="node l2">混同（520条）— 債権者と債務者が同一人に（相続など）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">その他（総則等による消滅）</span>
+            <ul>
+              <li><span class="node l3">消滅時効（166条）／契約の取消し・解除など</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>弁済論で今後扱う主要テーマ（予告編）</h3>
+  <table>
+    <tr><th>テーマ</th><th>条文</th><th>問題の所在（ひとこと）</th></tr>
+    <tr><td>弁済の意義・法的性質</td><td>473条</td><td>弁済は法律行為か事実行為か（弁済意思は必要か）</td></tr>
+    <tr><td>第三者弁済</td><td>474条</td><td>他人の借金を勝手に払えるか。「正当な利益」のない第三者の制限</td></tr>
+    <tr><td>受領権者としての外観を有する者への弁済</td><td>478条</td><td>ニセ債権者に払ってしまったら？善意無過失なら有効</td></tr>
+    <tr><td>弁済の場所・時間・費用・充当</td><td>484条〜491条</td><td>どこで・いつ・誰の負担で・どの債務から消えるか</td></tr>
+    <tr><td>弁済の提供</td><td>492・493条</td><td>「払おうとした」だけでどんな効果？債務不履行責任を免れる</td></tr>
+    <tr><td>受領遅滞</td><td>413条</td><td>債権者が受け取ってくれないときのリスク移転</td></tr>
+    <tr><td>弁済による代位</td><td>499条〜</td><td>肩代わりした人が債権者の地位を引き継ぐ仕組み</td></tr>
+  </table>
+
+  <div class="term">
+    <strong>弁済（べんさい）と履行（りこう）</strong>：実は同じ現象の言い換え。<strong>行為の側面</strong>から見ると「履行」（債務を実行すること）、<strong>債権消滅という効果の側面</strong>から見ると「弁済」。「弁済によって債務が消滅する」が当たり前すぎる命題なのは、弁済の定義（債務を履行する行為）の中に結論が入っているからです。
+  </div>
+
+  <div class="warn">
+    「弁済＝お金を払うこと」と思いがちですが、それは弁済の一例にすぎません。商品の引渡し、労務の提供、登記手続への協力 — <strong>どんな内容の債務でも、その本旨に従った給付をすれば弁済</strong>です。また、弁済は「契約」ではないので、原則として受領者との合意は不要（ただし受領を要する給付では債権者の協力が問題になる → 弁済の提供・受領遅滞論へ）。
+  </div>
+
+  <div class="quiz">
+    Q1: 「物権は存続することに意義があり、債権は消滅することに意義がある」を、自分の言葉で説明してみましょう。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>物権は物に対する支配を法的に支え続けることが目的だから、存続してこそ意味がある。これに対し債権は、将来のある時点で給付という目的が実現されることを予定した権利であり、目的の実現（弁済）はそのまま債権の消滅原因となる。つまり債権が消滅する（弁済される）ことこそ、債権が役目を全うした証である。</p>
+    </details>
+    Q2: 債務消滅原因のうち、「目的を実現して消える」ものと「目的を実現せずに消える」ものをそれぞれ2つ挙げてください。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>目的を実現して（またはそれと同視できる形で）消える：<strong>弁済・代物弁済・供託・相殺</strong>。目的を実現せずに消える：<strong>免除・混同・更改・消滅時効</strong>。前者では債権者は満足を得ているが、後者では満足なしに債権だけが消える点が決定的に違う。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 総まとめ：代位権 vs 取消権 ========== -->
+<div class="section" id="bigvs">
+  <div class="section-header">
+    <div class="section-num">⚔️</div>
+    <h2>総まとめ：債権者代位権 vs 詐害行為取消権</h2>
+  </div>
+
+  <p>このブロックの総決算。2つの制度を正面から並べます。<strong>この対比表を白紙に再現できれば、講義71〜79は合格</strong>です。</p>
+
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🤝 債権者代位権（423条〜423条の7）</h4>
+      <p style="text-align:center;"><strong>「サボる債務者の代わりにやる」</strong></p>
+      <ul>
+        <li>債務者が権利行使を<strong>しない</strong>（不作為）への対処</li>
+        <li>債務者の権利を<strong>そのまま行使</strong>する穏当な制度</li>
+        <li>裁判外でも行使できる</li>
+        <li>受益者・相手方の主観は問わない</li>
+        <li><strong>転用あり</strong>（登記請求権・妨害排除）→ 無資力不要</li>
+        <li>期間制限の特則なし</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>⚔️ 詐害行為取消権（424条〜426条）</h4>
+      <p style="text-align:center;"><strong>「財産を流した行為を壊す」</strong></p>
+      <ul>
+        <li>債務者が財産を<strong>流出させた</strong>（作為）への対処</li>
+        <li>他人間の有効な行為を<strong>取り消す</strong>劇薬</li>
+        <li><strong>必ず裁判上で</strong>行使（訴え提起）</li>
+        <li>債務者の詐害意思＋受益者の悪意が必要</li>
+        <li><strong>転用なし</strong>（金銭債権・責任財産保全に純化）</li>
+        <li>出訴期間：2年／10年（426条）</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>完全対比表</h3>
+  <table>
+    <tr><th>比較項目</th><th>債権者代位権</th><th>詐害行為取消権</th></tr>
+    <tr><td>条文</td><td>423条〜423条の7</td><td>424条〜426条</td></tr>
+    <tr><td>対処する事態</td><td>債務者の権利<strong>不行使</strong>（消極的な財産減少の放置）</td><td>債務者の<strong>積極的な</strong>財産流出行為</td></tr>
+    <tr><td>行使方法</td><td>裁判上・裁判外どちらでも可</td><td><strong>裁判上のみ</strong>（取消訴訟）</td></tr>
+    <tr><td>無資力要件</td><td>本来型は必要／<strong>転用型は不要</strong></td><td>常に必要（「債権者を害する」の中核）</td></tr>
+    <tr><td>被保全債権の発生時期</td><td>制限なし（被代位権利より後でもよい）</td><td>詐害行為の<strong>前の原因</strong>で発生（424条3項）</td></tr>
+    <tr><td>主観的要件</td><td>不要</td><td>債務者の詐害意思＋受益者（転得者）の悪意</td></tr>
+    <tr><td>行使の範囲</td><td>自己の債権額の限度（423条の2）</td><td>自己の債権額の限度（424条の8。不可分物は全部可）</td></tr>
+    <tr><td>直接の支払・引渡し</td><td>金銭・動産につき可（423条の3）</td><td>金銭・動産につき可（424条の9）</td></tr>
+    <tr><td>事実上の優先弁済（相殺）</td><td>可能（簡易執行機能）</td><td>可能（簡易執行機能）</td></tr>
+    <tr><td>債務者への訴訟告知</td><td>必要（423条の6）</td><td>必要（424条の7第2項）</td></tr>
+    <tr><td>判決効</td><td>債務者にも及ぶ（法定訴訟担当）</td><td>債務者＋<strong>全債権者</strong>に及ぶ（425条）</td></tr>
+    <tr><td>期間制限</td><td>特則なし（被保全債権・被代位権利の時効のみ）</td><td>知った時から<strong>2年</strong>／行為時から<strong>10年</strong>（426条）</td></tr>
+    <tr><td>転用</td><td><strong>あり</strong>（423条の7ほか）</td><td><strong>なし</strong>（講義79：「ないものはない」）</td></tr>
+    <tr><td>破産時の運命</td><td>管財人の管理処分権（破産法78条）に吸収</td><td>否認権（破産法160条〜）に交代、訴訟は中断</td></tr>
+  </table>
+
+  <div class="key">
+    最後にもう一度、合言葉：<br>
+    <strong>「サボりには代位権、横流しには取消権。どちらも金銭は直接受領＋相殺で抜け駆けできるが、破産が来ればゲームセット。」</strong><br>
+    この一文に講義71〜79のすべてが詰まっています。
+  </div>
+</div>
+
+<!-- ========== 用語集 ========== -->
+<div class="section" id="glossary">
+  <div class="section-header">
+    <div class="section-num">📖</div>
+    <h2>初学者向け用語集</h2>
+  </div>
+
+  <table>
+    <tr><th>用語</th><th>読み</th><th>意味（やさしく）</th><th>登場講義</th></tr>
+    <tr><td>給付保持力</td><td>きゅうふほじりょく</td><td>受け取った給付を「返せ」と言われずに自分のものにできる力（守り）</td><td>71</td></tr>
+    <tr><td>請求力</td><td>せいきゅうりょく</td><td>裁判所から給付判決をもらえる力（攻め①）</td><td>71</td></tr>
+    <tr><td>摑取力</td><td>かくしゅりょく</td><td>債務名義を成立させ、債務者の財産をつかみ取る道を開く力（攻め②）</td><td>71</td></tr>
+    <tr><td>責任なき債務</td><td>せきにんなきさいむ</td><td>債務はあるのに強制執行ができない状態。破産免責後の債務など</td><td>71</td></tr>
+    <tr><td>自然債務</td><td>しぜんさいむ</td><td>訴えても勝てないが、任意に払われれば受け取れる債務</td><td>71</td></tr>
+    <tr><td>責任財産</td><td>せきにんざいさん</td><td>強制執行の引当てになる債務者の総財産。債権者の「最後の頼みの綱」</td><td>71〜79</td></tr>
+    <tr><td>債権者代位権</td><td>さいけんしゃだいいけん</td><td>サボっている債務者の代わりに、債権者がその権利を行使する制度（423条）</td><td>72・75・78</td></tr>
+    <tr><td>被保全債権</td><td>ひほぜんさいけん</td><td>代位権・取消権で守ろうとしている、債権者自身の債権</td><td>72〜79</td></tr>
+    <tr><td>被代位権利</td><td>ひだいいけんり</td><td>債権者が代わりに行使する、債務者の持っている権利</td><td>72・75・78</td></tr>
+    <tr><td>無資力</td><td>むしりょく</td><td>債務者の財産では全債務を払いきれない状態。代位・取消の原則的要件</td><td>72〜76</td></tr>
+    <tr><td>虚偽表示</td><td>きょぎひょうじ</td><td>相手とグルになってするニセの意思表示。無効（94条1項）</td><td>72</td></tr>
+    <tr><td>法定訴訟担当</td><td>ほうていそしょうたんとう</td><td>法律の定めにより他人の権利について自分の名で訴訟する資格。代位訴訟の原告がこれ</td><td>72</td></tr>
+    <tr><td>詐害行為取消権</td><td>さがいこういとりけしけん</td><td>債務者が財産を流出させる行為を、債権者が裁判で取り消す制度（424条）</td><td>73〜77</td></tr>
+    <tr><td>詐害意思</td><td>さがいいし</td><td>「この行為で債権者を害する」と債務者が知っていること</td><td>73</td></tr>
+    <tr><td>受益者</td><td>じゅえきしゃ</td><td>詐害行為によって債務者から直接利益を受けた相手方（設例のC）</td><td>73〜77</td></tr>
+    <tr><td>転得者</td><td>てんとくしゃ</td><td>受益者からさらに目的財産を取得した者（設例のD）。悪意なら取消請求の相手に</td><td>74・76</td></tr>
+    <tr><td>価額償還</td><td>かがくしょうかん</td><td>現物を返せないとき、代わりにその価額をお金で支払うこと</td><td>74・76</td></tr>
+    <tr><td>簡易執行機能</td><td>かんいしっこうきのう</td><td>直接受領＋相殺により、債務名義なしで執行と同じ回収結果を得られる機能</td><td>75・76</td></tr>
+    <tr><td>事実上の優先弁済</td><td>じじつじょうのゆうせんべんさい</td><td>相殺を通じて、他の債権者に先んじて自分だけ回収できてしまうこと</td><td>75・76</td></tr>
+    <tr><td>偏頗弁済</td><td>へんぱべんさい</td><td>支払不能の債務者が特定の債権者にだけする「えこひいき弁済」</td><td>77</td></tr>
+    <tr><td>否認権</td><td>ひにんけん</td><td>破産管財人が、破産前の財産流出行為の効力を否定して財団に取り戻す権利（破産法160条〜）</td><td>77</td></tr>
+    <tr><td>破産管財人</td><td>はさんかんざいにん</td><td>裁判所に選ばれて破産者の財産を管理・換価・配当する人。総債権者の利益代表</td><td>77</td></tr>
+    <tr><td>転用</td><td>てんよう</td><td>制度を本来の目的（責任財産保全）以外の目的（特定債権の実現）に使うこと。代位権にはあり、取消権にはない</td><td>78・79</td></tr>
+    <tr><td>弁済</td><td>べんさい</td><td>債務の本旨に従った履行。債権の目的を実現させ、債権を消滅させる（473条）</td><td>80</td></tr>
+    <tr><td>代物弁済</td><td>だいぶつべんさい</td><td>本来の給付の代わりに別の物で弁済する合意＋給付（482条）</td><td>80</td></tr>
+  </table>
+</div>
+
+<!-- ========== Footer ========== -->
+<div style="text-align:center; padding: 30px; color: var(--text-light); font-size: 0.85em;">
+  <p>msahkie先生の民法講義に基づく学習ガイド</p>
+  <p>法律未修者向け知識点整理・拡展</p>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>

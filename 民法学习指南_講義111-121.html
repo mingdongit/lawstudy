@@ -1,0 +1,1620 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義111〜121 学習ガイド（法律未修者向け）</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --primary: #2c5f8a;
+    --secondary: #e8f0f8;
+    --accent: #d4740e;
+    --accent-light: #fff5eb;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #dfe6e9;
+    --success: #00b894;
+    --danger: #e17055;
+    --info: #74b9ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #2c5f8a 0%, #1a3a5c 100%);
+    color: white;
+    border-radius: 16px;
+    margin-bottom: 30px;
+  }
+  .header h1 { font-size: 2em; margin-bottom: 10px; }
+  .header p { opacity: 0.9; font-size: 1.05em; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+
+  /* Navigation */
+  .nav {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav:hover, .nav:focus-within {
+    max-height: 600px;
+  }
+  .nav h3 { margin-bottom: 10px; color: var(--primary); font-size: 0.95em; cursor: pointer; }
+  .nav h3::after { content: " ▼"; font-size: 0.7em; }
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .nav a {
+    display: block;
+    padding: 8px 12px;
+    background: var(--secondary);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.88em;
+    transition: all 0.2s;
+  }
+  .nav a:hover { background: var(--primary); color: white; }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--secondary);
+  }
+  .section-num {
+    background: var(--primary);
+    color: white;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 1.35em; color: var(--primary); }
+
+  /* Subsection */
+  h3 {
+    color: var(--primary);
+    font-size: 1.1em;
+    margin: 24px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  h4 {
+    color: var(--accent);
+    font-size: 1em;
+    margin: 16px 0 8px;
+  }
+
+  /* Analogy box */
+  .analogy {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .analogy::before {
+    content: "💡 たとえ話";
+    display: block;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Key point */
+  .key {
+    background: #eef7ee;
+    border-left: 4px solid var(--success);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .key::before {
+    content: "✅ 重要ポイント";
+    display: block;
+    font-weight: bold;
+    color: var(--success);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Warning */
+  .warn {
+    background: #fff3f0;
+    border-left: 4px solid var(--danger);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .warn::before {
+    content: "⚠️ 注意・よくある誤解";
+    display: block;
+    font-weight: bold;
+    color: var(--danger);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Term */
+  .term {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .term::before {
+    content: "📖 用語解説";
+    display: block;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Quiz */
+  .quiz {
+    background: #f0eeff;
+    border: 2px dashed #6c5ce7;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .quiz::before {
+    content: "🧪 理解度チェック";
+    display: block;
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+  .quiz details {
+    margin-top: 8px;
+  }
+  .quiz summary {
+    cursor: pointer;
+    color: #6c5ce7;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .quiz details p {
+    margin-top: 6px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92em;
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:nth-child(even) { background: var(--secondary); }
+  tr:hover { background: #dbeafe; }
+
+  /* Mind map */
+  .mindmap {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .mindmap-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 16px;
+    font-size: 1.05em;
+  }
+
+  /* Tree structure */
+  .tree { padding-left: 0; list-style: none; }
+  .tree ul { padding-left: 28px; list-style: none; position: relative; }
+  .tree ul::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 12px;
+    border-left: 2px solid var(--border);
+  }
+  .tree li {
+    position: relative;
+    padding: 4px 0 4px 0;
+  }
+  .tree ul > li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 14px;
+    width: 14px;
+    border-top: 2px solid var(--border);
+  }
+  .tree .node {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+  .node.root { background: var(--primary); color: white; font-size: 1em; padding: 8px 20px; }
+  .node.l1 { background: #4a90c4; color: white; }
+  .node.l2 { background: var(--secondary); color: var(--primary); border: 1px solid #b0cfe0; }
+  .node.l3 { background: #f1f5f1; color: var(--text); border: 1px solid #c8d6c8; font-size: 0.85em; }
+  .node.accent { background: var(--accent-light); color: #b35c00; border: 1px solid #f0c8a0; }
+  .node.danger { background: #fff0ee; color: #c0392b; border: 1px solid #f0b0a0; }
+
+  /* Flow diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 16px 0;
+    justify-content: center;
+  }
+  .flow-item {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 0.88em;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-arrow {
+    font-size: 1.4em;
+    color: var(--text-light);
+    padding: 0 4px;
+  }
+  .flow .f-blue { background: var(--secondary); color: var(--primary); border: 2px solid #a0c4e0; }
+  .flow .f-green { background: #e8f8e8; color: #1e7e34; border: 2px solid #a0d8a0; }
+  .flow .f-orange { background: var(--accent-light); color: #b35c00; border: 2px solid #f0c8a0; }
+  .flow .f-red { background: #fff0ee; color: #c0392b; border: 2px solid #f0b0a0; }
+
+  /* Comparison */
+  .vs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: start;
+    margin: 16px 0;
+  }
+  .vs-box {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid;
+  }
+  .vs-box.left { border-color: #4a90c4; background: #f0f6fc; }
+  .vs-box.right { border-color: #e0a040; background: #fdf8f0; }
+  .vs-box h4 { margin-top: 0; text-align: center; }
+  .vs-mid {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--text-light);
+    align-self: center;
+  }
+
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 24px; }
+  li { margin: 4px 0; }
+  strong { color: var(--primary); }
+
+  @media (max-width: 768px) {
+    body { padding: 10px; }
+    .section { padding: 18px; }
+    .header h1 { font-size: 1.4em; }
+    .nav-grid { grid-template-columns: 1fr 1fr; }
+    .vs { grid-template-columns: 1fr; }
+    .vs-mid { text-align: center; }
+    .flow { flex-direction: column; align-items: center; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== Header ========== -->
+<div class="header">
+  <h1>民法講義 111〜121 学習ガイド</h1>
+  <p>債権譲渡の応用から契約法入門へ — 債務引受・契約の成立・危険の分配・解除・同時履行の抗弁権</p>
+  <div class="badge">msahkie先生の講義に基づく整理・拡展</div>
+</div>
+
+<!-- ========== Navigation ========== -->
+<div class="nav">
+  <h3>📑 目次（クリックでジャンプ）</h3>
+  <div class="nav-grid">
+    <a href="#overview">全体マップ</a>
+    <a href="#lec111">⑪⑪ 譲渡禁止特約と相殺</a>
+    <a href="#lec112">⑪② 債務引受</a>
+    <a href="#lec113">⑪③ 債権各則概観</a>
+    <a href="#lec114">⑪④ 申込み・承諾</a>
+    <a href="#lec115">⑪⑤ 給付危険の分配</a>
+    <a href="#lec116">⑪⑥ 対価危険の分配</a>
+    <a href="#lec117">⑪⑦ 契約の解除：総論</a>
+    <a href="#lec118">⑪⑧ 手付契約</a>
+    <a href="#lec119">⑪⑨ 法定解除権の根拠事実</a>
+    <a href="#lec120">⑫⓪ 契約解除の効果</a>
+    <a href="#lec121">⑫① 同時履行の抗弁権</a>
+    <a href="#glossary">用語集</a>
+  </div>
+</div>
+
+<!-- ========== 全体マップ ========== -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-num">📍</div>
+    <h2>全体マップ：講義111〜121は何を学ぶのか</h2>
+  </div>
+
+  <p>この11回は、民法学習の大きな<strong>「峠越え」</strong>です。講義111〜112で債権総則の最後のテーマ（債権譲渡の応用・債務引受）を片付け、講義113からいよいよ<strong>債権各則＝契約法</strong>の世界に入ります。契約はどう生まれ（成立）、途中で物がダメになったらどうなり（危険の分配）、どう終わらせ（解除）、お互いの義務をどう公平に履行させるか（同時履行の抗弁権）— 契約の一生を順番にたどります。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">🗺️ 講義111〜121 全体思維導図</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">債権総則の完結 → 契約法入門</span>
+        <ul>
+          <li>
+            <span class="node l1">Part A：債権総則の仕上げ（講義111-112）</span>
+            <ul>
+              <li><span class="node l2">⑪⑪ 譲渡禁止特約付き債権の譲渡と相殺（466条・469条3項）</span></li>
+              <li><span class="node l2">⑪② 債務引受 — 債務者が増える・入れ替わる（470〜472条）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part B：契約法の入口（講義113-114）</span>
+            <ul>
+              <li><span class="node l2">⑪③ 債権各則の見取り図 — 4つの債権発生原因</span></li>
+              <li><span class="node l2">⑪④ 契約の成立 — 申込みと承諾（97条・522条）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part C：物がダメになったら？危険の分配（講義115-116）</span>
+            <ul>
+              <li><span class="node l2">⑪⑤ 給付危険 — 「物をもらえない損」は誰が負う？（415条）</span></li>
+              <li><span class="node l2">⑪⑥ 対価危険 — 「代金は払うのか」問題（536条）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part D：契約をやめる — 解除（講義117-120）</span>
+            <ul>
+              <li><span class="node l2">⑪⑦ 解除の全体地図 — 合意解除・約定解除・法定解除</span></li>
+              <li><span class="node l2">⑪⑧ 手付 — お金で買う「やめる権利」（557条）</span></li>
+              <li><span class="node l2">⑪⑨ 法定解除権はいつ生まれるか（541条・542条）</span></li>
+              <li><span class="node l2">⑫⓪ 解除したらどうなるか — 原状回復（545条）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part E：公平な履行の確保（講義121）</span>
+            <ul>
+              <li><span class="node l2">⑫① 同時履行の抗弁権 — 「払うなら渡す、渡すなら払う」（533条）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="analogy">
+    レストランの開店から閉店までにたとえると：<br>
+    <strong>Part A</strong> = 開店前の引き継ぎ事務（債権の譲渡・債務の引受という「権利義務の名義変更」）<br>
+    <strong>Part B</strong> = お店の開店（契約の世界の地図を見て、注文＝申込み・承諾で契約成立）<br>
+    <strong>Part C</strong> = 厨房で食材がダメになった！（誰が損をかぶるかのルール）<br>
+    <strong>Part D</strong> = 注文のキャンセル（キャンセル料＝手付、店の落ち度によるキャンセル＝法定解除）<br>
+    <strong>Part E</strong> = 「料理が来るまでお金は払わない」「お金をもらうまで料理は出さない」の調整
+  </div>
+</div>
+
+<!-- ========== 講義111 ========== -->
+<div class="section" id="lec111">
+  <div class="section-header">
+    <div class="section-num">111</div>
+    <h2>譲渡禁止特約付き債権の譲渡と相殺</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>「この債権は譲渡しない」という特約（譲渡制限特約）が付いた債権でも、<strong>譲渡は有効</strong>。ただし特約を知っていた（または重大な不注意で知らなかった）譲受人に対しては、債務者は履行を拒め、<strong>相殺のチャンスも通常より広く守られる</strong>という話です。</p>
+
+  <div class="analogy">
+    コンサートのチケットにたとえると：<br>
+    「転売禁止」と書かれたチケット（＝譲渡制限特約付き債権）が転売されてしまった。2017年改正民法のルールでは、転売自体は<strong>有効</strong>（新しい持ち主がチケットの持ち主になる）。<br>
+    でも主催者（＝債務者）は、「転売禁止」と知って買った人に対しては「あなたは入場お断り。元の購入者になら対応します」と言える。<br>
+    さらに、主催者が元の購入者に対して持っていた「割引ポイント」（＝反対債権による相殺）も、転売されたからといって取り上げられない — むしろ通常の譲渡より<strong>長く使える</strong>のです。
+  </div>
+
+  <h3>前提の復習：466条の構造（譲渡制限特約）</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">譲渡制限特約付き債権<br><small>「譲渡しません」と合意</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">それでも譲渡は有効<br><small>466条2項</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">悪意・重過失の譲受人には<br>履行拒絶OK＋譲渡人への弁済で対抗OK<br><small>466条3項</small></div>
+  </div>
+
+  <div class="term">
+    <strong>譲渡制限特約（じょうとせいげんとくやく）</strong>：債権者と債務者が「この債権は譲渡しない」と合意すること。旧法では特約違反の譲渡は無効とされていましたが、2017年改正（466条2項）で「<strong>譲渡は有効、ただし債務者保護の仕組みを別に用意する</strong>」方式に転換しました。債務者の「知らない人に払いたくない」「相殺の期待を守りたい」という利益は、3項以下で守ります。
+  </div>
+
+  <h3>相殺の基本ルール（469条1項・2項の復習）</h3>
+  <p>債権が譲渡されたとき、債務者は「自分が譲渡人に対して持っていた反対債権」で相殺できるのか。基準となるのは<strong>債務者対抗要件具備時（＝通知・承諾の時）</strong>です。</p>
+
+  <table>
+    <tr><th>債務者の反対債権</th><th>譲受人への相殺の対抗</th><th>根拠</th></tr>
+    <tr><td>対抗要件具備<strong>前</strong>に取得した債権</td><td>✅ できる</td><td>469条1項</td></tr>
+    <tr><td>具備後に取得したが、<strong>具備前の原因</strong>に基づく債権</td><td>✅ できる</td><td>469条2項1号</td></tr>
+    <tr><td>具備後に取得したが、<strong>譲渡された債権と同一の契約</strong>から生じた債権</td><td>✅ できる</td><td>469条2項2号</td></tr>
+    <tr><td>具備後の原因に基づく債権／具備後に<strong>他人から</strong>取得した債権</td><td>❌ できない</td><td>469条1項・2項の反対解釈</td></tr>
+  </table>
+
+  <div class="key">
+    講義冒頭の一文はこの表の「❌」を裏から述べたものです：<br>
+    「債務者は、<strong>対抗要件具備後の原因</strong>に基づいて取得した債権（同一契約由来を除く）や、具備後に<strong>他人から</strong>取得した債権による相殺をもって、譲受人に対抗できない」。<br>
+    つまり469条1項と2項は別々のルールではなく、<strong>一体として「どこまでの相殺期待を守るか」の線引き</strong>を定めた規定です。
+  </div>
+
+  <h3>本題：譲渡制限特約があると基準時が後ろにずれる（469条3項）</h3>
+  <p>譲渡制限特約付き債権が譲渡され、譲受人が悪意・重過失の場合、債務者は466条3項により譲受人への履行を拒み、<strong>譲渡人に弁済し続けてよい</strong>立場にあります。それなら、譲渡人との間で<strong>相殺の期待を持ち続けること</strong>も保護すべきです。</p>
+
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🔵 通常の債権譲渡</h4>
+      <p>相殺の基準時＝<strong>債務者対抗要件具備時</strong></p>
+      <ul>
+        <li>通知・承諾の時点で「相殺カードの手持ち」が固定される</li>
+        <li>それ以後の新しい原因による債権では相殺できない</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🟠 譲渡制限特約＋悪意・重過失の譲受人</h4>
+      <p>相殺の基準時が<strong>後ろにずれる</strong>（469条3項）</p>
+      <ul>
+        <li>債務者はまだ譲渡人に弁済できる立場（466条3項）</li>
+        <li>だからその間に取得した反対債権による相殺も対抗できる</li>
+        <li>譲受人が466条4項の催告をして相当期間が経過するまでが目安</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn">
+    よくある誤解：「譲渡禁止特約があれば譲渡は無効」— これは<strong>旧法の発想</strong>です。現行法では譲渡は常に有効で、債務者保護は「履行拒絶権」「譲渡人への弁済の対抗」「相殺の基準時の繰り下げ」という<strong>別のツール</strong>で図られます。<br>
+    なお<strong>預貯金債権</strong>だけは例外で、悪意・重過失の譲受人との関係では特約を譲渡の効力そのものに対抗できます（466条の5）。
+  </div>
+
+  <div class="quiz">
+    Q1: 譲渡制限特約付きの売掛金債権がAからCに譲渡された。Cは特約について悪意。債務者Bは、譲渡通知の<strong>後</strong>にAとの新たな取引で取得した反対債権で、Cに相殺を対抗できるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>対抗できる余地がある。通常の譲渡なら通知（対抗要件具備）後の原因による債権では相殺できない（469条1項・2項）。しかしCが譲渡制限特約につき悪意なので、Bは466条3項によりなおAに弁済できる立場にあり、469条3項によって相殺の基準時が後ろにずれる。Cが466条4項の催告をして相当期間が経過するなど、Bが譲受人Cへの履行を拒めなくなる時点までに生じた原因に基づく債権であれば、相殺を対抗できる。</p>
+    </details>
+    Q2: なぜ「同一の契約から生じた債権」（469条2項2号）なら、対抗要件具備後でも相殺できるのか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>同じ契約からは、将来反対債権（例：売買目的物の欠陥による損害賠償債権）が生じうることが<strong>契約締結の時点から予定されている</strong>から。債務者は「この契約の貸し借りは最終的に差引きできる」と期待しており、その期待は譲渡通知より前から存在していたといえる。だから通知後に現実化した債権でも相殺を認めて公平を図る。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義112 ========== -->
+<div class="section" id="lec112">
+  <div class="section-header">
+    <div class="section-num">112</div>
+    <h2>債務引受 — 債務者が増える・入れ替わる</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>債権譲渡が「<strong>債権者の交代</strong>」なら、債務引受は「<strong>債務者側の変動</strong>」。第三者Cが契約によって、債務者Bと<strong>並んで</strong>債務者になる（併存的債務引受）か、Bと<strong>入れ替わって</strong>債務者になる（免責的債務引受）かの2タイプがあります。</p>
+
+  <div class="analogy">
+    ルームシェアの家賃にたとえると：<br>
+    Bが大家Aに家賃10万円を払う義務を負っている。そこへ友人Cが現れて——<br>
+    <strong>併存的債務引受</strong>＝「Bと一緒に、私も家賃の支払義務を負います」。大家AはBにもCにも請求できるようになる。<strong>支払い手が2人に増える</strong>ので、Aは大喜び。<br>
+    <strong>免責的債務引受</strong>＝「Bの代わりに、今後は私が払います。Bはもう免除してあげてください」。<strong>支払い手がBからCに交代</strong>する。Cの懐事情次第ではAにとって損になりうるので、Aの関与なしには成立しない。
+  </div>
+
+  <h3>定義の確認</h3>
+  <div class="term">
+    <strong>債務引受（さいむひきうけ）</strong>：AのBに対する債権と<strong>共通の目的</strong>をもって、契約に基づき、第三者CがAに対する債務者となること。その契約が債務引受契約です。<br>
+    ・<strong>併存的債務引受</strong>（470条）：CがBと<strong>並んで</strong>同一内容の債務を負う。BとCは<strong>連帯債務</strong>の関係に立つ（470条1項）。<br>
+    ・<strong>免責的債務引受</strong>（472条）：Bは債務を<strong>免れ</strong>、入れ替わりにCが債務者になる。
+  </div>
+
+  <h3>どちらか不分明なときは？ → 併存的と解釈する</h3>
+  <div class="key">
+    具体的な債務引受契約が併存的か免責的か<strong>はっきりしないとき</strong>は、<strong>併存的債務引受</strong>と意思解釈するのが原則です。理由は2つ：<br>
+    ① Cが（Bを完全に解放して）<strong>単独で</strong>債務を負担するまでの意思を持つのは、特別な事情がある場合だろう。<br>
+    ② Bが債務を<strong>免れてしまう</strong>という大きな利益を得るのも、特別な事情がある場合だろう。<br>
+    → 効果の控えめな方（併存的）を原則とするのが、当事者の通常の意思に合致する。
+  </div>
+
+  <h3>誰と誰の契約で成立するか</h3>
+  <table>
+    <tr><th>契約の当事者</th><th>併存的債務引受（470条）</th><th>免責的債務引受（472条）</th></tr>
+    <tr><td>債権者A × 引受人C</td><td>✅ それだけで成立（470条2項）<br><small>Bの意思に反してもよい</small></td><td>✅ 成立するが、AがBに<strong>通知</strong>した時に効力発生（472条2項）</td></tr>
+    <tr><td>債務者B × 引受人C</td><td>✅ 成立するが、Aが Cに対して<strong>承諾（受益の意思表示）</strong>した時に効力発生（470条3項）<br><small>＝第三者のためにする契約の構造</small></td><td>✅ 成立するが、Aの<strong>承諾</strong>が必要（472条3項）<br><small>債務者の交代はAの利害に直結するから</small></td></tr>
+  </table>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：債務引受の全体像</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">債務引受（債務者側の変動）</span>
+        <ul>
+          <li>
+            <span class="node l1">併存的債務引受（470条）</span>
+            <ul>
+              <li><span class="node l2">効果：BとCの連帯債務（Aの引当てが増える＝担保的機能）</span></li>
+              <li><span class="node l2">Cの抗弁：Bが主張できた抗弁をAに対抗できる（471条1項）</span></li>
+              <li><span class="node l3">Bが取消権・解除権を持つ場合 → Cは履行拒絶できる（471条2項）</span></li>
+              <li><span class="node accent">不分明なときの原則形態はこちら</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">免責的債務引受（472条）</span>
+            <ul>
+              <li><span class="node l2">効果：Bは離脱、Cだけが債務者に</span></li>
+              <li><span class="node l2">Cの抗弁：引受時にBが持っていた抗弁を対抗できる（472条の2）</span></li>
+              <li><span class="node danger">CはBに求償できない（472条の3）→ ただで肩代わりする趣旨と推定</span></li>
+              <li><span class="node l3">担保・保証の移転にはBの同意等が必要（472条の4）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>債権譲渡との対比で覚える</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🔵 債権譲渡（466条〜）</h4>
+      <ul>
+        <li>変わるのは<strong>債権者</strong>（もらう側）</li>
+        <li>債務者の同意は<strong>不要</strong>（誰に払うかが変わるだけで、債務者の負担は同じ）</li>
+        <li>必要なのは対抗要件（通知・承諾）</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🟠 免責的債務引受（472条）</h4>
+      <ul>
+        <li>変わるのは<strong>債務者</strong>（払う側）</li>
+        <li>債権者の関与が<strong>不可欠</strong>（払う人の資力が変わる＝債権の価値が変わるから）</li>
+        <li>債権者抜きの債務者交代はあり得ない</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn">
+    「免責的債務引受をしたCは、後でBに『肩代わりした分を返して』と請求できる」と思いがちですが、<strong>逆</strong>です。472条の3により、免責的債務引受の引受人Cは<strong>Bに対して求償権を取得しません</strong>。Bを完全に解放する仕組みなのに後から求償されるのでは、Bの解放が画餅になるからです。求償を残したいなら、併存的債務引受＋弁済（連帯債務者間の求償）の形を使います。
+  </div>
+
+  <div class="quiz">
+    Q1: 親会社Cが、子会社Bの銀行Aに対する借入債務について「当社も支払義務を負います」という契約をAと結んだ。Bの同意は必要か？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>不要。これは併存的債務引受であり、債権者Aと引受人Cの契約だけで成立する（470条2項）。Bの債務はそのまま残り、Bに不利益はない（むしろ支払い手が増えるだけ）から、Bの意思に反しても有効と解される。BとCは連帯債務の関係に立つ。</p>
+    </details>
+    Q2: 併存的債務引受と（連帯）保証はどう違う？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>どちらも「支払い手を増やす」担保的機能を持つ点で似ているが、保証債務には<strong>付従性・補充性</strong>があり主債務の存在を前提とする「従たる債務」であるのに対し、併存的債務引受で引受人が負うのは主債務と同列の<strong>独立の連帯債務</strong>。また保証契約は書面が必要（446条2項）だが、債務引受に書面要件はない。実質が保証なのに債務引受の形式を取って書面要件を潜脱していないかが解釈問題になりうる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義113 ========== -->
+<div class="section" id="lec113">
+  <div class="section-header">
+    <div class="section-num">113</div>
+    <h2>債権各則概観 — 債権はどこから生まれるか</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>債権総則を終え、ここから<strong>債権各則</strong>へ。債権の発生原因は主に<strong>契約・事務管理・不当利得・不法行為</strong>の4つで、これがそのまま債権各則（民法第3編第2章〜第5章）の章タイトルになっています。</p>
+
+  <div class="analogy">
+    ルールブックの引き方にたとえると：<br>
+    債権トラブルが起きたら、まず<strong>一番具体的なページ</strong>（債権各則：例えば「売買」の節）を引く。そこに答えがなければ一段抽象的な<strong>債権総則</strong>へ。それでもなければ最後は<strong>民法総則</strong>がキャッチする。<br>
+    まるで「学級のルール → 学校のルール → 教育委員会のルール」の順に調べるようなもの。具体的なルールが抽象的なルールに優先する——これが講義3で学んだ<strong>パンデクテン体系</strong>の実践編です。
+  </div>
+
+  <h3>規範の適用順序（特別法は一般法を破る）</h3>
+  <div class="flow">
+    <div class="flow-item f-orange">債権各則<br><small>発生原因ごとの固有ルール</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">債権総則<br><small>債権一般の共通ルール</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">民法総則<br><small>最後のキャッチャー</small></div>
+  </div>
+  <p style="text-align:center; font-size:0.9em; color:var(--text-light);">各則の適用を逃れた事項は総則がキャッチする（Pandekten System）</p>
+
+  <h3>債権の4大発生原因</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：債権各則＝債権の発生原因カタログ</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">債権の発生原因（債権各則の4章）</span>
+        <ul>
+          <li>
+            <span class="node l1">① 契約（521条〜）🤝</span>
+            <ul>
+              <li><span class="node l2">当事者の合意によって債権を作る（最重要・最頻出）</span></li>
+              <li><span class="node l2">売買・賃貸借・請負など13の典型契約＋契約総則</span></li>
+              <li><span class="node accent">契約自由の原則 → 典型契約以外も自由に作れる（非典型契約）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">② 事務管理（697条〜）🚑</span>
+            <ul>
+              <li><span class="node l2">頼まれていないのに他人のために事務を処理した場合</span></li>
+              <li><span class="node l3">例：隣人の留守中に台風で壊れた屋根を修理 → 費用償還請求権</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">③ 不当利得（703条〜）💰</span>
+            <ul>
+              <li><span class="node l2">法律上の原因なく利益を得た者から取り戻す</span></li>
+              <li><span class="node l3">例：誤振込されたお金 → 返還請求権</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">④ 不法行為（709条〜）💥</span>
+            <ul>
+              <li><span class="node l2">故意・過失で他人に損害を与えた場合の損害賠償</span></li>
+              <li><span class="node l3">例：交通事故 → 損害賠償請求権</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>物権各則との決定的な違い</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🏠 物権各則のタイトル</h4>
+      <p><strong>物権の固定的カタログリスト</strong></p>
+      <ul>
+        <li>占有権・所有権・地上権・抵当権…</li>
+        <li>物権法定主義（175条）：このリストにない物権は作れない</li>
+        <li>メニューは<strong>閉じている</strong></li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🤝 債権各則のタイトル</h4>
+      <p><strong>債権の発生原因のリスト</strong></p>
+      <ul>
+        <li>契約・事務管理・不当利得・不法行為</li>
+        <li>契約自由の原則：典型契約は例示にすぎない</li>
+        <li>メニューは<strong>開いている</strong>（新型契約も自由）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    4つの発生原因は<strong>「合意による債権」と「合意によらない債権」</strong>に大別できます：<br>
+    ・<strong>契約</strong>＝当事者が望んで作った債権（意思に基づく）<br>
+    ・<strong>事務管理・不当利得・不法行為</strong>＝法律が政策的に発生させる債権（法定債権）。当事者は望んでいないのに、公平のために法が債権を発生させる。<br>
+    講義114以降はまず「契約」を深掘りします。
+  </div>
+
+  <div class="quiz">
+    Q1: コンビニで弁当を買う、友人の落とした財布を届ける、他人の車に誤ってぶつける——それぞれどの発生原因から債権が生じる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>弁当の購入＝<strong>契約</strong>（売買契約から代金債権・引渡債権）。財布を届ける＝<strong>事務管理</strong>（義務なく他人のために事務を処理 → 費用償還請求権など）。車にぶつける＝<strong>不法行為</strong>（過失による損害 → 損害賠償債権）。なお誤振込されたお金を受け取れば<strong>不当利得</strong>。</p>
+    </details>
+    Q2: 売買契約のトラブルで、売買の節（555条〜）にも契約総則にも規定がない問題が生じた。どこを見る？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>債権総則（399条〜）→ それでもなければ民法総則（1条〜）の順に遡る。パンデクテン体系では具体的な規定（特則）が抽象的な規定（一般則）に優先し、特則がカバーしない事項は一般則がキャッチする構造になっている。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義114 ========== -->
+<div class="section" id="lec114">
+  <div class="section-header">
+    <div class="section-num">114</div>
+    <h2>申込み・承諾 — 契約はこうして成立する</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>契約は<strong>申込み</strong>（先に内容を提案する意思表示）と<strong>承諾</strong>（その内容を<strong>100%</strong>受け入れる意思表示）の合致で成立します。どちらも意思表示なので、<strong>97条の到達主義</strong>——相手の生活支配圏内に入った時に効力発生——に従います。</p>
+
+  <div class="analogy">
+    キャッチボールにたとえると：<br>
+    <strong>申込み</strong>＝「このボール（＝契約内容）でキャッチボールしよう」と最初にボールを投げること。内容は投げる時点で確定していなければならない。<br>
+    <strong>承諾</strong>＝そのボールを<strong>そのまま</strong>受け取って投げ返すこと。<br>
+    もし「いや、こっちのボールがいい」と<strong>別のボール</strong>を投げ返したら？ それは承諾ではなく<strong>新たな申込み</strong>（528条）。攻守交代して、今度は相手が承諾するかを決める番になります。<br>
+    そして「到達主義」とは、ボールが相手の<strong>グローブの届く範囲</strong>に入った時点で効力が生じるということ。実際に相手が中身を読んだかどうかは問いません。
+  </div>
+
+  <h3>契約成立の基本構造</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">申込み<br><small>内容を確定して提案<br>（先発の意思表示）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">相手方に到達<br><small>97条1項：生活支配圏内へ</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">承諾<br><small>内容を100%受入れ<br>（後行の意思表示）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">申込者に到達</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">契約成立！<br><small>522条1項</small></div>
+  </div>
+
+  <div class="term">
+    <strong>到達主義（とうたつしゅぎ）</strong>（97条1項）：意思表示は、その通知が<strong>相手方に到達した時</strong>から効力を生ずる。「到達」とは相手が現実に読むことまでは不要で、<strong>相手方の生活支配圏内</strong>（郵便受け、同居の家族の受領など）に入り、了知可能な状態に置かれれば足ります。<br>
+    ・相手方が<strong>正当な理由なく到達を妨げた</strong>とき（受取拒否など）は、通常到達すべきであった時に到達したものとみなす（97条2項）。<br>
+    ・表意者が通知発信後に<strong>死亡・意思能力喪失・行為能力制限</strong>を受けても、意思表示の効力は妨げられない（97条3項）。ただし<strong>申込み</strong>には特則あり（526条）。
+  </div>
+
+  <h3>申込みと承諾の比較</h3>
+  <table>
+    <tr><th>比較項目</th><th>申込み</th><th>承諾</th></tr>
+    <tr><td>順番</td><td>先発の意思表示</td><td>後行の意思表示</td></tr>
+    <tr><td>内容</td><td>契約内容を確定的に提案（「その内容で契約を締結する」意思を含む：522条1項）</td><td>申込みの内容を<strong>100%</strong>受け入れる</td></tr>
+    <tr><td>効力発生</td><td>相手方への到達時（97条1項）</td><td>申込者への到達時（97条1項）＝<strong>契約成立時</strong></td></tr>
+    <tr><td>変更を加えたら</td><td>—</td><td>申込みの拒絶＋<strong>新たな申込み</strong>とみなす（528条）</td></tr>
+    <tr><td>撤回の制限</td><td>承諾期間を定めた申込みは撤回不可（523条1項）。定めなくても相当期間は撤回不可（525条1項）</td><td>到達すれば契約成立済みなので撤回の余地なし</td></tr>
+  </table>
+
+  <div class="warn">
+    「申込みの誘引」と申込みを混同しないこと。チラシや求人広告、ネットショップの商品ページは多くの場合<strong>申込みの誘引</strong>（「申込みをしてください」という呼びかけ）にすぎません。客の注文が<strong>申込み</strong>で、店の受注確認が<strong>承諾</strong>。この区別を誤ると「誰が承諾権を握っているか」を見誤ります。<br>
+    また「申込みは到達前なら撤回できるが、<strong>到達して効力が生じた後は自由に撤回できない</strong>」（523条・525条）点も注意。相手が承諾の準備をしているのに梯子を外すのは許されないからです。
+  </div>
+
+  <div class="key">
+    なぜ承諾は「100%受入れ」でなければならないのか：契約は両当事者の意思の<strong>完全な合致</strong>で成立するもの。1ヶ所でも違えば「合意」とは言えません。条件を変えたい人は、承諾者の立場を捨てて<strong>新たな申込者</strong>になる（528条）——交渉とは申込みのラリーが続くことなのです。
+  </div>
+
+  <div class="quiz">
+    Q1: AがBに「この絵を100万円で売る」と手紙で申し込んだ。Bは「80万円なら買う」と返事した。その後Bが「やはり100万円で買います」と通知した。契約は成立しているか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>当然には成立していない。「80万円なら買う」は変更を加えた承諾なので、Aの申込みの<strong>拒絶＋新たな申込み</strong>とみなされる（528条）。Aの当初の申込みは拒絶により失効しているから、その後の「100万円で買います」は失効した申込みへの承諾ではなく、Bからの<strong>新たな申込み</strong>と評価される。Aが承諾して初めて契約成立。</p>
+    </details>
+    Q2: 申込みの手紙がBの自宅郵便受けに届いたが、Bは旅行中で1週間読まなかった。申込みの効力はいつ生じる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>郵便受けに入った時（到達時）。到達主義（97条1項）における「到達」は、相手方の<strong>生活支配圏内に入り了知可能な状態</strong>になれば足り、現実に読んだこと（了知）までは不要。読む読まないは支配圏内に入った後の相手方の事情だから、そのリスクは相手方が負う。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義115 ========== -->
+<div class="section" id="lec115">
+  <div class="section-header">
+    <div class="section-num">115</div>
+    <h2>給付危険の分配 — 「物をもらえない損」は誰が負う？</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>非金銭債務（物の引渡しなど）には<strong>履行不能のリスク</strong>がつきまといます。給付が不能になったとき、その不利益を債権者・債務者のどちらが負うか——これが<strong>給付危険の分配</strong>。民法は<strong>原則として債務者に負担</strong>させ（帰責事由があれば填補賠償：415条）、債務者に帰責事由がないときだけ<strong>例外的に債権者の負担</strong>とします。</p>
+
+  <div class="analogy">
+    引っ越し業者にたとえると：<br>
+    あなた（債権者）が業者（債務者）に「このピアノを新居へ運んで」と頼んだ。輸送中にピアノが壊れて運べなくなった（履行不能）。<br>
+    ・業者の<strong>不注意</strong>で壊れた → 業者がピアノ相当額を弁償（填補賠償）。あなたは「お金の形でピアノを受け取れる」。<strong>損は業者持ち＝給付危険は債務者負担</strong>。<br>
+    ・<strong>巨大地震</strong>という誰のせいでもない事情で壊れた → 業者は弁償しなくてよい（415条1項ただし書）。あなたはピアノもお金も得られない。<strong>損はあなた持ち＝給付危険が債権者に移る</strong>。<br>
+    「もらえなくなった損」を最終的に誰がかぶるか、それが給付危険です。
+  </div>
+
+  <h3>なぜ「非金銭債務」だけの問題か</h3>
+  <div class="term">
+    <strong>給付危険（きゅうふきけん）</strong>：債務の目的たる給付が不能になったとき、「給付（またはその価値）を受けられない」という不利益を債権者・債務者のいずれが負担するかの問題。<br>
+    <strong>金銭債務には履行不能がない</strong>（「お金がどこにもない」ことはあり得ない＝「金は天下の回りもの」）ので、給付危険は<strong>非金銭債務に固有</strong>の問題です。そして、債権の発生原因を問わず一個の債務について抽象的に考えるので、これは<strong>債権総則</strong>レベルの問題です。
+  </div>
+
+  <h3>415条による分配のルール</h3>
+  <div class="flow">
+    <div class="flow-item f-red">給付が履行不能に<br><small>履行請求はもうできない<br>（412条の2第1項）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">債務者に帰責事由<br>あり？<br><small>415条1項ただし書</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">あり：填補賠償<br><small>債権者は金銭で給付の価値を確保<br>＝危険は債務者負担</small></div>
+  </div>
+  <div class="flow">
+    <div class="flow-item f-blue">帰責事由なし<br><small>（不可抗力など）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">損害賠償なし<br><small>債権者は何も得られない<br>＝危険は債権者負担（例外）</small></div>
+  </div>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：給付危険の分配</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">給付危険の分配（債権総則の問題）</span>
+        <ul>
+          <li>
+            <span class="node l1">前提：非金銭債務の宿命</span>
+            <ul>
+              <li><span class="node l2">特定物の引渡しなどは、滅失すれば履行不能になりうる</span></li>
+              <li><span class="node l3">金銭債務は履行不能にならない → この問題の外</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">原則：債務者負担</span>
+            <ul>
+              <li><span class="node l2">債務者帰責の不能 → 填補賠償義務（415条1項本文・2項1号）</span></li>
+              <li><span class="node l3">債権者は「物の代わりにお金」で守られる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">例外：債権者負担</span>
+            <ul>
+              <li><span class="node l2">債務者無帰責の不能 → 賠償義務なし（415条1項ただし書）</span></li>
+              <li><span class="node danger">債権者は物も賠償も得られない</span></li>
+              <li><span class="node accent">受領遅滞中の不能 → 債権者帰責とみなす（413条の2第2項）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    整理すると：<br>
+    ① 履行不能になると、現実の履行請求はできなくなる（412条の2第1項）。<br>
+    ② 焦点は「では<strong>お金（填補賠償）</strong>はもらえるのか」に移る。<br>
+    ③ 415条1項ただし書 — 不能が「契約その他の債務の発生原因及び取引上の社会通念に照らして<strong>債務者の責めに帰することができない事由</strong>」によるなら、賠償なし。<br>
+    ④ つまり<strong>帰責事由の有無が、給付危険の分配スイッチ</strong>になっている。
+  </div>
+
+  <div class="warn">
+    「履行不能＝もう何も請求できない」と早合点しないこと。不能で消えるのは<strong>現実の履行請求</strong>だけで、債務者に帰責事由があれば<strong>填補賠償請求権</strong>という形で債権は生き続けます。また次講（116）で学ぶように、双務契約では「自分の側の代金は払うのか」という<strong>対価危険</strong>という別の問題が続きます。給付危険と対価危険は必ずセットで、しかし<strong>別問題として</strong>考える癖をつけましょう。
+  </div>
+
+  <div class="quiz">
+    Q1: 画家Aが顧客Bに絵画甲を引き渡す債務を負っていたが、引渡し前にA宅の隣家からのもらい火（Aに過失なし）で甲が焼失した。Bは何を請求できる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>何も請求できない。甲の引渡債務は履行不能となり現実の履行請求は不可（412条の2第1項）。填補賠償も、不能がAの責めに帰することができない事由によるため請求できない（415条1項ただし書）。給付危険は例外的に債権者Bの負担となる。（Bが代金を払うべきかは対価危険＝講義116の問題。）</p>
+    </details>
+    Q2: なぜ金銭債務には給付危険の問題が生じないのか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>金銭は種類・個性を問わない究極の代替物であり、「世の中から金銭が消滅する」ことはあり得ないから、金銭債務は<strong>履行不能にならない</strong>（「金欠」は不能ではなく単なる遅滞）。履行不能があり得ない以上、「不能の不利益を誰が負うか」という給付危険の問題はそもそも発生しない（419条参照：金銭債務の不履行は不可抗力をもって抗弁できない）。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義116 ========== -->
+<div class="section" id="lec116">
+  <div class="section-header">
+    <div class="section-num">116</div>
+    <h2>対価危険の分配 — それでも代金は払うのか？</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>給付危険（債権総則）の話が終わっても、<strong>双務契約</strong>ではもう一つの問題が残ります。「物はもらえなくなった。<strong>では代金は払うのか？</strong>」——これが<strong>対価危険の分配</strong>（危険負担：536条）。原則は「物が来ないなら<strong>代金の支払いを拒める</strong>」（債務者主義）です。</p>
+
+  <div class="analogy">
+    ピアノの引っ越しの続きで考えると：<br>
+    巨大地震でピアノが壊れ、業者は弁償もしなくてよい（給付危険は依頼者負担）となった。では依頼者は<strong>運送代金</strong>を払うのか？<br>
+    民法の答え：<strong>払わなくてよい</strong>（536条1項：支払いを拒める）。「仕事がしてもらえなかったのにお金だけ取られる」のは不公平だから。<br>
+    ただし、依頼者が<strong>自分のせいで</strong>運送を不可能にした（例：依頼者が積込み時にピアノを倒した）なら、<strong>代金は払う</strong>（536条2項）。自分で壊しておいて「物が来ないから払わない」は虫が良すぎる、というわけです。
+  </div>
+
+  <h3>給付危険と対価危険は別問題</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🔵 給付危険（講義115）</h4>
+      <ul>
+        <li>問い：「<strong>物（またはその価値）</strong>をもらい損ねる不利益は誰が負う？」</li>
+        <li>レベル：<strong>債権総則</strong>（一個の債務だけを見る）</li>
+        <li>条文：415条（帰責事由→填補賠償）</li>
+      </ul>
+    </div>
+    <div class="vs-mid">＋</div>
+    <div class="vs-box right">
+      <h4>🟠 対価危険（本講）</h4>
+      <ul>
+        <li>問い：「給付が不能でも<strong>反対給付（代金）</strong>は払うのか？」</li>
+        <li>レベル：<strong>契約総則</strong>（双務契約の2本の債務の牽連関係を見る）</li>
+        <li>条文：536条（危険負担）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="term">
+    <strong>双務契約（そうむけいやく）</strong>：売買のように、両当事者が互いに対価関係に立つ債務を負う契約。2本の債務は「あなたが履行するから私も履行する」という<strong>牽連関係（けんれんかんけい）</strong>で結ばれています。片方が不能で消えたとき、もう片方（代金債務）の運命をどうするか——これが対価危険の問題です。
+  </div>
+
+  <h3>536条のルール</h3>
+  <table>
+    <tr><th>不能の原因</th><th>買主（債権者）は代金を払う？</th><th>根拠</th></tr>
+    <tr><td>双方に帰責事由なし（地震・もらい火など）</td><td>❌ <strong>支払いを拒める</strong>（履行拒絶権）</td><td>536条1項（債務者主義）</td></tr>
+    <tr><td>債権者（買主）に帰責事由あり</td><td>✅ <strong>拒めない</strong>（払う）。ただし売主が債務を免れて得た利益は償還</td><td>536条2項</td></tr>
+    <tr><td>債務者（売主）に帰責事由あり</td><td>—（536条の出番なし）→ 填補賠償（415条）や解除（542条）で処理</td><td>415条・542条</td></tr>
+    <tr><td>売買目的物の<strong>引渡し後</strong>に双方無帰責で滅失</td><td>✅ 拒めない（危険は引渡しで買主に移転）</td><td>567条1項</td></tr>
+  </table>
+
+  <div class="flow">
+    <div class="flow-item f-red">目的物が滅失<br><small>双方無帰責</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">買主：代金支払いを拒絶できる<br><small>536条1項</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">完全に縁を切りたければ<br>無催告解除<br><small>542条1項1号</small></div>
+  </div>
+
+  <div class="key">
+    2017年改正の重要ポイント：<br>
+    ① 旧法536条1項は「反対給付債務が<strong>消滅する</strong>」構成でしたが、現行法は「<strong>履行を拒むことができる</strong>」（履行拒絶権）構成に変更。代金債務自体は存続するので、確定的に消したければ<strong>解除</strong>（542条）をする。<br>
+    ② 改正前は解除に債務者の帰責事由が必要だったため危険負担と解除がすみ分けていましたが、現行法では<strong>帰責事由なしでも解除できる</strong>ようになり、両制度が併存しています。<br>
+    ③ 売買では<strong>引渡し</strong>が危険のバトンタッチ地点（567条）。「引渡しまでは売主、引渡し後は買主」と覚える。
+  </div>
+
+  <div class="warn">
+    「債務者主義」という用語に注意。536条1項で危険を負担する「債務者」とは、<strong>不能になった給付の債務者（売買なら売主）</strong>のこと。売主は物を失った上に代金ももらえない＝対価危険は売主（債務者）負担、という意味で「債務者主義」と呼びます。「買主＝代金債務の債務者」と読み替えてしまうと正反対の結論になるので、<strong>どの債務を基準に債権者・債務者と言っているか</strong>を常に確認しましょう。
+  </div>
+
+  <div class="quiz">
+    Q1: AB間で中古車甲の売買契約が成立したが、引渡し前に落雷（双方無帰責）で甲が全損した。売主Aは買主Bに代金を請求できるか？Bはどうすればよい？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>Aの引渡債務は履行不能（412条の2第1項）。Bは代金の支払いを<strong>拒絶できる</strong>（536条1項）ので、Aの請求は事実上通らない。ただし代金債務自体は消えていないので、Bは確定的に契約関係を解消したければ<strong>無催告解除</strong>（542条1項1号：全部の履行不能）をすればよい。解除によって代金債務は遡及的に消滅する。</p>
+    </details>
+    Q2: 買主Bの工場の失火（Bに過失あり）で、引渡し前の目的物が焼失した。Bは「物が来ないから代金は払わない」と言えるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>言えない。債権者（買主B）の責めに帰すべき事由による不能なので、Bは反対給付（代金）の履行を<strong>拒めない</strong>（536条2項前段）。また債権者帰責の場合は解除もできない（543条）。ただし売主Aが自己の債務を免れたことで利益を得た（輸送費が浮いた等）ときは、それをBに償還する（536条2項後段）。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義117 ========== -->
+<div class="section" id="lec117">
+  <div class="section-header">
+    <div class="section-num">117</div>
+    <h2>契約の解除：総論 — 「やめ方」の全体地図</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>契約の「やめ方」には大きく2系統あります。①両者の合意でやめる<strong>合意解除（解除契約）</strong>、②<strong>一方的意思表示</strong>でやめる解除——後者はさらに、契約であらかじめ約束した<strong>約定解除</strong>と、法律の規定による<strong>法定解除</strong>に分かれます。一方的にやめるには、その<strong>論理的前提として「解除権」</strong>が必要です。</p>
+
+  <div class="analogy">
+    結んだ縄のほどき方にたとえると：<br>
+    契約は2人で結んだ縄。ほどき方は——<br>
+    <strong>合意解除</strong>＝「ほどこうか」「うん、ほどこう」と2人でほどく。2人の合意なら<strong>いつでも自由</strong>、ほどき方（効果）も2人で決められる。<br>
+    <strong>一方的解除</strong>＝片方が勝手にハサミで切る。これは原則許されない（「契約は守られなければならない」）。切ってよいのは、<strong>「ハサミを使う権利」＝解除権</strong>を持っている人だけ。<br>
+    そのハサミの入手ルートが2つ：契約時に「お互いハサミを持っておこう」と約束した（<strong>約定解除権</strong>）か、相手の重大な裏切りに対して法律が支給してくれる（<strong>法定解除権</strong>）か、です。
+  </div>
+
+  <h3>解除の分類マップ</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：契約の解除の体系</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">契約の解除</span>
+        <ul>
+          <li>
+            <span class="node l1">① 解除契約による解除（合意解除）🤝</span>
+            <ul>
+              <li><span class="node l2">当事者が合意してやめる → 契約自由の一場面、いつでも可能</span></li>
+              <li><span class="node l2">効果も合意の趣旨次第</span></li>
+              <li><span class="node l3">原則は「白紙解除」＝契約の効力を遡及的・全部的に消滅させる趣旨と意思解釈</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">② 一方的意思表示による解除 ✂️</span>
+            <ul>
+              <li><span class="node l2">論理的前提：解除権の存在が必要</span></li>
+              <li>
+                <span class="node l2">約定解除（契約で解除権を留保）</span>
+                <ul>
+                  <li><span class="node accent">代表例：手付による解除（557条）→ 講義118</span></li>
+                </ul>
+              </li>
+              <li>
+                <span class="node l2">法定解除（法律の規定が解除権を付与）</span>
+                <ul>
+                  <li><span class="node accent">催告解除（541条）・無催告解除（542条）→ 講義119</span></li>
+                  <li><span class="node l3">各契約類型の特則（売買・賃貸借などの個別規定）も</span></li>
+                </ul>
+              </li>
+              <li><span class="node l3">行使方法：相手方に対する意思表示（540条1項）、撤回不可（540条2項）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>合意解除 vs 一方的解除</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🤝 合意解除（解除契約）</h4>
+      <ul>
+        <li>性質：契約をやめる<strong>新しい契約</strong></li>
+        <li>根拠：契約自由の原則 → 理由不要、いつでも可</li>
+        <li>効果：合意の趣旨による（原則は白紙解除＝遡及的・全部的消滅）</li>
+        <li>545条などの規定は直接適用されない</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>✂️ 一方的意思表示による解除</h4>
+      <ul>
+        <li>性質：<strong>形成権（解除権）の行使</strong>＝単独行為</li>
+        <li>根拠：約定解除権 or 法定解除権の存在が前提</li>
+        <li>効果：545条の原状回復ルールによる（→ 講義120）</li>
+        <li>意思表示は撤回できない（540条2項）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="term">
+    <strong>形成権（けいせいけん）</strong>：権利者の<strong>一方的な意思表示だけ</strong>で法律関係を変動させられる権利。解除権のほか、取消権・相殺権などが代表例。相手の同意なしに世界を変えてしまう強力な権利なので、①発生要件が法定または約定で限定され、②一度行使したら撤回できない（540条2項：相手方を不安定にしないため）という縛りがかかります。
+  </div>
+
+  <div class="warn">
+    用語の混同に注意：<br>
+    ・<strong>解除</strong>と<strong>解約（告知）</strong>——賃貸借のような継続的契約では、遡及効のある「解除」になじまず、<strong>将来に向かってのみ</strong>効力を失わせる（620条）。これを講学上「解約告知」と呼びます。<br>
+    ・<strong>解除</strong>と<strong>取消し</strong>——取消し（121条）は意思表示の瑕疵（詐欺・強迫など）という<strong>契約の生まれつきの欠陥</strong>を理由とするのに対し、解除は有効に成立した契約をその後の事情（債務不履行など）でやめるもの。効果が似ている（遡及的消滅）ので混同しやすい——この類似性は講義120の直接効果説で再登場します。
+  </div>
+
+  <div class="quiz">
+    Q1: 「契約は自由にやめられるのが原則だ」という言明は正しいか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>誤り。「契約は守られなければならない」（pacta sunt servanda）が大原則であり、<strong>一方的に</strong>やめることは原則できない。例外的に一方的解除が許されるのは、約定または法律の規定により<strong>解除権</strong>が発生している場合のみ。ただし<strong>双方が合意</strong>するなら（合意解除）、契約自由の原則によりいつでもやめられる——「合意なら自由、一方的なら解除権が必要」と整理する。</p>
+    </details>
+    Q2: 合意解除の場合、効果はどう決まる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>合意（解除契約）の<strong>意思解釈</strong>による。当事者がどう巻き戻すかを自由に決められるのが原則で、特段の定めがなければ「白紙解除」——契約の効力を<strong>遡及的かつ全部的に</strong>消滅させ、互いに原状に復させる趣旨——と解釈される。545条の法定の原状回復ルールが当然に適用されるわけではない点が、一方的解除との違い。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義118 ========== -->
+<div class="section" id="lec118">
+  <div class="section-header">
+    <div class="section-num">118</div>
+    <h2>手付契約 — お金で買う「やめる権利」</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>不動産売買などで買主が売主に渡す<strong>手付金</strong>。民法557条はこれを<strong>解約手付</strong>——「買主は手付を放棄して、売主は倍額を返して、契約を解除できる」という<strong>約定解除権の留保</strong>——と<strong>推定</strong>します。約定解除（講義117）の最重要例です。</p>
+
+  <div class="analogy">
+    キャンセル料の前払いにたとえると：<br>
+    ホテルを予約するとき、先に「キャンセル料」を預けておくイメージ。<br>
+    <strong>買主がやめたいとき</strong>＝預けたキャンセル料（手付）を<strong>あきらめれば</strong>やめられる（手付流し／放棄）。<br>
+    <strong>売主がやめたいとき</strong>＝預かったお金を返した上で、<strong>同じ額を上乗せして</strong>払えばやめられる（手付倍返し）。お互い「手付額」という同じ痛みを支払って撤退する、フェアな仕組みです。<br>
+    ただし、相手がもう<strong>引っ越しトラックを手配してしまった</strong>（＝履行に着手した）後では、このキャンセル制度は使えません。
+  </div>
+
+  <h3>手付契約の法的構造</h3>
+  <div class="term">
+    <strong>手付契約（てつけけいやく）</strong>：売買などの<strong>有償契約を主たる契約</strong>として、それに付随して締結される<strong>従たる契約</strong>。手付契約は<strong>要物契約</strong>——合意だけでは成立せず、<strong>現実に金銭を交付すること</strong>が成立要件——とされています。締結するもしないも自由（しないでいることもできる）。<br>
+    額は代金の1〜2割が多いが法的制約はなく（宅建業者が売主の場合は2割が上限：宅建業法39条）、「預り金」など<strong>名前を変えても実質が手付なら手付</strong>です。
+  </div>
+
+  <div class="flow">
+    <div class="flow-item f-blue">主たる契約<br><small>売買契約（諾成契約）</small></div>
+    <div class="flow-arrow">＋</div>
+    <div class="flow-item f-orange">従たる契約：手付契約<br><small>要物契約＝金銭交付で成立</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">557条の推定<br><small>解約手付＝双方に約定解除権を留保</small></div>
+  </div>
+
+  <h3>手付の3つの意味</h3>
+  <table>
+    <tr><th>種類</th><th>意味</th><th>備考</th></tr>
+    <tr><td>証約手付</td><td>契約が成立した<strong>証拠</strong>としての手付</td><td>あらゆる手付が最低限この意味を持つ</td></tr>
+    <tr><td>違約手付</td><td>債務不履行のときの<strong>違約罰・損害賠償額の予定</strong>として没収される手付</td><td>特約があれば</td></tr>
+    <tr><td><strong>解約手付</strong></td><td>手付額の負担と引換えに<strong>解除権を留保</strong>する手付</td><td><strong>557条が推定するのはこれ</strong>。当事者の意思が不明ならこれと扱う</td></tr>
+  </table>
+
+  <h3>557条による解除の要件と限界</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：手付解除（557条1項）</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">手付による解除</span>
+        <ul>
+          <li>
+            <span class="node l1">買主から解除する場合</span>
+            <ul>
+              <li><span class="node l2">手付を放棄する（「手付流し」）→ 意思表示だけでOK</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">売主から解除する場合</span>
+            <ul>
+              <li><span class="node l2">手付の倍額を「現実に提供」する（「手付倍返し」）</span></li>
+              <li><span class="node l3">口で「倍返しします」と言うだけでは足りない（判例・557条1項の明文）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">共通の限界</span>
+            <ul>
+              <li><span class="node danger">相手方が「履行に着手」した後は解除できない（557条1項ただし書）</span></li>
+              <li><span class="node l3">自分が着手していても、相手方が未着手なら解除できる（判例）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">効果の特則</span>
+            <ul>
+              <li><span class="node accent">手付解除には債務不履行が前提にない → 損害賠償請求は不可（557条2項・545条4項不適用）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="term">
+    <strong>履行の着手（りこうのちゃくしゅ）</strong>：判例の定式では「客観的に外部から認識し得るような形で履行行為の一部をなし、又は履行の提供をするために欠くことのできない前提行為をした」こと。例：買主が代金を用意して受領を催告した、売主が登記移転の準備や物件の引渡し準備を具体的に進めた、など。単なる資金準備の内心だけでは足りません。
+  </div>
+
+  <div class="warn">
+    2017年改正での明文化ポイント2つ：<br>
+    ① 解除が封じられるのは「<strong>相手方が</strong>履行に着手した後」——<strong>自分が</strong>着手していても相手が未着手なら解除できる（旧判例法理の明文化）。着手した者を保護する制度であり、着手した者自身が解除する分には誰も裏切られないからです。<br>
+    ② 売主の倍返しは「<strong>現実に提供</strong>」が必要——「倍返しする用意がある」という通知だけでは解除の効力は生じません。
+  </div>
+
+  <div class="quiz">
+    Q1: マンション売買（代金5000万円・手付500万円）で、買主Bが残代金を用意して「受け取ってください」と売主Aに催告した。その後Aが「1000万円返すので解除します」と通知した。解除は有効か？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>無効。買主Bは代金を準備して受領を催告しており、<strong>履行に着手</strong>している。相手方が履行に着手した後は手付解除できない（557条1項ただし書）。Bの履行への期待と投下費用を保護する趣旨。なお仮にB未着手でも、Aは倍額1000万円を<strong>現実に提供</strong>しなければ解除の効力は生じない。</p>
+    </details>
+    Q2: 手付解除をされた相手方は、「準備にかけた費用を賠償しろ」と請求できるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>できない（557条2項が545条4項を適用除外）。手付解除は債務不履行を理由とする解除ではなく、<strong>あらかじめ合意された約定解除権の行使</strong>＝適法な行為だから。手付額の負担（放棄／倍返し）が、いわば「定額のキャンセル料」としてすべての清算を済ませる仕組みである。</p>
+    </details>
+    Q3: 手付契約はなぜ「要物契約」とされるのか、その帰結は？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>手付契約は金銭の<strong>現実の交付</strong>を成立要素とする契約だから、「手付を払う」という合意だけでは手付契約は成立せず、交付して初めて成立する。帰結として、交付前は557条の解除権も発生していない。また主たる売買契約に従たる契約なので、売買契約が無効・不成立なら手付契約も意味を失い、交付済みの金銭は不当利得として返還される。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義119 ========== -->
+<div class="section" id="lec119">
+  <div class="section-header">
+    <div class="section-num">119</div>
+    <h2>契約総則規定による法定解除権の根拠事実</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>契約総則上、法定解除権を発生させる規定は<strong>541条（催告解除）と542条（無催告解除）</strong>の2つ。基本は「催告して、待って、それでもダメなら解除」（541条）、催告が無意味な深刻ケースは「即解除」（542条）。なお<strong>債権者側に帰責事由があるときは解除できません</strong>（543条）。</p>
+
+  <div class="analogy">
+    遅刻常習の友達との待ち合わせにたとえると：<br>
+    <strong>541条（催告解除）</strong>＝「あと15分待つから来て」とLINEして（催告）、15分（相当期間）待っても来なければ、もう帰ってよい（解除）。ただし「3分遅れただけ」のような<strong>軽微</strong>な落ち度なら帰ってはいけない（541条ただし書）。<br>
+    <strong>542条（無催告解除）</strong>＝友達から「実は海外にいて絶対行けない」と連絡が来た（履行不能・明確な拒絶）。待っても無意味なのだから、<strong>催告抜きで即帰ってよい</strong>。<br>
+    <strong>543条</strong>＝そもそも<strong>自分が</strong>待ち合わせ場所を間違えて伝えたせいで友達が来られないなら、帰る（解除する）資格はない。
+  </div>
+
+  <h3>契約総則の解除関連5ヵ条の役割分担</h3>
+  <table>
+    <tr><th>条文</th><th>内容</th><th>位置づけ</th></tr>
+    <tr><td>540条</td><td>解除権の行使は相手方への<strong>意思表示</strong>による。撤回不可</td><td rowspan="3">解除の<strong>効果発生要件</strong>を構成する規定群</td></tr>
+    <tr><td>541条</td><td><strong>催告解除</strong>：催告＋相当期間経過。不履行が軽微なら不可</td></tr>
+    <tr><td>542条</td><td><strong>無催告解除</strong>：催告が無意味な場合の即時解除</td></tr>
+    <tr><td>544条</td><td>解除権の<strong>不可分性</strong>：当事者が複数なら全員から全員へ</td><td>同上（行使方法の規律）</td></tr>
+    <tr><td>543条</td><td>債権者に帰責事由があれば解除<strong>できない</strong></td><td>解除権発生の<strong>障害（抗弁）</strong>規定</td></tr>
+  </table>
+
+  <div class="key">
+    544条（不可分性）の意味：解除権者または相手方が複数いる場合、解除の意思表示は<strong>全員から全員に対して</strong>そろって初めて契約解除が成功します。一部の者から一部の者への通知で「契約が一部だけ解除された」ことになる<strong>のではない</strong>——契約関係を人ごとに分断すると法律関係が複雑化しすぎるため、「全員一緒」を要求するのです。
+  </div>
+
+  <h3>541条：催告解除のフロー</h3>
+  <div class="flow">
+    <div class="flow-item f-red">債務不履行<br><small>履行遅滞など</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">相当の期間を定めて催告<br><small>「○日以内に履行せよ」</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">期間内に履行なし</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">解除の意思表示<br><small>540条</small></div>
+  </div>
+
+  <div class="warn">
+    541条ただし書：期間経過時の不履行が「その契約及び取引上の社会通念に照らして<strong>軽微</strong>」なら解除できません。付随的義務のわずかな違反や数量のごく一部の不足を理由に、契約全体を吹き飛ばすのは過剰だからです。また、2017年改正により法定解除に<strong>債務者の帰責事由は不要</strong>になりました——解除は債務者への制裁ではなく、<strong>債権者を契約の拘束から解放する</strong>制度と再構成されたのです（賠償請求には引き続き帰責事由が必要：415条との違い）。
+  </div>
+
+  <h3>542条：無催告解除ができる場合</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：542条 無催告解除のカタログ</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">催告しても無意味 → 即解除OK</span>
+        <ul>
+          <li>
+            <span class="node l1">全部解除できる場合（542条1項）</span>
+            <ul>
+              <li><span class="node l2">① 債務の全部が履行不能</span></li>
+              <li><span class="node l2">② 債務者が全部の履行を明確に拒絶する意思を表示</span></li>
+              <li><span class="node l2">③ 一部不能・一部拒絶で、残部だけでは契約目的を達成できない</span></li>
+              <li><span class="node l2">④ 定期行為（特定の日時・期間内でなければ目的不達成）の時期徒過</span></li>
+              <li><span class="node l3">　例：結婚式のウェディングケーキが式の翌日に届いても無意味</span></li>
+              <li><span class="node l2">⑤ その他、催告しても目的達成に足りる履行の見込みがないことが明らか</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">一部解除できる場合（542条2項）</span>
+            <ul>
+              <li><span class="node l2">一部の履行不能／一部の明確な履行拒絶 → その部分だけ無催告解除</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🔵 541条 催告解除</h4>
+      <ul>
+        <li>場面：履行遅滞など、<strong>まだ履行の可能性がある</strong></li>
+        <li>手順：催告 → 相当期間 → 解除</li>
+        <li>思想：債務者に<strong>最後のチャンス</strong>を与える</li>
+        <li>限界：軽微な不履行では不可（ただし書）</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🟠 542条 無催告解除</h4>
+      <ul>
+        <li>場面：不能・明確な拒絶・定期行為など、<strong>待っても無意味</strong></li>
+        <li>手順：即、解除の意思表示</li>
+        <li>思想：無意味な儀式（催告）を債権者に強いない</li>
+        <li>全部解除（1項）と一部解除（2項）の区別あり</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="quiz">
+    Q1: 売主Aが履行期を過ぎても商品を納入しない。買主Bは直ちに解除の通知を送った。この解除は有効か？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>原則無効。単なる履行遅滞では、相当の期間を定めた<strong>催告</strong>をして、その期間が経過するのを待たなければ解除できない（541条）。催告抜きで即解除できるのは、履行不能・明確な履行拒絶・定期行為など542条のカタログに当たる場合のみ。なお催告に「相当期間」の記載がなくても、客観的に相当な期間が経過すれば解除できるとするのが判例。</p>
+    </details>
+    Q2: 債務者の不履行に帰責事由（落ち度）がなくても、債権者は解除できるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>できる。2017年改正により、法定解除の要件から債務者の帰責事由は外された。解除は債務者への制裁ではなく、給付を得られない<strong>債権者を反対給付義務の拘束から解放する</strong>制度だから。逆に<strong>債権者の側に</strong>帰責事由があるときは解除できない（543条）——自分のせいで不履行を招いた者に解放を与える必要はない。</p>
+    </details>
+    Q3: 共同で土地を買った買主3人のうち1人だけが売主に解除を通知した。契約は（一部でも）解除されるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>されない。解除権の不可分性（544条1項）により、当事者の一方が複数の場合、解除の意思表示は<strong>その全員から</strong>相手方の全員に対して行わなければならない。1人だけの通知では契約は一部たりとも解除されない。なお解除権が共同買主の1人について消滅すれば、他の者についても消滅する（544条2項）。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義120 ========== -->
+<div class="section" id="lec120">
+  <div class="section-header">
+    <div class="section-num">120</div>
+    <h2>契約解除の効果 — 原状回復と直接効果説</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>契約が解除されると、当事者には<strong>原状回復義務</strong>——相手方の財産状態を<strong>契約締結当時の状態</strong>に戻す義務——が発生します（545条1項本文）。なぜそうなるかの説明として、判例・通説は<strong>直接効果説</strong>（解除により契約は締結時に<strong>遡って</strong>効力を失う）に立っています。</p>
+
+  <div class="analogy">
+    映画の巻き戻しにたとえると：<br>
+    <strong>直接効果説</strong>＝解除ボタンを押すと、フィルムが<strong>契約締結の瞬間まで巻き戻る</strong>。契約は「最初からなかった」ことになる。すでに渡した物やお金は「法律上の原因を失った状態」になるので、お互いに返し合う（原状回復）。<br>
+    法律行為の<strong>取消し</strong>（121条）とそっくりの発想です。ただし巻き戻しすぎて<strong>無関係の第三者</strong>（解除前にその物を買った人など）まで巻き込んではいけないので、545条1項ただし書が「第三者の権利を害することはできない」とブレーキをかけています。
+  </div>
+
+  <h3>545条の構造</h3>
+  <table>
+    <tr><th>条文</th><th>内容</th><th>ポイント</th></tr>
+    <tr><td>545条1項本文</td><td>各当事者は相手方を<strong>原状に復させる義務</strong>を負う</td><td>解除の中心的効果</td></tr>
+    <tr><td>545条1項ただし書</td><td><strong>第三者の権利を害することはできない</strong></td><td>遡及効の限界。解除前の第三者保護（判例は登記等の権利保護要件を要求）</td></tr>
+    <tr><td>545条2項</td><td>金銭を返すときは<strong>受領の時からの利息</strong>を付す</td><td>受け取った時点に遡って清算</td></tr>
+    <tr><td>545条3項</td><td>金銭以外の物を返すときは<strong>受領の時以後の果実</strong>も返還</td><td>2項とパラレル（2017年改正で明文化）</td></tr>
+    <tr><td>545条4項</td><td>解除しても<strong>損害賠償の請求は妨げられない</strong></td><td>解除＋415条の賠償の併用OK</td></tr>
+  </table>
+
+  <h3>解除の効果論：3つの学説</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：解除の効果の説明モデル</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">解除 → なぜ原状回復義務が生じるのか</span>
+        <ul>
+          <li>
+            <span class="node l1">直接効果説（判例・通説）⭐</span>
+            <ul>
+              <li><span class="node l2">契約は締結時に遡って効力を失う（遡及的消滅）</span></li>
+              <li><span class="node l2">未履行債務 → 当然に消滅</span></li>
+              <li><span class="node l2">既履行給付 → 法律上の原因を失う → 原状回復（545条は不当利得の特則）</span></li>
+              <li><span class="node l3">取消し（121条）の構造との類似</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">間接効果説</span>
+            <ul>
+              <li><span class="node l2">契約は消滅しない。新たに原状回復義務が発生し、履行請求を阻止するだけ</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">折衷説</span>
+            <ul>
+              <li><span class="node l2">未履行債務は将来に向かって消滅、既履行部分には返還義務が発生</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    直接効果説で考えたときの帰結チェックリスト：<br>
+    ① <strong>未履行</strong>の債務 → 遡及的消滅により、もう履行しなくてよい。<br>
+    ② <strong>既履行</strong>の給付 → 原状回復として返還（金銭は受領時からの利息付き：2項、物は果実付き：3項）。<br>
+    ③ 双方の原状回復義務は<strong>同時履行の関係</strong>に立つ（546条が533条を準用）→ 講義121につながる！<br>
+    ④ 解除しても<strong>損害賠償は別途請求できる</strong>（4項）。「契約が遡及消滅したのになぜ賠償？」という理論的緊張は、債務不履行による損害の填補を政策的に維持したものと説明される。
+  </div>
+
+  <div class="warn">
+    545条1項ただし書の「第三者」は<strong>解除前に</strong>利害関係に入った第三者のこと（例：買主が解除前に目的物を転売した相手）。この第三者は善意・悪意を問わず保護されますが、判例は不動産につき<strong>登記</strong>（権利保護要件）を要求します。<br>
+    一方、<strong>解除後に</strong>現れた第三者との関係は、ただし書ではなく<strong>177条の対抗問題</strong>（復帰した売主 vs 転得者の登記の早い者勝ち）として処理されます。「解除前→545条1項ただし書／解除後→177条」の振り分けは民法答案の超頻出ポイントです。
+  </div>
+
+  <div class="quiz">
+    Q1: 売買契約解除により、売主Aは受領済みの代金1000万円を買主Bに返す。利息はいつから付ける？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p><strong>代金を受領した時から</strong>（545条2項）。解除によって契約は締結時に遡って効力を失う（直接効果説）ので、Aは受領の瞬間から「法律上の原因なくお金を持っていた」ことになる。だから返還の催告時や解除時からではなく、受領時に遡って利息を付すのが筋。なおBが目的物を使用していた場合は使用利益の返還が問題となる（545条3項の趣旨）。</p>
+    </details>
+    Q2: AがBに土地を売り、Bが Cに転売して登記も移転した。その後AがBの代金不払いを理由に売買契約を解除した。Aは Cから土地を取り戻せるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>取り戻せない。Cは<strong>解除前に</strong>利害関係に入った第三者であり、545条1項ただし書により保護される（直接効果説の遡及効から第三者を守る規定）。判例によれば Cの善意・悪意は問わないが、<strong>登記</strong>を備えていることが必要（権利保護要件）。本問では C は登記を得ているので保護され、Aは Bに対する原状回復（価額償還）・損害賠償で満足するほかない。</p>
+    </details>
+    Q3: 「解除すると契約は遡及的に消滅するのだから、債務不履行による損害賠償も請求できなくなるはずだ」という主張にどう答える？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>545条4項が明文で「解除権の行使は、損害賠償の請求を妨げない」と定めており、賠償請求は可能。理論的には直接効果説と緊張関係にあるが（債務が遡及消滅したのに「債務不履行」の賠償？）、債権者保護のため、解除によっても債務不履行に基づく損害賠償請求権は影響を受けないことを法が政策的に確認した規定と説明される。解除で「契約の拘束からの解放」を、賠償で「損害の填補」を、それぞれ実現する役割分担。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義121 ========== -->
+<div class="section" id="lec121">
+  <div class="section-header">
+    <div class="section-num">121</div>
+    <h2>同時履行の抗弁権の行使とその効果</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>双務契約では「<strong>あなたが履行してくれるまで、私も履行しない</strong>」と主張できます（533条：同時履行の抗弁権）。裁判でこれを行使すると、請求が全部棄却されるのではなく、「<strong>相手の給付と引換えに履行せよ</strong>」という<strong>引換給付判決</strong>になるのが最大の特徴です。</p>
+
+  <div class="analogy">
+    現金引換えの宅配（代引き）にたとえると：<br>
+    代引き配達では、配達員は「お金をもらうまで荷物を渡さない」、客は「荷物をもらうまでお金を払わない」と言えます。どちらも正当で、結局<strong>玄関先で同時交換</strong>になります。<br>
+    売買契約もこれと同じ。売主から「代金を払え」と訴えられた買主は、「目的物をくれるまで払いません」と主張できる（同時履行の抗弁権）。すると裁判所は「払わなくてよい」とも「無条件に払え」とも言わず、「<strong>目的物の引渡しと引換えに代金を支払え</strong>」と命じます。玄関先での同時交換を、判決の形で実現するのです。
+  </div>
+
+  <h3>出発点：売買契約から何が生まれるか</h3>
+  <p>講義の設例：AとBが、Aを売主・Bを買主として、動産甲を1000万円で売買する契約を締結した——目の前の事実はこれだけ。売買契約は、売主の給付と買主の給付が互いに<strong>対価関係</strong>にあり（＝<strong>有償契約</strong>）、かつ各給付を目的とする債権を双方が負担し合う（＝<strong>双務契約</strong>）。この1個の契約から、向かい合う2本の債権が同時に生まれます。</p>
+  <div class="flow">
+    <div class="flow-item f-blue">売買契約の締結<br><small>555条：これだけで成立（諾成契約）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">Aの代金債権<br><small>1000万円払え</small></div>
+    <div class="flow-arrow">＋</div>
+    <div class="flow-item f-orange">Bの引渡債権<br><small>甲を引き渡せ</small></div>
+  </div>
+  <p>では、Aから代金支払請求を受けたB、Bから引渡請求を受けたAは、それぞれどう反論すれば<strong>無条件の敗訴</strong>を免れられるか——その武器が同時履行の抗弁権です。</p>
+
+  <h3>533条の要件</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：同時履行の抗弁権（533条）</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">同時履行の抗弁権</span>
+        <ul>
+          <li>
+            <span class="node l1">要件</span>
+            <ul>
+              <li><span class="node l2">① 同一の双務契約から生じた対立する債務の存在</span></li>
+              <li><span class="node l2">② 相手方の債務が弁済期にあること</span></li>
+              <li><span class="node l3">　自分だけ先履行の特約があれば抗弁不可（533条本文かっこ書参照）</span></li>
+              <li><span class="node l2">③ 相手方が自己の債務の履行（の提供）をせずに請求してきたこと</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">性質</span>
+            <ul>
+              <li><span class="node accent">権利抗弁：当事者が訴訟で主張して初めて裁判所が考慮できる</span></li>
+              <li><span class="node l3">裁判所が職権で「同時履行だから」と勝手に認定してはくれない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">行使の効果</span>
+            <ul>
+              <li><span class="node l2">引換給付判決（一部認容判決）— 全部棄却ではない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">存在の効果（行使しなくても）</span>
+            <ul>
+              <li><span class="node l2">抗弁権が付着している限り履行遅滞にならない → 遅延賠償・解除を阻止</span></li>
+              <li><span class="node l2">抗弁権付き債権を自働債権とする相殺は不可</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>行使したらどうなる？ — 引換給付判決</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🔵 抗弁を主張しなかった場合</h4>
+      <p>判決：「Bは Aに1000万円を支払え」</p>
+      <ul>
+        <li><strong>無条件の全部認容判決</strong></li>
+        <li>Aは甲を渡さないまま、代金だけ強制執行できてしまう</li>
+        <li>権利抗弁なので、主張しなければ裁判所は助けてくれない</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🟢 抗弁を行使した場合</h4>
+      <p>判決：「Bは、Aから甲の引渡しを受けるのと<strong>引換えに</strong>、Aに1000万円を支払え」</p>
+      <ul>
+        <li><strong>引換給付判決</strong>（請求の一部認容）</li>
+        <li>Aが強制執行するには、自分の給付（甲の提供）を証明する必要（民執31条1項）</li>
+        <li>「同時交換」が執行段階まで貫徹される</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    <strong>「存在効果」と「行使効果」を区別</strong>するのが理解のコツ：<br>
+    ・<strong>行使効果</strong>＝訴訟で主張したときの効果 → 引換給付判決。<br>
+    ・<strong>存在効果</strong>＝主張しなくても、抗弁権が<strong>存在しているだけ</strong>で生じる効果 → 抗弁権の付着した債務の不履行は<strong>違法な履行遅滞にならない</strong>。だから相手は遅延損害金を取れず、541条の解除もできない。解除したい側は、まず<strong>自分の債務の履行を提供して</strong>相手の抗弁権を消し、相手を遅滞に陥れてから催告・解除する必要があります。ここで講義119（解除の要件）と本講がつながります。
+  </div>
+
+  <div class="warn">
+    よくある誤解2つ：<br>
+    ① 「同時履行の抗弁が認められたら請求は<strong>棄却</strong>される」— 誤り。棄却（原告の全面敗訴）ではなく<strong>引換給付判決</strong>（条件付きの認容）です。抗弁の目的は支払いを永久に拒むことではなく、<strong>同時交換を確保する</strong>ことだから。<br>
+    ② 「裁判所は双務契約と分かれば自動的に引換給付にしてくれる」— 誤り。同時履行の抗弁権は<strong>権利抗弁</strong>であり、当事者が<strong>行使（主張）</strong>して初めて判決に反映されます。事実が法廷に出ていても、主張がなければ無条件認容です。
+  </div>
+
+  <div class="term">
+    <strong>留置権（295条）との比較</strong>：「払ってもらうまで物を渡さない」という似た機能を持つのが物権編の留置権。同時履行の抗弁権は<strong>同一の双務契約の相手方</strong>にしか主張できない（債権的・相対的）のに対し、留置権は<strong>物権</strong>なので第三者にも主張できる。一つの場面で両方が成立することもあり、要件・効果の異同は後の講義で本格的に学びます。
+  </div>
+
+  <div class="quiz">
+    Q1: 売主Aが、甲を引き渡さないまま買主Bに代金1000万円の支払いを求めて提訴した。Bが同時履行の抗弁権を行使すると、判決はどうなる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>「Bは、Aから甲の引渡しを受けるのと引換えに、Aに対し1000万円を支払え」という<strong>引換給付判決</strong>（一部認容判決）。請求棄却にはならない。Aがこの判決で強制執行するには、自己の給付（甲の引渡し）の提供を証明しなければならない（民事執行法31条1項）。</p>
+    </details>
+    Q2: 買主Bが代金を払わないので、売主Aは何の提供もせずに「相当期間内に払え。払わなければ解除する」と通知し、期間経過後に解除した。この解除は有効か？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>無効。Bの代金債務には同時履行の抗弁権が付着しており、その<strong>存在効果</strong>として、Bの不払いは違法な履行遅滞にならない。541条の催告解除は債務者の（違法な）不履行を前提とするから、Aはまず<strong>自分の債務（甲の引渡し）の履行を提供</strong>してBの抗弁権を失わせ、Bを遅滞に陥らせた上で催告・解除しなければならない。</p>
+    </details>
+    Q3: なぜ法は「同時履行」をデフォルトにするのか？　先に履行させればシンプルなのに。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>先履行を強いられる側は「履行したのに相手が履行しない」リスク（信用リスク）を一方的に負わされるから。双務契約の2本の債務は対価としてつながっており（牽連関係）、その公平は<strong>同時交換</strong>によって最もよく実現される。当事者が信用を与え合う合意（先履行特約・代金後払いなど）をすれば別だが、合意がなければ「引換えに」が公平なデフォルトルールとなる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 用語集 ========== -->
+<div class="section" id="glossary">
+  <div class="section-header">
+    <div class="section-num">📖</div>
+    <h2>初学者向け用語集</h2>
+  </div>
+
+  <table>
+    <tr><th>用語</th><th>読み</th><th>意味（やさしく）</th><th>登場講義</th></tr>
+    <tr><td>譲渡制限特約</td><td>じょうとせいげんとくやく</td><td>「この債権は譲渡しない」という合意。あっても譲渡は有効（466条2項）</td><td>⑪⑪</td></tr>
+    <tr><td>債務者対抗要件</td><td>さいむしゃたいこうようけん</td><td>債権譲渡を債務者に主張するための通知・承諾。相殺の基準時にもなる</td><td>⑪⑪</td></tr>
+    <tr><td>債務引受</td><td>さいむひきうけ</td><td>契約によって第三者が債務者になること。併存的と免責的の2タイプ</td><td>⑪②</td></tr>
+    <tr><td>併存的債務引受</td><td>へいぞんてきさいむひきうけ</td><td>元の債務者と並んで新債務者が加わる。連帯債務になる（470条）</td><td>⑪②</td></tr>
+    <tr><td>免責的債務引受</td><td>めんせきてきさいむひきうけ</td><td>元の債務者が抜けて新債務者と交代する（472条）。引受人に求償権なし</td><td>⑪②</td></tr>
+    <tr><td>事務管理</td><td>じむかんり</td><td>頼まれていないのに他人のために事務を処理すること（697条）</td><td>⑪③</td></tr>
+    <tr><td>不当利得</td><td>ふとうりとく</td><td>法律上の原因なく得た利益。返さなければならない（703条）</td><td>⑪③</td></tr>
+    <tr><td>不法行為</td><td>ふほうこうい</td><td>故意・過失で他人に損害を与えること。賠償債権が発生（709条）</td><td>⑪③</td></tr>
+    <tr><td>申込み</td><td>もうしこみ</td><td>契約内容を確定して提案する先発の意思表示</td><td>⑪④</td></tr>
+    <tr><td>承諾</td><td>しょうだく</td><td>申込みを100%受け入れて契約を成立させる後行の意思表示</td><td>⑪④</td></tr>
+    <tr><td>到達主義</td><td>とうたつしゅぎ</td><td>意思表示は相手の生活支配圏内に入った時に効力発生（97条1項）</td><td>⑪④</td></tr>
+    <tr><td>給付危険</td><td>きゅうふきけん</td><td>給付が不能になったとき「物（の価値）をもらえない損」を誰が負うか</td><td>⑪⑤</td></tr>
+    <tr><td>填補賠償</td><td>てんぽばいしょう</td><td>履行に代わる損害賠償。「物の代わりにお金」（415条2項）</td><td>⑪⑤</td></tr>
+    <tr><td>対価危険</td><td>たいかきけん</td><td>給付が不能でも反対給付（代金）を払うのかという問題（536条）</td><td>⑪⑥</td></tr>
+    <tr><td>双務契約</td><td>そうむけいやく</td><td>両当事者が対価関係に立つ債務を負い合う契約。売買が典型</td><td>⑪⑥ ⑫①</td></tr>
+    <tr><td>危険負担</td><td>きけんふたん</td><td>双方無帰責の不能のとき、債権者は反対給付の履行を拒める制度（536条1項）</td><td>⑪⑥</td></tr>
+    <tr><td>合意解除</td><td>ごういかいじょ</td><td>当事者の合意（解除契約）で契約をやめること。原則は白紙解除</td><td>⑪⑦</td></tr>
+    <tr><td>形成権</td><td>けいせいけん</td><td>一方的意思表示だけで法律関係を変えられる権利。解除権・取消権など</td><td>⑪⑦</td></tr>
+    <tr><td>解約手付</td><td>かいやくてつけ</td><td>手付額の負担と引換えに解除権を留保する手付。557条が推定する</td><td>⑪⑧</td></tr>
+    <tr><td>履行の着手</td><td>りこうのちゃくしゅ</td><td>外部から認識できる形で履行の一部や不可欠の前提行為をすること。相手方の着手後は手付解除不可</td><td>⑪⑧</td></tr>
+    <tr><td>催告解除</td><td>さいこくかいじょ</td><td>催告＋相当期間経過で解除（541条）。軽微な不履行では不可</td><td>⑪⑨</td></tr>
+    <tr><td>無催告解除</td><td>むさいこくかいじょ</td><td>不能・明確な拒絶・定期行為など、催告が無意味な場合の即時解除（542条）</td><td>⑪⑨</td></tr>
+    <tr><td>原状回復義務</td><td>げんじょうかいふくぎむ</td><td>相手方の財産状態を契約締結当時に戻す義務（545条1項）</td><td>⑫⓪</td></tr>
+    <tr><td>直接効果説</td><td>ちょくせつこうかせつ</td><td>解除により契約は締結時に遡って消滅するという判例・通説の説明</td><td>⑫⓪</td></tr>
+    <tr><td>同時履行の抗弁権</td><td>どうじりこうのこうべんけん</td><td>「あなたが履行するまで私も履行しない」と主張できる権利（533条）</td><td>⑫①</td></tr>
+    <tr><td>引換給付判決</td><td>ひきかえきゅうふはんけつ</td><td>「相手の給付と引換えに履行せよ」という判決。同時履行の抗弁行使の効果</td><td>⑫①</td></tr>
+  </table>
+</div>
+
+<!-- ========== Footer ========== -->
+<div style="text-align:center; padding: 30px; color: var(--text-light); font-size: 0.85em;">
+  <p>msahkie先生の民法講義に基づく学習ガイド</p>
+  <p>法律未修者向け知識点整理・拡展</p>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>

@@ -1,0 +1,1401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義61〜70 学習ガイド（法律未修者向け）</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --primary: #2c5f8a;
+    --secondary: #e8f0f8;
+    --accent: #d4740e;
+    --accent-light: #fff5eb;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #dfe6e9;
+    --success: #00b894;
+    --danger: #e17055;
+    --info: #74b9ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #2c5f8a 0%, #1a3a5c 100%);
+    color: white;
+    border-radius: 16px;
+    margin-bottom: 30px;
+  }
+  .header h1 { font-size: 2em; margin-bottom: 10px; }
+  .header p { opacity: 0.9; font-size: 1.05em; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+
+  /* Navigation */
+  .nav {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav:hover, .nav:focus-within {
+    max-height: 600px;
+  }
+  .nav h3 { margin-bottom: 10px; color: var(--primary); font-size: 0.95em; cursor: pointer; }
+  .nav h3::after { content: " ▼"; font-size: 0.7em; }
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .nav a {
+    display: block;
+    padding: 8px 12px;
+    background: var(--secondary);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.88em;
+    transition: all 0.2s;
+  }
+  .nav a:hover { background: var(--primary); color: white; }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--secondary);
+  }
+  .section-num {
+    background: var(--primary);
+    color: white;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 1.35em; color: var(--primary); }
+
+  /* Subsection */
+  h3 {
+    color: var(--primary);
+    font-size: 1.1em;
+    margin: 24px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  h4 {
+    color: var(--accent);
+    font-size: 1em;
+    margin: 16px 0 8px;
+  }
+
+  /* Analogy box */
+  .analogy {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .analogy::before {
+    content: "💡 たとえ話";
+    display: block;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Key point */
+  .key {
+    background: #eef7ee;
+    border-left: 4px solid var(--success);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .key::before {
+    content: "✅ 重要ポイント";
+    display: block;
+    font-weight: bold;
+    color: var(--success);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Warning */
+  .warn {
+    background: #fff3f0;
+    border-left: 4px solid var(--danger);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .warn::before {
+    content: "⚠️ 注意・よくある誤解";
+    display: block;
+    font-weight: bold;
+    color: var(--danger);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Term */
+  .term {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .term::before {
+    content: "📖 用語解説";
+    display: block;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Quiz */
+  .quiz {
+    background: #f0eeff;
+    border: 2px dashed #6c5ce7;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .quiz::before {
+    content: "🧪 理解度チェック";
+    display: block;
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+  .quiz details {
+    margin-top: 8px;
+  }
+  .quiz summary {
+    cursor: pointer;
+    color: #6c5ce7;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .quiz details p {
+    margin-top: 6px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92em;
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:nth-child(even) { background: var(--secondary); }
+  tr:hover { background: #dbeafe; }
+
+  /* Mind map */
+  .mindmap {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .mindmap-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 16px;
+    font-size: 1.05em;
+  }
+
+  /* Tree structure */
+  .tree { padding-left: 0; list-style: none; }
+  .tree ul { padding-left: 28px; list-style: none; position: relative; }
+  .tree ul::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 12px;
+    border-left: 2px solid var(--border);
+  }
+  .tree li {
+    position: relative;
+    padding: 4px 0 4px 0;
+  }
+  .tree ul > li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 14px;
+    width: 14px;
+    border-top: 2px solid var(--border);
+  }
+  .tree .node {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+  .node.root { background: var(--primary); color: white; font-size: 1em; padding: 8px 20px; }
+  .node.l1 { background: #4a90c4; color: white; }
+  .node.l2 { background: var(--secondary); color: var(--primary); border: 1px solid #b0cfe0; }
+  .node.l3 { background: #f1f5f1; color: var(--text); border: 1px solid #c8d6c8; font-size: 0.85em; }
+  .node.accent { background: var(--accent-light); color: #b35c00; border: 1px solid #f0c8a0; }
+  .node.danger { background: #fff0ee; color: #c0392b; border: 1px solid #f0b0a0; }
+
+  /* Flow diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 16px 0;
+    justify-content: center;
+  }
+  .flow-item {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 0.88em;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-arrow {
+    font-size: 1.4em;
+    color: var(--text-light);
+    padding: 0 4px;
+  }
+  .flow .f-blue { background: var(--secondary); color: var(--primary); border: 2px solid #a0c4e0; }
+  .flow .f-green { background: #e8f8e8; color: #1e7e34; border: 2px solid #a0d8a0; }
+  .flow .f-orange { background: var(--accent-light); color: #b35c00; border: 2px solid #f0c8a0; }
+  .flow .f-red { background: #fff0ee; color: #c0392b; border: 2px solid #f0b0a0; }
+
+  /* Comparison */
+  .vs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: start;
+    margin: 16px 0;
+  }
+  .vs-box {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid;
+  }
+  .vs-box.left { border-color: #4a90c4; background: #f0f6fc; }
+  .vs-box.right { border-color: #e0a040; background: #fdf8f0; }
+  .vs-box h4 { margin-top: 0; text-align: center; }
+  .vs-mid {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--text-light);
+    align-self: center;
+  }
+
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 24px; }
+  li { margin: 4px 0; }
+  strong { color: var(--primary); }
+
+  @media (max-width: 768px) {
+    body { padding: 10px; }
+    .section { padding: 18px; }
+    .header h1 { font-size: 1.4em; }
+    .nav-grid { grid-template-columns: 1fr 1fr; }
+    .vs { grid-template-columns: 1fr; }
+    .vs-mid { text-align: center; }
+    .flow { flex-direction: column; align-items: center; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== Header ========== -->
+<div class="header">
+  <h1>民法講義 61〜70 学習ガイド</h1>
+  <p>金銭債権の特質・過失相殺・人的担保から、債務の引渡し・受領遅滞・自然債務まで — 債権の効力を立体的に理解する</p>
+  <div class="badge">msahkie先生の講義に基づく整理・拡展</div>
+</div>
+
+<!-- ========== Navigation ========== -->
+<div class="nav">
+  <h3>📑 目次（クリックでジャンプ）</h3>
+  <div class="nav-grid">
+    <a href="#overview">全体マップ</a>
+    <a href="#lec61">61 金銭債権の高い透明度</a>
+    <a href="#lec62">62 過失相殺</a>
+    <a href="#lec63">63 423条以下の全体像</a>
+    <a href="#lec64">64 人的担保法の主軸</a>
+    <a href="#lec65">65 開始時現存額主義</a>
+    <a href="#lec66">66 特定物債務者の注意義務</a>
+    <a href="#lec67">67 不特定物債務の集中</a>
+    <a href="#lec68">68 履行提供と受領遅滞</a>
+    <a href="#lec69">69 債権の保全的効力</a>
+    <a href="#lec70">70 自然債務</a>
+    <a href="#glossary">用語集</a>
+  </div>
+</div>
+
+<!-- ========== 全体マップ ========== -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-num">📍</div>
+    <h2>全体マップ：講義61〜70は何を学ぶのか</h2>
+  </div>
+
+  <p>講義61〜70は、債権総則の核心部に踏み込む10回です。前半（61〜65）は<strong>「金銭債権とその担保」</strong>の話。お金を請求する権利がいかに特別か、そして債務者が払えなくなる事態にどう備えるか。後半（66〜70）は<strong>「物の引渡債務の一生」と「債権の効力の構造」</strong>の話。物を引き渡す義務がどう生まれ、どう特定され、どう消えていくか、そしてそもそも債権が持つ「力」とは何か、を解剖します。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">🗺️ 講義61〜70 全体思維導図</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">債権の効力と担保の基礎</span>
+        <ul>
+          <li>
+            <span class="node l1">Part A：金銭債権の特質（講義61-63）</span>
+            <ul>
+              <li><span class="node l2">61 金銭債権はなぜ「透明」か（民419条）</span></li>
+              <li><span class="node l2">62 債権者にも落ち度があれば？ — 過失相殺（民418条）</span></li>
+              <li><span class="node l2">63 423条以下＝金銭債権を守る装置の陳列棚</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part B：人的担保と破産（講義64-65）</span>
+            <ul>
+              <li><span class="node l2">64 単独債務→連帯債務→連帯保証：担保力の階段</span></li>
+              <li><span class="node l2">65 破産しても債権額は減らない？ — 開始時現存額主義</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part C：物の引渡債務の一生（講義66-68）</span>
+            <ul>
+              <li><span class="node l2">66 特定物債務者の善管注意義務（民400条）</span></li>
+              <li><span class="node l2">67 不特定物債務が「この物」に決まる瞬間（民401条2項）</span></li>
+              <li><span class="node l2">68 ちゃんと差し出したのに受け取らない（民492・493・413条）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part D：債権の効力の構造（講義69-70）</span>
+            <ul>
+              <li><span class="node l2">69 債権の保全的効力 — 423条以下への入口</span></li>
+              <li><span class="node l2">70 3階建ての天守閣 — 自然債務とカフェー丸玉事件</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="analogy">
+    お城にたとえると：<br>
+    <strong>Part A</strong> = 城の中で最も流通する「お金」という宝物の性質を知る<br>
+    <strong>Part B</strong> = 宝物が失われたときの「保険」（保証人）と「非常時ルール」（破産）を学ぶ<br>
+    <strong>Part C</strong> = 宝物以外の「物」を届ける家来の義務と、受取りを拒む殿様への対処法<br>
+    <strong>Part D</strong> = そもそも城（債権）はどんな建物なのか — 天守閣・内堀・外堀の縄張り図を描く
+  </div>
+
+  <div class="key">
+    この10回を貫くキーフレーズは「<strong>債権の経済的価値は債務者の資力に依存する</strong>」。<br>
+    どんなに立派な債権を持っていても、債務者が無一文なら絵に描いた餅。だからこそ民法は、①金銭債権を特別扱いし（61）、②担保を用意し（64-65）、③責任財産を保全する仕組み（63・69）を整え、④債権の「力」そのものを段階構造で設計した（70）のです。
+  </div>
+</div>
+
+<!-- ========== 講義61 ========== -->
+<div class="section" id="lec61">
+  <div class="section-header">
+    <div class="section-num">61</div>
+    <h2>金銭債権の高い透明度</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>金銭債権は「<strong>絶対に履行不能にならず、賠償額も自動計算できる</strong>」きわめて見通しのよい債権です。非金銭債権の不透明さと対比すると、その特別さがよく分かります。</p>
+
+  <div class="analogy">
+    旅行の計画にたとえると：<br>
+    <strong>非金銭債権</strong>＝登山ツアー。天候（履行不能）、ガイドの落ち度（帰責事由）、被害の大きさ（損害額）など、もめる要素だらけ。裁判では「帰責事由がなかった」という抗弁と、それを潰す再抗弁の応酬になり、先がまったく読めない。<br>
+    <strong>金銭債権</strong>＝駅の自動券売機。お金は世の中から消えないので「売り切れ」（履行不能）がない。遅れたら「遅延日数×法定利率」で賠償額が機械的に出てくる。<br>
+    → だから金銭債権は「<strong>透明度が高い</strong>」と言われるのです。
+  </div>
+
+  <h3>非金銭債権の「不透明さ」：賠償債権への変身プロセス</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">非金銭債権<br><small>例：絵画の引渡債権</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">履行障害の発生<br><small>絵画が焼失（履行不能）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">損害賠償債権に変身<br><small>民415条</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">攻防の連鎖<br><small>抗弁 vs 再抗弁</small></div>
+  </div>
+
+  <p>債務者は「<strong>帰責事由不存在</strong>」（自分のせいではない）の評価根拠事実を抗弁として主張できます（民415条1項ただし書）。すると債権者は、それを覆す<strong>評価障害事実</strong>（再抗弁）を探して証拠を集めなければなりません。さらに損害額の立証も債権者の仕事。これが非金銭債権の紛争の「読みにくさ」です。</p>
+
+  <h3>金銭債権の特則：民419条</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🎨 非金銭債権の債務不履行</h4>
+      <ul>
+        <li>履行不能が<strong>ありうる</strong></li>
+        <li>帰責事由不存在の抗弁が<strong>使える</strong></li>
+        <li>損害の発生と額を債権者が<strong>立証必要</strong></li>
+        <li>賠償額は事案ごとにバラバラ</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>💴 金銭債権の債務不履行（民419条）</h4>
+      <ul>
+        <li>履行不能は<strong>観念されない</strong>（遅滞のみ）</li>
+        <li>不可抗力をもって抗弁と<strong>できない</strong>（3項）</li>
+        <li>損害の証明が<strong>不要</strong>（2項）</li>
+        <li>賠償額＝<strong>法定利率</strong>（年3%・変動制）で自動計算（1項）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    民419条の三点セットを必ず覚えること：<br>
+    ① <strong>損害賠償額は法定利率で算定</strong>（約定利率が法定利率を超えるときは約定利率）<br>
+    ② <strong>債権者は損害の証明をする必要がない</strong>（実損ゼロでも法定利率分はもらえる）<br>
+    ③ <strong>債務者は不可抗力をもって抗弁とすることができない</strong>（地震で送金できなくても遅延賠償は免れない）<br>
+    → 要件・効果がすべて条文で機械的に決まる ＝ 高い透明度。
+  </div>
+
+  <div class="warn">
+    「金銭債権は履行不能にならない」とは、<strong>債務者の手元にお金がなくても法的には不能とならない</strong>という意味です。「ない袖は振れない」状態（無資力）は、履行不能ではなく単なる「事実上回収できない」状態。だからこそ問題は「賠償をどう計算するか」ではなく「<strong>債務者の資力をどう確保するか</strong>」に移ります。これが講義63以降（責任財産の保全・担保）への伏線です。
+  </div>
+
+  <div class="quiz">
+    Q1: AはBに100万円を貸したが、Bは大地震で銀行システムが止まり返済が遅れた。Bは「不可抗力だ」と主張して遅延損害金を免れられるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>免れられない。民419条3項により、金銭債務の不履行については<strong>不可抗力をもって抗弁とすることができない</strong>。お金は世の中に常に存在し調達可能とされるため、帰責事由を問わず遅延損害金（法定利率）の支払義務を負う。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: 金銭債権の遅延損害について、債権者は「実際にこれだけ損した」と証明する必要があるか？</summary>
+      <p>不要（民419条2項）。実損が法定利率分より少なくても（極端にはゼロでも）法定利率分を請求できる。逆に、実損がそれより大きくても原則として法定利率分しか請求できない、というのが伝統的理解（最判昭48.10.11参照）。透明度（予測可能性）と引き換えの割り切りである。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義62 ========== -->
+<div class="section" id="lec62">
+  <div class="section-header">
+    <div class="section-num">62</div>
+    <h2>過失相殺 — 債権者にも落ち度があるとき</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>債務不履行による損害の発生・拡大に<strong>債権者の側にも落ち度</strong>があるなら、その分を賠償額から差し引く（場合により責任自体を否定する）。これが<strong>過失相殺</strong>（民418条）。当事者間の<strong>公平</strong>のための制度です。</p>
+
+  <div class="analogy">
+    引っ越し業者のたとえ：<br>
+    業者（債務者）が高価な花瓶を割ってしまった。しかし依頼主（債権者）は「これは壊れ物です」と伝えず、新聞紙にくるんだだけの状態で渡していた。<br>
+    → 全額を業者に払わせるのは不公平。「あなたにも3割の落ち度があるから、賠償は7割ね」と調整するのが過失相殺。<br>
+    ケーキを落とした責任を全部ウェイターに押しつけるのか、テーブルの端にお皿を置いた客にも責任はないのか — という<strong>公平の感覚</strong>そのものです。
+  </div>
+
+  <h3>過失相殺の判断構造</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">債務不履行発生</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">損害の発生・拡大に<br><small>債権者の過失あり？</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">裁判所が考慮<br><small>責任の有無＋額を決定</small></div>
+  </div>
+
+  <h3>418条（債務不履行）vs 722条2項（不法行為）</h3>
+  <p>「過失相殺」は債務不履行と不法行為の両方にありますが、条文の書きぶりが微妙に違います。比較は試験頻出です。</p>
+  <table>
+    <tr><th>比較項目</th><th>債務不履行の過失相殺（民418条）</th><th>不法行為の過失相殺（民722条2項）</th></tr>
+    <tr><td>条文の文言</td><td>「考慮して…<strong>責任及びその額を定める</strong>」</td><td>「考慮して…<strong>賠償の額を定めることができる</strong>」</td></tr>
+    <tr><td>考慮は義務か</td><td><strong>必要的</strong>（過失があれば必ず考慮しなければならない）</td><td><strong>任意的</strong>（考慮するかは裁判所の裁量）</td></tr>
+    <tr><td>責任の全部否定</td><td><strong>できる</strong>（「責任…を定める」＝免責もありうる）</td><td>できない（額の減額のみ）</td></tr>
+    <tr><td>対象となる過失</td><td>損害の発生・拡大に関する債権者の過失</td><td>被害者の過失（被害者側の過失も含む）</td></tr>
+  </table>
+
+  <h3>訴訟法とのクロス：弁論主義が及ばない？</h3>
+  <div class="term">
+    <strong>弁論主義第一命題</strong>：裁判所は、当事者の主張しない（主要）事実を判決の基礎にしてはならない、という民事訴訟の大原則。「裁判所は当事者が出した材料だけで料理する」というルール。<br><br>
+    ところが判例は、過失相殺は<strong>当事者間の公平を図る後見的制度</strong>だから、この第一命題の支配が及ばないと解しています。つまり——<br>
+    ・債務者が「過失相殺してくれ」と<strong>主張していなくても</strong>、裁判所は職権で過失相殺できる<br>
+    ・ただし、過失相殺の基礎となる事実は<strong>証拠によって認定されたもの</strong>でなければならない（証拠もなしに勝手に認定はできない）
+  </div>
+
+  <div class="warn">
+    「過失<strong>相殺</strong>」という名前ですが、講義45前後で学んだ<strong>相殺（民505条）とは全くの別物</strong>です。<br>
+    ・相殺（505条）＝対立する2つの債権を対当額で消し合う制度<br>
+    ・過失相殺（418条）＝賠償額を算定する際に被害者側の落ち度を割合的に差し引く制度<br>
+    名前が似ているだけで、要件も効果も別世界。混同しないこと。
+  </div>
+
+  <div class="quiz">
+    Q1: 債務不履行訴訟で、被告（債務者）が過失相殺を一切主張しなかった。裁判所は証拠から債権者の落ち度を認定できた場合、過失相殺してよいか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>してよい（むしろ418条では必要的）。過失相殺は当事者間の公平のための後見的制度なので、弁論主義第一命題の適用がなく、当事者の主張がなくても、<strong>証拠上認定できた事実</strong>に基づいて裁判所が職権で過失相殺できる、というのが判例の立場である。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: 418条と722条2項の効果の違いを一言で言うと？</summary>
+      <p>418条（債務不履行）は「責任及びその額」を定めるので<strong>賠償責任を全部否定することも可能</strong>で、考慮は<strong>必要的</strong>。722条2項（不法行為）は「額を定めることができる」ので<strong>減額のみ可能（全部免責は不可）</strong>で、考慮は<strong>任意的</strong>。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義63 ========== -->
+<div class="section" id="lec63">
+  <div class="section-header">
+    <div class="section-num">63</div>
+    <h2>債権総則423条以下の全体像</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>民法423条以下の債権総則の規定は、実質的には<strong>「貸金返還債権（金銭債権）のための続編ルール集」</strong>です。貸金債権を典型例として、それを守り・強め・動かす制度がずらりと並んでいます。</p>
+
+  <div class="analogy">
+    家電の取扱説明書にたとえると：<br>
+    金銭消費貸借契約の条文（民587条以下）は、驚くほどあっさりした「クイックスタートガイド」。「貸したら返してね」程度のことしか書いていない。<br>
+    では詳しい説明はどこにあるのか？ 実は<strong>「全機種共通の詳細マニュアル」＝債権総則（423条以下）</strong>にまとめて書かれているのです。貸金債権用のルールの多くは、他の金銭債権にも、さらには非金銭債権にもおおむね当てはまる。だから「共通マニュアル」として前に括り出された——パンデクテン体系（講義3）の発想です。
+  </div>
+
+  <h3>出発点となるテーゼ</h3>
+  <div class="key">
+    「<strong>債権の経済的価値は債務者の資力に依存する。</strong>」<br>
+    1億円の債権でも、債務者が無一文なら経済的にはゼロ円。逆に債務者が超優良企業なら、債権は現金同様に扱われる。<br>
+    → だから423条以下の制度群は、突き詰めれば「<strong>債務者の資力（責任財産）をどう確保・補強するか</strong>」という一つの問いへの回答集として読める。
+  </div>
+
+  <h3>423条以下の地図</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：債権総則423条以下の全体像</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">金銭債権を守る装置群（423条〜）</span>
+        <ul>
+          <li>
+            <span class="node l1">① 責任財産の保全（423条・424条）</span>
+            <ul>
+              <li><span class="node l2">債権者代位権（423条）— 債務者が権利行使しないなら代わりに行使</span></li>
+              <li><span class="node l2">詐害行為取消権（424条）— 財産隠し・タダ流しを取り消す</span></li>
+              <li><span class="node l3">→ 引当てとなる「責任財産」の目減りを防ぐ</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">② 多数当事者の債権関係（427条〜）</span>
+            <ul>
+              <li><span class="node l2">分割債権・分割債務（427条）— 原則は頭割り</span></li>
+              <li><span class="node l2">連帯債務（436条〜）— 全員が全額責任</span></li>
+              <li><span class="node l2">保証債務・連帯保証（446条〜）— 人的担保の本丸</span></li>
+              <li><span class="node l3">→ 「財布の数」を増やして資力を補強する（講義64へ）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">③ 債権の移転（466条〜）</span>
+            <ul>
+              <li><span class="node l2">債権譲渡 — 債権を財産として売買・担保化</span></li>
+              <li><span class="node l2">債務引受（470条〜）— 債務者の交替・追加</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">④ 債権の消滅（473条〜）</span>
+            <ul>
+              <li><span class="node l2">弁済・代物弁済・供託</span></li>
+              <li><span class="node l2">相殺（505条）— 簡易決済＋担保的機能</span></li>
+              <li><span class="node l2">更改・免除・混同</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>なぜ「総則」に置かれたのか</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">貸金返還債権のルール<br><small>本来は債権各則向き</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">他の金銭債権にも<br>あてはまる</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">非金銭債権にも<br>おおむね使える</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">共通ルールとして<br>債権総則へ</div>
+  </div>
+
+  <div class="warn">
+    「総則だから抽象的・全債権に均等にあてはまる」と思い込むのは誤解です。423条以下は、<strong>金銭債権（とくに貸金返還債権）を典型イメージにして読む</strong>と一気に具体的になります。たとえば詐害行為取消権や債権者代位権は、もっぱら「金銭債権の引当て財産を守る」場面で活躍する制度です。条文の素顔は「金銭債権総則」なのです。
+  </div>
+
+  <div class="quiz">
+    Q1: 「債権の経済的価値は債務者の資力に依存する」というテーゼから、423条・424条の存在理由を説明せよ。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>強制執行の引当てとなるのは債務者の責任財産であり、それが減れば債権の実価も減る。そこで、債務者が自分の権利を行使せず財産が増えないまま放置される事態には<strong>債権者代位権（423条）</strong>で、債務者が財産を流出させる事態には<strong>詐害行為取消権（424条）</strong>で対処し、責任財産を維持する。両者は「債権の経済的価値＝債務者の資力」を守るための車の両輪である。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: なぜ金銭消費貸借の規定（587条以下）はあんなに簡素なのか？</summary>
+      <p>貸金返還債権に必要なルールの大部分（履行確保・担保・移転・消滅）が、他の金銭債権ひいては債権一般にも妥当するため、<strong>債権総則（423条以下）に括り出されている</strong>から。各則には「契約の成立と返還義務」という固有部分だけが残った。パンデクテン体系の「共通項の括り出し」の典型例である。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義64 ========== -->
+<div class="section" id="lec64">
+  <div class="section-header">
+    <div class="section-num">64</div>
+    <h2>債権の人的担保法の主軸 — 担保力強化の階段</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>人的担保の世界には<strong>「担保力の階段」</strong>があります。<strong>単独債務 → 分割債務 → 全部義務（連帯債務）→ 保証債務 → 連帯保証債務</strong>の順に、債権者にとっての安心度が上がっていきます。</p>
+
+  <div class="analogy">
+    友だちにお金を貸す場面で考えると：<br>
+    <strong>単独債務</strong>＝Aひとりに100万円貸す。Aが無一文になったら一巻の終わり。<br>
+    <strong>分割債務</strong>＝AとBに50万円ずつ貸した形。Aが破産してもBの50万円は無事。でもAの50万円は消える。<br>
+    <strong>連帯債務</strong>＝AにもBにも「100万円全額」請求できる。どちらか一人でも生き残れば全額回収。<br>
+    <strong>保証</strong>＝主役はAで、Bは「Aがダメなときの控え選手」。Bは自分から借りたわけではないので、まずAに請求してと言える（催告・検索の抗弁）。<br>
+    <strong>連帯保証</strong>＝控え選手なのに「いつでも全額、文句なし」で請求できる。債権者にとって最強。
+  </div>
+
+  <h3>担保力の階段</h3>
+  <div class="flow">
+    <div class="flow-item f-red">単独債務<br><small>財布1つ</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">分割債務<br><small>財布は増えるが額は頭割り</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">連帯債務<br><small>全員に全額OK</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">保証債務<br><small>+補充的な財布</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">連帯保証<br><small>抗弁なしの最強形</small></div>
+  </div>
+
+  <h3>各段階の比較</h3>
+  <table>
+    <tr><th>形態</th><th>条文</th><th>債権者は誰にいくら請求できるか</th><th>弱点</th></tr>
+    <tr><td>単独債務</td><td>—</td><td>債務者1人に全額</td><td>その1人が無資力なら即・不良債権</td></tr>
+    <tr><td>分割債務</td><td>民427条（原則形）</td><td>各債務者に<strong>頭割り分のみ</strong></td><td>1人の無資力分はその分だけ確実に損</td></tr>
+    <tr><td>連帯債務</td><td>民436条</td><td><strong>全員に全額</strong>（どの順番でも同時でも）</td><td>全員共倒れには勝てない</td></tr>
+    <tr><td>保証債務</td><td>民446条</td><td>主債務者→だめなら保証人に全額</td><td>催告・検索の抗弁（452・453条）で後回しにされる</td></tr>
+    <tr><td>連帯保証</td><td>民454条</td><td>主債務者にも保証人にも<strong>いきなり全額</strong></td><td>—（債権者側にほぼ弱点なし）</td></tr>
+  </table>
+
+  <div class="term">
+    <strong>全部義務（ぜんぶぎむ）</strong>：複数の債務者がそれぞれ「全額」について義務を負う関係の総称。連帯債務がその基本形で、保証債務・連帯保証債務・不真正連帯債務もこの仲間。対義語は「分割債務」（頭割り）。<br>
+    民法427条は「別段の意思表示がないときは分割」と定めるので、<strong>分割が原則・全部義務は特約や法律の定めによる例外</strong>という建て付けになっている点に注意。
+  </div>
+
+  <h3>保証 vs 連帯保証（復習＋深化）</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🙋 普通保証</h4>
+      <ul>
+        <li><strong>催告の抗弁</strong>（452条）：「まず主債務者に請求して」</li>
+        <li><strong>検索の抗弁</strong>（453条）：「主債務者に財産があるよ、まずそっちを執行して」</li>
+        <li><strong>分別の利益</strong>：保証人が複数なら頭割り</li>
+        <li>→ 補充性が強く、債権者には回り道</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>💪 連帯保証</h4>
+      <ul>
+        <li>催告の抗弁 <strong>なし</strong>（454条）</li>
+        <li>検索の抗弁 <strong>なし</strong>（454条）</li>
+        <li>分別の利益 <strong>なし</strong>（全員が全額）</li>
+        <li>→ 実務上の保証はほぼすべてこちら。人的担保法の<strong>主軸</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    なぜ連帯保証が「人的担保法の主軸」なのか：<br>
+    ① 主債務者の財布に加えて<strong>保証人の全財産（一般財産）が引当て</strong>になる<br>
+    ② 抗弁権がないので、<strong>主債務者と同時・同列に</strong>訴訟も執行もできる<br>
+    ③ 設定にコストがかからない（契約書1枚。ただし書面必須・民446条2項）<br>
+    → 「債権の経済的価値は債務者の資力に依存する」の弱点を、<strong>資力ある人の財布を増やす</strong>ことで克服する制度。
+  </div>
+
+  <div class="warn">
+    担保力の強さは、裏返せば<strong>保証人の悲劇</strong>の深さです。連帯保証人は「借りてもいないお金」を全額・即座に・文句を言えずに払わされうる。だからこそ2020年改正で、事業債務の個人保証には<strong>公正証書による保証意思宣明</strong>（465条の6）や<strong>情報提供義務</strong>（458条の2・465条の10）が導入されました。制度の強さと保護の必要性はセットで覚えること。
+  </div>
+
+  <div class="quiz">
+    Q1: 100万円の債権について、債務者がA・Bの2人いる場合、「分割債務」と「連帯債務」とで債権者の地位はどう違う？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>分割債務（427条の原則）なら、債権者はAに50万円・Bに50万円しか請求できず、Aが無資力ならその50万円は回収不能。連帯債務（436条）なら、A・Bいずれにも100万円全額を請求でき、Aが無資力でもBから全額回収できる。<strong>1人の無資力リスクを他の債務者に転嫁できる</strong>のが連帯（全部義務）の担保力の核心。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: 「単独債務→分割債務→連帯債務→保証→連帯保証」の順で担保力が強まるのはなぜか、一言で。</summary>
+      <p>引当てとなる<strong>財布（責任財産）の数</strong>が増え、かつ各財布に対して<strong>全額・無条件</strong>で迫れる度合いが強まっていくから。分割債務は財布が増えても額が頭割り、連帯債務は全額だが債務者グループ内の話、保証は外部の財布を追加、連帯保証はその外部財布に抗弁なしで全額請求できる、という積み上がりである。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義65 ========== -->
+<div class="section" id="lec65">
+  <div class="section-header">
+    <div class="section-num">65</div>
+    <h2>開始時現存額主義 — 破産配当のものさし</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>主債務者が破産したとき、債権者は<strong>「破産手続開始決定の時点で存在していた債権額」</strong>を基準に配当を受けられます。開始後に保証人などから一部弁済を受けても、<strong>全額の弁済を受けるまでは配当の基準額は減らない</strong>。これが<strong>開始時現存額主義</strong>（破産法104条）です。</p>
+
+  <div class="analogy">
+    食べ放題のたとえ：<br>
+    破産配当は「閉店間際のバイキング」。<strong>入店時（＝手続開始時）に発行された食券の金額</strong>で取り分が決まる。<br>
+    入店後に、店の外で友だち（保証人）からおにぎりを1個もらった（＝一部弁済を受けた）としても、<strong>食券の金額は書き換えられない</strong>。お腹がいっぱいになる（＝債権全額の満足を得る）までは、満額の食券でバイキングに並び続けられる。<br>
+    → 債権者をできるだけ満腹（全額回収）に近づけるための、債権者に有利なルール。
+  </div>
+
+  <h3>前提の確認：破産配当のしくみ</h3>
+  <div class="flow">
+    <div class="flow-item f-red">主債務者Aに<br>破産手続開始決定</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">開始時の債権が<br>破産債権に<br><small>債権者G</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">破産財団を換価</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">債権者平等原則で<br>按分配当</div>
+  </div>
+
+  <h3>弁済のタイミングで結論が変わる</h3>
+  <p>登場人物：債権者G（債権1000万円）、主債務者A（破産）、保証人B（または第三者P）。配当率は20%と仮定します。</p>
+  <table>
+    <tr><th>場面</th><th>Gの配当基準額</th><th>結果</th></tr>
+    <tr><td>① 弁済なし</td><td>1000万円</td><td>配当 200万円</td></tr>
+    <tr><td>② <strong>開始前</strong>にPが400万円弁済</td><td>600万円（弁済分だけ減る）</td><td>配当 120万円</td></tr>
+    <tr><td>③ <strong>開始後</strong>にBが400万円弁済</td><td><strong>1000万円のまま</strong>（開始時現存額主義）</td><td>配当 200万円（G総回収600万円、ただし債権額1000万円を超えない範囲）</td></tr>
+    <tr><td>④ 開始後にBが<strong>全額</strong>弁済</td><td>Gは満足 → Bが求償権等で手続に参加（104条3・4項）</td><td>Bが配当を受ける側に</td></tr>
+  </table>
+
+  <div class="key">
+    破産法104条のエッセンス：<br>
+    ① 全部義務者（連帯債務者・保証人など）の一人が破産 → 債権者は<strong>開始時の債権全額</strong>で手続参加できる（1項）<br>
+    ② 開始<strong>後</strong>に他の全部義務者から一部弁済を受けても、<strong>債権全額が消滅しない限り</strong>、全額のまま権利行使できる（2項）<br>
+    ③ 全額弁済した保証人等は、債権者に代わって（求償権・原債権の代位により）手続に参加できる（3・4項）<br>
+    ④ 一部弁済しただけの保証人は、債権者が全額の満足を得るまで<strong>割り込めない</strong> — 債権者優先。
+  </div>
+
+  <h3>なぜこんなルールに？</h3>
+  <div class="term">
+    <strong>開始時現存額主義の存在理由</strong>：そもそも債権者が保証人を付けたのは「主債務者の破産」という最悪の事態に備えるためでした（講義8・64）。もし保証人の一部弁済のたびに配当基準額が減るなら、「保証人からの回収」と「破産配当」が食い合ってしまい、担保を取った意味が薄れます。<br>
+    → <strong>担保（全部義務）の効果を破産の場面で骨抜きにしないため</strong>、債権額を開始時の額で固定し、債権者が二重取り（総回収が債権額超え）にならない範囲で最大限回収できるようにしたのです。
+  </div>
+
+  <div class="warn">
+    「開始<strong>前</strong>の弁済」と「開始<strong>後</strong>の弁済」をきっちり区別すること。<br>
+    ・開始<strong>前</strong>に第三者Pが一部弁済 → 開始時にはすでに減った額しか「現存」していないので、<strong>減額後の額</strong>が破産債権になる。<br>
+    ・開始<strong>後</strong>の一部弁済 → 現存額主義により基準額は<strong>減らない</strong>。<br>
+    タイムラインのどちら側の話かを、必ず最初に確認するクセをつけましょう。
+  </div>
+
+  <div class="quiz">
+    Q1: G（債権1000万円）の主債務者Aが破産。開始決定の翌月、保証人Bが300万円を弁済した。Gはいくらを基準に配当を受けられる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p><strong>1000万円</strong>を基準に配当を受けられる（破産法104条1・2項、開始時現存額主義）。開始後の一部弁済では破産債権額は減らない。ただし、配当と保証人からの回収の合計が債権額1000万円を超えることは許されず、超える部分の配当はBとの間で調整される。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: 同じ事例で、Bの300万円弁済が「開始決定の前」だったら？</summary>
+      <p>開始時に現存する債権は700万円なので、<strong>700万円</strong>が破産債権額となる。Bは弁済した300万円について求償権（および弁済による代位）を取得し、その限度で破産手続に参加しうる。「開始時に存在した額」がすべての基準である。</p>
+    </details>
+    <details>
+      <summary>💬 Q3: 開始時現存額主義は誰を保護するための制度？</summary>
+      <p><strong>債権者（担保を取った側）</strong>。保証や連帯債務という人的担保は債務者破産に備えた制度なのだから、破産の場面でこそフルに機能させるべきであり、保証人の一部弁済によって債権者の配当原資（基準額）が目減りしては担保を取った意味がなくなる、という考え方に基づく。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義66 ========== -->
+<div class="section" id="lec66">
+  <div class="section-header">
+    <div class="section-num">66</div>
+    <h2>特定物引渡債務者の注意義務（善管注意義務）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>「この物」を引き渡す債務（特定物債務）を負った人は、引渡しまでの間、その物を<strong>「善良な管理者の注意」をもって保存</strong>しなければなりません（民400条）。自分の物より<strong>丁寧に</strong>扱え、という義務です。</p>
+
+  <div class="analogy">
+    友だちのゲーム機を預かる場面：<br>
+    自分のゲーム機なら、床に置きっぱなしでもジュースの横に置いても自分の勝手。でも<strong>友だちに返す約束のゲーム機</strong>なら、棚にしまい、飲み物から遠ざけ、丁寧に扱うのが当然のマナー。<br>
+    民法はこのマナーを法律上の義務に格上げしました。それが<strong>善管注意義務</strong>。「自分の財産に対するのと同一の注意」（より軽い注意義務。例：無償受寄者・民659条）と対比される、<strong>ワンランク上の注意</strong>です。
+  </div>
+
+  <h3>前提：引渡債権を「履行不能になりやすい順」に並べる</h3>
+  <div class="flow">
+    <div class="flow-item f-red">特定物引渡債権<br><small>「この絵」が滅失したら即不能</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">不特定物引渡債権<br><small>市場にある限り調達義務</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">金銭債権<br><small>絶対に履行不能にならない（419条）</small></div>
+  </div>
+  <p>特定物債務は「替えがきかない」ぶん最も壊れやすい債務。だからこそ、目的物の<strong>保存</strong>に高い注意義務が課されるのです。</p>
+
+  <h3>民400条の構造</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：特定物債務者の義務</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">特定物の引渡債務（民400条）</span>
+        <ul>
+          <li>
+            <span class="node l1">義務の内容</span>
+            <ul>
+              <li><span class="node l2">引渡しまで「善良な管理者の注意」で保存</span></li>
+              <li><span class="node l3">基準：その人の職業・地位・取引上の社会通念に照らした客観的注意</span></li>
+              <li><span class="node accent">2017年改正で「契約その他の債権の発生原因及び取引上の社会通念に照らして定まる」と明文化</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">義務違反の効果</span>
+            <ul>
+              <li><span class="node l2">保存義務違反で滅失・損傷 → 帰責事由あり → 債務不履行責任（415条）</span></li>
+              <li><span class="node l2">十分注意していたのに滅失 → 帰責事由なし → 賠償責任を免れうる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">引渡し時の状態</span>
+            <ul>
+              <li><span class="node l2">引渡し時の品質を定められないとき → 引渡し時の現状で引き渡せば足りる（483条・現状引渡し）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>注意義務の2つのレベル</h3>
+  <table>
+    <tr><th>注意義務</th><th>レベル</th><th>適用例</th><th>イメージ</th></tr>
+    <tr><td>善良な管理者の注意（善管注意義務）</td><td><strong>高い</strong>（客観的・職業的基準）</td><td>特定物債務者（400条）、受任者（644条）、有償の受寄者</td><td>プロの管理人として扱う</td></tr>
+    <tr><td>自己の財産に対するのと同一の注意</td><td>低い（その人なりの注意で足りる）</td><td>無償受寄者（659条）、相続財産の管理（918条）など</td><td>自分の物と同程度でOK</td></tr>
+  </table>
+
+  <div class="key">
+    善管注意義務の「善良な管理者」とは、聖人君子のことではなく、<strong>その取引・その職業の平均的なきちんとした人</strong>のこと。美術商なら美術商として通常期待される管理（温湿度・防犯）、ペットショップならペットショップとして通常の飼育管理が基準になる。<strong>本人の能力が低くても基準は下がらない</strong>（客観的基準）のがポイント。
+  </div>
+
+  <div class="warn">
+    「善管注意義務を尽くしていれば、滅失しても引渡義務は残るのでは？」という混乱に注意。<br>
+    特定物が滅失すれば引渡債務は<strong>履行不能</strong>となり、引渡請求はできなくなる（412条の2第1項）。そのうえで、滅失について債務者に<strong>帰責事由（善管注意義務違反など）があれば損害賠償債権に変身</strong>（415条）、なければ賠償も否定され、危険負担・解除（536条・542条）の処理に進む。①履行請求の可否と②賠償責任の有無は別の問題として整理すること。
+  </div>
+
+  <div class="quiz">
+    Q1: 画商AはBに名画（特定物）を売ったが、引渡し前に倉庫の管理を怠り、雨漏りで絵が大破した。Bは何を請求できる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>絵の引渡しは履行不能（修復不能なら）なので引渡請求はできないが、Aは善管注意義務（400条）に違反しており帰責事由が認められるから、Bは<strong>履行に代わる損害賠償（填補賠償・415条2項）</strong>を請求できる。また契約の解除（542条1項1号）も可能で、解除すれば代金支払義務を免れる。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: 「善管注意義務」と「自己の財産に対するのと同一の注意」はどちらが重い？具体例は？</summary>
+      <p><strong>善管注意義務の方が重い</strong>。善管注意は職業・地位に応じた客観的な水準を要求するのに対し、後者は本人の普段のレベルで足りる主観的基準。特定物債務者・受任者・有償受寄者は前者、タダで物を預かった無償受寄者（659条）は後者で足りる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義67 ========== -->
+<div class="section" id="lec67">
+  <div class="section-header">
+    <div class="section-num">67</div>
+    <h2>不特定物債務の集中（特定）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>「ビール1ダース」のような<strong>種類と数量だけで決まった債務（不特定物債務・種類債務）</strong>は、履行までのどこかで「<strong>この</strong>ビール1ダース」に決まらなければなりません。この瞬間を<strong>集中（特定）</strong>と呼びます（民401条2項）。特定の前後で、債務の性質はガラリと変わります。</p>
+
+  <div class="analogy">
+    回転寿司のたとえ：<br>
+    「マグロ1皿ください」と注文した時点では、店内のどのマグロでもよい（<strong>不特定物債務</strong>）。<br>
+    職人が握って「はい、お客さんのマグロです」とカウンターに置いた瞬間、<strong>「この一皿」に決まる</strong>（＝集中・特定）。<br>
+    置かれた後にあなたが取らずに猫に食べられたら？ — もう「替わりを握れ」とは言いにくい。特定後は<strong>「この物」の運命にあなたも付き合う</strong>ことになるのです。
+  </div>
+
+  <h3>不特定物債務の一生</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">発生<br><small>種類＋数量で決まる<br>（契約締結時）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">品質の確定<br><small>定めなければ中等品質<br>（401条1項）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">集中（特定）<br><small>「この物」に決まる<br>（401条2項）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">特定物債務として<br>履行・消滅</div>
+  </div>
+
+  <h3>いつ特定するのか（401条2項）</h3>
+  <p>条文は2つのルートを定めます：①債務者が「<strong>物の給付をするのに必要な行為を完了</strong>」したとき、②債権者の同意を得て給付すべき物を<strong>指定</strong>したとき。①の「必要な行為の完了」は、債務のタイプによって中身が変わります。キーワードは「<strong>あとは債権者に受け取ってもらうだけ</strong>、という状態にしたか」。</p>
+
+  <table>
+    <tr><th>債務のタイプ</th><th>履行場所</th><th>特定の時点（必要な行為の完了）</th></tr>
+    <tr><td><strong>持参債務</strong>（原則形・484条）</td><td>債権者の住所</td><td>債権者の住所に持参して<strong>現実に提供</strong>した時</td></tr>
+    <tr><td><strong>取立債務</strong></td><td>債務者の住所</td><td>目的物を<strong>分離・準備</strong>し、債権者に<strong>通知</strong>した時（口頭の提供で足りる）</td></tr>
+    <tr><td><strong>送付債務</strong></td><td>第三地</td><td>履行として送付すべき場合：到達・提供時／好意で送付する場合：発送時とする説明が一般的</td></tr>
+  </table>
+
+  <h3>特定の効果 — ここが試験の本丸</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：集中（特定）のビフォー・アフター</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">集中（特定）の効果</span>
+        <ul>
+          <li>
+            <span class="node l1">特定前（不特定物債務）</span>
+            <ul>
+              <li><span class="node l2">調達義務あり：手元の在庫が滅失しても市場から調達して給付</span></li>
+              <li><span class="node l2">履行不能にほぼならない（その種類が市場から消えない限り）</span></li>
+              <li><span class="node l3">善管注意義務は観念しにくい（対象が決まっていない）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">特定後（特定物債務に転化）</span>
+            <ul>
+              <li><span class="node accent">調達義務が消滅：「この物」が滅失すれば履行不能になりうる</span></li>
+              <li><span class="node accent">善管注意義務（400条）が発生：「この物」を丁寧に保存</span></li>
+              <li><span class="node accent">所有権の移転：特定＋所有権の譲渡人帰属がそろった時点で移転（176条の解釈）</span></li>
+              <li><span class="node l2">帰責事由なき滅失なら債務者は賠償も免れる（415条1項ただし書）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    特定の最大の意味は、<strong>「種類全体のリスク」から「この物のリスク」への切り替え</strong>。<br>
+    特定前：在庫が燃えても債務者は市場から買ってでも給付する義務（調達義務）を負う。リスクは債務者がほぼ全部負担。<br>
+    特定後：「この物」が債務者の責めによらず滅失すれば、債務者は給付義務を免れうる（賠償もなし）。リスクの一部が債権者側に移る。<br>
+    → 特定とは、実質的に<strong>リスク移転のスイッチ</strong>なのです。
+  </div>
+
+  <div class="warn">
+    「特定したら直ちに危険も全部債権者負担」ではありません。2017年改正後は、<strong>引渡しによって危険が移転する</strong>のが原則（567条1項：引渡し後の滅失は買主が代金を払う）。特定はあくまで「調達義務の消滅・善管注意義務の発生・履行不能の観念可能化」のスイッチで、対価危険の移転は原則として<strong>引渡し時</strong>（または受領遅滞時・567条2項、413条の2第2項）。「特定」と「危険移転」を段階として区別して覚えましょう。
+  </div>
+
+  <div class="quiz">
+    Q1: 酒屋AはBに「ビール10ケース」を売った（持参債務）。Aが倉庫で10ケースを荷造りした夜、倉庫が落雷で全焼した。Aは免責されるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>免責されない。持参債務では<strong>債権者の住所で現実に提供するまで特定しない</strong>ので、倉庫での荷造りだけでは「給付に必要な行為の完了」に当たらず、いまだ不特定物債務のまま。Aは調達義務を負い、市場からビールを調達して給付しなければならない。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: 同じ事例が「Bが取りに来る」約束（取立債務）で、Aが10ケースを分離・準備してBに「準備できました」と通知した後の落雷だったら？</summary>
+      <p>取立債務では<strong>分離＋準備＋通知（口頭の提供）で特定</strong>するので、債務は特定物債務に転化済み。落雷というAの責めに帰すことのできない事由による滅失なので、Aは履行不能となるが損害賠償責任を負わず（415条1項ただし書）、調達義務も負わない。危険の処理は536条・567条2項等による。</p>
+    </details>
+    <details>
+      <summary>💬 Q3: 特定の効果を3つ挙げよ。</summary>
+      <p>①<strong>調達義務の消滅</strong>（以後「この物」だけが給付対象、履行不能が観念可能に）、②<strong>善管注意義務（400条）の発生</strong>、③（所有権が譲渡人に帰属していれば）<strong>目的物所有権の買主への移転</strong>（176条の解釈問題）。あわせて受領遅滞・引渡しを通じた危険の移転につながっていく。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義68 ========== -->
+<div class="section" id="lec68">
+  <div class="section-header">
+    <div class="section-num">68</div>
+    <h2>履行提供と受領遅滞 — 差し出したのに受け取らない</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>債務者がきちんと差し出すこと＝<strong>履行の提供</strong>（民492・493条）。それなのに債権者が受け取らないこと＝<strong>受領遅滞</strong>（民413条）。提供すれば債務者は「遅滞の責任」から解放され、受領遅滞になれば各種の負担が<strong>債権者側に移ります</strong>。</p>
+
+  <div class="analogy">
+    宅配便のたとえ：<br>
+    配達員（債務者）が約束の日時に荷物を玄関先まで届けた（＝<strong>現実の提供</strong>）。ところが住人（債権者）が居留守を使って受け取らない。<br>
+    このとき「配達が遅れた」と配達員を責めるのは筋違いですよね。チャイムを鳴らした時点で配達員の責任は果たされ（<strong>遅滞責任の停止</strong>）、以後の保管の手間や再配達コストは<strong>受け取らなかった側の負担</strong>になる。荷物が玄関先で（配達員のせいでなく）傷んでも、もう配達員のせいではない。<br>
+    これが提供と受領遅滞の世界観です。
+  </div>
+
+  <h3>履行の提供の2つの方法（民493条）</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>📦 現実の提供（原則）</h4>
+      <p>債務の本旨に従って<strong>現実に</strong>差し出す。</p>
+      <ul>
+        <li>持参債務なら債権者の住所まで持って行く</li>
+        <li>金銭なら現金を持参して示す</li>
+        <li>→ 「あとは受け取るだけ」の状態にする</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>📣 口頭の提供（例外）</h4>
+      <p><strong>準備＋通知</strong>で足りる場合（493条ただし書）。</p>
+      <ul>
+        <li>① 債権者があらかじめ<strong>受領を拒んでいる</strong>とき</li>
+        <li>② 債務の履行に<strong>債権者の行為が必要</strong>なとき（取立債務など）</li>
+        <li>※ 受領拒絶の意思が明確で翻意の見込みがない場合は、判例上、口頭の提供すら不要となりうる</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>提供の効果（民492条ほか）</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：履行の提供がもたらすもの</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">履行の提供の効果</span>
+        <ul>
+          <li>
+            <span class="node l1">① 遅滞責任の停止（492条）</span>
+            <ul>
+              <li><span class="node l2">提供の時から、不履行によって生ずべき責任を免れる</span></li>
+              <li><span class="node l3">将来に向かって違法性が停止される（提供前の遅滞には遡及しない）</span></li>
+              <li><span class="node l3">→ 遅延損害金は提供以後発生しない・解除もされない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">② 不特定物債務の集中（401条2項）</span>
+            <ul>
+              <li><span class="node l2">引渡しの提供 → 不特定物債務が特定物債務に転化（講義67）</span></li>
+              <li><span class="node l3">特定＋所有権の譲渡人帰属がそろえば、176条により所有権も移転</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">③ 相手の同時履行の抗弁権を奪う（533条との関係）</span>
+            <ul>
+              <li><span class="node l2">自分が提供すれば、相手は「お前もまだだろ」と言えなくなる → 相手を履行遅滞に陥れられる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">④ 受領遅滞の前提となる（413条）</span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>受領遅滞の効果（民413条・413条の2第2項）</h3>
+  <table>
+    <tr><th>効果</th><th>条文</th><th>内容</th></tr>
+    <tr><td>注意義務の軽減</td><td>413条1項</td><td>善管注意義務 → <strong>「自己の財産に対するのと同一の注意」</strong>に格下げで足りる</td></tr>
+    <tr><td>増加費用の債権者負担</td><td>413条2項</td><td>保管料・再配達費など、受領遅滞で増えた履行費用は<strong>債権者持ち</strong></td></tr>
+    <tr><td>危険の移転</td><td>413条の2第2項</td><td>受領遅滞中に当事者双方の責めに帰せられない事由で履行不能 → <strong>債権者の帰責事由とみなす</strong>（解除不可・代金支払義務は消えない：543条・536条2項・567条2項）</td></tr>
+  </table>
+
+  <div class="key">
+    流れで一気に覚える：<br>
+    <strong>提供</strong>（492・493条）→ 債務者は遅滞責任から解放 ＋ 種類債務は特定 → 債権者が受け取らなければ<strong>受領遅滞</strong>（413条）→ 注意義務軽減・増加費用転嫁・危険移転。<br>
+    それでも荷物を抱えたままなのが嫌なら、最終手段として<strong>供託</strong>（494条）：法務局に預けて債務そのものを消滅させる。提供 → 受領遅滞 → 供託、の三段ロケットでセット理解。
+  </div>
+
+  <div class="warn">
+    受領遅滞（413条）は、判例・伝統的通説では<strong>債権者の「債務不履行」ではない</strong>（法定責任）と理解されてきました。つまり受領しないこと自体を理由に、債務者から<strong>当然に損害賠償請求や解除ができるわけではない</strong>（特約や信義則上の引取義務が認められる特段の場合は別。硫黄鉱石事件・最判昭46.12.16参照）。413条に列挙された3つの効果（注意義務軽減・費用転嫁・危険移転）が原則的な効果のすべて、と押さえておくのが安全です。
+  </div>
+
+  <div class="quiz">
+    Q1: 家具屋Aが約束の日にタンス（特定済み）をB宅に運んだが、Bが「置き場所がない」と受け取らなかった。持ち帰って保管中、Aの軽過失とはいえない隣家の火事の延焼でタンスが焼失した。法律関係は？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>Aは現実の提供をしておりBは受領遅滞。受領遅滞中の双方無責の履行不能なので、<strong>債権者Bの帰責事由による不能とみなされ</strong>（413条の2第2項）、Bは契約を解除できず（543条）、<strong>代金全額を支払わなければならない</strong>（536条2項・567条2項）。また保管にかかった増加費用もBの負担（413条2項）。Aは焼失について賠償責任を負わない（注意義務も自己の財産と同一の注意に軽減済み・413条1項）。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: 債権者が「絶対に受け取らない」と明言している場合でも、債務者は現実の提供をしなければ遅滞責任を免れないか？</summary>
+      <p>不要。あらかじめ受領を拒んでいる場合は<strong>口頭の提供（準備＋通知）で足りる</strong>（493条ただし書）。さらに受領拒絶の意思が明確で翻意の見込みが全くない場合には、判例上、<strong>口頭の提供すら不要</strong>とされることがある（最大判昭32.6.5参照）。無意味な儀式を債務者に強いない趣旨。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義69 ========== -->
+<div class="section" id="lec69">
+  <div class="section-header">
+    <div class="section-num">69</div>
+    <h2>債権の保全的効力 — 423条以下への入口</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>債権はやがて<strong>金銭の問題に行き着き、債務者の責任財産（一般財産）が最後の頼み</strong>になります。その責任財産が痩せ細るのを防ぐ力 — 債権者代位権・詐害行為取消権に代表される働き — が債権の<strong>保全的効力</strong>です。</p>
+
+  <div class="analogy">
+    果樹園のたとえ：<br>
+    債権者は秋の収穫（強制執行・配当）を待つ農家。債務者の責任財産は<strong>果樹園そのもの</strong>。<br>
+    ところが債務者という園主が、①実った果実を採りに行かない（権利を行使しない）、②木を勝手にタダで隣人にあげてしまう（財産を流出させる）ことがある。<br>
+    収穫まで黙って待つだけでは果樹園が荒れ果ててしまう。そこで農家（債権者）に、①の場面では<strong>代わりに収穫する権利（債権者代位権）</strong>、②の場面では<strong>譲渡をなかったことにする権利（詐害行為取消権）</strong>が与えられた。これが「保全的効力」のイメージです。
+  </div>
+
+  <h3>前提：非金銭債権も最後は金銭債権になる</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">非金銭債権<br><small>物の引渡し・行為の請求</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">不能でなければ<br>非金銭執行で実現可<br><small>直接強制・代替執行・間接強制</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">履行不能になれば<br>損害賠償債権へ変身<br><small>＝金銭債権化</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">金銭執行<br><small>引当ては責任財産</small></div>
+  </div>
+
+  <h3>非金銭執行のメニュー（復習・整理）</h3>
+  <table>
+    <tr><th>債権のタイプ</th><th>使える執行方法</th><th>例</th></tr>
+    <tr><td>物の引渡債権</td><td>執行官による<strong>直接強制</strong>／間接強制</td><td>建物明渡し・動産引渡し</td></tr>
+    <tr><td>他人でも実現できる行為（代替的作為）</td><td><strong>代替執行</strong>／間接強制</td><td>塀の取壊しを業者にやらせ費用を取り立てる</td></tr>
+    <tr><td>本人でなければ実現できない行為（非代替的作為）</td><td><strong>間接強制のみ</strong></td><td>「履行するまで1日◯円払え」と心理的に圧迫</td></tr>
+    <tr><td>子の引渡し</td><td>執行裁判所が執行官にさせる直接的な強制／間接強制</td><td>民事執行法174条以下</td></tr>
+    <tr><td>意思表示をすべき債権</td><td>判決確定で<strong>意思表示が擬制</strong>される</td><td>登記申請の意思表示（民執177条）</td></tr>
+  </table>
+
+  <div class="key">
+    重要な見取り図：<br>
+    ① 非金銭債権は、不能になる前なら<strong>非金銭執行</strong>で本来の内容を実現できる。<br>
+    ② 不能になれば損害賠償債権＝<strong>金銭債権</strong>に変身する（講義61）。<br>
+    ③ 金銭債権の実現は<strong>金銭執行</strong>＝債務者の責任財産への差押え・換価・配当。<br>
+    ④ ということは、<strong>あらゆる債権の最後の生命線は「債務者の責任財産」</strong>。<br>
+    ⑤ だからこの責任財産を維持する仕組み＝<strong>保全的効力（423条・424条）</strong>が必要になる。
+  </div>
+
+  <h3>保全的効力の二本柱（次講以降への予告編）</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🤝 債権者代位権（民423条）</h4>
+      <p>債務者が<strong>自分の権利を行使しない</strong>とき</p>
+      <ul>
+        <li>債権者が債務者に代わってその権利を行使</li>
+        <li>例：無資力の債務者が第三者への売掛金を取り立てないので、債権者が代わりに取り立てる</li>
+        <li>イメージ：<strong>「不作為による目減り」を防ぐ</strong></li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>✂️ 詐害行為取消権（民424条）</h4>
+      <p>債務者が<strong>財産を流出させた</strong>とき</p>
+      <ul>
+        <li>債権者を害する行為を裁判所に請求して取り消す</li>
+        <li>例：差押え寸前に唯一の不動産を親族に贈与 → 取り消して取り戻す</li>
+        <li>イメージ：<strong>「作為による持ち逃げ」を巻き戻す</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn">
+    保全的効力は<strong>強制執行の前段階の「保存行為」</strong>であって、債権者がいきなり自分の物にできる制度ではありません（優先弁済権はないのが建前）。また、どちらも原則として<strong>債務者の無資力</strong>が前提（責任財産が十分あるなら干渉する必要がない）。「債務者の財産管理への干渉は例外的・補充的」という感覚を持っておくと、次講以降の要件論がすっと頭に入ります。
+  </div>
+
+  <div class="quiz">
+    Q1: 「すべての債権は最終的に責任財産の問題に行き着く」と言われるのはなぜか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>非金銭債権も履行不能になれば損害賠償債権という<strong>金銭債権に変身</strong>し（415条）、金銭債権の強制的実現は<strong>債務者の責任財産に対する金銭執行</strong>（差押え・換価・配当）しかないから。ゆえに責任財産はあらゆる債権の最後の引当てであり、その維持のために保全的効力（423条・424条）が認められる。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: ピアニストに「演奏会で演奏してもらう債権」は、どの執行方法で実現できる？</summary>
+      <p>演奏は本人でなければ実現できない<strong>非代替的作為債務</strong>なので、直接強制・代替執行は使えず、<strong>間接強制</strong>（演奏するまで1日あたり金◯円の支払を命じて心理的に強制）のみ。それでも弾かなければ、履行不能・債務不履行として損害賠償（金銭債権）の問題に移行する。芸術を物理的に強制することは執行制度にもできない。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義70 ========== -->
+<div class="section" id="lec70">
+  <div class="section-header">
+    <div class="section-num">70</div>
+    <h2>債権の本来的効力 — 3階建ての天守閣と自然債務</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>債権の効力は<strong>お城の縄張り</strong>として描けます。<strong>3階建ての天守閣（本来的効力）＋内堀（保全的効力）＋外堀</strong>。天守閣は1階＝<strong>給付保持力</strong>、2階＝<strong>請求力</strong>、3階＝<strong>掴取力</strong>。3階そろった債権が「完全債権」、どこかの階が欠けた債権が「不完全債権」 — その代表が<strong>自然債務</strong>です。</p>
+
+  <div class="analogy">
+    ゲームのキャラクター能力にたとえると：<br>
+    <strong>1階・給付保持力</strong>＝「もらったアイテムを没収されない」能力。任意に払ってもらえたら、それを<strong>適法に自分のものにしておける</strong>。<br>
+    <strong>2階・請求力</strong>＝「裁判所で『払え』の判決をもらえる」能力。訴えて勝てる。<br>
+    <strong>3階・掴取力（摑取力）</strong>＝「判決をもとに相手の財産を<strong>つかみ取れる</strong>」能力。強制執行で差押え・換価・配当まで行ける。<br>
+    ふつうの債権はこの3つをフル装備。でも世の中には<strong>「1階だけのキャラ」</strong>もいる — それが自然債務です。
+  </div>
+
+  <h3>債権の効力の縄張り図</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：債権の効力 — 天守閣・内堀・外堀</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">債権の効力（お城の縄張り）</span>
+        <ul>
+          <li>
+            <span class="node l1">🏯 天守閣＝本来的効力（3階建て）</span>
+            <ul>
+              <li><span class="node l2">1階：給付保持力 — 受け取った給付を保持できる（不当利得にならない）</span></li>
+              <li><span class="node l2">2階：請求力 — 訴求できる（給付判決を得られる）</span></li>
+              <li><span class="node l2">3階：掴取力（摑取力）— 強制執行で責任財産から満足を得られる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">🌊 内堀＝保全的効力</span>
+            <ul>
+              <li><span class="node l2">債権者代位権（423条）・詐害行為取消権（424条）</span></li>
+              <li><span class="node l3">天守閣（掴取力）の引当てとなる責任財産を守る外周設備（講義69）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">🌊 外堀＝さらに外側の縄張り</span>
+            <ul>
+              <li><span class="node l2">第三者との関係で問題となる効力（対外的効力）</span></li>
+              <li><span class="node l3">→ 外堀の外には債権の効力は及ばない（債権の相対性）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>完全債権と不完全債権</h3>
+  <table>
+    <tr><th>タイプ</th><th>給付保持力<br>(1階)</th><th>請求力<br>(2階)</th><th>掴取力<br>(3階)</th><th>例</th></tr>
+    <tr><td><strong>完全債権</strong>（ふつうの債権）</td><td>✅</td><td>✅</td><td>✅</td><td>売買代金債権・貸金債権など</td></tr>
+    <tr><td><strong>自然債務</strong>（1階のみ）</td><td>✅</td><td>❌</td><td>❌</td><td>カフェー丸玉事件型の債務、消滅時効完成後に援用された債務（任意弁済は有効・508条参照）など</td></tr>
+    <tr><td><strong>責任なき債務</strong>（1・2階のみ）</td><td>✅</td><td>✅</td><td>❌</td><td>不執行合意（強制執行をしない特約）のある債務、限定承認後の相続債務の一部など</td></tr>
+  </table>
+
+  <h3>カフェー丸玉事件（大判昭10.4.25）</h3>
+  <div class="term">
+    <strong>事案</strong>：カフェーの常連客が、なじみの女給（ウェイトレス）の歓心を買おうと「独立資金として400円をあげる」と約束した。女給が約束の履行を求めて提訴。<br>
+    <strong>判旨</strong>：このような事情の下での約束は、<strong>「自ら進んで支払えば有効な弁済となるが、裁判によって履行を強制することはできない」特殊の債務関係</strong>（＝いわゆる自然債務）を生じさせるにとどまる、とした。<br>
+    <strong>ポイント</strong>：①約束が無効（公序良俗違反）とされたのではない — 払えば有効に保持できる（<strong>給付保持力はある</strong>）。②しかし<strong>訴求はできない（請求力なし）</strong>。1階だけの建物、という絶妙の中間解決。
+  </div>
+
+  <div class="flow">
+    <div class="flow-item f-orange">客が「400円あげる」<br>と軽い気持ちで約束</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">訴えられても<br>裁判所は請求棄却<br><small>請求力なし</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">でも任意に払えば<br>返還請求できない<br><small>給付保持力あり</small></div>
+  </div>
+
+  <div class="key">
+    給付保持力こそ債権の<strong>最低限の本質</strong>：<br>
+    ・1階（給付保持力）すらなければ、受け取った物は<strong>不当利得（703条）として返還</strong>しなければならない ＝ そもそも債権ではない。<br>
+    ・逆に、2階・3階がなくても1階があれば「債権」とは言える（自然債務）。<br>
+    → 「債権とは何か」と問われたら、<strong>給付を適法に保持できる地位</strong>が核心、と答えられるようにしておく。
+  </div>
+
+  <div class="warn">
+    「請求力がない＝請求してはいけない」ではありません。自然債務でも<strong>裁判外で請求すること自体は自由</strong>（払ってもらえれば有効）。できないのは<strong>裁判所の力を借りること（訴求・執行）</strong>だけです。<br>
+    また、消滅時効が完成しただけでは債権は消えず、<strong>援用</strong>（145条）があって初めて消滅する点も復習。時効完成後に債務者が任意に弁済すれば、もはや時効援用は信義則上許されず（最大判昭41.4.20）、弁済は有効 — ここにも「給付保持力の根強さ」が現れています。
+  </div>
+
+  <div class="quiz">
+    Q1: 自然債務の債務者が任意に弁済した後、「あれは訴求できない債務だったから」と不当利得返還請求をした。認められるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>認められない。自然債務にも<strong>給付保持力（1階）はある</strong>ので、弁済は法律上の原因のある有効な給付であり、不当利得（703条）にならない。自然債務に欠けているのは請求力（2階）と掴取力（3階）だけである。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: 「責任なき債務」と「自然債務」の違いは？</summary>
+      <p>どちらも不完全債権だが、欠けている階が違う。<strong>自然債務は1階のみ</strong>（訴求も執行も不可）。<strong>責任なき債務は1・2階あり3階なし</strong> — 訴えて勝訴判決は得られるが、強制執行（掴取）はできない（例：不執行合意付きの債務）。「債務と責任の分離」というテーマの入口になる区別である。</p>
+    </details>
+    <details>
+      <summary>💬 Q3: 債権の効力の「お城」全体を、61〜70講の内容と結びつけて描いてみよう。</summary>
+      <p>天守閣3階の<strong>掴取力</strong>が実際に働く場面が強制執行であり、その引当てが責任財産（講義69）。責任財産を守る<strong>内堀</strong>が保全的効力＝423・424条（講義63・69）。掴取力を強化する装置が人的担保（講義64）で、債務者破産という天守閣炎上の場面で債権者を守るのが開始時現存額主義（講義65）。透明度の高い金銭債権（講義61）はこの城の「基軸通貨」であり、物の引渡債務（講義66〜68）は特定・提供・受領を経て完成・消滅していく。すべては「債権の経済的価値は債務者の資力に依存する」という一本の糸でつながっている。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 用語集 ========== -->
+<div class="section" id="glossary">
+  <div class="section-header">
+    <div class="section-num">📖</div>
+    <h2>初学者向け用語集</h2>
+  </div>
+
+  <table>
+    <tr><th>用語</th><th>読み</th><th>意味（やさしく）</th><th>登場講義</th></tr>
+    <tr><td>金銭債権</td><td>きんせんさいけん</td><td>お金の支払いを目的とする債権。履行不能にならない特別な債権</td><td>61</td></tr>
+    <tr><td>法定利率</td><td>ほうていりりつ</td><td>当事者が利率を決めていないときに適用される利率（年3%・変動制）</td><td>61</td></tr>
+    <tr><td>帰責事由</td><td>きせきじゆう</td><td>「債務者のせい」と言える事情。これがなければ賠償責任を免れうる</td><td>61・66</td></tr>
+    <tr><td>過失相殺</td><td>かしつそうさい</td><td>債権者（被害者）側の落ち度の分だけ賠償を減らす（or 責任を否定する）制度</td><td>62</td></tr>
+    <tr><td>弁論主義</td><td>べんろんしゅぎ</td><td>裁判の材料（事実と証拠）の提出は当事者の仕事、という民事訴訟の大原則</td><td>62</td></tr>
+    <tr><td>責任財産</td><td>せきにんざいさん</td><td>強制執行の引当てになる債務者の全財産。債権の最後の生命線</td><td>63・69</td></tr>
+    <tr><td>債権者代位権</td><td>さいけんしゃだいいけん</td><td>権利を行使しない債務者に代わって、債権者がその権利を行使する制度（423条）</td><td>63・69</td></tr>
+    <tr><td>詐害行為取消権</td><td>さがいこういとりけしけん</td><td>債務者の財産流出行為（財産隠し）を取り消して責任財産を回復する制度（424条）</td><td>63・69</td></tr>
+    <tr><td>分割債務</td><td>ぶんかつさいむ</td><td>複数の債務者が頭割りした額だけ義務を負う形。多数当事者の原則形（427条）</td><td>64</td></tr>
+    <tr><td>全部義務</td><td>ぜんぶぎむ</td><td>複数の債務者の各人が「全額」について義務を負う関係の総称（連帯債務・保証など）</td><td>64・65</td></tr>
+    <tr><td>連帯債務</td><td>れんたいさいむ</td><td>債務者全員に全額請求できる債務形態。全部義務の基本形（436条）</td><td>64</td></tr>
+    <tr><td>催告・検索の抗弁</td><td>さいこく・けんさくのこうべん</td><td>普通保証人の「まず主債務者に請求/執行して」と言える権利。連帯保証人にはない</td><td>64</td></tr>
+    <tr><td>開始時現存額主義</td><td>かいしじげんそんがくしゅぎ</td><td>破産配当の基準額は手続開始時の債権額で固定。開始後の一部弁済では減らない（破産法104条）</td><td>65</td></tr>
+    <tr><td>破産債権</td><td>はさんさいけん</td><td>破産手続開始時に存在する債権。配当によってのみ満足を受けるのが原則</td><td>65</td></tr>
+    <tr><td>特定物</td><td>とくていぶつ</td><td>「この物」と個性に着目して決められた物（中古車・絵画など）。替えがきかない</td><td>66</td></tr>
+    <tr><td>善管注意義務</td><td>ぜんかんちゅういぎむ</td><td>「善良な管理者の注意」＝職業・地位に応じた客観的水準の高い注意義務（400条）</td><td>66・68</td></tr>
+    <tr><td>不特定物（種類物）</td><td>ふとくていぶつ</td><td>種類と数量だけで決められた物（ビール1ダースなど）。替えがきく</td><td>67</td></tr>
+    <tr><td>集中（特定）</td><td>しゅうちゅう（とくてい）</td><td>不特定物債務が「この物」の債務に決まること（401条2項）。調達義務消滅などの大転換点</td><td>67・68</td></tr>
+    <tr><td>調達義務</td><td>ちょうたつぎむ</td><td>特定前の種類債務者が負う「市場から仕入れてでも給付する」義務</td><td>67</td></tr>
+    <tr><td>履行の提供</td><td>りこうのていきょう</td><td>債務者が「あとは受け取るだけ」の状態まで差し出すこと（492・493条）。現実の提供と口頭の提供</td><td>68</td></tr>
+    <tr><td>受領遅滞</td><td>じゅりょうちたい</td><td>提供を受けたのに債権者が受け取らない状態（413条）。注意義務軽減・費用転嫁・危険移転の効果</td><td>68</td></tr>
+    <tr><td>供託</td><td>きょうたく</td><td>受け取ってもらえない給付物を法務局に預けて債務を消滅させる制度（494条）</td><td>68</td></tr>
+    <tr><td>給付保持力</td><td>きゅうふほじりょく</td><td>受け取った給付を適法に自分のものにしておける力。債権の最低限の本質（天守閣1階）</td><td>70</td></tr>
+    <tr><td>掴取力（摑取力）</td><td>かくしゅりょく</td><td>強制執行により債務者の責任財産から満足を得る力（天守閣3階）</td><td>69・70</td></tr>
+    <tr><td>自然債務</td><td>しぜんさいむ</td><td>訴求も執行もできないが、任意に払えば有効な弁済になる債務。カフェー丸玉事件が代表例</td><td>70</td></tr>
+  </table>
+</div>
+
+<!-- ========== Footer ========== -->
+<div style="text-align:center; padding: 30px; color: var(--text-light); font-size: 0.85em;">
+  <p>msahkie先生の民法講義に基づく学習ガイド</p>
+  <p>法律未修者向け知識点整理・拡展</p>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>

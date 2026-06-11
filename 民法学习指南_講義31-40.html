@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義31〜40 学習ガイド（法律未修者向け）</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --primary: #2c5f8a;
+    --secondary: #e8f0f8;
+    --accent: #d4740e;
+    --accent-light: #fff5eb;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #dfe6e9;
+    --success: #00b894;
+    --danger: #e17055;
+    --info: #74b9ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #2c5f8a 0%, #1a3a5c 100%);
+    color: white;
+    border-radius: 16px;
+    margin-bottom: 30px;
+  }
+  .header h1 { font-size: 2em; margin-bottom: 10px; }
+  .header p { opacity: 0.9; font-size: 1.05em; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+
+  /* Navigation */
+  .nav {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav:hover, .nav:focus-within {
+    max-height: 600px;
+  }
+  .nav h3 { margin-bottom: 10px; color: var(--primary); font-size: 0.95em; cursor: pointer; }
+  .nav h3::after { content: " ▼"; font-size: 0.7em; }
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .nav a {
+    display: block;
+    padding: 8px 12px;
+    background: var(--secondary);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.88em;
+    transition: all 0.2s;
+  }
+  .nav a:hover { background: var(--primary); color: white; }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--secondary);
+  }
+  .section-num {
+    background: var(--primary);
+    color: white;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 1.35em; color: var(--primary); }
+
+  /* Subsection */
+  h3 {
+    color: var(--primary);
+    font-size: 1.1em;
+    margin: 24px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  h4 {
+    color: var(--accent);
+    font-size: 1em;
+    margin: 16px 0 8px;
+  }
+
+  /* Analogy box */
+  .analogy {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .analogy::before {
+    content: "💡 たとえ話";
+    display: block;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Key point */
+  .key {
+    background: #eef7ee;
+    border-left: 4px solid var(--success);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .key::before {
+    content: "✅ 重要ポイント";
+    display: block;
+    font-weight: bold;
+    color: var(--success);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Warning */
+  .warn {
+    background: #fff3f0;
+    border-left: 4px solid var(--danger);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .warn::before {
+    content: "⚠️ 注意・よくある誤解";
+    display: block;
+    font-weight: bold;
+    color: var(--danger);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Term */
+  .term {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .term::before {
+    content: "📖 用語解説";
+    display: block;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Quiz */
+  .quiz {
+    background: #f0eeff;
+    border: 2px dashed #6c5ce7;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .quiz::before {
+    content: "🧪 理解度チェック";
+    display: block;
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+  .quiz details {
+    margin-top: 8px;
+  }
+  .quiz summary {
+    cursor: pointer;
+    color: #6c5ce7;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .quiz details p {
+    margin-top: 6px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92em;
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:nth-child(even) { background: var(--secondary); }
+  tr:hover { background: #dbeafe; }
+
+  /* Mind map */
+  .mindmap {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .mindmap-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 16px;
+    font-size: 1.05em;
+  }
+
+  /* Tree structure */
+  .tree { padding-left: 0; list-style: none; }
+  .tree ul { padding-left: 28px; list-style: none; position: relative; }
+  .tree ul::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 12px;
+    border-left: 2px solid var(--border);
+  }
+  .tree li {
+    position: relative;
+    padding: 4px 0 4px 0;
+  }
+  .tree ul > li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 14px;
+    width: 14px;
+    border-top: 2px solid var(--border);
+  }
+  .tree .node {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+  .node.root { background: var(--primary); color: white; font-size: 1em; padding: 8px 20px; }
+  .node.l1 { background: #4a90c4; color: white; }
+  .node.l2 { background: var(--secondary); color: var(--primary); border: 1px solid #b0cfe0; }
+  .node.l3 { background: #f1f5f1; color: var(--text); border: 1px solid #c8d6c8; font-size: 0.85em; }
+  .node.accent { background: var(--accent-light); color: #b35c00; border: 1px solid #f0c8a0; }
+  .node.danger { background: #fff0ee; color: #c0392b; border: 1px solid #f0b0a0; }
+
+  /* Flow diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 16px 0;
+    justify-content: center;
+  }
+  .flow-item {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 0.88em;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-arrow {
+    font-size: 1.4em;
+    color: var(--text-light);
+    padding: 0 4px;
+  }
+  .flow .f-blue { background: var(--secondary); color: var(--primary); border: 2px solid #a0c4e0; }
+  .flow .f-green { background: #e8f8e8; color: #1e7e34; border: 2px solid #a0d8a0; }
+  .flow .f-orange { background: var(--accent-light); color: #b35c00; border: 2px solid #f0c8a0; }
+  .flow .f-red { background: #fff0ee; color: #c0392b; border: 2px solid #f0b0a0; }
+
+  /* Comparison */
+  .vs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: start;
+    margin: 16px 0;
+  }
+  .vs-box {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid;
+  }
+  .vs-box.left { border-color: #4a90c4; background: #f0f6fc; }
+  .vs-box.right { border-color: #e0a040; background: #fdf8f0; }
+  .vs-box h4 { margin-top: 0; text-align: center; }
+  .vs-mid {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--text-light);
+    align-self: center;
+  }
+
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 24px; }
+  li { margin: 4px 0; }
+  strong { color: var(--primary); }
+
+  @media (max-width: 768px) {
+    body { padding: 10px; }
+    .section { padding: 18px; }
+    .header h1 { font-size: 1.4em; }
+    .nav-grid { grid-template-columns: 1fr 1fr; }
+    .vs { grid-template-columns: 1fr; }
+    .vs-mid { text-align: center; }
+    .flow { flex-direction: column; align-items: center; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== Header ========== -->
+<div class="header">
+  <h1>民法講義 31〜40 学習ガイド</h1>
+  <p>「○○と第三者」パターン総整理 — 無権利の法理から相続・遺産分割まで</p>
+  <div class="badge">msahkie先生の講義に基づく整理・拡展</div>
+</div>
+
+<!-- ========== Navigation ========== -->
+<div class="nav">
+  <h3>📑 目次（クリックでジャンプ）</h3>
+  <div class="nav-grid">
+    <a href="#overview">全体マップ</a>
+    <a href="#lec31">㉛ 無権利の法理の使い方</a>
+    <a href="#lec32">㉜ 無効と第三者</a>
+    <a href="#lec33">㉝ 取消しと第三者</a>
+    <a href="#lec34">㉞ 帰責性ある取消原因</a>
+    <a href="#lec35">㉟ 取消しと第三者：総括</a>
+    <a href="#lec36">㊱ 契約解除と第三者</a>
+    <a href="#lec37">㊲ 時効取得と第三者</a>
+    <a href="#lec38">㊳ 法定共同相続と第三者</a>
+    <a href="#lec39">㊴ 相続放棄と第三者</a>
+    <a href="#lec40">㊵ 遺産分割と第三者</a>
+    <a href="#glossary">用語集</a>
+  </div>
+</div>
+
+<!-- ========== 全体マップ ========== -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-num">📍</div>
+    <h2>全体マップ：講義31〜40は何を学ぶのか</h2>
+  </div>
+
+  <p>この10回のテーマはただ一つ。<strong>「○○と第三者」というパターン問題の総攻略</strong>です。AがBに不動産を売ったが、実はその裏に「無効」「取消し」「解除」「時効」「相続」などの事情が隠れていた——このとき、何も知らずに取引に入ってきた<strong>第三者</strong>は守られるのか？ 元の権利者と第三者、どちらが勝つのか？ 民法で最も試験に出る「対決の方程式」を、場面ごとに整理していきます。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">🗺️ 講義31〜40 全体思維導図</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">「○○と第三者」パターン集</span>
+        <ul>
+          <li>
+            <span class="node l1">Part A：大原則（講義31）</span>
+            <ul>
+              <li><span class="node l2">㉛ 無権利の法理 — 「無から有は生じない」</span></li>
+              <li><span class="node l3">→ すべての出発点。第三者は原則として負ける</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part B：契約の効力が消える場面（講義32-36）</span>
+            <ul>
+              <li><span class="node l2">㉜ 無効と第三者（94条2項とその類推）</span></li>
+              <li><span class="node l2">㉝ 取消しと第三者（取消前 vs 取消後）</span></li>
+              <li><span class="node l2">㉞ 取消原因の分類と帰責性（95条4項・96条3項）</span></li>
+              <li><span class="node l2">㉟ 総括 — 三層構造で一望する</span></li>
+              <li><span class="node l2">㊱ 契約解除と第三者（545条1項ただし書）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part C：時効の場面（講義37）</span>
+            <ul>
+              <li><span class="node l2">㊲ 時効取得と第三者（時効完成の前か後か）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part D：相続の場面（講義38-40）</span>
+            <ul>
+              <li><span class="node l2">㊳ 法定共同相続と第三者（899条の2）</span></li>
+              <li><span class="node l2">㊴ 相続放棄と第三者（遡及効の絶対性）</span></li>
+              <li><span class="node l2">㊵ 遺産分割と第三者（909条ただし書）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="analogy">
+    この10回はずっと<strong>「綱引き大会」</strong>です。<br>
+    ロープの左端を引くのは「本当の権利者」（元の所有者・相続人）、右端を引くのは「事情を知らずに買った第三者」。<br>
+    審判（民法）は基本ルールとして<strong>左側（本当の権利者）の勝ち</strong>と決めています（＝無権利の法理）。<br>
+    でも、場面ごとに「特別ルール」が用意されていて、右側が勝てることがある——その特別ルールが <strong>94条2項・95条4項・96条3項・545条1項ただし書・177条・899条の2・909条ただし書</strong> です。<br>
+    各講義は「この場面ではどの特別ルールが発動するか」を一つずつ確認していく作業です。
+  </div>
+
+  <h3>先に答えを見る：勝敗早見表</h3>
+  <table>
+    <tr><th>場面</th><th>第三者を守る根拠</th><th>第三者に必要な条件</th><th>登記は必要？</th></tr>
+    <tr><td>虚偽表示による無効</td><td>94条2項（＋類推適用）</td><td>善意（判例：無過失不要）</td><td>判例は不要（学説争いあり）</td></tr>
+    <tr><td>錯誤取消し（取消前）</td><td>95条4項</td><td>善意<strong>かつ無過失</strong></td><td>解釈上の争いあり</td></tr>
+    <tr><td>詐欺取消し（取消前）</td><td>96条3項</td><td>善意<strong>かつ無過失</strong></td><td>解釈上の争いあり</td></tr>
+    <tr><td>強迫・制限行為能力（取消前）</td><td><strong>保護規定なし</strong></td><td>—（第三者は常に負ける）</td><td>—</td></tr>
+    <tr><td>取消し<strong>後</strong>の第三者</td><td>177条（対抗関係）</td><td>先に登記を備えること</td><td><strong>必要</strong></td></tr>
+    <tr><td>解除<strong>前</strong>の第三者</td><td>545条1項ただし書</td><td>善意・悪意を問わない</td><td><strong>必要</strong>（権利保護要件）</td></tr>
+    <tr><td>解除<strong>後</strong>の第三者</td><td>177条（対抗関係）</td><td>先に登記を備えること</td><td><strong>必要</strong></td></tr>
+    <tr><td>時効完成<strong>前</strong>の第三者</td><td>—（時効取得者が勝つ）</td><td>—</td><td>時効取得者に登記<strong>不要</strong></td></tr>
+    <tr><td>時効完成<strong>後</strong>の第三者</td><td>177条（対抗関係）</td><td>先に登記を備えること</td><td><strong>必要</strong></td></tr>
+    <tr><td>共同相続の持分超過処分</td><td>—（無権利の法理）</td><td>—（法定相続分は登記なく対抗可：899条の2参照）</td><td>—</td></tr>
+    <tr><td>相続放棄後の差押え等</td><td>—（放棄の遡及効は絶対）</td><td>—（第三者は常に負ける）</td><td>放棄者側に登記<strong>不要</strong></td></tr>
+    <tr><td>遺産分割<strong>前</strong>の第三者</td><td>909条ただし書</td><td>権利保護要件として登記</td><td><strong>必要</strong></td></tr>
+    <tr><td>遺産分割<strong>後</strong>の第三者</td><td>177条・899条の2</td><td>先に登記を備えること</td><td><strong>必要</strong></td></tr>
+  </table>
+
+  <div class="key">
+    全体を貫く<strong>3つの思考ステップ</strong>：<br>
+    ① まず<strong>無権利の法理</strong>を適用してみる（原則：真の権利者の勝ち）<br>
+    ② 次に<strong>第三者保護の特則</strong>（94条2項・95条4項・96条3項・545条1項ただし書・909条ただし書）が使えないか探す<br>
+    ③ 「事件の<strong>前か後か</strong>」で枠組みが変わらないか確認する（後なら177条の対抗関係＝登記の早い者勝ち）<br>
+    この3ステップさえ身につければ、講義31〜40の全パターンが解けます。
+  </div>
+</div>
+
+<!-- ========== 講義31 ========== -->
+<div class="section" id="lec31">
+  <div class="section-header">
+    <div class="section-num">31</div>
+    <h2>無権利の法理の使い方</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p><strong>「持っていない人からは、買えない」</strong>。売主が無権利者なら、買主は登記を備えても所有権を取得できない——これが無権利の法理です。</p>
+
+  <div class="analogy">
+    友だちのゲーム機を勝手に「売る契約」をしても、ゲーム機の持ち主は変わりませんよね。<br>
+    AがCのゲーム機を「Bに売るよ」と約束し、Bが代金を払い、「所有者B」というシールまで貼った（＝登記）。それでも持ち主はCのまま。<br>
+    <strong>シール（登記）は魔法のアイテムではない</strong>。Aが無権利なら、A→Bのルートで権利が流れてくることはあり得ないのです。<br>
+    法格言でいえば「<strong>何人も自己の有する以上の権利を他人に譲り渡すことはできない</strong>」。
+  </div>
+
+  <h3>基本事例</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">甲土地の所有者は<br>ずっとC</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">無権利者Aが<br>Bに甲土地を売却</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">Bが所有権移転登記を<br>備えてしまった</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">Cは登記の抹消を<br>Bに請求できる</div>
+  </div>
+
+  <p>Cの請求の法律構成：<strong>所有権に基づく妨害排除請求権</strong>を訴訟物として、Bに対し<strong>所有権移転登記の抹消登記手続</strong>を求める。Bの名義の登記は、Cの所有権の円満な実現を「妨害」している状態だからです。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：無権利の法理</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">無権利の法理</span>
+        <ul>
+          <li>
+            <span class="node l1">内容</span>
+            <ul>
+              <li><span class="node l2">無権利者からは権利を承継取得できない</span></li>
+              <li><span class="node l2">登記を備えても結論は変わらない</span></li>
+              <li><span class="node l3">→ 日本の登記には「公信力」がない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">真の権利者Cの武器</span>
+            <ul>
+              <li><span class="node l2">所有権に基づく妨害排除請求 → 抹消登記手続請求</span></li>
+              <li><span class="node l2">所有権に基づく返還請求 → 明渡請求（Bが占有する場合）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Bが助かる可能性（例外ルート）</span>
+            <ul>
+              <li><span class="node accent">時効取得（162条）→ ただし「原始取得」</span></li>
+              <li><span class="node accent">94条2項（類推）など第三者保護規定 → 講義32以降</span></li>
+              <li><span class="node l3">※ 動産なら即時取得（192条）があるが、不動産にはない</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>承継取得 vs 原始取得</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🔗 承継取得</h4>
+      <p><strong>前の人から権利を受け継ぐ</strong></p>
+      <ul>
+        <li>例：売買、贈与、相続</li>
+        <li>前主が無権利なら<strong>取得できない</strong></li>
+        <li>前主の権利の傷（抵当権など）も引き継ぐ</li>
+        <li>比喩：バトンリレー（バトンがなければ渡せない）</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>✨ 原始取得</h4>
+      <p><strong>自分のところで新しい権利が生まれる</strong></p>
+      <ul>
+        <li>例：時効取得（162条）、即時取得（192条）</li>
+        <li>前主が無権利でも<strong>取得できる</strong></li>
+        <li>まっさらな権利を取得（反射的に旧所有権は消滅）</li>
+        <li>比喩：自分で新しいバトンを作る</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    <strong>登記に公信力なし</strong>——これが日本の不動産法の大前提。<br>
+    「登記簿にAが所有者と書いてあったから信じて買った」というだけでは、Bは保護されません。<br>
+    だからこそ、<strong>第三者を救う特別規定（94条2項類推など）がどこまで使えるか</strong>が、講義32以降の大テーマになるのです。
+  </div>
+
+  <div class="warn">
+    「登記を備えた者が勝つ（177条）」と「無権利の法理」を混同しないこと。<br>
+    177条の対抗問題は、<strong>双方とも有効な取引で権利を取得しうる立場にある</strong>場合（二重譲渡など）の優劣ルール。<br>
+    一方が<strong>そもそも無権利</strong>なら、177条の出番はなく、登記の有無は無関係に真の権利者が勝ちます。<br>
+    まず「両者は対抗関係か、それとも一方が無権利か」を見極めるのが第一歩。
+  </div>
+
+  <div class="quiz">
+    Q1: 無権利者Aから甲土地を買ったBが移転登記を備えた。真の所有者Cは登記がなくてもBに勝てるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>勝てる。Aは無権利者だから、BはAから所有権を承継取得できない（無権利の法理）。CとBは対抗関係（177条）に立たず、Bの登記は法的に無価値。Cは所有権に基づく妨害排除請求として抹消登記手続を請求できる。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: それでもBが甲土地の所有権を取得できる場合があるとすれば？（ヒント：原始取得）</summary>
+      <p>Bが甲土地を所有の意思をもって平穏・公然に長期間占有を続ければ、<strong>取得時効</strong>（162条：善意無過失なら10年、それ以外は20年）により所有権を取得しうる。これは承継取得ではなく<strong>原始取得</strong>であり、Bのところで新しい所有権が誕生し、その反射として元のCの所有権が消滅する、という構造である。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義32 ========== -->
+<div class="section" id="lec32">
+  <div class="section-header">
+    <div class="section-num">32</div>
+    <h2>法律行為の無効と第三者</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>C→Aの売買契約が<strong>無効</strong>なら、Aは結局無権利者。A→Bの転売にも無権利の法理が貫徹され、Bは原則負けます。ただし<strong>虚偽表示（94条2項）の場面では善意の第三者Bが勝つ</strong>——これが最大の例外です。</p>
+
+  <div class="flow">
+    <div class="flow-item f-blue">C → A 売買<br><small>※実は無効</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">A → B 転売</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">CA間が無効なら<br>Aは無権利者</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">原則：Bも<br>取得できない</div>
+  </div>
+
+  <div class="analogy">
+    水道のたとえ：所有権という「水」は C → A → B というパイプを流れてきます。<br>
+    <strong>CA間の契約が無効</strong>＝最初のパイプが最初から繋がっていなかった、ということ。<br>
+    上流が繋がっていなければ、下流のBの蛇口から水（所有権）が出るはずがない。<br>
+    ——ところが94条2項は、<strong>「C自身がわざと偽物のパイプを設置して見せた」場合</strong>には、それを信じたBに水を届けてあげる、という特別配管なのです。
+  </div>
+
+  <h3>無効原因のいろいろ</h3>
+  <table>
+    <tr><th>無効原因</th><th>条文</th><th>例</th><th>第三者保護</th></tr>
+    <tr><td>公序良俗違反</td><td>90条</td><td>愛人契約、暴利行為</td><td>なし（誰に対しても無効）</td></tr>
+    <tr><td>強行法規違反</td><td>91条参照</td><td>法律の禁止に反する契約</td><td>なし</td></tr>
+    <tr><td>心裡留保（相手方が悪意・有過失）</td><td>93条1項ただし書</td><td>冗談と知りつつ承諾</td><td><strong>あり</strong>（93条2項：善意の第三者）</td></tr>
+    <tr><td>虚偽表示</td><td>94条1項</td><td>差押え逃れの偽装売買</td><td><strong>あり</strong>（94条2項：善意の第三者）</td></tr>
+  </table>
+
+  <h3>94条2項 — 第三者保護の王様</h3>
+  <p>CとAが通謀して「売ったことにする」偽装売買（虚偽表示）をした場合、CA間の売買は無効（94条1項）。しかし、その外観を信じてAから買った<strong>善意の第三者Bには、無効を対抗できない</strong>（94条2項）。Bとの関係では、CA間売買は有効として扱われ、Bは所有権を取得します。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：94条2項とその類推適用</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">虚偽表示と第三者（94条）</span>
+        <ul>
+          <li>
+            <span class="node l1">原則（1項）</span>
+            <ul>
+              <li><span class="node l2">通謀虚偽表示は無効 → Aは無権利者</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">例外（2項）：善意の第三者に無効を対抗できない</span>
+            <ul>
+              <li><span class="node l2">趣旨：自ら虚偽の外観を作ったCの帰責性 ＋ Bの信頼保護</span></li>
+              <li><span class="node l3">「善意」＝虚偽表示の事実を知らないこと</span></li>
+              <li><span class="node l3">判例：無過失は不要、登記も不要とするのが基本</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">94条2項の類推適用（重要！）</span>
+            <ul>
+              <li><span class="node accent">通謀がなくても「虚偽の外観＋本人の帰責性＋第三者の信頼」があれば類推</span></li>
+              <li><span class="node l2">例：Cが知りながらA名義の登記を放置した場合</span></li>
+              <li><span class="node l2">外観作出への関与が弱い場合 → 94条2項＋110条の法意（善意無過失を要求）</span></li>
+              <li><span class="node l3">→ 公信力のない不動産登記を実質的に補う判例法理</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    94条2項の正当化の方程式：<br>
+    <strong>権利者の帰責性（自分で嘘の外観を作った）× 第三者の信頼（外観を信じた）＝ 第三者の勝ち</strong><br>
+    この「帰責性 × 信頼」という発想（権利外観法理）は、これから何度も登場します。96条3項も、表見代理も、みんなこの方程式の仲間です。
+  </div>
+
+  <div class="warn">
+    90条（公序良俗違反）の無効には第三者保護規定が<strong>ありません</strong>。<br>
+    愛人契約で譲渡された不動産を事情を知らない第三者が買っても、保護されないのが原則。<br>
+    「無効ならなんでも94条2項」ではなく、<strong>条文ごとに第三者保護の有無を確認する</strong>癖をつけましょう。理由はシンプルで、90条違反の場面では権利者に「外観を作った帰責性」という構図が当てはまらず、むしろ社会秩序のために効力を否定するからです。
+  </div>
+
+  <div class="quiz">
+    Q1: Cは債権者の差押えを逃れるため、Aと示し合わせて甲土地をAに売ったことにし、A名義の登記をした。Aがこれを善意のBに転売した。CはBに登記の抹消を請求できるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>請求できない。CA間の売買は通謀虚偽表示として無効（94条1項）だが、Bは虚偽表示について善意の第三者なので、Cは無効をBに対抗できない（94条2項）。Bとの関係では有効な売買として扱われ、Bは甲土地の所有権を取得する。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: CとAの通謀はなかったが、Cが勝手に作られたA名義の登記を知りながら長年放置していた場合は？</summary>
+      <p>94条2項を直接適用はできない（通謀虚偽表示がない）が、「虚偽の外観（A名義登記）＋Cの帰責性（知りつつ放置）＋Bの信頼」が揃えば、判例は<strong>94条2項の類推適用</strong>により善意のBを保護する。Cの関与の度合いが弱い事案では94条2項と110条の法意を併用し、Bに善意無過失まで要求する判例もある。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義33 ========== -->
+<div class="section" id="lec33">
+  <div class="section-header">
+    <div class="section-num">33</div>
+    <h2>法律行為の取消しと第三者</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>取り消されると契約は<strong>「初めから無効」</strong>（遡及的無効・121条）。だからAは遡って無権利者になり、Bは原則負ける。ただし判例は、<strong>取消しの「後」に現れた第三者</strong>との関係を<strong>177条の対抗問題（登記の早い者勝ち）</strong>として処理します。</p>
+
+  <h3>基本事例の構造</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">C → A 売買<br><small>（当時Cは真の所有者）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">A → B 売買</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">CがCA間契約を<br>取消し</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">遡及的無効（121条）<br>Aは遡って無権利者に</div>
+  </div>
+
+  <p>取消しがなければ、CA間・AB間それぞれに176条が適用され、C→A→Bと所有権が順次移転します。Cが「甲土地は私の物」と主張しても、Bから「CA間売買による<strong>所有権喪失の抗弁</strong>」が出て、Cは負けるはずでした。ところが取消しによって、CA間の移転が<strong>遡って消える</strong>。ここから攻防が始まります。</p>
+
+  <div class="analogy">
+    取消しは「<strong>ビデオの巻き戻しボタン</strong>」。<br>
+    押した瞬間、C→Aの所有権移転シーンが録画ごと消去され、「最初からAに渡っていなかった」ことになる（遡及効）。<br>
+    でも現実世界では、巻き戻しボタンが押される<strong>前</strong>にBが登場していたかもしれないし、押された<strong>後</strong>に登場したかもしれない。<br>
+    民法は、<strong>ボタンが押された時点より前にいた人（取消前の第三者）と、後から来た人（取消後の第三者）とで、扱いを変える</strong>のです。
+  </div>
+
+  <h3>取消前の第三者 vs 取消後の第三者</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>⏪ 取消「前」の第三者</h4>
+      <p><strong>Bが買った後にCが取り消した</strong></p>
+      <ul>
+        <li>枠組み：取消しの遡及効 → 無権利の法理</li>
+        <li>原則：Cの勝ち</li>
+        <li>例外：<strong>95条4項・96条3項</strong>（錯誤・詐欺なら善意無過失のBを保護）</li>
+        <li>強迫・制限行為能力には保護規定なし → Bは負ける</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>⏩ 取消「後」の第三者</h4>
+      <p><strong>Cが取り消した後にBが買った</strong></p>
+      <ul>
+        <li>枠組み：<strong>177条の対抗問題</strong>（判例）</li>
+        <li>取消しによりA→Cへ「復帰的物権変動」が起きたと観念</li>
+        <li>AからみてCとBへの<strong>二重譲渡類似</strong>の関係</li>
+        <li>→ <strong>先に登記を備えた方の勝ち</strong>（Bの善意・悪意は問わない）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：取消後の第三者はなぜ177条なのか</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">取消後の第三者（判例：大判昭和17年）</span>
+        <ul>
+          <li>
+            <span class="node l1">理論構成：復帰的物権変動</span>
+            <ul>
+              <li><span class="node l2">取消しによって所有権がA→Cへ「戻る」変動が生じたと見る</span></li>
+              <li><span class="node l2">他方でAはBにも譲渡 → A起点の二重譲渡と同じ構図</span></li>
+              <li><span class="node l3">C（取り戻す人）とB（買った人）は対抗関係 → 177条</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">実質的理由</span>
+            <ul>
+              <li><span class="node accent">取り消したCは、すぐ登記を取り戻せたはず</span></li>
+              <li><span class="node accent">登記を放置したCの怠慢 vs 登記を信じたB → Cだけを守る理由はない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">帰結</span>
+            <ul>
+              <li><span class="node l2">Bが先に登記 → Bの勝ち（悪意でもよい）</span></li>
+              <li><span class="node l2">Cが先に登記回復 → Cの勝ち</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    時間軸で枠組みが切り替わる——これがこの講義の最重要ポイント。<br>
+    <strong>取消し前</strong>：遡及的無効 → 無権利の法理（＋95条4項・96条3項の例外）<br>
+    <strong>取消し後</strong>：復帰的物権変動 → 177条の対抗関係（登記の早い者勝ち）<br>
+    答案では必ず「Bが現れたのは取消しの前か後か」を最初に確定させること。
+  </div>
+
+  <div class="warn">
+    「取り消したからCの勝ちで終わり」ではありません。<br>
+    取消し後にCが<strong>登記を回復しないまま放置</strong>すると、登記名義は依然Aのまま。これを信じて買ったBに登記を先に備えられたら、<strong>取り消したはずのCが負けます</strong>。<br>
+    教訓：<strong>取り消したら、すぐ登記を取り戻せ</strong>。権利の上に眠る者は保護されない。
+  </div>
+
+  <div class="quiz">
+    Q1: CがAへの売買を詐欺を理由に取り消した。その1か月後、Aが登記名義を持っていることを利用してBに転売し、Bが移転登記を備えた。CとBはどちらが勝つか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>Bの勝ち。Bは<strong>取消後の第三者</strong>なので、判例の枠組みでは取消しによる復帰的物権変動（A→C）とAB間の譲渡が二重譲渡類似の対抗関係に立ち、177条により<strong>先に登記を備えたB</strong>が優先する。この場面では96条3項は使わない（96条3項は取消「前」の第三者を守る規定）。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: 同じ事案で、Bがまだ登記を備えていなかったら？</summary>
+      <p>対抗関係では「登記を先に備えた者」が勝つので、双方未登記の間はどちらも所有権取得を相手に対抗できない状態。Cが先に抹消登記・回復登記を済ませればCの勝ち。だからこそ取消後の権利者は一刻も早く登記を回復すべきことになる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義34 ========== -->
+<div class="section" id="lec34">
+  <div class="section-header">
+    <div class="section-num">34</div>
+    <h2>取消権者に帰責性のある取消原因 — 錯誤・詐欺の特則</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>取消原因には<strong>「取消権者に落ち度があるもの（錯誤・詐欺）」と「ないもの（強迫・制限行為能力）」</strong>があります。落ち度がある場面に限って、民法は<strong>善意無過失の第三者を守る特則（95条4項・96条3項）</strong>を置きました。</p>
+
+  <h3>取消原因のカタログ</h3>
+  <table>
+    <tr><th>取消原因</th><th>条文</th><th>取消権者の帰責性</th><th>取消前の第三者の保護</th></tr>
+    <tr><td>未成年者・成年被後見人・被保佐人・被補助人の行為</td><td>5条・9条・13条・17条</td><td>なし（保護されるべき弱者）</td><td><strong>なし</strong>（第三者は負ける）</td></tr>
+    <tr><td>強迫による意思表示</td><td>96条1項</td><td>なし（脅された被害者）</td><td><strong>なし</strong>（96条3項の対象外）</td></tr>
+    <tr><td>錯誤（重要な錯誤）</td><td>95条1項</td><td><strong>あり</strong>（自分で勘違いした）</td><td><strong>あり</strong>：95条4項（善意無過失）</td></tr>
+    <tr><td>詐欺による意思表示</td><td>96条1項</td><td><strong>あり</strong>（騙されたとはいえ自ら意思表示した）</td><td><strong>あり</strong>：96条3項（善意無過失）</td></tr>
+  </table>
+
+  <div class="analogy">
+    学校で例えると——<br>
+    <strong>強迫された人・未成年者</strong>＝いじめっ子に無理やりサインさせられた子、まだ判断力が育っていない子。<strong>本人に責められる点がゼロ</strong>なので、学校（民法）は全面的に守る。周りが困っても助けない。<br>
+    <strong>錯誤・詐欺の人</strong>＝勘違いした人、うまい話に乗せられた人。気の毒だけど「<strong>あなたにも少し不注意があったよね</strong>」と言える。だから、何も知らずに巻き込まれた第三者との比較考量で、<strong>第三者の方を守ることがある</strong>。<br>
+    帰責性の天秤——これが95条4項・96条3項の正体です。
+  </div>
+
+  <h3>分析の基本構造（先生の整理）</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">大原則<br><small>取消しの遡及効＋無権利の法理<br>→ C（取消権者）の勝ち</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">特則①<br><small>取消「後」の第三者<br>→ 177条の対抗要件主義</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">特則②<br><small>錯誤・詐欺の取消「前」の第三者<br>→ 95条4項・96条3項で保護</small></div>
+  </div>
+
+  <p>つまり、どの取消原因でも共通の土台は「<strong>無権利の法理が原則、取消後の第三者には対抗要件主義</strong>」。そのうえで、取消権者に帰責性のある<strong>錯誤・詐欺に限って</strong>、取消前の善意無過失の第三者を救う第3層が乗ります。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：帰責性で分かれる第三者保護</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">取消原因と第三者保護</span>
+        <ul>
+          <li>
+            <span class="node l1">帰責性なしグループ → 第三者保護なし</span>
+            <ul>
+              <li><span class="node danger">制限行為能力 → 取引の安全より本人保護を徹底</span></li>
+              <li><span class="node danger">強迫 → 被害者に何の落ち度もない</span></li>
+              <li><span class="node l3">→ 取消前の第三者は善意無過失でも負ける</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">帰責性ありグループ → 第三者保護あり</span>
+            <ul>
+              <li><span class="node accent">錯誤 → 95条4項：善意かつ無過失の第三者に対抗不可</span></li>
+              <li><span class="node accent">詐欺 → 96条3項：善意かつ無過失の第三者に対抗不可</span></li>
+              <li><span class="node l3">※2017年改正で両者とも「無過失」要件が明文化され平仄が揃った</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    暗記より「理屈」で覚える：<br>
+    <strong>第三者保護規定があるか否かは、元の権利者を犠牲にしてよいだけの帰責性が元の権利者にあるか</strong>で決まる。<br>
+    ・94条2項（虚偽表示）：自分で嘘の外観を作った → 帰責性<strong>大</strong> → 第三者は<strong>善意だけ</strong>でOK<br>
+    ・95条4項・96条3項（錯誤・詐欺）：落ち度はあるが被害者でもある → 帰責性<strong>中</strong> → 第三者に<strong>善意＋無過失</strong>を要求<br>
+    ・強迫・制限行為能力：帰責性<strong>ゼロ</strong> → 第三者保護<strong>なし</strong><br>
+    帰責性が小さいほど、第三者に要求されるハードルが上がる（または保護されない）——きれいなスライド構造です。
+  </div>
+
+  <div class="warn">
+    <strong>「詐欺と強迫はセット」ではない！</strong><br>
+    96条1項では並んでいる詐欺と強迫ですが、3項（第三者保護）は<strong>詐欺だけ</strong>。強迫による取消しは善意無過失の第三者にも対抗できます。<br>
+    試験で最も狙われる引っかけポイントなので、「<strong>強迫は最強</strong>（取消しを誰にでも主張できる）」と覚えましょう。
+  </div>
+
+  <div class="quiz">
+    Q1: 17歳のCが親の同意なく甲土地をAに売り、AがBに転売した後、Cが未成年を理由に取り消した。Bは善意無過失だった。Bは保護されるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>保護されない。制限行為能力を理由とする取消しには、錯誤・詐欺と異なり<strong>取消前の第三者を保護する規定がない</strong>。取消しの遡及効によりAは無権利者となり、無権利の法理によってBは所有権を取得できない。未成年者保護は取引の安全に優先する。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: CがAに騙されて甲土地を売り、Aがそれを善意無過失のBに転売した。その後Cが詐欺取消しをした。Bは？</summary>
+      <p>Bは保護される（96条3項）。Bは<strong>取消前の第三者</strong>であり、詐欺について善意かつ無過失なので、Cは取消しの効果（遡及的無効）をBに対抗できない。なお2017年改正前は条文上「善意」のみだったが、改正で「善意でかつ過失がない第三者」と明文化された。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義35 ========== -->
+<div class="section" id="lec35">
+  <div class="section-header">
+    <div class="section-num">35</div>
+    <h2>法律行為の取消しと第三者：総括 — 三層構造で一望する</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>取消しと第三者の問題は、<strong>「①無権利の法理（原則）→ ②取消後の第三者は177条 → ③錯誤・詐欺なら取消前の善意無過失の第三者を95条4項・96条3項で保護」</strong>という三層構造で全部説明できます。</p>
+
+  <h3>95条4項・96条3項の法的性質 — 法定承継取得</h3>
+  <p>ここが講義35の核心。95条4項・96条3項でBが守られるとき、<strong>取り消されたCA間の契約が「有効に戻る」わけではありません</strong>。もし有効に戻るなら、AはCに対する原状回復義務（121条の2）を免れる等、おかしな結果になります。そうではなく——</p>
+
+  <div class="flow">
+    <div class="flow-item f-red">CA間契約は<br>取消しで無効のまま</div>
+    <div class="flow-arrow">＋</div>
+    <div class="flow-item f-blue">AB間契約も<br>本来は空振りのはず</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">民法が特別に<br><strong>CからBへ直接</strong><br>所有権を承継取得させる</div>
+  </div>
+
+  <div class="analogy">
+    宅配便のたとえ：C→A→Bと荷物（所有権）をリレー輸送する予定が、C→A便がキャンセルされた（取消し）。<br>
+    本来ならBに荷物は届かない。でも民法は、落ち度のないBのために、<strong>C宅からB宅へ直送する特別便</strong>を仕立てるのです（法定の承継取得）。<br>
+    A経由のルートが復活したわけではない——ここがポイント。
+  </div>
+
+  <div class="mindmap">
+    <div class="mindmap-title">総括思維導図：取消しと第三者の全体構造</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">取消しと第三者：三層構造</span>
+        <ul>
+          <li>
+            <span class="node l1">第1層：大原則</span>
+            <ul>
+              <li><span class="node l2">取消し → 遡及的無効（121条）→ Aは遡って無権利者</span></li>
+              <li><span class="node l2">無権利の法理 → Bは取得できず、Cの勝ち</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">第2層：取消「後」の第三者の特則</span>
+            <ul>
+              <li><span class="node accent">復帰的物権変動 → CとBは対抗関係（177条）</span></li>
+              <li><span class="node l3">登記を先に備えた方の勝ち（B の善意・悪意不問）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">第3層：取消「前」の第三者の特則（錯誤・詐欺のみ）</span>
+            <ul>
+              <li><span class="node accent">95条4項・96条3項 → 善意無過失のBに取消しを対抗不可</span></li>
+              <li><span class="node l2">性質：CからBへの直接の法定承継取得</span></li>
+              <li><span class="node l3">CA間契約が有効に転じるのではない</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>パターン総まとめ表（暗記用）</h3>
+  <table>
+    <tr><th>取消原因</th><th>取消「前」のB</th><th>取消「後」のB</th></tr>
+    <tr><td>制限行為能力</td><td>保護なし → Cの勝ち</td><td rowspan="4" style="vertical-align:middle;"><strong>すべて共通：</strong><br>177条の対抗関係<br>＝先に登記を備えた方の勝ち<br>（Bの善意・悪意不問）</td></tr>
+    <tr><td>強迫</td><td>保護なし → Cの勝ち</td></tr>
+    <tr><td>錯誤</td><td>Bが善意無過失なら<strong>Bの勝ち</strong>（95条4項）</td></tr>
+    <tr><td>詐欺</td><td>Bが善意無過失なら<strong>Bの勝ち</strong>（96条3項）</td></tr>
+  </table>
+
+  <div class="key">
+    答案・思考の手順（これだけで取消し系は完答できる）：<br>
+    ① Bの登場は<strong>取消しの前か後か</strong>を確定する<br>
+    ② <strong>後</strong>なら → 復帰的物権変動 → 177条 → 登記の先後で決着<br>
+    ③ <strong>前</strong>なら → 取消原因は何か？ 錯誤・詐欺なら95条4項・96条3項を検討（Bの善意無過失）。強迫・制限行為能力なら保護規定なし → Cの勝ち
+  </div>
+
+  <div class="warn">
+    第三者保護規定（95条4項・96条3項）の「第三者」は、<strong>取消し前に新たに独立の法律上の利害関係に入った者</strong>に限られます。<br>
+    ・転得者、抵当権の設定を受けた者 → ○ 第三者にあたる<br>
+    ・Bの単なる債権者、相続人（包括承継人）→ × あたらない<br>
+    また、保護を受けるBに<strong>登記まで必要か</strong>は解釈が分かれます（判例には登記不要と読めるものがあるが、学説では権利保護要件として登記を要求する見解が有力）。論述では一言触れると好印象。
+  </div>
+
+  <div class="quiz">
+    Q1: 95条4項でBが保護される場合、「取り消されたCA間の契約がBとの関係で有効になる」という説明はなぜ誤りか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>もしCA間契約が有効に戻るなら、C→A→Bと順次承継取得したことになり、CA間の原状回復関係（121条の2）等と整合しなくなる。正しくは、<strong>CA間契約は無効のまま</strong>で、民法が善意無過失のBを保護するために<strong>CからBへ直接所有権を承継取得させる</strong>（法定の承継取得）と構成する。Bの登場で無効な契約が treated as 有効になるわけではない。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: 「強迫による取消し後」にAから買ったBと、「詐欺による取消し前」に買った善意無過失のB。それぞれの処理枠組みは？</summary>
+      <p>前者：取消<strong>後</strong>の第三者なので、取消原因が強迫でも詐欺でも関係なく、復帰的物権変動の構成により<strong>177条の対抗関係</strong>（登記の先後）で決まる。<br>後者：取消<strong>前</strong>の第三者で原因が詐欺なので、<strong>96条3項</strong>により善意無過失のBが保護され、Cは取消しを対抗できない。<br>「前か後か」→「原因は何か」の順で判定するのが鉄則。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義36 ========== -->
+<div class="section" id="lec36">
+  <div class="section-header">
+    <div class="section-num">36</div>
+    <h2>契約解除と第三者 — 545条1項ただし書</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>解除の効果も<strong>遡及的無効</strong>。だから基本構造は「取消しと第三者」とそっくり。ただし解除には<strong>545条1項ただし書</strong>という専用の第三者保護規定があり、解除前の第三者は<strong>善意・悪意を問わず</strong>、<strong>登記を備えていれば</strong>守られます。</p>
+
+  <h3>基本事例</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">C → A 売買<br><small>Aが代金を払わない</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">A → B 転売</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">Cが債務不履行を理由に<br>CA間契約を解除（541条）</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">遡及的無効<br>→ CがBに明渡請求</div>
+  </div>
+
+  <div class="analogy">
+    解除と取消しは「兄弟」です。どちらも巻き戻しボタン（遡及的無効）。違いはボタンを押す理由——<br>
+    <strong>取消し</strong>＝契約の<strong>生まれつきの欠陥</strong>（騙された・勘違い・未成年）を理由に押す。<br>
+    <strong>解除</strong>＝契約は健康に生まれたが、<strong>後から相手が約束を破った</strong>（代金不払い等）から押す。<br>
+    そして第三者Bからみると、解除原因（Aの代金不払い）は<strong>外から見ても分かりようがない</strong>。だから545条1項ただし書は、Bの善意・悪意を問わないのです。「知っていたかどうか」を問題にする意味がない場面だから。
+  </div>
+
+  <h3>解除前の第三者：545条1項ただし書</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：契約解除と第三者</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">契約解除と第三者</span>
+        <ul>
+          <li>
+            <span class="node l1">解除の効果（直接効果説＝判例）</span>
+            <ul>
+              <li><span class="node l2">契約は遡及的に無効 → 原状回復義務（545条1項本文）</span></li>
+              <li><span class="node l2">→ Aは遡って無権利者 → 無権利の法理でBは負けるはず</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">解除「前」の第三者：545条1項ただし書</span>
+            <ul>
+              <li><span class="node accent">「第三者の権利を害することはできない」</span></li>
+              <li><span class="node l2">善意・悪意を<strong>問わない</strong>（解除原因を知っていてもOK）</span></li>
+              <li><span class="node l2">ただし判例：第三者は<strong>登記（権利保護要件）</strong>を備えること</span></li>
+              <li><span class="node l3">理由：保護に値する地位を自ら固めた者だけを救う</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">解除「後」の第三者</span>
+            <ul>
+              <li><span class="node accent">復帰的物権変動 → CとBは177条の対抗関係</span></li>
+              <li><span class="node l3">→ 先に登記を備えた方の勝ち（取消後と同じ処理）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>取消しとの比較 — ここが試験のド本命</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>⏪ 解除「前」の第三者</h4>
+      <ul>
+        <li>根拠：<strong>545条1項ただし書</strong></li>
+        <li>主観的要件：<strong>不要</strong>（善意・悪意不問）</li>
+        <li>客観的要件：<strong>登記必要</strong>（権利保護要件）</li>
+        <li>※詐欺の96条3項（善意無過失要求）との違いに注意</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>⏩ 解除「後」の第三者</h4>
+      <ul>
+        <li>根拠：<strong>177条</strong>（対抗関係）</li>
+        <li>復帰的物権変動の構成（取消後と同じ）</li>
+        <li><strong>先に登記</strong>を備えた方が勝つ</li>
+        <li>善意・悪意不問</li>
+      </ul>
+    </div>
+  </div>
+
+  <table>
+    <tr><th>比較項目</th><th>詐欺取消し前の第三者（96条3項）</th><th>解除前の第三者（545条1項但書）</th></tr>
+    <tr><td>善意</td><td><strong>必要</strong></td><td>不要</td></tr>
+    <tr><td>無過失</td><td><strong>必要</strong></td><td>不要</td></tr>
+    <tr><td>登記</td><td>争いあり（不要説・必要説）</td><td><strong>必要</strong>（判例：権利保護要件）</td></tr>
+    <tr><td>理由</td><td>詐欺の存在は知りうる事情だから主観を問う</td><td>解除原因（債務不履行）は外から分からないから主観を問わず、代わりに登記で線引き</td></tr>
+  </table>
+
+  <div class="key">
+    なぜ「登記」が要件になるのか（権利保護要件としての登記）：<br>
+    545条1項ただし書のBとCは、厳密には対抗関係（177条）ではありません。それでも判例が登記を要求するのは、<strong>「保護してほしいなら、自分の権利をきちんと固めた者であれ」</strong>という発想。これを<strong>権利保護（資格）要件としての登記</strong>と呼び、対抗要件としての登記と区別します。同じ「登記」でも理屈が違う——ここを区別できると一気に上級者です。
+  </div>
+
+  <div class="warn">
+    545条1項ただし書で保護される「第三者」は、<strong>解除前に、解除された契約の目的物について新たな権利を取得した者</strong>です。<br>
+    ・解除前にAから買って登記を備えたB → ○<br>
+    ・Aの単なる債権者、Bからさらに賃借しただけの者（事案による） → 慎重に検討<br>
+    また<strong>解除「後」の第三者には545条1項ただし書は適用されません</strong>（177条で処理）。条文の射程を時間軸で切るのを忘れずに。
+  </div>
+
+  <div class="quiz">
+    Q1: CがAに甲土地を売却し、AはBに転売してBが移転登記を備えた。その後、Aの代金不払いを理由にCが解除した。Bは解除原因を知っていた（悪意）。CのBに対する明渡請求は認められるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>認められない。Bは<strong>解除前の第三者</strong>であり、545条1項ただし書により保護される。同条の第三者は<strong>善意・悪意を問わず</strong>、判例の要求する<strong>登記（権利保護要件）</strong>もBは備えている。よってCは解除の遡及効をBに対抗できず、Bが所有権を保持する。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: Bへの転売が「解除の後」だった場合はどう変わる？</summary>
+      <p>545条1項ただし書は使えず、<strong>解除後の第三者</strong>として処理する。解除による復帰的物権変動（A→C）とAB間譲渡が二重譲渡類似の関係となり、<strong>177条</strong>により先に登記を備えた方が勝つ。Bが先に登記をしていればB、Cが先に登記を回復していればCの勝ち。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義37 ========== -->
+<div class="section" id="lec37">
+  <div class="section-header">
+    <div class="section-num">37</div>
+    <h2>時効取得と第三者 — 「完成の前か後か」で世界が変わる</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>長年占有して時効取得した人と、その土地を元の所有者から買った第三者の対決。判例ルールは明快で、<strong>時効完成「前」に現れた第三者には登記なしで勝てる。時効完成「後」に現れた第三者とは177条の対抗関係（登記の早い者勝ち）</strong>になります。</p>
+
+  <h3>基本事例</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">Cが甲土地を<br>20年以上占有</div>
+    <div class="flow-arrow">＋</div>
+    <div class="flow-item f-orange">所有者Aが<br>甲土地をBに売却</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">BがCに<br>明渡請求</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">Cの抗弁：<br>時効取得による<br>所有権喪失</div>
+  </div>
+
+  <p>訴訟での攻防：Cは、①ある時点の占有と20年以上経過後の占有（占有継続は推定される：186条2項）、②時効援用の意思表示（145条）を主張すればよい。占有はそれだけで「所有の意思・平穏・公然」が推定されます（186条1項）。Cの時効取得は<strong>原始取得</strong>——Cのところで新しい所有権が生まれ、反射的に元の所有権が消滅します。</p>
+
+  <div class="analogy">
+    時効完成は「ゴールテープを切る瞬間」。<br>
+    <strong>完成前にBが買った場合</strong>：Cはまだ走っている途中。ゴールした瞬間の土地の持ち主はもうBなので、Cは「<strong>Bの土地を時効取得した</strong>」ことになる。BとCは「元の所有者 vs 時効取得者」という<strong>当事者の関係</strong>——対抗問題ではないので、Cに登記は不要。<br>
+    <strong>完成後にBが買った場合</strong>：Cはもうゴール済み（所有権取得済み）。その後にAがBに売った——これは<strong>AからCとBへの二重譲渡みたいな構図</strong>。だから177条で登記の早い者勝ち。<br>
+    「ゴールの瞬間に誰が所有者だったか」だけを見ればいいのです。
+  </div>
+
+  <h3>時効完成前の第三者 vs 完成後の第三者</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>⏪ 時効完成「前」の第三者B</h4>
+      <ul>
+        <li>Cは<strong>Bの所有権</strong>を時効取得する関係</li>
+        <li>CとBは<strong>当事者類似の関係</strong>（対抗問題でない）</li>
+        <li>→ Cは<strong>登記なくして</strong>Bに時効取得を主張できる</li>
+        <li>判例：最判昭41.11.22ほか確立</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>⏩ 時効完成「後」の第三者B</h4>
+      <ul>
+        <li>時効完成でA→C、売買でA→B</li>
+        <li>A起点の<strong>二重譲渡類似</strong> → <strong>177条</strong></li>
+        <li>→ <strong>先に登記</strong>を備えた方の勝ち</li>
+        <li>判例：大連判大14.7.8ほか確立</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：時効と登記の判例ルール5点セット</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">時効取得と第三者（判例法理）</span>
+        <ul>
+          <li>
+            <span class="node l1">① 当事者間：登記不要</span>
+            <ul>
+              <li><span class="node l3">時効取得者は元所有者に登記なしで主張できる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">② 完成前の第三者：登記不要</span>
+            <ul>
+              <li><span class="node l3">①と同じく当事者類似の関係だから</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">③ 完成後の第三者：177条（登記必要）</span>
+            <ul>
+              <li><span class="node l3">二重譲渡類似 → 登記の先後で決まる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">④ 起算点は占有開始時に固定</span>
+            <ul>
+              <li><span class="node accent">起算点を勝手に後ろにずらして「完成前の第三者」化することは許されない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">⑤ 敗れても再起動できる</span>
+            <ul>
+              <li><span class="node accent">完成後の第三者の登記時点から、さらに時効期間占有を続ければ再度時効取得できる（最判昭36.7.20）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    なぜ「起算点の固定」（ルール④）が大事か：<br>
+    もし占有者が起算点を自由に選べたら、「Bの登記の後から数え始めたことにすれば、Bはいつでも完成前の第三者になる」＝<strong>登記ルール（③）が骨抜き</strong>になってしまう。<br>
+    だから判例は「時効の基礎たる事実（占有）の開始時点」から数えることを強制し、③と④をセットで機能させています。ルールは単品でなく<strong>連動するシステム</strong>として覚えること。
+  </div>
+
+  <div class="warn">
+    「時効取得は原始取得だから、登記の有無に関係なく常に勝てる」は<strong>誤り</strong>。<br>
+    原始取得性は「前主の権利の瑕疵を引き継がない」という取得の性質の話。<strong>完成後の第三者との優劣</strong>は別問題で、判例は177条の対抗問題として処理します。<br>
+    「原始取得＝無敵」と覚えてしまうのが初学者の典型的な落とし穴です。
+  </div>
+
+  <div class="quiz">
+    Q1: Cの取得時効が完成した後、元所有者Aが甲土地をBに売却し、Bが移転登記を備えた。Cは時効取得をBに主張できるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>主張できない（原則）。Bは<strong>時効完成後の第三者</strong>なので、CとBは二重譲渡類似の対抗関係に立ち、177条により<strong>先に登記を備えたB</strong>が優先する。ただしCがBの登記の時点からさらに時効期間（例：20年）占有を継続すれば、Bを起点とする再度の時効取得が可能（ルール⑤）。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: 逆に、Cの占有開始から15年目にAがBへ売却・登記移転し、その後Cの占有が通算20年に達した場合は？</summary>
+      <p>Cの勝ち。Bは<strong>時効完成前の第三者</strong>であり、Cは「Bの所有権」を時効取得する当事者類似の関係に立つから、Cは<strong>登記なくして</strong>Bに時効取得を対抗できる。Bへの売却・登記があっても、Cの占有が中断されない限り時効は進行し続ける。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義38 ========== -->
+<div class="section" id="lec38">
+  <div class="section-header">
+    <div class="section-num">38</div>
+    <h2>法定共同相続と第三者 — 持分を超える処分は空振り</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>相続人B・Cが1/2ずつ共同相続した土地を、Bが「全部自分のもの」のような単独名義の登記にして第三者Dに売っても、<strong>Cの持分については無権利の法理でDは取得できません</strong>。Cは<strong>登記なしで自分の法定相続分をDに主張できます</strong>（899条の2第1項の反対解釈）。</p>
+
+  <h3>基本事例</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">所有者Aが死亡<br><small>B・Cが1/2ずつ共同相続</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">Bが単独相続したかの<br>ような登記を備える</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">Bが甲土地全部を<br>Dに売却・登記移転</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">CはDに自己の持分<br>1/2を主張できる</div>
+  </div>
+
+  <div class="analogy">
+    兄弟でホールケーキを半分ずつ相続したのに、兄Bが「全部オレのケーキ」という札を立てて、丸ごと友人Dに売ってしまった。<br>
+    でも兄が本当に持っていたのは<strong>半分だけ</strong>。自分の半分は売れるけど、<strong>弟Cの半分は最初から兄の物ではない</strong>ので、売ろうにも売れない（無権利の法理）。<br>
+    札（登記）に「全部B」と書いてあっても、札に魔法の力はない——講義31の原則がそのまま効いています。
+  </div>
+
+  <h3>処理の構造</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：法定共同相続と第三者</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">共同相続不動産の無断処分</span>
+        <ul>
+          <li>
+            <span class="node l1">Bの持分1/2について</span>
+            <ul>
+              <li><span class="node l2">Bは正当な権利者 → Dは有効に持分を取得</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Cの持分1/2について</span>
+            <ul>
+              <li><span class="node danger">Bは無権利者 → 無権利の法理 → Dは取得できない</span></li>
+              <li><span class="node l2">判例（最判昭38.2.22）：Cは登記なくして持分をDに対抗できる</span></li>
+              <li><span class="node l2">現在は899条の2第1項が明文で確認：<strong>法定相続分までは登記不要</strong></span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">結果</span>
+            <ul>
+              <li><span class="node accent">甲土地はCとDの共有（各1/2）になる</span></li>
+              <li><span class="node l3">Cの救済：D名義登記の一部抹消（更正登記手続）請求</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>899条の2 — 2018年相続法改正の重要条文</h3>
+  <div class="term">
+    <strong>民法899条の2第1項</strong>：相続による権利の承継は、遺産分割によるものかどうかにかかわらず、<strong>法定相続分を超える部分</strong>については、登記その他の対抗要件を備えなければ第三者に対抗することができない。<br><br>
+    裏返すと——<br>
+    ・<strong>法定相続分まで</strong>の取得 → 登記<strong>なし</strong>で第三者に対抗できる（本講義の場面。Cの1/2はこれ）<br>
+    ・<strong>法定相続分を超える</strong>取得（遺産分割・相続させる遺言などで多めにもらった部分）→ 登記がないと第三者に対抗<strong>できない</strong>（講義40の場面）<br>
+    この線引きが、講義38〜40を貫く背骨になります。
+  </div>
+
+  <table>
+    <tr><th>Dが取得できるか</th><th>対象</th><th>理由</th></tr>
+    <tr><td>○ 取得できる</td><td>Bの持分1/2</td><td>Bは自己の持分の正当な処分権者</td></tr>
+    <tr><td>× 取得できない</td><td>Cの持分1/2</td><td>Bは無権利者（無権利の法理）。Cは法定相続分につき登記なくして対抗可（899条の2第1項反対解釈）</td></tr>
+  </table>
+
+  <div class="key">
+    共同相続の場面は<strong>「対抗問題ではなく無権利の問題」</strong>。<br>
+    CとDは甲土地のCの持分について争っているが、その持分はBから一度もDに流れていない（流れようがない）。よって177条の出番はなく、登記の先後も無関係。<br>
+    講義31で学んだ無権利の法理が、相続の場面でもそのまま貫徹される——美しい一貫性です。
+  </div>
+
+  <div class="warn">
+    では94条2項類推でDを救えないか？——原則として<strong>No</strong>。<br>
+    Cが「B単独名義の虚偽の登記」の作出に関与した、または知りながら長期間放置した等の<strong>Cの帰責性</strong>がある特段の事情がない限り、類推の基礎を欠きます。単に相続登記をしていなかっただけのCに、虚偽の外観を作った帰責性はありません。
+  </div>
+
+  <div class="quiz">
+    Q1: B・Cが共同相続（各1/2）した甲土地につき、Bが単独名義の登記をしてDに全部を売却・登記。CはDに何をどこまで主張できる？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>Cは自己の<strong>法定相続分1/2の持分権</strong>を、登記なくしてDに対抗できる（無権利の法理＋899条の2第1項の反対解釈、最判昭38.2.22）。Dの登記のうちCの持分に関する部分は無効なので、Cは持分権に基づく妨害排除として登記の<strong>更正手続</strong>を請求できる。結果として甲土地はC・Dの共有（各1/2）。Bの持分1/2はDが有効に取得する。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: この事案で「DとCは177条の対抗関係だから先に登記したDの勝ち」という処理はなぜ間違い？</summary>
+      <p>177条の対抗問題は、同一の前主から両立しえない権利を取得した者同士の優劣の問題。Cの持分はBを経由してDに移転する可能性が<strong>そもそもない</strong>（Bはその部分につき無権利）から、CとDは対抗関係に立たない。一方が無権利のときは無権利の法理で処理し、登記の先後は問わない——講義31の判別基準そのもの。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義39 ========== -->
+<div class="section" id="lec39">
+  <div class="section-header">
+    <div class="section-num">39</div>
+    <h2>相続放棄と第三者 — 遡及効は絶対に貫く</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>相続放棄をすると<strong>「初めから相続人でなかった」</strong>ことになります（939条）。判例はこの遡及効を<strong>絶対的</strong>なものとし、放棄の前後を問わず、<strong>第三者（差押債権者を含む）は登記なくして放棄の効果を否定できません</strong>。取消し・解除・遺産分割と違って「後の第三者は177条」という切り替えが<strong>起きない</strong>のが最大の特徴です。</p>
+
+  <h3>基本事例（講義の事案）</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">Aが死亡<br><small>B・Cが共同相続（各1/2）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">Bの債権者Dが<br>Bに代位して持分登記<br>→ Bの持分を差押え</div>
+    <div class="flow-arrow">＋</div>
+    <div class="flow-item f-red">Bは有効に<br>相続放棄をしていた</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">Cが第三者異議の訴え<br>（民執38条）で<br>差押えの排除を求める</div>
+  </div>
+
+  <p>Bが放棄すると、Bは<strong>初めから相続人でなかった</strong>ことになり、甲土地はCの単独所有（に遡って確定）。するとDが差し押さえた「Bの持分」は<strong>存在しない権利</strong>だったことになります。Cは、強制執行の目的物について所有権を有する第三者として、<strong>第三者異議の訴え</strong>で差押えの排除を求められるか——問題は、Cがこの結果（単独所有）を<strong>登記なしで</strong>Dに主張できるか、です。</p>
+
+  <div class="analogy">
+    相続放棄は「<strong>最初からゲームに参加していなかった</strong>」宣言。<br>
+    途中まで参加して抜ける（途中退場）のではなく、エントリー名簿から名前が消える。名簿から消えた人の「持ち点」を差し押さえても、<strong>そんな持ち点は最初から存在しなかった</strong>のだから空振りです。<br>
+    取消しや解除では「巻き戻し後の世界でも、第三者保護や対抗問題の調整が入る」のに、相続放棄では調整なしの完全巻き戻し。それだけ<strong>「借金ごと相続を拒否する自由」</strong>を民法が重く見ているということです。
+  </div>
+
+  <h3>判例ルール：最判昭和42年1月20日</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：相続放棄と第三者</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">相続放棄の遡及効（939条）は絶対的</span>
+        <ul>
+          <li>
+            <span class="node l1">手続</span>
+            <ul>
+              <li><span class="node l2">家庭裁判所への申述（938条）・熟慮期間3か月（915条）</span></li>
+              <li><span class="node l2">効果：初めから相続人とならなかったものとみなす（939条）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">判例（最判昭42.1.20）</span>
+            <ul>
+              <li><span class="node accent">放棄の遡及効は<strong>何人に対しても、登記なくして</strong>主張できる</span></li>
+              <li><span class="node l2">放棄「後」に現れた差押債権者にも勝てる（177条の対抗問題にならない）</span></li>
+              <li><span class="node l3">理由：放棄者は遡って無権利 → 差押えの対象が不存在（無権利の法理の貫徹）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Cの救済手段</span>
+            <ul>
+              <li><span class="node l2">第三者異議の訴え（民事執行法38条）で差押えの排除</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>相続放棄 vs 遺産分割 — 同じ遡及効でも結論が逆</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🚫 相続放棄（939条）</h4>
+      <ul>
+        <li>遡及効は<strong>絶対的</strong></li>
+        <li>第三者保護規定<strong>なし</strong></li>
+        <li>放棄の前後を問わず、登記なくして第三者に対抗<strong>できる</strong></li>
+        <li>理由：①家裁の申述で時期・有無が画一的に明確 ②債務からの解放という制度趣旨を貫く必要</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🍰 遺産分割（909条）</h4>
+      <ul>
+        <li>遡及効に<strong>ただし書</strong>あり（分割前の第三者保護）</li>
+        <li>分割<strong>後</strong>の第三者には対抗要件主義（899条の2・177条）</li>
+        <li>法定相続分を超える取得は<strong>登記がないと負ける</strong></li>
+        <li>理由：分割は当事者の合意次第で内容も時期も外から見えにくく、取引の安全への配慮が必要 → 講義40へ</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    なぜ相続放棄だけ「絶対的遡及効」が許されるのか：<br>
+    ① 放棄は<strong>家庭裁判所への申述</strong>という公的手続で行われ、3か月の熟慮期間内（915条）と時期も限定されている → 仮装・遡及の濫用のおそれが小さい<br>
+    ② 放棄は<strong>借金（債務）からの解放</strong>を含む制度。第三者との調整で効果が骨抜きになると、相続人保護という制度目的が果たせない<br>
+    ③ 差押債権者Dは、Bの「持分」というもともと不確実な期待を当てにしただけ → 保護の必要性が相対的に低い
+  </div>
+
+  <div class="warn">
+    「遡及効のある制度は、後の第三者とは177条」という講義33・36のパターンを<strong>機械的に当てはめてはいけない場面</strong>がここ。<br>
+    取消し・解除・遺産分割 → 「後」の第三者とは対抗関係になる。<br>
+    <strong>相続放棄 → ならない（常に放棄側の勝ち）</strong>。<br>
+    例外の例外こそ試験で問われます。「放棄は絶対」と一行で記憶に刻みましょう。
+  </div>
+
+  <div class="quiz">
+    Q1: Bの相続放棄の「前」にDがBの持分を差し押さえていた場合と「後」に差し押さえた場合とで、結論は変わるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>変わらない。判例（最判昭42.1.20参照）は相続放棄の遡及効（939条）を絶対的なものと解し、放棄者Bは初めから無権利だったことになるから、差押えの前後を問わず、Cは<strong>登記なくして</strong>単独所有をDに主張できる。Dの差押えは存在しない持分を対象とした空振りであり、Cは第三者異議の訴え（民執38条）で排除できる。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: 取消後・解除後の第三者は177条で処理するのに、放棄後の第三者にはなぜ177条を使わないのか？</summary>
+      <p>取消し・解除では、いったん有効に権利を取得した者からの「復帰的物権変動」を観念でき、登記を回復しない権利者の怠慢も非難できる。これに対し相続放棄は、家裁への申述という画一的・公的な手続により短い熟慮期間内に行われ、効果として相続人資格自体が遡って消滅する。判例は939条の文言どおり「初めから相続人でなかった」ことを貫き、復帰的物権変動を観念しない。債務承継の拒否という制度趣旨の徹底もこの結論を支える。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義40 ========== -->
+<div class="section" id="lec40">
+  <div class="section-header">
+    <div class="section-num">40</div>
+    <h2>遺産分割と第三者 — 分割の前か後かで二段構え</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>遺産分割にも遡及効があります（909条本文）が、<strong>分割「前」の第三者は909条ただし書</strong>で、<strong>分割「後」の第三者は対抗要件主義（899条の2・177条）</strong>で守られます。相続放棄と違い、<strong>遺産分割の遡及効は第三者との関係で大幅に制限される</strong>のです。</p>
+
+  <h3>基本事例（講義の事案：分割後の第三者）</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">Aが死亡<br><small>B・C共同相続（各1/2）<br>その旨の相続登記済み</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">遺産分割で<br>甲土地はC単独所有に</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">Bが自己名義の持分を<br>Dに売却</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">C単独所有か<br>C・D共有か？</div>
+  </div>
+
+  <p>分割によりCは甲土地を単独所有したはず（909条本文：相続開始時に遡って効力発生）。しかしBの登記名義（持分1/2）が残っており、Dはそれを買った——CはDに「全部私の物」と言えるのか。Cが提起するのは<strong>所有権確認の訴え</strong>です。</p>
+
+  <div class="analogy">
+    遺産分割は「兄弟の話し合いによる<strong>陣地の引き直し</strong>」。<br>
+    最初は法律が自動的に半分ずつ線を引いてくれた（法定相続分）。その後、話し合いで「この土地は全部C」と線を引き直した。<br>
+    でも、この引き直しは<strong>兄弟の部屋の中で決めたこと</strong>で、外の人には見えません。地図（登記）を書き換えないまま放っておいたら、古い地図を信じて「Bの陣地」を買う人が現れても文句は言えない。<br>
+    だから民法は言います——<strong>「引き直した線は、地図（登記）に反映してはじめて外の人に主張できる」</strong>（899条の2）。
+  </div>
+
+  <h3>分割「前」と「後」の二段構え</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>⏪ 分割「前」の第三者</h4>
+      <p><small>例：分割前にBの持分をDが買い受けた</small></p>
+      <ul>
+        <li>根拠：<strong>909条ただし書</strong>「第三者の権利を害することができない」</li>
+        <li>分割の遡及効はDに及ばない → Dの持分取得は有効のまま</li>
+        <li>通説：Dには<strong>登記（権利保護要件）</strong>が必要</li>
+        <li>善意・悪意は問わないと解されている</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>⏩ 分割「後」の第三者</h4>
+      <p><small>例：分割後にBの登記名義の持分をDが買い受けた（本講義の事案）</small></p>
+      <ul>
+        <li>根拠：<strong>899条の2第1項</strong>（＋判例：最判昭46.1.26は177条で処理）</li>
+        <li>Cの「法定相続分を<strong>超える</strong>部分」（Bの旧持分1/2）の取得は、<strong>登記がなければDに対抗できない</strong></li>
+        <li>→ 登記の早い者勝ち。Dが先に持分移転登記を備えればC・D共有に</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：遺産分割と第三者の処理</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">遺産分割と第三者</span>
+        <ul>
+          <li>
+            <span class="node l1">遺産分割の効力（909条本文）</span>
+            <ul>
+              <li><span class="node l2">相続開始時に遡って効力を生じる（遡及効・宣言主義）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">分割前の第三者（909条ただし書）</span>
+            <ul>
+              <li><span class="node l2">遡及効から保護される（権利を害せない）</span></li>
+              <li><span class="node l3">権利保護要件として登記が必要（通説）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">分割後の第三者（本講義の事案）</span>
+            <ul>
+              <li><span class="node accent">判例：分割は実質的に「持分の移転」とみて177条（最判昭46.1.26）</span></li>
+              <li><span class="node accent">現在：899条の2第1項が明文化 — 法定相続分超過分は対抗要件必要</span></li>
+              <li><span class="node l2">Cが先に登記 → C単独所有確定／Dが先に登記 → C・D共有</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">相続放棄との対比</span>
+            <ul>
+              <li><span class="node danger">放棄：遡及効は絶対（登記不要で勝てる）</span></li>
+              <li><span class="node l2">分割：遡及効は第三者との関係で制限（登記が必要）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>相続3部作の総まとめ表</h3>
+  <table>
+    <tr><th>場面</th><th>争いの対象</th><th>処理</th><th>登記の要否</th></tr>
+    <tr><td>㊳ 共同相続＋勝手な全部処分</td><td>他の相続人の法定相続分</td><td>無権利の法理（Cの勝ち）</td><td>C側に<strong>不要</strong>（899条の2第1項反対解釈）</td></tr>
+    <tr><td>㊴ 相続放棄＋差押え</td><td>放棄者の（消えた）持分</td><td>遡及効の絶対的貫徹（Cの勝ち）</td><td>C側に<strong>不要</strong></td></tr>
+    <tr><td>㊵ 遺産分割（分割前の第三者）</td><td>分割前に処分された持分</td><td>909条ただし書でD保護</td><td>D側に<strong>必要</strong>（権利保護要件）</td></tr>
+    <tr><td>㊵ 遺産分割（分割後の第三者）</td><td>法定相続分を超える取得分</td><td>対抗問題（899条の2・177条）</td><td><strong>先に登記した方の勝ち</strong></td></tr>
+  </table>
+
+  <div class="key">
+    覚え方：<strong>「法定相続分が分水嶺」</strong>。<br>
+    ・法定相続分<strong>まで</strong>の権利 → 法律が自動で与えたもの。登記なしで誰にでも主張できる。<br>
+    ・法定相続分を<strong>超える</strong>権利（遺産分割・相続させる旨の遺言で上乗せされた部分）→ 当事者間の行為で得たもの。<strong>登記してはじめて第三者に主張できる</strong>（899条の2）。<br>
+    「自動付与は登記不要、上乗せは登記必要」——この一行で相続と登記の現代ルールを貫通できます。
+  </div>
+
+  <div class="warn">
+    「遺産分割にも遡及効があるから、相続放棄と同じく絶対に勝てる」は誤り。<br>
+    分割の遡及効は<strong>909条ただし書と899条の2によって二重に制限</strong>されており、実際の機能は「持分の交換・移転」に近い（だから判例も対抗問題として処理した）。<br>
+    同じ「遡及効」という言葉でも、<strong>放棄＝絶対型／分割＝制限型</strong>。言葉の同一性に騙されないこと。
+  </div>
+
+  <div class="quiz">
+    Q1: 遺産分割で甲土地がC単独所有となったが登記未了の間に、BがDに自己名義の持分1/2を売却し、Dが持分移転登記を備えた。甲土地の権利関係は？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>C・Dの共有（各1/2）となる。Cの取得のうち法定相続分1/2を超える部分（Bの旧持分）は、<strong>登記を備えなければ第三者Dに対抗できない</strong>（899条の2第1項、判例：最判昭46.1.26）。Dが先に登記を備えた以上、Cはその部分の取得をDに対抗できず、Cの所有権確認請求は持分1/2の限度でしか認められない。</p>
+    </details>
+    <details>
+      <summary>💬 Q2: 講義38（共同相続）ではCは登記なしで勝てたのに、講義40（遺産分割後）では登記がないと負ける。この違いを一言で説明すると？</summary>
+      <p>争われている権利が<strong>法定相続分の内か外か</strong>の違い。講義38でCが守ったのは法定相続分そのもの（法律が当然に与えた権利。Bはその部分につき無権利者）だから登記不要。講義40でCが主張したいのは遺産分割による<strong>法定相続分を超える上乗せ部分</strong>（実質はBからの持分移転）だから、対抗要件としての登記が必要になる（899条の2）。</p>
+    </details>
+    <details>
+      <summary>💬 Q3: この10講義を貫く「3ステップ思考法」を自分の言葉で再現してみよう。</summary>
+      <p>①まず<strong>無権利の法理</strong>を当てはめる（無権利者からは取得できない＝真の権利者の勝ちが原則）。②次に、その場面専用の<strong>第三者保護の特則</strong>がないか条文を探す（94条2項・95条4項・96条3項・545条1項ただし書・909条ただし書）。③最後に、第三者の登場が問題の事件（取消し・解除・時効完成・遺産分割）の<strong>前か後か</strong>を確認し、「後」なら177条の対抗関係（登記の早い者勝ち）に切り替わらないか検討する——ただし<strong>相続放棄だけは例外</strong>で、前後を問わず遡及効が貫かれる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 用語集 ========== -->
+<div class="section" id="glossary">
+  <div class="section-header">
+    <div class="section-num">📖</div>
+    <h2>初学者向け用語集</h2>
+  </div>
+
+  <table>
+    <tr><th>用語</th><th>読み</th><th>意味（やさしく）</th><th>登場講義</th></tr>
+    <tr><td>無権利の法理</td><td>むけんりのほうり</td><td>持っていない人からは買えない。無権利者からの譲受人は権利を取得できない大原則</td><td>㉛〜㊵</td></tr>
+    <tr><td>公信力</td><td>こうしんりょく</td><td>登記を信じた人を守る力。日本の不動産登記にはこれが「ない」</td><td>㉛</td></tr>
+    <tr><td>承継取得</td><td>しょうけいしゅとく</td><td>前の人から権利を受け継ぐ取得（売買・相続など）。前主が無権利なら空振り</td><td>㉛㉜</td></tr>
+    <tr><td>原始取得</td><td>げんししゅとく</td><td>自分のところで新しい権利が生まれる取得（時効取得など）。前主の権利の傷を引き継がない</td><td>㉛㊲</td></tr>
+    <tr><td>妨害排除請求権</td><td>ぼうがいはいじょせいきゅうけん</td><td>所有権の邪魔（無効な登記など）をどかせと請求する物権的請求権</td><td>㉛㊳</td></tr>
+    <tr><td>通謀虚偽表示</td><td>つうぼうきょぎひょうじ</td><td>相手とグルになってした嘘の意思表示。無効（94条1項）だが善意の第三者には対抗できない（同2項）</td><td>㉜</td></tr>
+    <tr><td>94条2項類推適用</td><td>るいすいてきよう</td><td>通謀がなくても「嘘の外観＋本人の帰責性＋第三者の信頼」が揃えば94条2項と同じ扱いをする判例法理</td><td>㉜</td></tr>
+    <tr><td>権利外観法理</td><td>けんりがいかんほうり</td><td>「帰責性×信頼」で第三者を守る考え方の総称。94条2項類推や表見代理の根っこ</td><td>㉜㉞</td></tr>
+    <tr><td>遡及的無効</td><td>そきゅうてきむこう</td><td>取消し・解除によって契約が「初めから無効」になること（121条・545条）</td><td>㉝㊱</td></tr>
+    <tr><td>取消前の第三者</td><td>とりけしまえのだいさんしゃ</td><td>取消しより先に利害関係に入った人。錯誤・詐欺なら95条4項・96条3項で保護されうる</td><td>㉝㉞㉟</td></tr>
+    <tr><td>取消後の第三者</td><td>とりけしごのだいさんしゃ</td><td>取消しの後に現れた人。復帰的物権変動の構成で177条の対抗関係になる</td><td>㉝㉟</td></tr>
+    <tr><td>復帰的物権変動</td><td>ふっきてきぶっけんへんどう</td><td>取消し・解除で所有権が元の持ち主へ「戻る」動きを一つの物権変動とみる判例上の説明道具</td><td>㉝㊱</td></tr>
+    <tr><td>帰責性</td><td>きせきせい</td><td>「あなたにも落ち度があるよね」と言える事情。第三者保護規定の有無・強弱を決める物差し</td><td>㉞</td></tr>
+    <tr><td>善意無過失</td><td>ぜんいむかしつ</td><td>事情を知らず（善意）、知らないことに不注意もない（無過失）こと。95条4項・96条3項の要件</td><td>㉞㉟</td></tr>
+    <tr><td>法定承継取得</td><td>ほうていしょうけいしゅとく</td><td>96条3項等で守られる第三者が、無効な契約の復活ではなく法律の力で元所有者から直接権利を取得すること</td><td>㉟</td></tr>
+    <tr><td>権利保護要件としての登記</td><td>けんりほごようけん</td><td>対抗問題ではないのに「保護してほしいなら登記を備えよ」と要求される登記（545条1項但書・909条但書）</td><td>㊱㊵</td></tr>
+    <tr><td>直接効果説</td><td>ちょくせつこうかせつ</td><td>解除により契約が遡って消滅するとみる判例・通説の立場</td><td>㊱</td></tr>
+    <tr><td>時効の援用</td><td>じこうのえんよう</td><td>「時効の利益を受けます」という意思表示（145条）。これがないと裁判所は時効で裁判できない</td><td>㊲</td></tr>
+    <tr><td>占有の推定</td><td>せんゆうのすいてい</td><td>占有はそれだけで「所有の意思・平穏・公然」と推定され（186条1項）、両時点の占有で継続も推定される（同2項）</td><td>㊲</td></tr>
+    <tr><td>起算点の固定</td><td>きさんてんのこてい</td><td>取得時効は占有開始時から数える。起算点を動かして「完成前の第三者」を作り出すことは許されない</td><td>㊲</td></tr>
+    <tr><td>法定相続分</td><td>ほうていそうぞくぶん</td><td>法律が自動的に決める相続の取り分（900条）。この範囲の取得は登記なしで第三者に対抗できる</td><td>㊳㊵</td></tr>
+    <tr><td>899条の2</td><td>はっぴゃくきゅうじゅうきゅうじょうのに</td><td>法定相続分を「超える」部分の承継は、登記等の対抗要件がないと第三者に対抗できないとする2018年改正の条文</td><td>㊳㊵</td></tr>
+    <tr><td>相続放棄</td><td>そうぞくほうき</td><td>家裁への申述により「初めから相続人でなかった」ことにする制度（938条・939条）。遡及効は絶対的</td><td>㊴</td></tr>
+    <tr><td>第三者異議の訴え</td><td>だいさんしゃいぎのうったえ</td><td>自分の物が他人の借金のカタに差し押さえられたとき、執行の排除を求める訴え（民事執行法38条）</td><td>㊴</td></tr>
+    <tr><td>遺産分割</td><td>いさんぶんかつ</td><td>共同相続人の話し合い等で遺産の最終的な帰属を決めること。遡及効あり（909条本文）だが第三者との関係で制限される</td><td>㊵</td></tr>
+  </table>
+</div>
+
+<!-- ========== Footer ========== -->
+<div style="text-align:center; padding: 30px; color: var(--text-light); font-size: 0.85em;">
+  <p>msahkie先生の民法講義に基づく学習ガイド</p>
+  <p>法律未修者向け知識点整理・拡展</p>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>

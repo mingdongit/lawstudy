@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義1〜10 学習ガイド（法律未修者向け）</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --primary: #2c5f8a;
+    --secondary: #e8f0f8;
+    --accent: #d4740e;
+    --accent-light: #fff5eb;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #dfe6e9;
+    --success: #00b894;
+    --danger: #e17055;
+    --info: #74b9ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #2c5f8a 0%, #1a3a5c 100%);
+    color: white;
+    border-radius: 16px;
+    margin-bottom: 30px;
+  }
+  .header h1 { font-size: 2em; margin-bottom: 10px; }
+  .header p { opacity: 0.9; font-size: 1.05em; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+
+  /* Navigation */
+  .nav {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav:hover, .nav:focus-within {
+    max-height: 600px;
+  }
+  .nav h3 { margin-bottom: 10px; color: var(--primary); font-size: 0.95em; cursor: pointer; }
+  .nav h3::after { content: " ▼"; font-size: 0.7em; }
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .nav a {
+    display: block;
+    padding: 8px 12px;
+    background: var(--secondary);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.88em;
+    transition: all 0.2s;
+  }
+  .nav a:hover { background: var(--primary); color: white; }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--secondary);
+  }
+  .section-num {
+    background: var(--primary);
+    color: white;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 1.35em; color: var(--primary); }
+
+  /* Subsection */
+  h3 {
+    color: var(--primary);
+    font-size: 1.1em;
+    margin: 24px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  h4 {
+    color: var(--accent);
+    font-size: 1em;
+    margin: 16px 0 8px;
+  }
+
+  /* Analogy box */
+  .analogy {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .analogy::before {
+    content: "💡 たとえ話";
+    display: block;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Key point */
+  .key {
+    background: #eef7ee;
+    border-left: 4px solid var(--success);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .key::before {
+    content: "✅ 重要ポイント";
+    display: block;
+    font-weight: bold;
+    color: var(--success);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Warning */
+  .warn {
+    background: #fff3f0;
+    border-left: 4px solid var(--danger);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .warn::before {
+    content: "⚠️ 注意・よくある誤解";
+    display: block;
+    font-weight: bold;
+    color: var(--danger);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Term */
+  .term {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .term::before {
+    content: "📖 用語解説";
+    display: block;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Quiz */
+  .quiz {
+    background: #f0eeff;
+    border: 2px dashed #6c5ce7;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .quiz::before {
+    content: "🧪 理解度チェック";
+    display: block;
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+  .quiz details {
+    margin-top: 8px;
+  }
+  .quiz summary {
+    cursor: pointer;
+    color: #6c5ce7;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .quiz details p {
+    margin-top: 6px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92em;
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:nth-child(even) { background: var(--secondary); }
+  tr:hover { background: #dbeafe; }
+
+  /* Mind map */
+  .mindmap {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .mindmap-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 16px;
+    font-size: 1.05em;
+  }
+
+  /* Tree structure */
+  .tree { padding-left: 0; list-style: none; }
+  .tree ul { padding-left: 28px; list-style: none; position: relative; }
+  .tree ul::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 12px;
+    border-left: 2px solid var(--border);
+  }
+  .tree li {
+    position: relative;
+    padding: 4px 0 4px 0;
+  }
+  .tree ul > li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 14px;
+    width: 14px;
+    border-top: 2px solid var(--border);
+  }
+  .tree .node {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+  .node.root { background: var(--primary); color: white; font-size: 1em; padding: 8px 20px; }
+  .node.l1 { background: #4a90c4; color: white; }
+  .node.l2 { background: var(--secondary); color: var(--primary); border: 1px solid #b0cfe0; }
+  .node.l3 { background: #f1f5f1; color: var(--text); border: 1px solid #c8d6c8; font-size: 0.85em; }
+  .node.accent { background: var(--accent-light); color: #b35c00; border: 1px solid #f0c8a0; }
+  .node.danger { background: #fff0ee; color: #c0392b; border: 1px solid #f0b0a0; }
+
+  /* Flow diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 16px 0;
+    justify-content: center;
+  }
+  .flow-item {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 0.88em;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-arrow {
+    font-size: 1.4em;
+    color: var(--text-light);
+    padding: 0 4px;
+  }
+  .flow .f-blue { background: var(--secondary); color: var(--primary); border: 2px solid #a0c4e0; }
+  .flow .f-green { background: #e8f8e8; color: #1e7e34; border: 2px solid #a0d8a0; }
+  .flow .f-orange { background: var(--accent-light); color: #b35c00; border: 2px solid #f0c8a0; }
+  .flow .f-red { background: #fff0ee; color: #c0392b; border: 2px solid #f0b0a0; }
+
+  /* Comparison */
+  .vs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: start;
+    margin: 16px 0;
+  }
+  .vs-box {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid;
+  }
+  .vs-box.left { border-color: #4a90c4; background: #f0f6fc; }
+  .vs-box.right { border-color: #e0a040; background: #fdf8f0; }
+  .vs-box h4 { margin-top: 0; text-align: center; }
+  .vs-mid {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--text-light);
+    align-self: center;
+  }
+
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 24px; }
+  li { margin: 4px 0; }
+  strong { color: var(--primary); }
+
+  @media (max-width: 768px) {
+    body { padding: 10px; }
+    .section { padding: 18px; }
+    .header h1 { font-size: 1.4em; }
+    .nav-grid { grid-template-columns: 1fr 1fr; }
+    .vs { grid-template-columns: 1fr; }
+    .vs-mid { text-align: center; }
+    .flow { flex-direction: column; align-items: center; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== Header ========== -->
+<div class="header">
+  <h1>民法講義 1〜10 学習ガイド</h1>
+  <p>法律未修者のための基礎から理解する民法入門</p>
+  <div class="badge">msahkie先生の講義に基づく整理・拡展</div>
+</div>
+
+<!-- ========== Navigation ========== -->
+<div class="nav">
+  <h3>📑 目次（クリックでジャンプ）</h3>
+  <div class="nav-grid">
+    <a href="#overview">全体マップ</a>
+    <a href="#lec1">① 民法＝ブルジョワ法</a>
+    <a href="#lec2">② 日本民法典の成立</a>
+    <a href="#lec3">③ パンデクテン体系</a>
+    <a href="#lec4">④ 物権と債権</a>
+    <a href="#lec5">⑤ 三位一体性</a>
+    <a href="#lec6">⑥ 強制執行・執行保全</a>
+    <a href="#lec7">⑦ 破産法</a>
+    <a href="#lec8">⑧ 債権の人的担保</a>
+    <a href="#lec9">⑨ 物的担保：抵当権</a>
+    <a href="#lec10">⑩ 別除権</a>
+    <a href="#glossary">用語集</a>
+  </div>
+</div>
+
+<!-- ========== 全体マップ ========== -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-num">📍</div>
+    <h2>全体マップ：講義1〜10は何を学ぶのか</h2>
+  </div>
+
+  <p>最初の10回の講義は、民法という巨大な法体系の<strong>「見取り図」</strong>を描くものです。家を建てる前に設計図を見るように、まず全体像をつかむことが目的です。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">🗺️ 講義1〜10 全体思維導図</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">民法とは何か</span>
+        <ul>
+          <li>
+            <span class="node l1">Part A：歴史と体系（講義1-3）</span>
+            <ul>
+              <li><span class="node l2">① なぜ民法が生まれたか（ブルジョワ革命）</span></li>
+              <li><span class="node l2">② 日本民法はどう作られたか（四大原則）</span></li>
+              <li><span class="node l2">③ 民法はどう整理されているか（パンデクテン体系）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part B：二大権利（講義4）</span>
+            <ul>
+              <li><span class="node l2">④ 物権と債権 — 民法の二本柱</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part C：権利をどう実現するか（講義5-7）</span>
+            <ul>
+              <li><span class="node l2">⑤ 民法・訴訟法・執行法の三位一体</span></li>
+              <li><span class="node l2">⑥ 強制執行の仕組み</span></li>
+              <li><span class="node l2">⑦ 全員が破産の場面 — 破産法</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part D：権利を守る仕組み（講義8-10）</span>
+            <ul>
+              <li><span class="node l2">⑧ 人で担保する — 連帯保証</span></li>
+              <li><span class="node l2">⑨ 物で担保する — 抵当権</span></li>
+              <li><span class="node l2">⑩ 破産でも守られる — 別除権</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="analogy">
+    サッカーにたとえると：<br>
+    <strong>Part A</strong> = サッカーの歴史とルールブックの構造を知る<br>
+    <strong>Part B</strong> = 攻撃（債権）と守備（物権）の基本を理解する<br>
+    <strong>Part C</strong> = 試合の進め方（訴訟→判決→執行）を学ぶ<br>
+    <strong>Part D</strong> = 負けないための保険（担保）を理解する
+  </div>
+</div>
+
+<!-- ========== 講義1 ========== -->
+<div class="section" id="lec1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <h2>民法＝ブルジョワ法</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>民法は、市民革命（ブルジョワ革命）によって生まれた「<strong>資本主義のルールブック</strong>」です。</p>
+
+  <div class="analogy">
+    中世ヨーロッパは「生まれ」で人生が決まるゲームでした（貴族の子は貴族、農民の子は農民）。<br>
+    市民革命とは、このゲームのルールを変えて「<strong>お金と実力で勝負できるゲーム</strong>」にしたということです。<br>
+    民法は、この新しいゲームの公式ルールブックです。
+  </div>
+
+  <h3>歴史の流れ</h3>
+  <div class="flow">
+    <div class="flow-item f-red">中世封建社会<br><small>身分制・農業中心</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">生産力向上<br><small>余剰生産物の交易</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">貨幣経済の隆盛<br><small>商工業者が力を持つ</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">市民革命<br><small>1789年フランス革命</small></div>
+  </div>
+  <div class="flow">
+    <div class="flow-item f-green">ブルジョワ社会の成立</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">民法の誕生<br><small>資本主義の基本法</small></div>
+  </div>
+
+  <h3>なぜ「ブルジョワ法」なのか</h3>
+  <div class="key">
+    民法が保障する3つの自由は、すべて商工業者（ブルジョワ）の経済活動に必要なもの：<br>
+    ① <strong>誰でも平等に商売できる</strong>（法人格平等）<br>
+    ② <strong>稼いだ財産は国に取られない</strong>（所有権絶対）<br>
+    ③ <strong>商売の契約は自由にできる</strong>（契約自由）
+  </div>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：なぜ民法はブルジョワ法か</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">民法＝ブルジョワ法</span>
+        <ul>
+          <li>
+            <span class="node l1">背景：封建社会の崩壊</span>
+            <ul>
+              <li><span class="node l2">生産力向上 → 商人が富を蓄積</span></li>
+              <li><span class="node l2">貨幣経済 → 身分より資本が重要に</span></li>
+              <li><span class="node l2">ウェストファリア条約（1648）→ 国民国家の形成</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">転換点：市民革命</span>
+            <ul>
+              <li><span class="node l2">フランス革命（1789）が代表格</span></li>
+              <li><span class="node l2">支配階級が王侯貴族 → 資本家に交代</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">結果：民法の誕生</span>
+            <ul>
+              <li><span class="node accent">所有権の保障 → 安心して投資できる</span></li>
+              <li><span class="node accent">契約の自由 → 自由に商取引できる</span></li>
+              <li><span class="node accent">法的平等 → 身分に関係なく経済参加</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>重要キーワード</h3>
+  <table>
+    <tr><th>キーワード</th><th>意味</th><th>覚え方</th></tr>
+    <tr><td>ブルジョワ</td><td>フランス語で「市民」。転じて資本家階級</td><td>「ブル」ジョワ＝「Bull」（強い牛）のように経済力で勝負する人たち</td></tr>
+    <tr><td>市民革命</td><td>封建体制を倒し、市民社会を作る革命</td><td>「身分ゲーム」→「実力ゲーム」への切り替え</td></tr>
+    <tr><td>ウェストファリア条約</td><td>1648年。近代国民国家体制の始まり</td><td>「国ごとに自分のルールを決めていい」という約束</td></tr>
+  </table>
+
+  <div class="quiz">
+    Q: 民法が「ブルジョワ法」と呼ばれる理由を、自分の言葉で説明してみましょう。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>民法は市民革命の産物であり、資本主義経済社会を法的に支えるためのルールである。所有権の保障・契約の自由・法的平等という基本原則は、いずれも商工業者（ブルジョワ）が自由に経済活動を行うために不可欠な条件であるから、民法は本質的にブルジョワの利益を制度化した法＝ブルジョワ法である。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義2 ========== -->
+<div class="section" id="lec2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <h2>日本民法典の成立</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>日本の民法は、明治政府が<strong>「不平等条約を改正するため」</strong>にフランスとドイツの民法をお手本に作ったものです。</p>
+
+  <div class="analogy">
+    明治時代の日本は、欧米から「あなたの国には近代的な法律がない」と言われ、不平等な条約を押し付けられていました。<br>
+    たとえるなら、「ちゃんとしたルールブックがないチームは公式戦に出られない」と言われたようなもの。<br>
+    そこで、ヨーロッパの一流チームのルールブック（仏民法・独民法）を参考に、日本版ルールブックを急いで作ったのです。
+  </div>
+
+  <h3>民法の四大原則</h3>
+  <p>日本民法の土台となる4つの大原則。すべての民法学習の前提です。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：民法の四大原則</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">民法の四大原則</span>
+        <ul>
+          <li>
+            <span class="node l1">① 法人格平等の原則（民3条）</span>
+            <ul>
+              <li><span class="node l2">生まれれば誰でも「法的な人」になれる</span></li>
+              <li><span class="node l3">⇔ 封建時代：身分によって権利が違った</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">② 所有権絶対の原則（憲29条・民206条）</span>
+            <ul>
+              <li><span class="node l2">自分の物は国にも取られない</span></li>
+              <li><span class="node l3">⇔ 封建時代：領主が農民の土地を自由に取れた</span></li>
+              <li><span class="node accent">現代的修正：公共の福祉による制限あり</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">③ 契約自由の原則（民90・91・521条）</span>
+            <ul>
+              <li><span class="node l2">自由に決めた契約を国家が支援する</span></li>
+              <li><span class="node l3">限界：公序良俗・強行法規に反してはダメ</span></li>
+              <li><span class="node accent">現代的修正：消費者保護法、借地借家法</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">④ 過失責任の原則（民709条）</span>
+            <ul>
+              <li><span class="node l2">わざと/うっかりでなければ賠償しなくていい</span></li>
+              <li><span class="node l3">⇔ 封建時代：被害があれば無条件に責任を問われることも</span></li>
+              <li><span class="node accent">現代的修正：製造物責任法（無過失責任）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>四大原則の条文と具体例</h3>
+  <table>
+    <tr><th>原則</th><th>条文</th><th>身近な例</th></tr>
+    <tr><td>法人格平等</td><td>民3条</td><td>外国人も日本人も、お金持ちも貧しい人も、同じように契約できる</td></tr>
+    <tr><td>所有権絶対</td><td>民206条</td><td>自分の家を売るか住むか壊すかは自分の自由</td></tr>
+    <tr><td>契約自由</td><td>民521条</td><td>パン1個を100円で売る契約も、1万円で売る契約も自由</td></tr>
+    <tr><td>過失責任</td><td>民709条</td><td>台風で看板が飛んで隣家を壊した→不可抗力なら賠償不要</td></tr>
+  </table>
+
+  <div class="warn">
+    四大原則は「絶対的ルール」ではありません。現代社会では、弱者保護のために多くの修正がなされています。<br>
+    例：「契約自由」→ ブラック企業が低賃金の労働契約を結ばせるのは、労働基準法で制限される
+  </div>
+
+  <div class="term">
+    <strong>法典論争</strong>：明治時代、フランス人ボワソナードが起草した「旧民法」に対し、「日本の伝統に合わない」という反対論が起き（「民法出デテ忠孝亡ブ」）、結局ドイツ法を基礎とした「新民法」（現行民法の原型）が1898年に制定されました。
+  </div>
+
+  <div class="quiz">
+    Q: 「所有権絶対の原則」の現代的な修正例を2つ挙げてみましょう。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>① 都市計画法による建築制限（自分の土地でも自由に建物を建てられない）<br>
+      ② 土地収用法による公共事業のための強制買収（正当な補償が必要だが、拒否はできない）<br>
+      いずれも憲法29条2項「財産権の内容は、公共の福祉に適合するやうに、法律でこれを定める」に基づく。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義3 ========== -->
+<div class="section" id="lec3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <h2>パンデクテン体系</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>日本の民法は<strong>ドイツ式の「総則→各則」という入れ子構造</strong>で整理されています。これを「パンデクテン体系」と言います。</p>
+
+  <div class="analogy">
+    料理レシピ本のたとえ：<br>
+    <strong>フランス式（インスティトゥティオネス体系）</strong>＝「材料別」に並べる → 肉料理、魚料理、野菜料理…<br>
+    <strong>ドイツ式（パンデクテン体系）</strong>＝まず「共通の調理法」を前に書き、次に個別のレシピを書く → 第1章「火加減の基本」「味付けの基本」、第2章「肉料理」、第3章「魚料理」…<br>
+    日本民法はドイツ式。「共通ルール（総則）」を前に出して、個別のルールは後ろに書く。
+  </div>
+
+  <h3>民法の編別構成</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：日本民法の5編構造</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">日本民法（5編構成）</span>
+        <ul>
+          <li>
+            <span class="node l1">第1編：総則 🧩</span>
+            <ul>
+              <li><span class="node l2">人（権利能力・行為能力）</span></li>
+              <li><span class="node l2">法人</span></li>
+              <li><span class="node l2">物</span></li>
+              <li><span class="node l2">法律行為（意思表示・代理）</span></li>
+              <li><span class="node l2">時効</span></li>
+              <li><span class="node l3">→ すべての編に共通するルール</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">第2編：物権 🏠</span>
+            <ul>
+              <li><span class="node l2">占有権・所有権</span></li>
+              <li><span class="node l2">用益物権（地上権・永小作権など）</span></li>
+              <li><span class="node l2">担保物権（抵当権・質権など）</span></li>
+              <li><span class="node l3">→ 「モノを支配する権利」のルール</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">第3編：債権 🤝</span>
+            <ul>
+              <li><span class="node l2">債権総則（効力・消滅・担保など）</span></li>
+              <li><span class="node l2">契約（売買・賃貸借・請負など）</span></li>
+              <li><span class="node l2">事務管理・不当利得・不法行為</span></li>
+              <li><span class="node l3">→ 「人に請求する権利」のルール</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">第4編：親族 👨‍👩‍👧</span>
+            <ul>
+              <li><span class="node l2">婚姻・親子・扶養</span></li>
+              <li><span class="node l3">→ 家族関係のルール</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">第5編：相続 📜</span>
+            <ul>
+              <li><span class="node l2">相続・遺言・遺留分</span></li>
+              <li><span class="node l3">→ 死後の財産承継のルール</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    <strong>「総則」がある理由</strong>：各編に共通するルール（たとえば「未成年者の契約は取り消せる」）を何度も書くのは無駄。だから共通部分を前に括り出して「総則」にまとめた。これがパンデクテン体系の特徴。
+  </div>
+
+  <div class="quiz">
+    Q: 「Aが自分の土地をBに売った」という場面。この取引に関係する民法の編はどれ？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>
+      ・<strong>第1編 総則</strong>：売買は「法律行為」なので、意思表示のルールが適用される<br>
+      ・<strong>第2編 物権</strong>：土地の「所有権」がAからBに移転する<br>
+      ・<strong>第3編 債権</strong>：「売買契約」により、代金債権と引渡債権が発生する<br>
+      → 一つの取引が複数の編にまたがる。これが民法学習の難しさでもあり面白さでもある。
+      </p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義4 ========== -->
+<div class="section" id="lec4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <h2>物権と債権 — 民法の二本柱</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>民法の財産法は<strong>「物権」と「債権」</strong>という2種類の権利で世界を説明します。これが民法の最も基本的な区別です。</p>
+
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🏠 物権（ぶっけん）</h4>
+      <p><strong>物を直接支配する権利</strong></p>
+      <ul>
+        <li>対象：<strong>物</strong>（土地、建物、車…）</li>
+        <li>性質：絶対権（全世界に主張できる）</li>
+        <li>例：所有権、抵当権、地上権</li>
+        <li>比喩：「この家は<strong>私のもの</strong>」</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🤝 債権（さいけん）</h4>
+      <p><strong>人に行為を請求する権利</strong></p>
+      <ul>
+        <li>対象：<strong>人</strong>（債務者）の行為</li>
+        <li>性質：相対権（相手方にだけ主張できる）</li>
+        <li>例：代金請求権、引渡請求権</li>
+        <li>比喩：「あなたに<strong>〇〇してほしい</strong>」</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="analogy">
+    <strong>物権</strong>は「直接つかめるリモコン」。テレビ（物）を直接操作できる。誰にも邪魔されない。<br>
+    <strong>債権</strong>は「人にお願いするメモ」。「テレビのチャンネル変えて」とお願いする権利。相手が動かないと実現しない。
+  </div>
+
+  <h3>物権と債権はどう協働するか</h3>
+
+  <h4>場面①：商品交換取引（売買）</h4>
+  <p>債権は物権に到達するための「手段」。</p>
+  <div class="flow">
+    <div class="flow-item f-blue">A所有の土地<br><small>（物権）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">AB売買契約<br><small>（債権の発生）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">Bが所有権取得<br><small>（物権の移転）</small></div>
+  </div>
+
+  <h4>場面②：金融取引（融資）</h4>
+  <p>物権は債権の「満足」に奉仕する手段。</p>
+  <div class="flow">
+    <div class="flow-item f-blue">Bの土地<br><small>（物権）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">抵当権設定<br><small>（物権を担保に）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">銀行の貸金債権を保全<br><small>（債権の保護）</small></div>
+  </div>
+
+  <h3>物権と債権の違い一覧表</h3>
+  <table>
+    <tr><th>比較項目</th><th>物権</th><th>債権</th></tr>
+    <tr><td>定義</td><td>特定の物を直接・排他的に支配する権利</td><td>特定の人に一定の行為を請求する権利</td></tr>
+    <tr><td>効力の範囲</td><td>絶対権（対世効）— 誰にでも主張できる</td><td>相対権（対人効）— 債務者にだけ主張できる</td></tr>
+    <tr><td>排他性</td><td>あり（同一物に同内容の物権は1つだけ）</td><td>なし（同一債務者に同内容の債権が複数可）</td></tr>
+    <tr><td>法定主義</td><td>物権法定主義（法律で決まったものだけ）</td><td>自由（当事者が自由に内容を決められる）</td></tr>
+    <tr><td>実現方法</td><td>直接支配（他人の協力不要）</td><td>請求（相手方の協力が必要）</td></tr>
+  </table>
+
+  <div class="quiz">
+    Q: アパートの賃借人は「物権」を持っていますか？「債権」を持っていますか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>賃借権は<strong>債権</strong>です。賃借人は大家さん（賃貸人）に対して「部屋を使わせてください」と請求する権利を持っているだけで、部屋という物を直接支配しているわけではありません。<br>
+      対比：地上権は<strong>物権</strong>なので、土地所有者の協力なしに土地を直接支配できます。<br>
+      →この違いが講義15以降で詳しく扱われます。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義5 ========== -->
+<div class="section" id="lec5">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <h2>民法・民訴法・民執法の三位一体性</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>権利は持っているだけでは意味がない。<strong>「権利がある」と裁判所に認めてもらい、国家の力で実現してもらう</strong>まで、3つの法律がセットで働きます。</p>
+
+  <div class="analogy">
+    病院のたとえ：<br>
+    <strong>民法</strong>＝病名を決める教科書（「あなたの症状はこの病気です」）<br>
+    <strong>民事訴訟法</strong>＝診察の手順書（「検査→診断→治療方針の決定」）<br>
+    <strong>民事執行法</strong>＝手術の手順書（「実際にメスを入れて治す」）<br>
+    3つ揃わないと患者（権利者）は治らない。
+  </div>
+
+  <h3>権利実現の全体フロー</h3>
+  <div class="flow">
+    <div class="flow-item f-red">権利侵害が発生<br><small>「お金返して！」</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">民事訴訟<br><small>裁判所で権利を確認</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">判決（債務名義）<br><small>「権利あり」のお墨付き</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">強制執行<br><small>国家が実力で実現</small></div>
+  </div>
+
+  <h3>三位一体の構造</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：民法・民訴法・民執法の関係</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">権利の実現（三位一体）</span>
+        <ul>
+          <li>
+            <span class="node l1">民法（実体法）📘</span>
+            <ul>
+              <li><span class="node l2">「誰が誰に何を請求できるか」を定める</span></li>
+              <li><span class="node l3">例：売主は買主に代金を請求できる（民555条）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">民事訴訟法（手続法）⚖️</span>
+            <ul>
+              <li><span class="node l2">「権利の存否を確認する手続」を定める</span></li>
+              <li><span class="node l3">訴えの提起 → 審理 → 判決</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">民事執行法（手続法）🔨</span>
+            <ul>
+              <li><span class="node l2">「権利の内容を実力で実現する手続」を定める</span></li>
+              <li><span class="node l3">差押え → 換価（競売）→ 配当</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    <strong>「社会あるところ紛争あり、紛争あるところ法なければならず」</strong><br>
+    法的解決だけが、国家権力の裏付けを得て、紛争の蒸し返し（永久化）を阻止できる。<br>
+    → だから「自力救済の禁止」（自分で実力行使してはダメ）が近代法の大原則。
+  </div>
+
+  <div class="warn">
+    民法の教科書だけ読んでいると、「権利がある＝問題解決」と思いがち。<br>
+    しかし実際には、権利があっても相手が従わなければ、訴訟→判決→執行という長いプロセスが必要。<br>
+    <strong>権利は「絵に描いた餅」にもなりうる</strong>。これが講義6以降の話。
+  </div>
+</div>
+
+<!-- ========== 講義6 ========== -->
+<div class="section" id="lec6">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <h2>強制執行・執行保全</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>「相手がお金を返さない → 裁判で勝った → でもまだ返さない」。こうなったとき、<strong>国家の力で財産を差し押さえて回収する</strong>のが強制執行です。</p>
+
+  <div class="analogy">
+    学校のたとえ：<br>
+    <strong>債務名義</strong>＝先生からもらった「成績証明書」。この紙がないと卒業（＝強制執行の開始）できない。<br>
+    <strong>強制執行</strong>＝卒業式。成績証明書があれば、学校の力で卒業させてもらえる。<br>
+    <strong>保全処分</strong>＝卒業前に、卒業証書が盗まれないように金庫に入れておくこと。
+  </div>
+
+  <h3>キーワード：債務名義（さいむめいぎ）</h3>
+  <div class="term">
+    <strong>債務名義（Schuldtitel）</strong>：「この人にはこの権利がある」と公的に証明する文書。これがないと強制執行を始められない。<br><br>
+    主な種類（民事執行法22条）：
+    <ul>
+      <li>確定判決（裁判で勝った判決）</li>
+      <li>仮執行宣言付判決</li>
+      <li>和解調書（裁判上の和解の記録）</li>
+      <li>執行認諾文言付公正証書（公証役場で作った約束文書）</li>
+    </ul>
+  </div>
+
+  <h3>強制執行の種類</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：強制執行と保全の体系</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">強制的な権利実現</span>
+        <ul>
+          <li>
+            <span class="node l1">強制執行（本番）</span>
+            <ul>
+              <li>
+                <span class="node l2">金銭執行（お金を取る）</span>
+                <ul>
+                  <li><span class="node l3">不動産執行：土地・建物を競売</span></li>
+                  <li><span class="node l3">動産執行：家財道具を差押え・売却</span></li>
+                  <li><span class="node l3">債権執行：給料・預金を差押え</span></li>
+                </ul>
+              </li>
+              <li>
+                <span class="node l2">非金銭執行（お金以外を実現する）</span>
+                <ul>
+                  <li><span class="node l3">直接強制：物を取り上げる</span></li>
+                  <li><span class="node l3">代替執行：第三者にやらせて費用請求</span></li>
+                  <li><span class="node l3">間接強制：「やらないなら罰金」と圧力</span></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">保全処分（準備）</span>
+            <ul>
+              <li><span class="node accent">仮差押え：金銭債権の保全（財産を凍結）</span></li>
+              <li><span class="node accent">仮処分：非金銭債権の保全（現状維持命令）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    <strong>なぜ保全が必要か？</strong><br>
+    裁判には時間がかかる（数ヶ月〜数年）。その間に相手が財産を隠したり売ったりしたら、勝訴判決が出ても「回収するものがない」事態になる。<br>
+    → 先に財産を「凍結」しておく = 保全処分
+  </div>
+
+  <div class="quiz">
+    Q: Aが Bに100万円を貸したが返してくれない。Aが強制執行でBの財産からお金を回収するために、まず何をしなければならない？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p><strong>債務名義を取得する</strong>必要がある。具体的には、Bを被告として貸金返還請求訴訟を提起し、勝訴判決を得る。または、あらかじめ公正証書（執行認諾文言付き）を作成しておけば、訴訟を経ずに強制執行が可能。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義7 ========== -->
+<div class="section" id="lec7">
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <h2>破産法</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>お金を借りすぎて全員に返しきれない → そんなとき、<strong>全員で「公平に」分け合うルール</strong>が破産法です。</p>
+
+  <div class="analogy">
+    パン屋のたとえ：<br>
+    パン屋さん（債務者）がパンを10個しか焼けないのに、30人のお客さん（債権者）が来てしまった。<br>
+    「早い者勝ち」にすると不公平 → みんなで「公平に分け合おう」とするのが<strong>債権者平等原則</strong>。<br>
+    でも「予約チケット」（＝担保）を持っているお客さんは別枠で先にもらえる → これが講義8〜10の話。
+  </div>
+
+  <h3>1対1 vs 集団の場面</h3>
+  <table>
+    <tr><th></th><th>民事訴訟・強制執行</th><th>破産手続</th></tr>
+    <tr><td>場面</td><td>債権者 vs 債務者（1対1）</td><td>複数の債権者 vs 債務者</td></tr>
+    <tr><td>原則</td><td>早い者勝ち（先に差押えた人が有利）</td><td><strong>債権者平等原則</strong>（按分配当）</td></tr>
+    <tr><td>目的</td><td>個別の権利を実現する</td><td>全員に公平に分配する</td></tr>
+  </table>
+
+  <h3>破産手続のフロー</h3>
+  <div class="flow">
+    <div class="flow-item f-red">支払不能<br><small>返しきれない！</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">破産申立て</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">破産管財人選任<br><small>裁判所が管理人を任命</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">財産の換価・配当<br><small>公平に分配</small></div>
+  </div>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：破産法のポイント</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">破産法</span>
+        <ul>
+          <li>
+            <span class="node l1">いつ破産するか</span>
+            <ul>
+              <li><span class="node l2">支払不能：弁済期の債務を一般的・継続的に払えない</span></li>
+              <li><span class="node l2">債務超過：負債 ＞ 資産（法人のみの破産原因）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">配当の順番</span>
+            <ul>
+              <li><span class="node danger">別除権者（担保権者）→ 破産手続の外で回収 ※講義10</span></li>
+              <li><span class="node accent">財団債権者 → 破産手続の費用など、最優先</span></li>
+              <li><span class="node l2">優先的破産債権者 → 税金・給料など</span></li>
+              <li><span class="node l2">一般破産債権者 → 残りを按分比例で配当</span></li>
+              <li><span class="node l3">劣後的破産債権者 → 最後（ほぼもらえない）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">個人の場合</span>
+            <ul>
+              <li><span class="node accent">免責制度：誠実な破産者は残債務を免除してもらえる</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    <strong>物権と債権の違いがここで効いてくる</strong>：<br>
+    ・物権（例：所有権）は排他的 → 1つの物に同一内容の物権は1つだけ → 競合しない<br>
+    ・債権は平等 → 同一債務者に複数の債権が併存可能 → 債務超過になりうる → 破産の問題が起きる
+  </div>
+</div>
+
+<!-- ========== 講義8 ========== -->
+<div class="section" id="lec8">
+  <div class="section-header">
+    <div class="section-num">8</div>
+    <h2>債権の人的担保（連帯保証）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>破産のリスクに備えて、<strong>「もう一人の返済責任者」を用意しておく</strong>のが人的担保です。代表例が連帯保証。</p>
+
+  <div class="analogy">
+    友人との約束のたとえ：<br>
+    Aくんに1万円貸した。Aくんだけだと心配なので、Bくんにも「Aが返せなかったら代わりに返してね」と約束してもらう。<br>
+    <strong>普通保証</strong>：「まずAに言って。Aがダメならオレが払う」（催告の抗弁権あり）<br>
+    <strong>連帯保証</strong>：「Aでもオレでもどっちにでもいつでも言って」（催告の抗弁権なし）<br>
+    → 債権者にとっては連帯保証の方がずっと安心。
+  </div>
+
+  <h3>なぜ担保が必要か</h3>
+  <div class="flow">
+    <div class="flow-item f-red">債務者が破産</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">債権者平等原則<br><small>みんなで分ける</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">一部しか回収できない</div>
+  </div>
+  <p style="text-align:center; font-weight:bold; margin: 10px 0;">↓ だから事前に「担保」を取っておく</p>
+  <div class="flow">
+    <div class="flow-item f-blue">人的担保（連帯保証人）</div>
+    <div class="flow-arrow">or</div>
+    <div class="flow-item f-green">物的担保（抵当権・相殺権）</div>
+  </div>
+
+  <h3>保証の種類の比較</h3>
+  <table>
+    <tr><th>比較</th><th>普通保証</th><th>連帯保証</th></tr>
+    <tr><td>催告の抗弁権</td><td>✅ あり（「まず主債務者に請求して」と言える）</td><td>❌ なし</td></tr>
+    <tr><td>検索の抗弁権</td><td>✅ あり（「主債務者に財産あるよ」と言える）</td><td>❌ なし</td></tr>
+    <tr><td>分別の利益</td><td>✅ あり（保証人が複数なら頭割り）</td><td>❌ なし（全額の責任）</td></tr>
+    <tr><td>債権者の請求</td><td>主債務者 → 保証人の順</td><td>どちらにも直接請求OK</td></tr>
+    <tr><td>担保力</td><td>弱い</td><td><strong>強い</strong></td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>連帯保証は極めて重い責任</strong>。主債務者と全く同じ責任を負う。<br>
+    実務で「保証人になってくれ」と言われたら、それはほぼ「連帯保証人」のこと。<br>
+    2020年民法改正で、事業用融資の個人連帯保証には<strong>公正証書による意思確認</strong>が必要に（民465条の6）。
+  </div>
+</div>
+
+<!-- ========== 講義9 ========== -->
+<div class="section" id="lec9">
+  <div class="section-header">
+    <div class="section-num">9</div>
+    <h2>物的担保：抵当権</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>「あなたの土地を担保にお金を貸しますよ。返せなかったら土地を競売にかけます」— これが<strong>抵当権</strong>です。</p>
+
+  <div class="analogy">
+    質屋と比べると：<br>
+    <strong>質権（しちけん）</strong>：「ロレックス預けるから、お金貸して」→ 物を渡す（占有移転）。物が使えなくなる。<br>
+    <strong>抵当権（ていとうけん）</strong>：「土地を担保にするけど、住み続けるよ」→ 物を渡さない（非占有）。引き続き使える。<br>
+    → 抵当権は「使い続けながら担保にできる」のが大きなメリット。
+  </div>
+
+  <h3>抵当権の全体像</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：抵当権の性質と効力</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">抵当権</span>
+        <ul>
+          <li>
+            <span class="node l1">性質</span>
+            <ul>
+              <li><span class="node l2">約定担保権（契約で設定する）</span></li>
+              <li><span class="node l2">非占有担保権（物を渡さなくてOK）</span></li>
+              <li><span class="node l2">物権（対世的に主張できる）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">対抗要件</span>
+            <ul>
+              <li><span class="node accent">抵当権設定登記（法務局で登記する）</span></li>
+              <li><span class="node l3">登記しないと第三者に主張できない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">効力</span>
+            <ul>
+              <li><span class="node l2">優先弁済力：換価金から他の債権者より先に回収</span></li>
+              <li><span class="node l2">追及力：物が第三者に売られても抵当権は消えない</span></li>
+              <li><span class="node l2">自己換価力：自ら競売を申し立てられる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">関連制度</span>
+            <ul>
+              <li><span class="node l3">物上代位（民304条）：保険金からも回収可</span></li>
+              <li><span class="node l3">法定地上権（民388条）：建物保護</span></li>
+              <li><span class="node l3">抵当権の順位（民373条）：登記の先後で決まる</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>抵当権 vs 質権 vs 連帯保証</h3>
+  <table>
+    <tr><th></th><th>抵当権</th><th>質権</th><th>連帯保証</th></tr>
+    <tr><td>種類</td><td>物的担保</td><td>物的担保</td><td>人的担保</td></tr>
+    <tr><td>占有</td><td>設定者に残す</td><td>債権者が占有</td><td>—</td></tr>
+    <tr><td>対象</td><td>不動産中心</td><td>動産・権利</td><td>人（保証人の全財産）</td></tr>
+    <tr><td>優先弁済</td><td>✅ あり</td><td>✅ あり</td><td>❌ なし（一般債権者と同列）</td></tr>
+    <tr><td>メリット</td><td>使い続けられる</td><td>確実に確保</td><td>設定が簡単</td></tr>
+    <tr><td>担保力</td><td>⭐⭐⭐</td><td>⭐⭐</td><td>⭐（保証人の資力次第）</td></tr>
+  </table>
+
+  <div class="key">
+    先生が抵当権を「物的担保のチャンピオン」と呼ぶ理由：<br>
+    ① 目的物を使い続けられる（非占有）→ 経済活動を止めない<br>
+    ② 登記で公示 → 取引の安全<br>
+    ③ 優先弁済力 → 他の債権者より先に回収<br>
+    ④ 追及力 → 物が転売されても安心
+  </div>
+</div>
+
+<!-- ========== 講義10 ========== -->
+<div class="section" id="lec10">
+  <div class="section-header">
+    <div class="section-num">10</div>
+    <h2>別除権 — 破産でも守られる最強の盾</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>抵当権者は、債務者が破産しても<strong>「破産手続に巻き込まれない」</strong>。自分だけ別ルートで回収できる。これが別除権です。</p>
+
+  <div class="analogy">
+    遊園地のたとえ：<br>
+    遊園地が閉園することになった（＝破産）。<br>
+    <strong>一般債権者</strong>＝普通の入場券を持っている人。閉園後、残った商品を「みんなで公平に分ける列」に並ぶ。<br>
+    <strong>抵当権者（別除権者）</strong>＝VIPパスを持っている人。閉園手続とは別に、指定のお土産ショップ（＝担保物件）で自分の分を確保できる。列に並ばなくていい。
+  </div>
+
+  <h3>破産における債権者の序列</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：破産手続における序列</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">債務者が破産した！</span>
+        <ul>
+          <li>
+            <span class="node danger">別除権者（手続外で回収）</span>
+            <ul>
+              <li><span class="node l2">抵当権者 → 担保不動産を自ら競売</span></li>
+              <li><span class="node l2">質権者 → 質物を換価</span></li>
+              <li><span class="node l3">不足分だけ破産債権として手続に参加</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">破産手続内の序列</span>
+            <ul>
+              <li><span class="node accent">① 財団債権（手続費用など）→ 最優先</span></li>
+              <li><span class="node l2">② 優先的破産債権（税金・給料）</span></li>
+              <li><span class="node l2">③ 一般破産債権（普通の貸金など）→ 按分配当</span></li>
+              <li><span class="node l3">④ 劣後的破産債権 → ほぼ回収不能</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>講義8-10の全体像：担保は破産に備える制度</h3>
+  <div class="key">
+    講義8〜10を通じた最重要メッセージ：<br><br>
+    <strong>「債権担保制度の真の存在意義は、債務者破産の危機に際して発揮される。」</strong><br><br>
+    ・連帯保証（人的担保）→ 債務者がダメでも保証人から回収<br>
+    ・抵当権（物的担保）→ 優先弁済力で他の債権者に先んじて回収<br>
+    ・別除権 → 破産手続そのものの外で回収
+  </div>
+
+  <div class="mindmap">
+    <div class="mindmap-title">総合思維導図：債権担保の全体像</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">債権の担保（リスクに備える）</span>
+        <ul>
+          <li>
+            <span class="node l1">人的担保 👤</span>
+            <ul>
+              <li><span class="node l2">保証 → 催告・検索の抗弁あり（弱い）</span></li>
+              <li><span class="node l2">連帯保証 → 抗弁なし（強い）</span></li>
+              <li><span class="node l3">弱点：保証人も破産するかもしれない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">物的担保 🏠</span>
+            <ul>
+              <li>
+                <span class="node l2">抵当権（最強）</span>
+                <ul>
+                  <li><span class="node l3">非占有 → 使い続けられる</span></li>
+                  <li><span class="node l3">優先弁済力 → 先に回収</span></li>
+                  <li><span class="node l3">別除権 → 破産でも安心</span></li>
+                </ul>
+              </li>
+              <li><span class="node l2">質権（占有が必要）</span></li>
+              <li><span class="node l2">相殺権（反対債権で相殺）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="quiz">
+    Q: 銀行が企業に1億円を融資する場合、①連帯保証だけ、②抵当権だけ、③両方取る、のどれが安全？理由は？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p><strong>③ 両方取る</strong>のが最も安全。<br>
+      抵当権があれば優先弁済力で他の債権者に先んじて回収でき、破産しても別除権として手続外で回収できる。<br>
+      さらに連帯保証があれば、担保不動産の価値が下落しても保証人から不足分を回収できる。<br>
+      → 実務では「抵当権＋連帯保証」のセットが融資の標準形。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 用語集 ========== -->
+<div class="section" id="glossary">
+  <div class="section-header">
+    <div class="section-num">📖</div>
+    <h2>初学者向け用語集</h2>
+  </div>
+
+  <table>
+    <tr><th>用語</th><th>読み</th><th>意味（やさしく）</th><th>登場講義</th></tr>
+    <tr><td>物権</td><td>ぶっけん</td><td>物を直接支配する権利（「これは私のもの」）</td><td>④</td></tr>
+    <tr><td>債権</td><td>さいけん</td><td>人に行為を請求する権利（「お金返して」）</td><td>④</td></tr>
+    <tr><td>債務</td><td>さいむ</td><td>債権の裏側。何かをしなければならない義務</td><td>④</td></tr>
+    <tr><td>債務名義</td><td>さいむめいぎ</td><td>強制執行のパスポート。判決や公正証書</td><td>⑥</td></tr>
+    <tr><td>強制執行</td><td>きょうせいしっこう</td><td>国家権力で財産を差し押さえて権利を実現すること</td><td>⑥</td></tr>
+    <tr><td>仮差押え</td><td>かりさしおさえ</td><td>裁判中に相手の財産を凍結しておくこと</td><td>⑥</td></tr>
+    <tr><td>破産</td><td>はさん</td><td>債務を返しきれない状態。全財産を換金して配分</td><td>⑦</td></tr>
+    <tr><td>債権者平等原則</td><td>さいけんしゃびょうどうげんそく</td><td>破産時に全債権者で公平に分け合うルール</td><td>⑦</td></tr>
+    <tr><td>連帯保証</td><td>れんたいほしょう</td><td>主債務者と同じ責任を負う保証。逃げられない</td><td>⑧</td></tr>
+    <tr><td>抵当権</td><td>ていとうけん</td><td>不動産を担保にする権利。渡さずに担保にできる</td><td>⑨</td></tr>
+    <tr><td>優先弁済力</td><td>ゆうせんべんさいりょく</td><td>他の債権者より先にお金を回収できる力</td><td>⑨</td></tr>
+    <tr><td>別除権</td><td>べつじょけん</td><td>破産手続の外で担保権を行使できる権利</td><td>⑩</td></tr>
+    <tr><td>パンデクテン体系</td><td>ぱんでくてんたいけい</td><td>総則→各則の入れ子構造。ドイツ式の法典編纂方法</td><td>③</td></tr>
+    <tr><td>公序良俗</td><td>こうじょりょうぞく</td><td>社会の一般的な秩序と道徳。これに反する契約は無効</td><td>②</td></tr>
+    <tr><td>実体法</td><td>じったいほう</td><td>権利義務の中身を定める法律（民法など）</td><td>⑤</td></tr>
+    <tr><td>手続法</td><td>てつづきほう</td><td>権利を実現するプロセスを定める法律（民訴法など）</td><td>⑤</td></tr>
+    <tr><td>対抗要件</td><td>たいこうようけん</td><td>第三者に「自分の権利だ」と主張するための条件（登記など）</td><td>⑨</td></tr>
+  </table>
+</div>
+
+<!-- ========== Footer ========== -->
+<div style="text-align:center; padding: 30px; color: var(--text-light); font-size: 0.85em;">
+  <p>msahkie先生の民法講義に基づく学習ガイド</p>
+  <p>法律未修者向け知識点整理・拡展</p>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>

@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義21〜30 学習ガイド（法律未修者向け）</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --primary: #2c5f8a;
+    --secondary: #e8f0f8;
+    --accent: #d4740e;
+    --accent-light: #fff5eb;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #dfe6e9;
+    --success: #00b894;
+    --danger: #e17055;
+    --info: #74b9ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #2c5f8a 0%, #1a3a5c 100%);
+    color: white;
+    border-radius: 16px;
+    margin-bottom: 30px;
+  }
+  .header h1 { font-size: 2em; margin-bottom: 10px; }
+  .header p { opacity: 0.9; font-size: 1.05em; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+
+  /* Navigation */
+  .nav {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav:hover, .nav:focus-within {
+    max-height: 600px;
+  }
+  .nav h3 { margin-bottom: 10px; color: var(--primary); font-size: 0.95em; cursor: pointer; }
+  .nav h3::after { content: " ▼"; font-size: 0.7em; }
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .nav a {
+    display: block;
+    padding: 8px 12px;
+    background: var(--secondary);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.88em;
+    transition: all 0.2s;
+  }
+  .nav a:hover { background: var(--primary); color: white; }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--secondary);
+  }
+  .section-num {
+    background: var(--primary);
+    color: white;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 1.35em; color: var(--primary); }
+
+  /* Subsection */
+  h3 {
+    color: var(--primary);
+    font-size: 1.1em;
+    margin: 24px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  h4 {
+    color: var(--accent);
+    font-size: 1em;
+    margin: 16px 0 8px;
+  }
+
+  /* Analogy box */
+  .analogy {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .analogy::before {
+    content: "💡 たとえ話";
+    display: block;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Key point */
+  .key {
+    background: #eef7ee;
+    border-left: 4px solid var(--success);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .key::before {
+    content: "✅ 重要ポイント";
+    display: block;
+    font-weight: bold;
+    color: var(--success);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Warning */
+  .warn {
+    background: #fff3f0;
+    border-left: 4px solid var(--danger);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .warn::before {
+    content: "⚠️ 注意・よくある誤解";
+    display: block;
+    font-weight: bold;
+    color: var(--danger);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Term */
+  .term {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .term::before {
+    content: "📖 用語解説";
+    display: block;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Quiz */
+  .quiz {
+    background: #f0eeff;
+    border: 2px dashed #6c5ce7;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .quiz::before {
+    content: "🧪 理解度チェック";
+    display: block;
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+  .quiz details {
+    margin-top: 8px;
+  }
+  .quiz summary {
+    cursor: pointer;
+    color: #6c5ce7;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .quiz details p {
+    margin-top: 6px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92em;
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:nth-child(even) { background: var(--secondary); }
+  tr:hover { background: #dbeafe; }
+
+  /* Mind map */
+  .mindmap {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .mindmap-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 16px;
+    font-size: 1.05em;
+  }
+
+  /* Tree structure */
+  .tree { padding-left: 0; list-style: none; }
+  .tree ul { padding-left: 28px; list-style: none; position: relative; }
+  .tree ul::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 12px;
+    border-left: 2px solid var(--border);
+  }
+  .tree li {
+    position: relative;
+    padding: 4px 0 4px 0;
+  }
+  .tree ul > li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 14px;
+    width: 14px;
+    border-top: 2px solid var(--border);
+  }
+  .tree .node {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+  .node.root { background: var(--primary); color: white; font-size: 1em; padding: 8px 20px; }
+  .node.l1 { background: #4a90c4; color: white; }
+  .node.l2 { background: var(--secondary); color: var(--primary); border: 1px solid #b0cfe0; }
+  .node.l3 { background: #f1f5f1; color: var(--text); border: 1px solid #c8d6c8; font-size: 0.85em; }
+  .node.accent { background: var(--accent-light); color: #b35c00; border: 1px solid #f0c8a0; }
+  .node.danger { background: #fff0ee; color: #c0392b; border: 1px solid #f0b0a0; }
+
+  /* Flow diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 16px 0;
+    justify-content: center;
+  }
+  .flow-item {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 0.88em;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-arrow {
+    font-size: 1.4em;
+    color: var(--text-light);
+    padding: 0 4px;
+  }
+  .flow .f-blue { background: var(--secondary); color: var(--primary); border: 2px solid #a0c4e0; }
+  .flow .f-green { background: #e8f8e8; color: #1e7e34; border: 2px solid #a0d8a0; }
+  .flow .f-orange { background: var(--accent-light); color: #b35c00; border: 2px solid #f0c8a0; }
+  .flow .f-red { background: #fff0ee; color: #c0392b; border: 2px solid #f0b0a0; }
+
+  /* Comparison */
+  .vs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: start;
+    margin: 16px 0;
+  }
+  .vs-box {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid;
+  }
+  .vs-box.left { border-color: #4a90c4; background: #f0f6fc; }
+  .vs-box.right { border-color: #e0a040; background: #fdf8f0; }
+  .vs-box h4 { margin-top: 0; text-align: center; }
+  .vs-mid {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--text-light);
+    align-self: center;
+  }
+
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 24px; }
+  li { margin: 4px 0; }
+  strong { color: var(--primary); }
+
+  @media (max-width: 768px) {
+    body { padding: 10px; }
+    .section { padding: 18px; }
+    .header h1 { font-size: 1.4em; }
+    .nav-grid { grid-template-columns: 1fr 1fr; }
+    .vs { grid-template-columns: 1fr; }
+    .vs-mid { text-align: center; }
+    .flow { flex-direction: column; align-items: center; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== Header ========== -->
+<div class="header">
+  <h1>民法講義 21〜30 学習ガイド</h1>
+  <p>借家権の対抗力から物権法の体系、そして物権変動論（177条の世界）へ</p>
+  <div class="badge">msahkie先生の講義に基づく整理・拡展</div>
+</div>
+
+<!-- ========== Navigation ========== -->
+<div class="nav">
+  <h3>📑 目次（クリックでジャンプ）</h3>
+  <div class="nav-grid">
+    <a href="#overview">全体マップ</a>
+    <a href="#lec21">㉑ 借家権の対抗力</a>
+    <a href="#lec22">㉒ 返還請求の攻防まとめ</a>
+    <a href="#lec23">㉓ 物権法の体系・占有権</a>
+    <a href="#lec24">㉔ 所有権・用益物権</a>
+    <a href="#lec25">㉕ 担保物権</a>
+    <a href="#lec26">㉖ 地上権と賃借権の譲渡</a>
+    <a href="#lec27">㉗ 物権変動論</a>
+    <a href="#lec28">㉘ 当事者間の対抗問題</a>
+    <a href="#lec29">㉙ 一般の第三者と特別の第三者</a>
+    <a href="#lec30">㉚ 対抗要件主義の使い方</a>
+    <a href="#glossary">用語集</a>
+  </div>
+</div>
+
+<!-- ========== 全体マップ ========== -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-num">📍</div>
+    <h2>全体マップ：講義21〜30は何を学ぶのか</h2>
+  </div>
+
+  <p>講義21〜30は、大きく3つのブロックに分かれます。まず講義11〜20で扱った「所有権に基づく返還請求の攻防」を<strong>完結させ</strong>（21・22）、次に<strong>物権法の全体カタログ</strong>を一望し（23〜26）、最後に民法物権法のハイライトである<strong>物権変動論（177条の世界）</strong>に突入します（27〜30）。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">🗺️ 講義21〜30 全体思維導図</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">物権法の核心へ</span>
+        <ul>
+          <li>
+            <span class="node l1">Part A：返還請求の攻防・完結編（講義21-22）</span>
+            <ul>
+              <li><span class="node l2">㉑ 借家権の対抗力 — 「引渡し」で公示する（借地借家法31条）</span></li>
+              <li><span class="node l2">㉒ 攻防の総まとめ — 請求→権原の抗弁→対抗要件</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part B：物権のカタログ（講義23-26）</span>
+            <ul>
+              <li><span class="node l2">㉓ 物権法定主義と占有権 — メニューは法律が決める</span></li>
+              <li><span class="node l2">㉔ 所有権と用益物権 — 全面支配と「使う権利」の切り出し</span></li>
+              <li><span class="node l2">㉕ 担保物権 — 「お金を回収するため」の物支配</span></li>
+              <li><span class="node l2">㉖ 地上権は譲渡自由・賃借権は譲渡不自由 — 物権と債権の違い再び</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part C：物権変動論（講義27-30）</span>
+            <ul>
+              <li><span class="node l2">㉗ 意思主義＋対抗要件主義＋無権利の法理 — 三点セット</span></li>
+              <li><span class="node l2">㉘ 当事者間では登記不要 — 176条だけで決着</span></li>
+              <li><span class="node l2">㉙ 「ただの第三者」と「特別な第三者」の区別</span></li>
+              <li><span class="node l2">㉚ 訴訟での対抗要件主義の使い方 — 自由競争のルール</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="analogy">
+    山登りにたとえると：<br>
+    <strong>Part A</strong>＝前の山（返還請求の攻防）の頂上に立ち、来た道を見渡す<br>
+    <strong>Part B</strong>＝次の山域の地図を広げる（物権にはどんな種類があるか）<br>
+    <strong>Part C</strong>＝物権法最大の難所「177条・二重譲渡」に登り始める<br>
+    ここを越えると、民法物権法の景色が一気に開けます。
+  </div>
+
+  <div class="key">
+    講義21〜30を貫く一本の糸は「<strong>公示</strong>」です。<br>
+    物権は誰に対しても主張できる強力な権利（対世効）。だからこそ「<strong>誰がどんな権利を持っているか、外から見えるようにせよ</strong>」と法は要求します。<br>
+    不動産なら<strong>登記</strong>、動産なら<strong>引渡し（占有）</strong>、借家なら<strong>建物の引渡し</strong>。公示を備えた者だけが、第三者との競争に勝てるのです。
+  </div>
+</div>
+
+<!-- ========== 講義21 ========== -->
+<div class="section" id="lec21">
+  <div class="section-header">
+    <div class="section-num">21</div>
+    <h2>借家権の第三者対抗力 — 「住んでいること」が看板になる</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>借家人は、<strong>建物の引渡しを受けて住んでいること自体</strong>が借家権の公示となり、第三者に対抗できます（借地借家法31条）。登記をもらえなくても、自分の力だけで対抗力を備えられるのです。</p>
+
+  <div class="analogy">
+    お店の行列のたとえ：<br>
+    遊園地の席取りを考えてください。「この席は私が予約しました」という紙（登記）を貼るには係員（家主）の協力が必要。でも、<strong>実際にその席に座っている</strong>なら、誰が見ても「この席は使用中だ」と分かります。<br>
+    借家人は「座り続けること」（＝建物に住むこと）によって、係員の協力なしに、自分の権利を全世界に示せるのです。
+  </div>
+
+  <h3>なぜ「引渡し」が対抗要件になったのか</h3>
+  <p>本来、不動産賃借権の対抗要件は<strong>賃借権の登記</strong>です（民605条）。しかし賃借権は債権なので、借家人には「登記してくれ」と請求する権利がなく、家主が協力してくれなければ登記できません。家主にとって賃借権の登記は物件の価値を下げるだけなので、現実にはまず協力してくれません。</p>
+
+  <div class="flow">
+    <div class="flow-item f-red">民605条の登記<br><small>家主の協力が必要 → 現実には無理</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">借家人保護の必要<br><small>「売買は賃貸借を破る」では困る</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">借地借家法31条<br><small>建物の引渡し＝対抗要件</small></div>
+  </div>
+
+  <h3>借家人が単独でできること</h3>
+  <p>講義の核心はここです。借家人は、賃貸借契約に基づいて家主に<strong>建物の引渡しを請求できます</strong>。家主が任意に渡さなければ、訴訟を起こして勝訴判決を取り、強制執行で引き渡させることもできる。つまり「引渡しを受ける」ところまでは、<strong>家主の善意に頼らず、借家人が自力で（法的手続を通じて）実現できる</strong>のです。</p>
+
+  <div class="flow">
+    <div class="flow-item f-blue">建物賃貸借契約の締結</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">引渡請求権の発生<br><small>（債権）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">任意の引渡し or 訴訟＋強制執行</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">引渡しを受けて居住<br><small>＝対抗力の取得</small></div>
+  </div>
+
+  <h3>第三者から見るとどう見えるか</h3>
+  <p>建物を買おうとする人や差し押さえようとする債権者は、取引の前に現地を見に行きます（<strong>建物の現認</strong>）。すると、家主ではない人が住んでいる。「あなた誰ですか？」「私は借家人です」— この時点で第三者は<strong>借家権の存在を知ることができる</strong>。これが「引渡し＝公示」の意味です。</p>
+
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>📜 民法605条の登記</h4>
+      <ul>
+        <li>不動産賃借権の本来の対抗要件</li>
+        <li>登記には<strong>家主の協力</strong>が必要</li>
+        <li>借家人に登記請求権は<strong>ない</strong></li>
+        <li>→ 現実にはほぼ使えない</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🏠 借地借家法31条の引渡し</h4>
+      <ul>
+        <li>建物賃貸借の特別な対抗要件</li>
+        <li><strong>住んでいる事実</strong>そのものが公示</li>
+        <li>借家人が<strong>単独で</strong>備えられる</li>
+        <li>→ 現実の借家人保護の柱</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    <strong>借地借家法31条</strong>：「建物の賃貸借は、その登記がなくても、建物の引渡しがあったときは、その後その建物について物権を取得した者に対し、その効力を生ずる。」<br>
+    → 家が売られても、差し押さえられても、<strong>引渡しを受けた借家人は新所有者・買受人に「住み続ける権利」を主張できる</strong>。いわゆる「売買は賃貸借を破る」原則の重大な修正です。
+  </div>
+
+  <div class="warn">
+    「住んでいれば常に勝てる」わけではありません。対抗力の優劣は<strong>時間の先後</strong>で決まります。<br>
+    例：銀行が先に抵当権設定登記 → その後に借家人が入居 → 競売されたら借家人は買受人に対抗<strong>できない</strong>（原則6か月の明渡猶予があるだけ。民395条）。<br>
+    「自分の対抗要件が、相手の対抗要件より<strong>先</strong>か<strong>後</strong>か」を常に確認するクセをつけましょう。
+  </div>
+
+  <div class="term">
+    <strong>借地の場合との比較</strong>：借地権（建物所有目的の地上権・土地賃借権）の対抗要件は、借地上に<strong>自分名義で登記した建物を所有していること</strong>です（借地借家法10条）。土地は「住んで占有」を外から確認しにくいので、建物登記という形で公示します。借家＝引渡し、借地＝借地上建物の登記、とセットで覚えましょう。
+  </div>
+
+  <div class="quiz">
+    Q1: 借家人Bが入居した後、家主Aが建物をCに売却した。CはBに「出て行け」と言えるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>言えない。Bは建物の<strong>引渡し</strong>を受けているので、借地借家法31条により、その後に物権（所有権）を取得したCに借家権を対抗できる。Cは賃貸人の地位を引き継ぎ、BはCとの間で賃貸借を続けられる（Cが賃貸人の地位をBに主張して賃料請求するには、Cが所有権移転登記を備える必要がある点も実務上重要）。</p>
+    </details>
+    <br>
+    Q2: なぜ民法605条の登記ではなく、借地借家法31条が借家人保護の柱になっているのか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>賃借権は債権にすぎず、借家人には登記請求権がないため、登記には家主の協力が不可欠だが、家主には協力する動機がない。これに対し建物の<strong>引渡し</strong>は、賃貸借契約に基づく引渡請求権の行使として、必要なら訴訟・強制執行を通じて<strong>借家人が単独で実現できる</strong>。自力で備えられる公示手段だからこそ、現実に機能する対抗要件となる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義22 ========== -->
+<div class="section" id="lec22">
+  <div class="section-header">
+    <div class="section-num">22</div>
+    <h2>所有権に基づく目的物返還請求の攻防：まとめ</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>「物を返せ」をめぐる裁判は、<strong>①物権的請求 → ②占有権原の抗弁 → ③対抗要件による反撃</strong>という攻防のキャッチボールで進みます。講義11〜21で学んだ攻防を、ここで一枚の図にまとめます。</p>
+
+  <div class="analogy">
+    カードゲームのたとえ：<br>
+    <strong>先攻（所有者）</strong>：「私の物をあなたが占有している。返せ！」（攻撃カード＝物権的返還請求権）<br>
+    <strong>後攻（占有者）</strong>：「私には借りる権利がある！」（防御カード＝占有権原の抗弁）<br>
+    <strong>先攻</strong>：「私の所有権には登記がある。あなたの権利は私に主張できないはずだ」（切り札＝対抗要件）<br>
+    <strong>後攻</strong>：「こちらも引渡しという対抗要件を先に備えている！」（カウンター）<br>
+    どちらのカードが強いかは、<strong>対抗要件を備えた順番</strong>で決まります。
+  </div>
+
+  <h3>物権的請求権の3類型</h3>
+  <p>物権は目的物を<strong>直接</strong>支配する権利だから、その支配を邪魔する者に対し、邪魔の除去を請求できます。条文に明文はありませんが、当然の権利として認められています（占有訴権〔197条以下〕の存在と物権の性質から導かれます）。</p>
+
+  <table>
+    <tr><th>類型</th><th>場面</th><th>請求内容</th><th>占有訴権での対応物</th></tr>
+    <tr><td><strong>返還請求権</strong></td><td>物を奪われた・占有されている</td><td>「目的物を返せ」</td><td>占有回収の訴え（200条）</td></tr>
+    <tr><td><strong>妨害排除請求権</strong></td><td>占有以外の方法で侵害（隣の廃車が放置等）</td><td>「侵害をやめろ・除去しろ」</td><td>占有保持の訴え（198条）</td></tr>
+    <tr><td><strong>妨害予防請求権</strong></td><td>侵害の具体的なおそれ（隣の崖が崩れそう等）</td><td>「予防措置をとれ」</td><td>占有保全の訴え（199条）</td></tr>
+  </table>
+
+  <h3>攻防の全体構造（要件事実の流れ）</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">請求原因<br><small>①Xの所有 ②Yの現占有</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">抗弁<br><small>Yの占有権原（賃借権・地上権・留置権…）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">再抗弁<br><small>Xの対抗要件具備、Yの権原の消滅…</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">再々抗弁<br><small>Yの対抗要件が先…</small></div>
+  </div>
+
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：返還請求の攻防まとめ</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">所有権に基づく返還請求の攻防</span>
+        <ul>
+          <li>
+            <span class="node l1">攻撃側（所有者X）</span>
+            <ul>
+              <li><span class="node l2">物権の直接性 → 侵害者に侵害除去を請求できる</span></li>
+              <li><span class="node l2">主張すべきは「Xもと所有」＋「Y現占有」だけ</span></li>
+              <li><span class="node l3">占有権原の不存在まで証明する必要はない（相手が証明する）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">防御側（占有者Y）</span>
+            <ul>
+              <li><span class="node l2">自分にも目的物を支配する法的根拠（権原）があると反論</span></li>
+              <li><span class="node l3">例：賃借権・地上権・質権・留置権・自分こそ所有者</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">勝敗を決めるもの</span>
+            <ul>
+              <li><span class="node accent">Xの権利に第三者対抗要件 → 排他性が発現し請求を維持</span></li>
+              <li><span class="node accent">Yの権原にも対抗要件 → 先に備えた方が勝つ</span></li>
+              <li><span class="node danger">どちらも未具備 → お互いに対抗できず、膠着</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>対抗要件カタログ（ここまでの総整理）</h3>
+  <table>
+    <tr><th>権利</th><th>対抗要件</th><th>根拠条文</th></tr>
+    <tr><td>不動産物権（所有権・抵当権・地上権など）</td><td>登記</td><td>民177条</td></tr>
+    <tr><td>動産物権（所有権など）</td><td>引渡し</td><td>民178条</td></tr>
+    <tr><td>不動産賃借権（原則）</td><td>賃借権の登記</td><td>民605条</td></tr>
+    <tr><td>借地権</td><td>借地上の自己名義の登記建物</td><td>借地借家法10条</td></tr>
+    <tr><td>借家権</td><td>建物の引渡し</td><td>借地借家法31条</td></tr>
+  </table>
+
+  <div class="key">
+    このまとめの核心は次の3文に凝縮されます。<br>
+    ① 物権者は、<strong>支配の直接性</strong>に基づいて侵害除去を請求できる。<br>
+    ② 相手方は、<strong>自分の権原</strong>に基づいて争うことができる。<br>
+    ③ 勝敗は、<strong>どちらが先に第三者対抗要件を備えたか</strong>で決まる。<br>
+    この型は、この後の物権変動論（講義27〜30）でもそのまま使い回します。
+  </div>
+
+  <div class="warn">
+    「所有者は必ず勝つ」と思い込むのが初学者の典型的誤解です。<br>
+    所有権は強力ですが、相手が<strong>正当な占有権原＋先順位の対抗要件</strong>を備えていれば、所有者の請求は通りません（例：対抗力ある借家人に新所有者が明渡請求しても負ける）。所有権の「絶対性」とは「誰にでも主張できる可能性がある」という意味であって、「常に勝つ」という意味ではありません。
+  </div>
+
+  <div class="quiz">
+    Q1: 所有者Xが占有者Yに返還請求するとき、Xは「Yに占有する権利がないこと」を証明する必要があるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>必要ない。Xが主張・立証すべき請求原因は「Xの所有」と「Yの現占有」のみ。<strong>占有権原の存在はYの側が抗弁として主張・立証する</strong>。権原の「不存在」という消極的事実の証明は困難であり、自分に有利な権原は持っている本人が一番証明しやすい、という公平の考え方に基づく役割分担である。</p>
+    </details>
+    <br>
+    Q2: 物権的請求権の3類型を、隣人トラブルの具体例とともに挙げよ。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>①返還請求権：隣人が勝手に自分の駐車場に車を停めて居座っている → 「土地を明け渡せ」。②妨害排除請求権：隣人の壊れたフェンスが自分の庭に倒れ込んでいる → 「撤去せよ」。③妨害予防請求権：隣人の石垣が今にも自分の敷地に崩れそう → 「補強工事をせよ」。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義23 ========== -->
+<div class="section" id="lec23">
+  <div class="section-header">
+    <div class="section-num">23</div>
+    <h2>物権法の体系、占有権 — 物権は「カタログ注文制」</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>物権は誰に対しても主張できる強力な権利なので、<strong>法律が用意したカタログの中からしか選べません</strong>（物権法定主義・民175条）。そのカタログの先頭に、ちょっと変わり者の「占有権」がいます。</p>
+
+  <div class="analogy">
+    レストランのたとえ：<br>
+    <strong>債権</strong>＝個室での会食。当事者2人の間だけの話なので、メニューにない料理も「アレンジでお願いします」と自由に注文できる（契約自由）。<br>
+    <strong>物権</strong>＝ホール全体に影響するBGMや照明。全てのお客さん（＝全世界）に影響するから、「メニュー表にある選択肢」からしか選べない。勝手に「オレ様専用照明権」を作られたら店内は大混乱。<br>
+    これが<strong>物権法定主義</strong>です。
+  </div>
+
+  <h3>なぜ物権は法定主義で、債権は自由なのか</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🏠 物権 → 法定主義（175条）</h4>
+      <ul>
+        <li>対世的・絶対的な権利（<strong>全員</strong>に効く）</li>
+        <li>勝手に新種を作ると社会が大混乱</li>
+        <li>公示（登記・占有）の仕組みも種類が決まっていないと作れない</li>
+        <li>→ <strong>法律が決めた種類・内容だけ</strong></li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🤝 債権 → 非法定主義</h4>
+      <ul>
+        <li>相対的な権利（<strong>当事者間</strong>だけで作用）</li>
+        <li>変な内容でも困るのは当事者だけ</li>
+        <li>第三者を巻き込まないから公示も原則不要</li>
+        <li>→ <strong>契約自由の原則</strong>で何でも作れる</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>物権のカタログ（民法物権編の体系）</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：民法上の物権10種の体系</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">物権（民法のカタログ＝10種）</span>
+        <ul>
+          <li>
+            <span class="node l1">占有権（180条〜）🖐️</span>
+            <ul>
+              <li><span class="node l2">「事実上支配している」こと自体を保護する特殊な物権</span></li>
+              <li><span class="node l3">正当な権利があるかどうかは問わない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">本権（占有を正当化する権利）</span>
+            <ul>
+              <li>
+                <span class="node l2">所有権（206条〜）👑 — 全面的支配権</span>
+              </li>
+              <li>
+                <span class="node l2">制限物権 — 他人の所有物を限定的に支配</span>
+                <ul>
+                  <li>
+                    <span class="node accent">用益物権（使う・収益する）</span>
+                    <ul>
+                      <li><span class="node l3">地上権・永小作権・地役権・入会権</span></li>
+                    </ul>
+                  </li>
+                  <li>
+                    <span class="node accent">担保物権（債権回収のために押さえる）</span>
+                    <ul>
+                      <li><span class="node l3">留置権・先取特権・質権・抵当権</span></li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>占有権 — 「事実状態」をなぜ保護するのか</h3>
+  <p>占有権は、物を<strong>事実上支配している</strong>という状態そのものに与えられる権利です。泥棒にすら占有権はあります。「正しいかどうか」を問わず、とにかく現にある支配状態を保護する — 一見奇妙ですが、深い理由があります。</p>
+
+  <div class="key">
+    <strong>占有保護の理由＝自力救済の禁止・社会の平和維持</strong><br>
+    「あいつは泥棒だから、実力で取り返してよい」を認めると、誰もが「自分が正しい」と主張して実力行使を始め、社会は暴力の応酬になります。<br>
+    → だから、たとえ真の権利者でも、<strong>実力で奪い返してはならず、裁判で取り返せ</strong>。現にある占有はひとまず保護する。これが占有制度の核心です。
+  </div>
+
+  <div class="term">
+    <strong>占有訴権（197条〜202条）</strong>：占有を侵害された者が占有に基づいて起こせる訴え。<br>
+    ・占有回収の訴え（200条）：奪われた → 返せ<br>
+    ・占有保持の訴え（198条）：妨害されている → やめろ<br>
+    ・占有保全の訴え（199条）：妨害されそう → 予防せよ<br>
+    本権（所有権など）の有無を問わず使えるのがポイント。さらに占有には、権利の推定（188条）、即時取得（192条）、取得時効（162条）の基礎になるなど、多くの役割があります。
+  </div>
+
+  <div class="warn">
+    占有権を「弱い所有権」と理解するのは誤りです。占有権と本権は<strong>次元の違う権利</strong>です。<br>
+    占有の訴えで泥棒が勝つことすらあります（所有者が実力で奪い返した場合、泥棒からの占有回収の訴えが認められうる）。ただし所有者は別途、<strong>本権の訴え</strong>（所有権に基づく返還請求）で取り返せます（202条：占有の訴えと本権の訴えは互いに妨げない）。
+  </div>
+
+  <div class="quiz">
+    Q1: 当事者が契約で「新型の物権」を作ることはできるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>できない。物権は対世的・絶対的な権利であり、勝手に創設されると第三者・社会全体が不測の負担を受け、公示の仕組みも機能しなくなる。そこで民175条は「物権は、この法律その他の法律に定めるもののほか、創設することができない」と定める（物権法定主義）。当事者間で似た合意をしても、それは<strong>債権的な効力</strong>（当事者間でのみ有効）しか持たない。</p>
+    </details>
+    <br>
+    Q2: 自転車を盗まれた所有者が、泥棒の家の前に停めてあるその自転車を勝手に持ち帰った。法的に問題はあるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>問題がある。これは<strong>自力救済</strong>であり、原則として禁止される。泥棒にも占有権があり、泥棒から占有回収の訴え（200条）を起こされれば所有者が敗訴しうる。正しい手順は、所有権に基づく返還請求（本権の訴え）を裁判所に提起し、判決を得て強制執行すること。「権利があっても実力行使はダメ」が近代法の大原則。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義24 ========== -->
+<div class="section" id="lec24">
+  <div class="section-header">
+    <div class="section-num">24</div>
+    <h2>所有権・用益物権 — 全面支配と「権能の切り出し」</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>所有権は目的物を<strong>使用・収益・処分</strong>できる全面的支配権（民206条）。用益物権は、その所有権から<strong>「使用・収益」の部分だけを切り出して他人に与えた</strong>制限物権です。</p>
+
+  <div class="analogy">
+    ケーキのたとえ：<br>
+    <strong>所有権</strong>＝ホールケーキを丸ごと持っている状態。食べる（使用）・売って儲ける（収益・処分）、すべて自由。<br>
+    <strong>用益物権</strong>＝ホールケーキの一切れ（「使う・収益する」部分）を切り分けて他人に渡した状態。渡した分だけ自分の取り分は減るが、ケーキ全体の持ち主は依然として自分。<br>
+    切り分けた一切れを返してもらえば（用益物権の消滅）、ケーキはまた丸ごとに戻る — これを所有権の<strong>弾力性</strong>といいます。
+  </div>
+
+  <h3>観念的支配 — 「持っていなくても支配している」</h3>
+  <p>占有権が「事実上の支配」を保護するのに対し、所有権をはじめとする本権は<strong>観念的な支配秩序</strong>に属します。つまり、目的物を手元に置いていなくても、所有者は所有者。海外旅行中も、家を貸している間も、所有権は揺るぎません。<strong>事実上の支配（占有）と法律上の支配（所有権）は別次元</strong> — 講義23からの連続テーマです。</p>
+
+  <h3>所有権の3つの権能（民206条）</h3>
+  <table>
+    <tr><th>権能</th><th>意味</th><th>例（マンションの一室）</th></tr>
+    <tr><td><strong>使用</strong></td><td>物を直接使って利益を得る</td><td>自分で住む</td></tr>
+    <tr><td><strong>収益</strong></td><td>物から果実（収穫物・賃料）を得る</td><td>他人に貸して家賃を得る</td></tr>
+    <tr><td><strong>処分</strong></td><td>物を売る・壊す・担保に入れる</td><td>売却する、抵当権を設定する</td></tr>
+  </table>
+
+  <h3>用益物権4種のカタログ</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：用益物権の4類型</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">用益物権（他人の土地を使用収益する物権）</span>
+        <ul>
+          <li>
+            <span class="node l1">地上権（265条〜）🏗️</span>
+            <ul>
+              <li><span class="node l2">工作物・竹木の所有のために他人の土地を使う権利</span></li>
+              <li><span class="node l3">例：他人の土地の上に自分の建物を建てる、地下鉄・送電線（区分地上権）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">永小作権（270条〜）🌾</span>
+            <ul>
+              <li><span class="node l2">小作料を払って他人の土地で耕作・牧畜をする権利</span></li>
+              <li><span class="node l3">現代ではほぼ使われていない（農地は賃貸借が中心）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">地役権（280条〜）🛤️</span>
+            <ul>
+              <li><span class="node l2">自分の土地（要役地）の便益のために他人の土地（承役地）を使う権利</span></li>
+              <li><span class="node l3">例：通行地役権（隣地を通らせてもらう）、眺望・日照地役権</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">入会権（263条・294条）🌲</span>
+            <ul>
+              <li><span class="node l2">村落共同体がまとめて山林原野などを利用する慣習上の権利</span></li>
+              <li><span class="node l3">例：村人みんなで山のキノコ・薪を採る</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    制限物権の発想：<strong>「制限」されているのは所有権の側</strong>。<br>
+    地上権が設定されると、所有者は自分の土地なのに使えなくなる（使用収益権能が地上権者に移っているから）。つまり制限物権とは、<strong>他人の所有権の権能の一部を、物権として直接握る権利</strong>です。だからこそ所有者の気が変わっても奪われない（債権たる賃借権との決定的な違い → 講義26へ）。
+  </div>
+
+  <div class="warn">
+    「所有権絶対」といっても無制限ではありません。206条自身が「<strong>法令の制限内において</strong>」と明記しています。建築基準法・都市計画法による建築制限、相隣関係（209条以下：隣地との調整ルール）など、現代の所有権は多くの枠の中にあります。
+  </div>
+
+  <div class="quiz">
+    Q1: 地上権が消滅すると、土地所有権はどうなるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>切り出されていた使用収益権能が所有権に戻り、所有権は自動的に完全な全面的支配権に復元する。これを所有権の<strong>弾力性</strong>という。ゴムボールがへこみ（制限物権の設定）から元の形に戻るイメージ。</p>
+    </details>
+    <br>
+    Q2: 袋地（公道に接していない土地）の所有者が、隣地を通って公道に出たい。考えられる法的手段を2つ挙げよ。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>①隣地所有者と合意して<strong>通行地役権</strong>を設定する（物権として安定、登記すれば隣地が売られても対抗可能）。②合意できなくても、袋地所有者には法律上当然に<strong>隣地通行権</strong>（公道に至るための他の土地の通行権・民210条）が認められる（ただし最も損害の少ない場所・方法に限られ、償金が必要）。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義25 ========== -->
+<div class="section" id="lec25">
+  <div class="section-header">
+    <div class="section-num">25</div>
+    <h2>担保物権 — 債権回収のための物支配</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>担保物権は<strong>「債権が満足する可能性を高める」ために他人の所有物を支配する物権</strong>です。使うためではなく、<strong>お金を回収するため</strong>の物権 — ここが用益物権との根本的な違いです。</p>
+
+  <div class="analogy">
+    担保物権は「人質ならぬ<strong>物質（ものじち）</strong>」です。<br>
+    友達にゲーム機を貸すとき「返してくれるまで君のレアカードは預かっておくよ」と言えば、友達は返す気になる（留置的効力）。<br>
+    「返さなかったらこのカードを売って貸した分を回収するよ。他の友達より先にね」と言えれば、さらに安心（優先弁済的効力）。<br>
+    この2つの力の組み合わせ方で、4種類の担保物権が生まれます。
+  </div>
+
+  <h3>2つの分類軸</h3>
+  <h4>軸①：どうやって成立するか</h4>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>⚖️ 法定担保物権</h4>
+      <p><strong>一定の事実があれば法律上自動的に成立</strong></p>
+      <ul>
+        <li><strong>留置権</strong>（295条）</li>
+        <li><strong>先取特権</strong>（303条）</li>
+        <li>契約不要。「公平のために法が与える」担保</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>✍️ 約定担保物権</h4>
+      <p><strong>設定契約の効果として成立</strong></p>
+      <ul>
+        <li><strong>質権</strong>（342条）</li>
+        <li><strong>抵当権</strong>（369条）</li>
+        <li>当事者が合意して設定する担保（金融取引の主役）</li>
+      </ul>
+    </div>
+  </div>
+
+  <h4>軸②：どんな効力を持つか</h4>
+  <table>
+    <tr><th>効力</th><th>内容</th><th>留置権</th><th>先取特権</th><th>質権</th><th>抵当権</th></tr>
+    <tr><td><strong>留置的効力</strong></td><td>債権が満足するまで物を返さなくてよい（心理的圧力で弁済を促す）</td><td>✅</td><td>❌</td><td>✅</td><td>❌</td></tr>
+    <tr><td><strong>優先弁済的効力</strong></td><td>金銭執行で債権者平等原則を破り、他の債権者より先に回収できる</td><td>❌※</td><td>✅</td><td>✅</td><td>✅</td></tr>
+  </table>
+  <p style="font-size:0.88em; color:var(--text-light);">※ 留置権に優先弁済権はないが、競売の買受人にも「払うまで渡さない」と言えるため（引受主義）、事実上優先回収できるという強みがある。</p>
+
+  <h3>担保物権の全体マップ</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：担保物権4種の体系</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">担保物権（債権回収のための物権）</span>
+        <ul>
+          <li>
+            <span class="node l1">法定担保物権（自動成立）</span>
+            <ul>
+              <li>
+                <span class="node l2">留置権 🔒「直すまで渡さない」</span>
+                <ul>
+                  <li><span class="node l3">例：修理代金をもらうまで時計を返さない時計屋</span></li>
+                </ul>
+              </li>
+              <li>
+                <span class="node l2">先取特権 🥇「この債権は特別に先取り」</span>
+                <ul>
+                  <li><span class="node l3">例：給料債権・葬式費用などは政策的に優先</span></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">約定担保物権（契約で設定）</span>
+            <ul>
+              <li>
+                <span class="node l2">質権 💍「預かる＋優先回収」</span>
+                <ul>
+                  <li><span class="node l3">占有移転が必要（345条）→ 設定者は使えなくなる</span></li>
+                </ul>
+              </li>
+              <li>
+                <span class="node l2">抵当権 🏠「預からず優先回収」＝担保の女王</span>
+                <ul>
+                  <li><span class="node l3">非占有型 → 設定者は使い続けられる（講義9の復習）</span></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>担保物権に共通する4つの性質（通有性）</h3>
+  <table>
+    <tr><th>性質</th><th>意味</th><th>イメージ</th></tr>
+    <tr><td><strong>付従性</strong></td><td>被担保債権がなければ担保物権もない。債権が消えれば担保も消える</td><td>影は本体（債権）がないと存在できない</td></tr>
+    <tr><td><strong>随伴性</strong></td><td>債権が譲渡されると担保物権もついていく</td><td>飼い主（債権）が引っ越せば犬（担保）もついていく</td></tr>
+    <tr><td><strong>不可分性</strong></td><td>債権全額の弁済を受けるまで、目的物の全部に効力が及ぶ</td><td>9割返済しても担保は1ミリも縮まない</td></tr>
+    <tr><td><strong>物上代位性</strong></td><td>目的物が金銭等に変わったら（保険金・売却代金）、それに効力が及ぶ（304条）</td><td>担保物が「変身」しても追いかける</td></tr>
+  </table>
+
+  <div class="key">
+    担保物権を理解するコツは「<strong>誰と戦うための権利か</strong>」を意識すること。<br>
+    担保物権の本当の敵は債務者ではなく、<strong>他の債権者</strong>です。債務者の財産が足りなくなったとき（破産・競合）、債権者平等原則の行列を飛び越えて先に回収する — そのための権利。講義7〜10（破産・別除権）とつながる話です。
+  </div>
+
+  <div class="warn">
+    「留置権＝優先弁済あり」と覚え違いしないこと。留置権が持つのは<strong>留置的効力のみ</strong>（物上代位もなし）。逆に先取特権・抵当権は<strong>優先弁済的効力のみ</strong>で留置的効力なし。両方持つのは<strong>質権だけ</strong>です。
+  </div>
+
+  <div class="quiz">
+    Q1: 時計店が修理代金未払いの客に時計の返還を拒んでいる。これは何という権利か。契約は必要か。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p><strong>留置権</strong>（295条）。「その物に関して生じた債権」（修理代金債権）を有する者が、弁済を受けるまでその物を留置できる。法定担保物権なので、<strong>契約は不要</strong>。修理を依頼し時計を預けたという事実があれば法律上当然に成立する。</p>
+    </details>
+    <br>
+    Q2: 抵当権付きの建物が火事で全焼し、所有者に火災保険金が支払われることになった。抵当権者はどうなるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>目的物は滅失したが、抵当権者は<strong>物上代位性</strong>（372条・304条）により、所有者が受け取るべき<strong>火災保険金請求権</strong>の上に抵当権の効力を及ぼし、そこから優先弁済を受けられる。ただし保険金が所有者に<strong>払い渡される前に差押え</strong>が必要。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義26 ========== -->
+<div class="section" id="lec26">
+  <div class="section-header">
+    <div class="section-num">26</div>
+    <h2>地上権の譲渡自由、賃借権の譲渡不自由 — 物権と債権、再び</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>同じ「他人の土地を使う」権利でも、物権の<strong>地上権は自由に譲渡できる</strong>のに、債権の<strong>賃借権は賃貸人の承諾なしには譲渡できない</strong>（民612条）。この違いは、物権と債権の本質そのものから導かれます。</p>
+
+  <div class="analogy">
+    定期券とお友達パスのたとえ：<br>
+    <strong>地上権（物権）</strong>＝記名なしの回数券。土地を「直接」支配する権利だから、誰が使おうと土地所有者の生活は変わらない。だから他人に売っても譲ってもOK。<br>
+    <strong>賃借権（債権）</strong>＝「友達だから家に泊めてあげる」という約束。あなただから泊めるのであって、見知らぬ人に「泊まる権利を譲ったから」と来られたら困る。<strong>相手が誰かが決定的に重要</strong>。だから譲渡には承諾が必要。
+  </div>
+
+  <h3>なぜこの違いが生まれるのか — 定義に戻る</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">物権＝物を<strong>直接</strong>支配<br><small>他人の意思を介在させない</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">支配の実現に所有者の行為は不要<br><small>誰が地上権者でも所有者の負担は同じ</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">譲渡自由<br><small>処分権能は物権の内容そのもの</small></div>
+  </div>
+  <div class="flow">
+    <div class="flow-item f-orange">債権＝<strong>人に</strong>行為を請求<br><small>債務者の行為を通じて実現</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">「誰に使わせるか」は賃貸人の重大関心事<br><small>信頼関係が基礎</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">無断譲渡・転貸は禁止<br><small>民612条：承諾が必要</small></div>
+  </div>
+
+  <h3>地上権 vs 賃借権 総合比較表</h3>
+  <table>
+    <tr><th>比較項目</th><th>地上権（物権）</th><th>賃借権（債権）</th></tr>
+    <tr><td>権利の性質</td><td>土地を直接支配する用益物権</td><td>賃貸人に「使わせろ」と請求する債権</td></tr>
+    <tr><td>譲渡</td><td>✅ 自由（所有者の承諾不要）</td><td>❌ 賃貸人の承諾が必要（612条1項）</td></tr>
+    <tr><td>転貸（また貸し）</td><td>✅ 自由（土地を貸すことも可）</td><td>❌ 賃貸人の承諾が必要（612条1項）</td></tr>
+    <tr><td>無断で譲渡・転貸したら</td><td>—（そもそも自由）</td><td>賃貸人は契約を解除できる（612条2項）</td></tr>
+    <tr><td>担保化</td><td>✅ 抵当権を設定できる（369条2項）</td><td>❌ 抵当権の目的にできない</td></tr>
+    <tr><td>登記請求権</td><td>✅ あり（所有者に登記協力義務）</td><td>❌ なし（特約がない限り）</td></tr>
+    <tr><td>存続期間</td><td>自由に設定可（永久も可と解される）</td><td>最長50年（604条）</td></tr>
+  </table>
+
+  <div class="key">
+    <strong>「処分の自由」は物権の本質に組み込まれている</strong>。<br>
+    物権は他人の意思を介在させずに物を支配する権利。その権利を売るか・贈るか・担保に入れるかも、権利者が単独で決められる（所有者がどう思おうと関係ない）。<br>
+    一方、債権の世界で勝手な「また貸し・譲渡」を許すと、賃貸人は<strong>見知らぬ人に自分の物を使われる</strong>ことになる。賃貸借は当事者の信頼関係を基礎とする継続的契約だから、相手の交代には承諾が要るのです。
+  </div>
+
+  <div class="warn">
+    では実際の土地利用はどうか？ 現実には地上権はほとんど使われず、<strong>圧倒的に賃借権</strong>です。なぜなら土地所有者にとって地上権は強すぎる（譲渡自由・登記義務あり・長期間戻ってこない）から、所有者が地上権設定に応じないのです。<br>
+    その結果、立場の弱い賃借人を保護するために<strong>借地借家法</strong>が発達した（賃借権の物権化）— 講義21とつながります。また判例は、無断転貸でも<strong>背信行為と認めるに足りない特段の事情</strong>があれば解除を認めません（信頼関係破壊の法理）。
+  </div>
+
+  <div class="quiz">
+    Q1: Bは地主Aから土地に地上権の設定を受けて建物を建てた。BはAの承諾なしに地上権をCに売却できるか？ 賃借権だったらどうか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>地上権なら<strong>承諾なしに売却できる</strong>。物権として土地を直接支配しており、処分の自由は権利内容そのものだから。賃借権なら<strong>Aの承諾が必要</strong>（612条1項）。無断で譲渡しCに使わせると、Aは賃貸借契約を解除できる（同条2項）。ただし判例上、背信行為と認めるに足りない特段の事情があれば解除は認められない。</p>
+    </details>
+    <br>
+    Q2: なぜ賃借権の無断譲渡が「解除」までできる重大事由とされるのか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>賃貸借は、賃貸人が「この人なら大事に使ってくれる・賃料を払ってくれる」という<strong>信頼</strong>に基づいて自分の財産を委ねる継続的契約だから。勝手に利用者が交代すれば、その信頼の基礎が崩れる。だから612条2項は無断譲渡・転貸を契約解除事由とした。逆にいえば、信頼が壊れていない場合（例：実質同一の家族・法人への承継）には解除を制限するのが信頼関係破壊の法理である。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義27 ========== -->
+<div class="section" id="lec27">
+  <div class="section-header">
+    <div class="section-num">27</div>
+    <h2>物権変動論 — 意思主義・対抗要件主義・無権利の法理</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>物権変動（所有権の移転など）の基本ルールは3つ。①<strong>意思表示だけで物権は移転する</strong>（意思主義・176条）、②<strong>ただし対抗要件がないと第三者に主張できない</strong>（対抗要件主義・177条/178条）、③<strong>無権利者からは権利を取得できない</strong>（無権利の法理）。この三点セットが物権変動論の土台です。</p>
+
+  <div class="analogy">
+    コンサートチケットのたとえ：<br>
+    ① 友達と「チケット譲るよ」「ありがとう」で合意 → その瞬間にチケットの権利はあなたのもの（<strong>意思主義</strong>：書類も儀式も不要）。<br>
+    ② でも入場ゲートで「私のです」と主張するには、チケットの<strong>名義書換</strong>が必要（<strong>対抗要件主義</strong>：登記・引渡しという「名義」がないと第三者には通用しない）。<br>
+    ③ そもそもチケットを持っていない人から「譲るよ」と言われても、何も手に入らない（<strong>無権利の法理</strong>：ない袖は振れぬ）。
+  </div>
+
+  <h3>三点セットの構造</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：物権変動論の基本構造</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">物権変動論</span>
+        <ul>
+          <li>
+            <span class="node l1">① 意思主義（176条）</span>
+            <ul>
+              <li><span class="node l2">物権変動は「当事者の意思表示のみ」によって効力を生ずる</span></li>
+              <li><span class="node l3">登記・引渡し・代金支払は効力発生の要件ではない</span></li>
+              <li><span class="node l3">フランス法型（⇔ドイツは形式主義：登記してはじめて移転）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">② 対抗要件主義（177条・178条）</span>
+            <ul>
+              <li><span class="node l2">不動産 → 登記がなければ第三者に対抗できない（177条）</span></li>
+              <li><span class="node l2">動産 → 引渡しがなければ第三者に対抗できない（178条）</span></li>
+              <li><span class="node accent">適用範囲は意思主義より広い：取得時効・相続等による物権変動にも適用</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">③ 無権利の法理</span>
+            <ul>
+              <li><span class="node l2">無権利者から権利を承継取得することはできない（当然の理屈）</span></li>
+              <li><span class="node l3">伝統的理解：無権利の法理が働く場面に177条の出番はない</span></li>
+              <li><span class="node danger">近年の例外的修正：94条2項類推・即時取得・相続法改正など、無権利者からの取得を認める場面が拡大</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>「対抗できない」とはどういう意味か</h3>
+  <p>176条で所有権はすでに移転している。それなのに177条は「登記がなければ第三者に対抗できない」という。つまり日本民法では、<strong>権利の移転（当事者間）</strong>と<strong>権利の主張（第三者間）</strong>が切り離されています。</p>
+
+  <div class="flow">
+    <div class="flow-item f-green">AB売買契約成立<br><small>176条：この瞬間に所有権はBへ</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">登記はまだAのまま<br><small>Bは所有者だが「裸の所有者」</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">AがCにも売却（二重譲渡）<br><small>Cが先に登記</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">177条：Cの勝ち<br><small>Bは登記なき所有権を対抗できない</small></div>
+  </div>
+
+  <h3>無権利の法理と対抗要件主義の棲み分け</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🚫 無権利の法理が働く場面</h4>
+      <p><strong>そもそも権利が無い人からの取得</strong></p>
+      <ul>
+        <li>例：Aの土地の登記名義を勝手に自分に移したXから、Cが買った</li>
+        <li>Xは無権利 → Cは何も取得できない</li>
+        <li>登記の有無は関係ない（<strong>登記に公信力なし</strong>）</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>⚔️ 対抗要件主義が働く場面</h4>
+      <p><strong>権利がある人からの二重取得の競争</strong></p>
+      <ul>
+        <li>例：所有者AがBとCの両方に売った</li>
+        <li>BもCも「権利者Aから」取得 → 両者とも有資格者</li>
+        <li>→ <strong>先に登記した方が勝つ</strong>（177条）</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    <strong>頭の中の判定手順</strong>：<br>
+    Step1 「売主は権利者か？」→ Noなら無権利の法理。買主は原則何も取得できない（例外：94条2項類推〔虚偽の外観を信じた者の保護〕、動産の即時取得〔192条〕）。<br>
+    Step2 「権利者からの取得者が複数いて競合しているか？」→ Yesなら177条/178条。対抗要件の先後で決着。<br>
+    この順番で考えれば、物権変動の問題の9割は交通整理できます。
+  </div>
+
+  <div class="warn">
+    意思主義と対抗要件主義の適用範囲はズレています。<strong>対抗要件主義の方が広い</strong>。<br>
+    取得時効や相続による物権変動は「意思表示による変動」ではない（176条の世界の外）が、それでも<strong>177条は適用される</strong>（判例：時効取得者も登記がなければ時効完成後の第三者に対抗できない）。「176条とセットの場面だけ177条」と思い込まないこと。
+  </div>
+
+  <div class="quiz">
+    Q1: AB間で土地売買契約が成立したが、代金未払い・登記未了・引渡し未了である。所有権はどちらにあるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>原則として<strong>Bにある</strong>。176条の意思主義により、物権変動は意思表示のみで効力を生じ、契約成立時に所有権は移転する（特約があれば別。実務では「代金完済時に移転」の特約が多い）。登記・引渡し・代金支払は移転の要件ではない。ただしBは登記を備えるまで、その所有権を第三者に対抗できない（177条）。</p>
+    </details>
+    <br>
+    Q2: 登記名義を偽造で取得したX（無権利者）から土地を買ったCは、登記を信頼したのだから保護されないか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>原則として保護されない。<strong>無権利の法理</strong>により、無権利者Xから承継取得はできず、日本の登記には<strong>公信力がない</strong>から「登記を信じた」だけでは救済されない。例外的に、真の所有者A自身が虚偽の登記の作出・存続に関与・放置していた場合には、<strong>民94条2項の類推適用</strong>により善意のCが保護されることがある（帰責性ある者は虚偽の外観を信じた者に負ける）。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義28 ========== -->
+<div class="section" id="lec28">
+  <div class="section-header">
+    <div class="section-num">28</div>
+    <h2>物権変動の当事者間「対抗」問題 — AB間では登記は要らない</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>売主Aと買主Bの<strong>当事者間</strong>では、Bは登記がなくても所有権の取得を主張できます。AB間の所有権争いは<strong>176条（売買契約の事実）だけで決着</strong>し、177条の出番はありません。</p>
+
+  <div class="analogy">
+    プレゼントのたとえ：<br>
+    誕生日に時計をプレゼントしてくれた友人が、後日「やっぱりあれは僕の時計だ。名義の書類がないだろう」と言い出したら？<br>
+    「<strong>あなた自身が私にくれたんでしょう</strong>」の一言で終わりです。あげた本人が「書類がないから無効」と主張するのは筋が通らない。<br>
+    対抗要件（登記）は<strong>第三者との競争</strong>のための装備であって、<strong>取引の相手方本人</strong>との間では不要なのです。
+  </div>
+
+  <h3>訴訟でどう現れるか — 法的三段論法で見る</h3>
+  <p>Aが「あの土地は自分の所有物だ」とBに対し<strong>所有権確認の訴え</strong>を起こしたとします。Bの反撃は1つの事実を主張するだけで足ります。</p>
+
+  <div class="flow">
+    <div class="flow-item f-blue">Aの主張<br><small>「目的物はA所有」</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">Bの反論<br><small>「AB間で売買契約が締結された」</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">176条を適用<br><small>所有権はAからBへ移転</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">結論<br><small>Aはもはや無権利。Aの請求棄却</small></div>
+  </div>
+
+  <div class="key">
+    巧妙なポイント：Bが主張するのは「<strong>AB間で売買契約が締結された</strong>」という事実だけ。<br>
+    「売買契約締結時にAが所有していたこと」は、<strong>A自身が「自分の所有だ」と主張しているのだから争いがない</strong>。そこに176条を適用すれば、法的三段論法により「所有権はAからBに移転し、<strong>Aは所有権を失った</strong>」という効果が導かれる。<br>
+    Bは自分の登記を一切持ち出す必要がない。これが「当事者間に対抗問題なし」の意味です。
+  </div>
+
+  <h3>なぜ当事者間では登記不要なのか</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：登記が要る相手・要らない相手</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">Bは誰に対して登記が必要か</span>
+        <ul>
+          <li>
+            <span class="node l1">登記不要の相手</span>
+            <ul>
+              <li><span class="node l2">売主A本人 — 自分で売っておいて争うのは筋違い</span></li>
+              <li><span class="node l2">Aの相続人 — 売主の地位をそのまま承継した「当事者の延長」</span></li>
+              <li><span class="node l2">無権利者・不法占拠者 — そもそも競争の資格がない（→講義29）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">登記必要の相手（177条の「第三者」）</span>
+            <ul>
+              <li><span class="node accent">Aからの二重譲受人C</span></li>
+              <li><span class="node accent">Aの債権者で目的物を差し押さえた者</span></li>
+              <li><span class="node accent">Aから抵当権・賃借権の設定を受けた者</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <table>
+    <tr><th>場面</th><th>適用条文</th><th>決め手</th></tr>
+    <tr><td>A vs B（売買の当事者間）</td><td>176条のみ</td><td>売買契約の締結という<strong>事実</strong></td></tr>
+    <tr><td>B vs C（Aからの二重譲受人同士）</td><td>176条＋<strong>177条</strong></td><td>登記の<strong>先後</strong></td></tr>
+    <tr><td>B vs 無権利の占有者</td><td>176条＋無権利の法理</td><td>登記不要で勝てる（→講義29）</td></tr>
+  </table>
+
+  <div class="warn">
+    「登記がない＝何も主張できない」という思い込みは捨てましょう。<br>
+    177条が「登記がなければ対抗できない」と言う相手は<strong>第三者</strong>だけ。しかもその「第三者」もすべての第三者ではなく、<strong>対抗要件の欠缺を主張する正当な利益を有する者</strong>に限られます（制限説・判例）。当事者・包括承継人・無権利者には、登記なしで堂々と所有権を主張できます。
+  </div>
+
+  <div class="quiz">
+    Q1: AがBに土地を売却した後、Aが死亡してDが相続した。Dは「Bは登記がないから所有権を主張できない」と言えるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>言えない。相続人Dは被相続人Aの法的地位を<strong>包括承継</strong>しており、売主Aと同一の「当事者」の立場に立つ。当事者間に177条の適用はないから、Bは登記なくしてDに所有権取得を対抗できる。Dは177条の「第三者」に当たらない。</p>
+    </details>
+    <br>
+    Q2: 所有権確認訴訟でA（売主）がBに敗れるとき、Bはなぜ自分の登記を主張しなくてよいのか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>Bが「AB売買契約締結」の事実を主張すれば、Aがみずから主張する「Aの所有」と合わせて176条が適用され、<strong>所有権はAからBに移転しAは無権利になった</strong>という効果が三段論法で導かれるから。対抗要件（177条）は権利取得を第三者に主張するための要件であり、変動の<strong>当事者間</strong>では売買契約の効力（176条）だけで決着する。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義29 ========== -->
+<div class="section" id="lec29">
+  <div class="section-header">
+    <div class="section-num">29</div>
+    <h2>所有権移転に対する「一般の第三者」と「特別の第三者」</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>Aから買ったBが、目的物を占有する見知らぬDに返還請求するとき — Dが<strong>ただの占有者（一般の第三者）なら、Bは登記がなくても勝てます</strong>。登記が必要になるのは、Dが<strong>正当な権利の取得を主張する「特別の第三者」</strong>であるときだけです。</p>
+
+  <div class="analogy">
+    徒競走のたとえ：<br>
+    177条の「登記の競争」は、<strong>正式にエントリーした選手同士の徒競走</strong>です。<br>
+    AからBへ、AからCへ — 同じスタートライン（権利者Aとの取引）に立った者同士なら、ゴールテープ（登記）を先に切った方が勝ち。<br>
+    でも、エントリーもせずコースに寝転がっている人（不法占拠者）は、そもそも<strong>競争相手ではありません</strong>。Bは「先にゴールした証明書（登記）」を見せなくても、「どいてください」と言えるのです。
+  </div>
+
+  <h3>訴訟の場面設定</h3>
+  <p>売主Aから売買契約により所有権を取得したはずのBが、目的物を現に占有しているDに対し、<strong>所有権に基づく返還請求の訴え</strong>を提起しました。</p>
+
+  <div class="flow">
+    <div class="flow-item f-blue">Bの請求原因<br><small>①Bもと所有 ②D現占有</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">①の中身<br><small>「Aもと所有＋AB売買契約締結」で立証</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">Dの出方次第で<br>勝負が分かれる</div>
+  </div>
+
+  <div class="term">
+    <strong>「現占有」の「現」とは</strong>：訴え提起時ではなく、<strong>事実審の口頭弁論終結時</strong>を意味します。判決はその時点の事実状態を基準に下されるからです。また、Bの「もと所有」は「Aもと所有＋AB売買契約締結」という2つの事実から、176条の適用によって導かれます（Aの所有→売買→Bへ移転、という法的三段論法）。
+  </div>
+
+  <h3>Dの正体による場合分け</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：占有者Dは何者か？</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">Bの返還請求に対するDの立場</span>
+        <ul>
+          <li>
+            <span class="node l1">一般の第三者（ただの第三者）</span>
+            <ul>
+              <li><span class="node l2">不法占拠者・何の権原も主張できない者</span></li>
+              <li><span class="node l3">Bの登記の欠缺を主張する正当な利益なし</span></li>
+              <li><span class="node accent">→ Bは登記なしで勝てる（177条の「第三者」に非ず）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">特別の第三者</span>
+            <ul>
+              <li><span class="node l2">「自分もAから買った」（二重譲受人）</span></li>
+              <li><span class="node l2">「自分はAから借りている」（対抗力ある賃借人）</span></li>
+              <li><span class="node l2">「Aへの債権で差し押さえた」（差押債権者）</span></li>
+              <li><span class="node l3">いずれも権利者Aとの取引・法的手続に基づく正当な利害関係</span></li>
+              <li><span class="node danger">→ Bは対抗要件（登記）を備えていなければ負けうる</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>177条「第三者」の制限説（判例）</h3>
+  <div class="key">
+    177条の条文は単に「第三者」としか書いていませんが、判例（大連判明治41・12・15）は、これを「<strong>当事者及びその包括承継人以外の者で、登記の欠缺（けんけつ＝不存在）を主張する正当な利益を有する者</strong>」に限定しました（制限説）。<br>
+    理由：177条は<strong>自由競争の競争者同士</strong>を登記の先後で序列づけるルール。競争に参加する資格すらない者（無権利者・不法占拠者・不法行為者）まで「登記がないだろう」と言えるとするのは、制度の趣旨に反するからです。
+  </div>
+
+  <h3>「第三者」に当たる者・当たらない者</h3>
+  <table>
+    <tr><th>177条の「第三者」に当たる（Bに登記が必要）</th><th>当たらない（Bは登記なしで勝てる）</th></tr>
+    <tr><td>二重譲渡の譲受人C</td><td>不法占拠者・不法行為者</td></tr>
+    <tr><td>目的物の差押債権者</td><td>無権利者（偽造登記の名義人など）とその譲受人</td></tr>
+    <tr><td>対抗要件を備えた賃借人</td><td>当事者（売主A）とその相続人（包括承継人）</td></tr>
+    <tr><td>地上権・抵当権の設定を受けた者</td><td>背信的悪意者（→講義30）</td></tr>
+  </table>
+
+  <div class="warn">
+    「悪意者（Bへの売買を知っていた者）は第三者から除外される」と早合点しないこと。<br>
+    177条の世界は<strong>自由競争</strong>なので、<strong>単なる悪意者は「第三者」に含まれます</strong>（善意悪意不問）。「Bが先に買ったのを知っていたが、自分が先に登記すれば勝てる」と考えて取引するのは、自由競争として許される。<br>
+    除外されるのは、自由競争の枠を踏み外した<strong>背信的悪意者</strong>だけです（詳しくは講義30）。
+  </div>
+
+  <div class="quiz">
+    Q1: Bが買った土地に不法占拠者Dが住み着いている。Bは登記未了だが、Dに明渡しを請求できるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>請求できる。不法占拠者Dは、登記の欠缺を主張する<strong>正当な利益を有しない</strong>から177条の「第三者」に当たらない（制限説・判例）。Bは登記なくして所有権取得をDに対抗でき、所有権に基づく返還請求（明渡請求）が認められる。</p>
+    </details>
+    <br>
+    Q2: 同じ占有者Dでも、「Aから賃借して対抗要件を備えている」と主張した場合、結論はどう変わるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>Dは権利者Aとの取引に基づく正当な利害関係人（<strong>特別の第三者</strong>）となる。Dが対抗要件（借家なら引渡し・借地なら借地上建物の登記）を先に備えていれば、Bが後から登記を備えても、Dは賃借権をBに対抗でき、Bの明渡請求は棄却される。Dの正体が「ただの占有者」か「正当な権原と対抗要件を持つ者」かで、登記の要否と勝敗が逆転する。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義30 ========== -->
+<div class="section" id="lec30">
+  <div class="section-header">
+    <div class="section-num">30</div>
+    <h2>対抗要件主義の使い方 — 自由競争のルールブック</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>返還請求訴訟で占有者Dが「<strong>自分もAから買った</strong>」「<strong>Aから借りている</strong>」と言い出したら、それは「自分は特別な第三者だ」という宣言。ここから先は<strong>自由競争経済秩序のルール＝対抗要件の先後</strong>で勝敗が決まります。</p>
+
+  <div class="analogy">
+    椅子取りゲームのたとえ：<br>
+    1つの土地（椅子）に、Aから権利を得た人が2人現れた。どちらも「Aと契約した」のは本当。でも椅子は1つ。<br>
+    民法のルールは「<strong>契約を先にした者勝ち」ではなく「椅子に先に座った（＝登記を先に備えた）者勝ち</strong>」。<br>
+    だから不動産取引のプロは、契約したらその足で法務局へ走るのです。
+  </div>
+
+  <h3>訴訟での攻防：Dの言い分の法的整理</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">B → D<br><small>所有権に基づく返還請求</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">D：「自分もAから買った」<br><small>or「Aから借りている」</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">「ただの第三者」ではなく<br>「特別な第三者だぞ」の宣言</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">対抗要件の先後勝負へ<br><small>177条の土俵が開く</small></div>
+  </div>
+
+  <h3>パターン①：D「自分もAから買った」（二重譲渡）</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🏃 B（第一買主）</h4>
+      <ul>
+        <li>Aと先に売買契約</li>
+        <li>176条で所有権取得（したはず）</li>
+        <li>登記：<strong>未了</strong></li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🏃 D（第二買主）</h4>
+      <ul>
+        <li>Aと後から売買契約</li>
+        <li>同じく176条で取得（したはず）</li>
+        <li>登記：<strong>具備</strong></li>
+      </ul>
+    </div>
+  </div>
+  <p>結論：<strong>先に登記を備えたDの勝ち</strong>。Bは177条により、登記なき所有権取得をDに対抗できません。Dが登記を備えた時点で、Bの所有権取得は確定的に否定されます（Bに残るのは、Aに対する債務不履行責任の追及＝損害賠償請求だけ）。</p>
+
+  <h3>パターン②：D「Aから借りている」（賃借人）</h3>
+  <p>Dが賃借権の対抗要件（建物の引渡し〔借地借家法31条〕など）をBの登記より<strong>先に</strong>備えていれば、DはBに賃借権を対抗でき、Bの明渡請求は棄却。逆にBの登記が先なら、Dは新所有者Bに賃借権を対抗できず、明渡しを免れません。<strong>講義21の知識がここで合流します</strong>。</p>
+
+  <h3>なぜ「早い者勝ち（登記の先後）」が正当化されるのか</h3>
+  <div class="key">
+    <strong>自由競争経済秩序</strong>がキーワード。<br>
+    資本主義社会では、同じ物を複数人が欲しがって競うのは健全なこと。民法は「先に契約した者」を絶対視せず、<strong>「公示という社会的に確認可能な行為を先に完了した者」</strong>に勝たせることで、<br>
+    ① 取引に入る者は登記簿さえ見れば安心できる（取引の安全）<br>
+    ② 権利者には登記を急ぐインセンティブが働く（公示の促進）<br>
+    という、社会全体にとって合理的な仕組みを実現しています。Dが「Bが先に買った」と知っていても（単純悪意）、先に登記すれば勝てるのは、この自由競争の枠内の行動だからです。
+  </div>
+
+  <h3>自由競争の限界：背信的悪意者排除論</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：第二譲受人Dの主観による場合分け</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">登記を先に備えた第二譲受人Dは勝てるか</span>
+        <ul>
+          <li>
+            <span class="node l1">善意（AB売買を知らなかった）</span>
+            <ul>
+              <li><span class="node l2">→ 勝てる。自由競争の正当な勝者</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">単純悪意（知っていた）</span>
+            <ul>
+              <li><span class="node l2">→ それでも勝てる。知った上で競争に参加するのは自由</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">背信的悪意（知った上で害意・不当目的）</span>
+            <ul>
+              <li><span class="node danger">→ 負ける。177条の「第三者」から排除（判例）</span></li>
+              <li><span class="node l3">例：Bを困らせて高値で売りつける目的だけで買った</span></li>
+              <li><span class="node l3">例：Bへの復讐目的、Aと共謀してBの権利を潰す目的</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="warn">
+    背信的悪意者排除論は「悪意者は負ける」というルール<strong>ではない</strong>点を再確認。<br>
+    単なる悪意は自由競争のうち。排除されるのは、<strong>登記制度を悪用してもっぱら他人を害する</strong>ような、信義則（民1条2項）に反する者だけです。「自由競争の土俵で戦う資格すら無い者」というイメージで捉えましょう。
+  </div>
+
+  <h3>講義21〜30の総まとめフロー</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">物権の主張<br><small>直接支配性に基づく請求</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">相手の正体の見極め<br><small>当事者？無権利者？特別な第三者？</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">当事者・無権利者なら<br><small>176条＋無権利の法理で決着</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">特別な第三者なら<br><small>対抗要件の先後で決着（177条）</small></div>
+  </div>
+
+  <div class="quiz">
+    Q1: AがBに土地を売却後、その事実を知っているDにも売却し、Dが先に登記した。BはDに所有権を主張できるか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>原則として主張できない。Dは<strong>単純悪意者</strong>にすぎず、自由競争秩序の下では177条の「第三者」に含まれる。先に登記を備えたDが確定的に所有権を取得する。ただしDが、Bを害する目的で買い受けた等の<strong>背信的悪意者</strong>と評価される事情があれば、Dは「第三者」から排除され、Bは登記なくして対抗できる。</p>
+    </details>
+    <br>
+    Q2: 二重譲渡で負けた第一買主Bは、泣き寝入りするしかないのか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>物権としての所有権は失うが、Aに対する<strong>債権</strong>は残る。AはBへの所有権移転義務を履行不能にしたのだから、Bは売買契約の<strong>債務不履行</strong>に基づき、契約を解除して支払済代金の返還を求め、あわせて<strong>損害賠償</strong>（民415条）を請求できる。「物権の競争に負けても、契約相手への債権的請求は別」— 物権と債権の二本柱がここでも効いている。</p>
+    </details>
+    <br>
+    Q3: なぜ民法は「先に契約した者」ではなく「先に登記した者」を勝たせるのか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>契約は当事者間の出来事で外部からは見えないが、登記は誰でも確認できる<strong>公示</strong>だから。「登記簿を見れば権利関係が分かる」状態を保つことで取引の安全が実現し、権利者にも速やかな登記が促される。見えない契約の先後で決めると、取引に入る者は常に「先の買主がいるかも」と怯えることになり、自由な経済活動が萎縮してしまう。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 用語集 ========== -->
+<div class="section" id="glossary">
+  <div class="section-header">
+    <div class="section-num">📖</div>
+    <h2>初学者向け用語集</h2>
+  </div>
+
+  <table>
+    <tr><th>用語</th><th>読み</th><th>意味（やさしく）</th><th>登場講義</th></tr>
+    <tr><td>借家権</td><td>しゃくやけん（しゃっかけん）</td><td>建物賃貸借契約に基づき建物を使う権利</td><td>㉑</td></tr>
+    <tr><td>引渡し</td><td>ひきわたし</td><td>物の占有を移転すること。借家権・動産物権の対抗要件</td><td>㉑</td></tr>
+    <tr><td>物権的請求権</td><td>ぶっけんてきせいきゅうけん</td><td>物権侵害の除去を求める権利。返還・妨害排除・妨害予防の3種</td><td>㉒</td></tr>
+    <tr><td>占有権原</td><td>せんゆうけんげん</td><td>物の占有を正当化する法的根拠（賃借権・地上権など）</td><td>㉒</td></tr>
+    <tr><td>物権法定主義</td><td>ぶっけんほうていしゅぎ</td><td>物権は法律が定めた種類・内容しか作れないルール（175条）</td><td>㉓</td></tr>
+    <tr><td>占有権</td><td>せんゆうけん</td><td>物を事実上支配している状態そのものを保護する権利</td><td>㉓</td></tr>
+    <tr><td>本権</td><td>ほんけん</td><td>占有を法的に正当化する権利（所有権・地上権など）の総称</td><td>㉓</td></tr>
+    <tr><td>自力救済の禁止</td><td>じりききゅうさいのきんし</td><td>権利があっても実力行使で実現してはいけない原則</td><td>㉓</td></tr>
+    <tr><td>使用・収益・処分</td><td>しよう・しゅうえき・しょぶん</td><td>所有権の3つの権能。使う・果実を得る・売る等（206条）</td><td>㉔</td></tr>
+    <tr><td>用益物権</td><td>ようえきぶっけん</td><td>他人の土地を使用収益する物権。地上権・永小作権・地役権・入会権</td><td>㉔</td></tr>
+    <tr><td>制限物権</td><td>せいげんぶっけん</td><td>所有権の権能の一部を切り出した物権。所有権を「制限」する</td><td>㉔</td></tr>
+    <tr><td>担保物権</td><td>たんぽぶっけん</td><td>債権回収の確実性を高めるために物を押さえる物権</td><td>㉕</td></tr>
+    <tr><td>留置的効力</td><td>りゅうちてきこうりょく</td><td>債権の弁済を受けるまで物を返さなくてよい力</td><td>㉕</td></tr>
+    <tr><td>優先弁済的効力</td><td>ゆうせんべんさいてきこうりょく</td><td>債権者平等を破って他の債権者より先に回収できる力</td><td>㉕</td></tr>
+    <tr><td>付従性・随伴性</td><td>ふじゅうせい・ずいはんせい</td><td>担保は債権に運命を共にし（付従）、債権の移転についていく（随伴）</td><td>㉕</td></tr>
+    <tr><td>物上代位</td><td>ぶつじょうだいい</td><td>担保目的物が保険金等に変わってもそれに効力が及ぶこと（304条）</td><td>㉕</td></tr>
+    <tr><td>転貸</td><td>てんたい</td><td>借りた物をさらに他人に貸すこと（また貸し）。賃借権では承諾必要</td><td>㉖</td></tr>
+    <tr><td>信頼関係破壊の法理</td><td>しんらいかんけいはかいのほうり</td><td>無断転貸等でも信頼関係が壊れていなければ解除を認めない判例法理</td><td>㉖</td></tr>
+    <tr><td>意思主義</td><td>いししゅぎ</td><td>物権変動は意思表示だけで効力を生じるという原則（176条）</td><td>㉗</td></tr>
+    <tr><td>対抗要件主義</td><td>たいこうようけんしゅぎ</td><td>登記・引渡しがないと物権変動を第三者に主張できない原則（177・178条）</td><td>㉗</td></tr>
+    <tr><td>無権利の法理</td><td>むけんりのほうり</td><td>権利のない人からは権利を取得できないという当然の理屈</td><td>㉗</td></tr>
+    <tr><td>公信力</td><td>こうしんりょく</td><td>公示を信頼した者を保護する力。日本の不動産登記には無い</td><td>㉗</td></tr>
+    <tr><td>二重譲渡</td><td>にじゅうじょうと</td><td>同じ物を2人に売ること。登記を先に備えた方が勝つ</td><td>㉗㉚</td></tr>
+    <tr><td>登記の欠缺</td><td>とうきのけんけつ</td><td>登記が備わっていないこと。「欠缺」＝欠けていること</td><td>㉙</td></tr>
+    <tr><td>背信的悪意者</td><td>はいしんてきあくいしゃ</td><td>信義則に反する悪質な悪意者。177条の「第三者」から排除される</td><td>㉚</td></tr>
+  </table>
+</div>
+
+<!-- ========== Footer ========== -->
+<div style="text-align:center; padding: 30px; color: var(--text-light); font-size: 0.85em;">
+  <p>msahkie先生の民法講義に基づく学習ガイド</p>
+  <p>法律未修者向け知識点整理・拡展</p>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>
