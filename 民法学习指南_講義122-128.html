@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義122〜128 学習ガイド（法律未修者向け）</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --primary: #2c5f8a;
+    --secondary: #e8f0f8;
+    --accent: #d4740e;
+    --accent-light: #fff5eb;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #dfe6e9;
+    --success: #00b894;
+    --danger: #e17055;
+    --info: #74b9ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #2c5f8a 0%, #1a3a5c 100%);
+    color: white;
+    border-radius: 16px;
+    margin-bottom: 30px;
+  }
+  .header h1 { font-size: 2em; margin-bottom: 10px; }
+  .header p { opacity: 0.9; font-size: 1.05em; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+
+  /* Navigation */
+  .nav {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav:hover, .nav:focus-within {
+    max-height: 600px;
+  }
+  .nav h3 { margin-bottom: 10px; color: var(--primary); font-size: 0.95em; cursor: pointer; }
+  .nav h3::after { content: " ▼"; font-size: 0.7em; }
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .nav a {
+    display: block;
+    padding: 8px 12px;
+    background: var(--secondary);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.88em;
+    transition: all 0.2s;
+  }
+  .nav a:hover { background: var(--primary); color: white; }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--secondary);
+  }
+  .section-num {
+    background: var(--primary);
+    color: white;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 1.35em; color: var(--primary); }
+
+  /* Subsection */
+  h3 {
+    color: var(--primary);
+    font-size: 1.1em;
+    margin: 24px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  h4 {
+    color: var(--accent);
+    font-size: 1em;
+    margin: 16px 0 8px;
+  }
+
+  /* Analogy box */
+  .analogy {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .analogy::before {
+    content: "💡 たとえ話";
+    display: block;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Key point */
+  .key {
+    background: #eef7ee;
+    border-left: 4px solid var(--success);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .key::before {
+    content: "✅ 重要ポイント";
+    display: block;
+    font-weight: bold;
+    color: var(--success);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Warning */
+  .warn {
+    background: #fff3f0;
+    border-left: 4px solid var(--danger);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .warn::before {
+    content: "⚠️ 注意・よくある誤解";
+    display: block;
+    font-weight: bold;
+    color: var(--danger);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Term */
+  .term {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .term::before {
+    content: "📖 用語解説";
+    display: block;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Quiz */
+  .quiz {
+    background: #f0eeff;
+    border: 2px dashed #6c5ce7;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .quiz::before {
+    content: "🧪 理解度チェック";
+    display: block;
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+  .quiz details {
+    margin-top: 8px;
+  }
+  .quiz summary {
+    cursor: pointer;
+    color: #6c5ce7;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .quiz details p {
+    margin-top: 6px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92em;
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:nth-child(even) { background: var(--secondary); }
+  tr:hover { background: #dbeafe; }
+
+  /* Mind map */
+  .mindmap {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .mindmap-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 16px;
+    font-size: 1.05em;
+  }
+
+  /* Tree structure */
+  .tree { padding-left: 0; list-style: none; }
+  .tree ul { padding-left: 28px; list-style: none; position: relative; }
+  .tree ul::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 12px;
+    border-left: 2px solid var(--border);
+  }
+  .tree li {
+    position: relative;
+    padding: 4px 0 4px 0;
+  }
+  .tree ul > li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 14px;
+    width: 14px;
+    border-top: 2px solid var(--border);
+  }
+  .tree .node {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+  .node.root { background: var(--primary); color: white; font-size: 1em; padding: 8px 20px; }
+  .node.l1 { background: #4a90c4; color: white; }
+  .node.l2 { background: var(--secondary); color: var(--primary); border: 1px solid #b0cfe0; }
+  .node.l3 { background: #f1f5f1; color: var(--text); border: 1px solid #c8d6c8; font-size: 0.85em; }
+  .node.accent { background: var(--accent-light); color: #b35c00; border: 1px solid #f0c8a0; }
+  .node.danger { background: #fff0ee; color: #c0392b; border: 1px solid #f0b0a0; }
+
+  /* Flow diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 16px 0;
+    justify-content: center;
+  }
+  .flow-item {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 0.88em;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-arrow {
+    font-size: 1.4em;
+    color: var(--text-light);
+    padding: 0 4px;
+  }
+  .flow .f-blue { background: var(--secondary); color: var(--primary); border: 2px solid #a0c4e0; }
+  .flow .f-green { background: #e8f8e8; color: #1e7e34; border: 2px solid #a0d8a0; }
+  .flow .f-orange { background: var(--accent-light); color: #b35c00; border: 2px solid #f0c8a0; }
+  .flow .f-red { background: #fff0ee; color: #c0392b; border: 2px solid #f0b0a0; }
+
+  /* Comparison */
+  .vs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: start;
+    margin: 16px 0;
+  }
+  .vs-box {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid;
+  }
+  .vs-box.left { border-color: #4a90c4; background: #f0f6fc; }
+  .vs-box.right { border-color: #e0a040; background: #fdf8f0; }
+  .vs-box h4 { margin-top: 0; text-align: center; }
+  .vs-mid {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--text-light);
+    align-self: center;
+  }
+
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 24px; }
+  li { margin: 4px 0; }
+  strong { color: var(--primary); }
+
+  @media (max-width: 768px) {
+    body { padding: 10px; }
+    .section { padding: 18px; }
+    .header h1 { font-size: 1.4em; }
+    .nav-grid { grid-template-columns: 1fr 1fr; }
+    .vs { grid-template-columns: 1fr; }
+    .vs-mid { text-align: center; }
+    .flow { flex-direction: column; align-items: center; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== Header ========== -->
+<div class="header">
+  <h1>民法学習ガイド 講義122〜128</h1>
+  <p>同時履行の抗弁権の存在効・契約各論入門</p>
+  <div class="badge">msahkie先生の講義に基づく整理・拡展</div>
+</div>
+
+<!-- ========== Navigation ========== -->
+<div class="nav">
+  <h3>📑 目次（クリックでジャンプ）</h3>
+  <div class="nav-grid">
+    <a href="#overview">全体マップ</a>
+    <a href="#lec122">①122 存在効の問い4題</a>
+    <a href="#lec123">②123 問1：代金請求の組立て</a>
+    <a href="#lec124">③124 問2：履行遅滞解除</a>
+    <a href="#lec125">④125 問3：自働債権と抗弁</a>
+    <a href="#lec126">⑤126 問4：契約不適合で相殺</a>
+    <a href="#lec127">⑥127 本契約のための予約</a>
+    <a href="#lec128">⑦128 贈与契約</a>
+    <a href="#glossary">用語集</a>
+  </div>
+</div>
+
+<!-- ========== 全体マップ ========== -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-num">📍</div>
+    <h2>全体マップ：講義122〜128は何を学ぶのか</h2>
+  </div>
+
+  <p>このブロックは2つの山に分かれます。前半（122〜126）は、これまで学んだ<strong>「同時履行の抗弁権」</strong>の特殊な働き＝<strong>「存在効（存在効果）」</strong>を、4つの問題（要件事実の問い）を解きながら体で覚えます。後半（127〜128）は、いよいよ個別の契約（契約各論）の世界に入る入口として、<strong>「予約」</strong>と<strong>「贈与契約」</strong>を学びます。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">🗺️ 講義122〜128 全体思維導図</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">同時履行の存在効 → 契約各論への入口</span>
+        <ul>
+          <li>
+            <span class="node l1">Part 1：存在効を要件事実4題で体得（122-126）</span>
+            <ul>
+              <li><span class="node l2">①122 4つの問いの全体像（売買A・Bの設定）</span></li>
+              <li><span class="node l2">②123 問1：代金請求の「攻撃」の組立て方</span></li>
+              <li><span class="node l2">③124 問2：履行遅滞解除には履行の提供が要る（遅滞阻却効）</span></li>
+              <li><span class="node l2">④125 問3：抗弁の付いた債権は自働債権にできない（相殺阻却効）</span></li>
+              <li><span class="node l2">⑤126 問4：同じ契約から出た債権なら相殺できる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part 2：契約各論の入口（127-128）</span>
+            <ul>
+              <li><span class="node accent">⑥127 本契約のための「予約」（日常語の予約との違い）</span></li>
+              <li><span class="node accent">⑦128 贈与契約（諾成・無償・片務）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="analogy">
+    サッカーにたとえると：<br>
+    <strong>Part 1</strong> = 「守備の選手（同時履行の抗弁権）は、ピッチに<u>立っているだけ</u>で相手の攻撃を止めている」という事実を、4つの試合シーン（問1〜問4）で確認する。声を出して「マークするぞ！」と言わなくても、存在自体が効いている。<br>
+    <strong>Part 2</strong> = ここからは個別の「プレーの型」（契約の種類＝予約・贈与）を一つずつ覚えていく。
+  </div>
+
+  <div class="key">
+    このブロックの一番の合言葉は<strong>「存在効」</strong>です。<br>
+    同時履行の抗弁権（民533条）は、相手の請求に対して「同時に払え・渡せ」と<u>主張して初めて効く</u>場面（行使効）もありますが、それとは別に、<strong>「ただ存在しているだけ」で自動的に生じる効果</strong>があります。これが存在効です。問1〜問4は、この存在効が裁判の場（要件事実）でどう顔を出すかを訓練する問題です。
+  </div>
+</div>
+
+<!-- ========== 講義122 ========== -->
+<div class="section" id="lec122">
+  <div class="section-header">
+    <div class="section-num">122</div>
+    <h2>同時履行の抗弁権：存在効に関する問い4題</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>これから4つの問題を通して、同時履行の抗弁権が<strong>「主張しなくても、ただ存在するだけで相手の行動を縛る」</strong>という性質（存在効）を体感します。舞台はすべて同じ<strong>「AがBに甲動産を1000万円で売った」</strong>という売買契約です。</p>
+
+  <div class="analogy">
+    防犯カメラのたとえ：<br>
+    お店の入口に防犯カメラがあると、店員が「見てるぞ！」と<u>叫ばなくても</u>、その<strong>存在だけ</strong>で万引きを思いとどまらせます。<br>
+    同時履行の抗弁権も同じ。Bが「同時に渡せと言うぞ！」と<u>口に出さなくても</u>、その権利が<strong>存在しているだけ</strong>で、Aの「Bは遅滞してる！」「相殺するぞ！」という攻撃を自動的に封じます。これが<strong>存在効</strong>です。
+  </div>
+
+  <h3>共通の舞台設定</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">問1〜問4 共通の登場人物と関係</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">AB間の売買契約（甲動産＝1000万円）</span>
+        <ul>
+          <li>
+            <span class="node l1">売主A</span>
+            <ul>
+              <li><span class="node l2">債権：代金1000万円を請求できる</span></li>
+              <li><span class="node l2">債務：甲を引き渡さなければならない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">買主B</span>
+            <ul>
+              <li><span class="node l2">債権：甲の引渡しを請求できる</span></li>
+              <li><span class="node l2">債務：代金1000万円を払わなければならない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node accent">2つの債務は対価関係 → 同時履行の関係（民533条）</span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>4つの問いの見取り図</h3>
+  <table>
+    <tr><th>問</th><th>誰が何を請求？</th><th>相手の防御</th><th>効いてくる存在効</th></tr>
+    <tr><td>問1<br>(講123)</td><td>A → B 代金1000万円請求</td><td>（攻撃の組立て自体が論点）</td><td>抗弁はBが出すもの。Aは引渡しを主張不要</td></tr>
+    <tr><td>問2<br>(講124)</td><td>B → A 甲の引渡し請求</td><td>A：Bの代金不払いで履行遅滞解除</td><td><strong>履行遅滞阻却効</strong></td></tr>
+    <tr><td>問3<br>(講125)</td><td>B → A 貸金1000万円返還請求</td><td>A：代金債権を自働債権に相殺</td><td><strong>相殺阻却効</strong></td></tr>
+    <tr><td>問4<br>(講126)</td><td>A → B 代金1000万円請求</td><td>B：契約不適合の損害賠償債権で相殺</td><td>牽連性ある債権なら相殺OK</td></tr>
+  </table>
+
+  <div class="term">
+    <strong>存在効（存在効果）</strong>：抗弁権が「行使されること」ではなく「<strong>存在すること</strong>」自体から生じる効果。代表的なのは次の2つ。<br>
+    ① <strong>履行遅滞阻却効</strong>：同時履行の抗弁権を持っている間は、期限が来ても履行遅滞にならない。<br>
+    ② <strong>相殺阻却効</strong>：同時履行の抗弁権が付着している債権は、相殺の自働債権にできない。
+  </div>
+
+  <div class="warn">
+    「抗弁権は主張しないと効果がない」と覚えてしまいがちですが、それは<strong>行使効（行使上の効果）</strong>の話。<br>
+    存在効は<strong>主張とは無関係</strong>に働きます。「抗弁権が存在する」という客観的な状態それ自体が、相手の遅滞や相殺を阻むのです。この2つの効果を分けて理解することが、このブロック全体のカギです。
+  </div>
+
+  <div class="quiz">
+    Q1: 「存在効」と「行使効」の違いを一言で説明してください。<br>
+    Q2: 存在効の代表的な2つの効果は何ですか？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>A1: 行使効は抗弁権を「主張して初めて」生じる効果（例：引換給付判決）。存在効は抗弁権が「存在するだけで」自動的に生じる効果。<br>
+      A2: ① 履行遅滞阻却効（期限が来ても遅滞にならない）、② 相殺阻却効（自働債権として相殺に使えない）。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義123 ========== -->
+<div class="section" id="lec123">
+  <div class="section-header">
+    <div class="section-num">123</div>
+    <h2>同時履行抗弁権の存在効：問1について</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>売主Aが代金1000万円を請求するとき、<strong>「自分が甲を引き渡したこと」は言わなくてよい</strong>。同時履行の抗弁権は<u>Bが出す防御</u>であって、Aの攻撃には登場しないのです。</p>
+
+  <div class="analogy">
+    じゃんけんのたとえ：<br>
+    請求する側（A）は、まず<strong>自分の手（攻撃の最低限の事実）だけ</strong>を出せばよい。「契約しました、だから代金払って」、これだけ。<br>
+    「でも自分も渡さなきゃ…」という気遣い（引渡しの話）は、相手B側から「同時に渡せ」と返してきて<u>初めて</u>盤面に乗る話。聞かれてもいないのに先回りして言う必要はありません。これを<strong>主張立証責任の分配</strong>といいます。
+  </div>
+
+  <h3>請求を組み立てる3点セット</h3>
+  <table>
+    <tr><th>項目</th><th>意味</th><th>問1での中身</th></tr>
+    <tr><td>請求の趣旨</td><td>判決でどんな主文がほしいか（ゴール）</td><td>「被告は原告に1000万円及び訴状送達の翌日から支払済みまで年3％の金員を支払え」</td></tr>
+    <tr><td>訴訟物</td><td>審理の対象となる権利（何を争うか）</td><td>売買契約に基づく代金支払請求権</td></tr>
+    <tr><td>請求原因事実</td><td>その権利を基礎づける最小限の事実</td><td><strong>AB間で甲を1000万円で売る売買契約を締結したこと、これだけ</strong></td></tr>
+  </table>
+
+  <h3>「攻撃」と「防御」の役割分担</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">A（攻撃）<br><small>「売買契約を締結した」</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">B（防御）<br><small>「同時履行の抗弁」</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">A（再攻撃）<br><small>「すでに引渡しを提供した」</small></div>
+  </div>
+  <p style="text-align:center; font-size:0.9em; color:var(--text-light);">引渡しの話は、Bが抗弁を出して初めて登場する（Aの最初の請求原因には入らない）</p>
+
+  <div class="key">
+    <strong>売買代金請求の請求原因はたった1つ</strong>：「代金◯円で売る売買契約を締結したこと」。<br>
+    ・引渡しをしたかどうかは請求原因に<u>入らない</u>（同時履行は抗弁＝Bの仕事）。<br>
+    ・遅延損害金は、訴状送達の翌日からなら請求しやすい（後述）。
+  </div>
+
+  <div class="term">
+    <strong>遅延損害金（遅延利息）</strong>：支払が遅れたことに対する賠償金。法定利率は年3％（民404条、変動制）。問1で「訴状送達の翌日から」とするのは、その日であればBの遅滞が確実に認められ、Aがそれ以前の遅滞を細かく主張立証する手間を省けるからです。
+  </div>
+
+  <div class="quiz">
+    Q1: 売主Aの代金請求の請求原因事実は何ですか。引渡しの主張は必要ですか。<br>
+    Q2: なぜ引渡しの提供は請求原因に入らないのですか。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>A1: 請求原因は「AB間で甲を代金1000万円で売る売買契約を締結したこと」のみ。引渡しの主張は不要。<br>
+      A2: 同時履行の抗弁権はBが援用して初めて問題になる「抗弁」であり、その消滅事由（=Aが履行を提供したこと）はBが抗弁を出した後にAが再抗弁として主張すればよいから。主張立証責任の分配上、攻撃側Aの請求原因には含まれない。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義124 ========== -->
+<div class="section" id="lec124">
+  <div class="section-header">
+    <div class="section-num">124</div>
+    <h2>同時履行抗弁権の存在効：問2について（履行遅滞阻却効）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>Aが「Bが代金を払わないから契約解除だ」と言うには、その前に<strong>「自分も甲を渡す用意（履行の提供）をした」と言わなければならない</strong>。なぜなら、提供するまではBは遅滞に陥らないからです（履行遅滞阻却効）。</p>
+
+  <div class="analogy">
+    物々交換のたとえ：<br>
+    AとBが「同時に交換しよう」と約束した。Aが手ぶらのまま「お前まだ品物出してないだろ！遅刻だ！」と怒っても通りません。<u>自分も品物を差し出して</u>初めて、相手が出さないことを「遅刻（遅滞）」と責められる。<br>
+    Bは「同時履行の抗弁権」という<strong>正当な待ったの権利</strong>を持っているので、Aが先に（または同時に）動くまで、Bが動かないのは当たり前。だから遅滞にならないのです。
+  </div>
+
+  <h3>履行遅滞阻却効のしくみ</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">期限が到来</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">でもBには同時履行の抗弁権が「存在」</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">Bは遅滞にならない</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">Aは遅滞解除できない</div>
+  </div>
+  <p style="text-align:center; font-weight:bold; margin: 10px 0;">↓ Aが解除したいなら…</p>
+  <div class="flow">
+    <div class="flow-item f-green">Aが甲引渡しを提供</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">Bの抗弁権が消滅</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">ここで初めてBが遅滞に</div>
+  </div>
+
+  <h3>Aが解除を主張するための要件事実</h3>
+  <div class="key">
+    Aが履行遅滞解除（民541条）でBの引渡請求に対抗するには、次の事実を主張する必要があります：<br>
+    ① AがBに甲を1000万円で売却したこと<br>
+    ② AがBに代金支払債務の履行を<strong>催告</strong>したこと<br>
+    ③ その催告から<strong>相当期間が経過</strong>したこと<br>
+    ④ <strong>催告に先立ち又は遅くとも同時に、A自身が甲引渡債務の履行を提供したこと</strong>（←存在効ゆえの追加要件）<br>
+    ⑤ Aが解除の意思表示をしたこと
+  </div>
+
+  <div class="warn">
+    存在効を忘れると、④を落としてしまいがちです。<br>
+    「催告して相当期間が過ぎたから解除できる」だけでは<strong>不十分</strong>。Bの同時履行の抗弁権が<u>存在し続けている限り</u>、Bは遅滞にならず、解除はできません。<br>
+    だからAは「自分も履行を提供した（＝抗弁権を消滅させた）」ことまで主張しなければならないのです。
+  </div>
+
+  <div class="term">
+    <strong>履行の提供（弁済の提供）</strong>：債務者が自分のできることをすべて行い、あとは相手が受け取るだけの状態にすること（民492条・493条）。現実の提供が原則。これにより相手方の同時履行の抗弁権を消滅させ、相手を遅滞に陥らせることができます。
+  </div>
+  <div class="term">
+    <strong>催告解除（民541条）</strong>：履行を催告し、相当期間内に履行がないときに契約を解除できる制度。問2では、催告解除の通常の要件（催告＋相当期間経過＋解除の意思表示）に、存在効ゆえの「履行の提供」が上乗せされる点がポイント。
+  </div>
+
+  <div class="quiz">
+    Q1: Aが履行遅滞解除をするために、通常の催告解除の要件に加えて主張すべき事実は何ですか。<br>
+    Q2: なぜその追加が必要なのですか（存在効の名前を使って答えてください）。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>A1: 「催告に先立ち又は同時に、A自身が甲引渡債務の履行を提供したこと」。<br>
+      A2: 同時履行の抗弁権の<strong>履行遅滞阻却効</strong>により、抗弁権が存在する間はBは遅滞に陥らない。Aが履行を提供して抗弁権を消滅させなければBの遅滞は生じず、催告・相当期間経過があっても解除の前提（債務不履行）を欠くから。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義125 ========== -->
+<div class="section" id="lec125">
+  <div class="section-header">
+    <div class="section-num">125</div>
+    <h2>同時履行抗弁権の存在効：問3について（相殺阻却効）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>Aは、Bへの代金債権1000万円を使って、Bの貸金返還請求1000万円と相殺したい。でも<strong>その代金債権にはBの同時履行の抗弁権が「付着」している</strong>ので、そのままでは相殺の自働債権に使えません（相殺阻却効）。</p>
+
+  <div class="analogy">
+    割引券のたとえ：<br>
+    Aは「1000万円分の支払いに使える券（代金債権）」を持っている。でもその券には<strong>「Aが甲を渡してくれたら使える」という条件（Bの抗弁権）</strong>が印刷されています。<br>
+    その条件付きの券を、Aが勝手に「これでチャラね」と相殺に使ってしまうと、Bは「甲をもらえる」というチャンスを一方的に奪われてしまう。だから、Aは<u>条件を満たす（甲を提供する）</u>まで、その券を相殺には使えないのです。
+  </div>
+
+  <h3>なぜ抗弁の付いた自働債権で相殺できないのか</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">相殺阻却効のしくみ</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">相殺の大原則</span>
+        <ul>
+          <li>
+            <span class="node danger">自働債権に抗弁が付着していてはならない</span>
+            <ul>
+              <li><span class="node l2">自働債権＝相殺する側（A）が持ち出す債権</span></li>
+              <li><span class="node l2">相殺は一方的な意思表示（民506条）で成立する</span></li>
+              <li><span class="node l3">→ 相殺を認めると、相手Bの同時履行の抗弁権を一方的に奪うことになる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">受働債権側に抗弁があるのはOK</span>
+            <ul>
+              <li><span class="node l2">受働債権＝相殺される側（＝Aが負っている債務）</span></li>
+              <li><span class="node l3">自分の抗弁は自分で放棄できるので問題ない</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🔵 自働債権に抗弁あり</h4>
+      <p>相殺する側Aの債権（=Aの代金債権）</p>
+      <ul>
+        <li>相手Bの抗弁権を一方的に奪う</li>
+        <li><strong>相殺できない（原則）</strong></li>
+        <li>提供して抗弁を消せば可能に</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🟠 受働債権に抗弁あり</h4>
+      <p>相殺される側＝Aが負う債務</p>
+      <ul>
+        <li>奪われるのは自分の抗弁だけ</li>
+        <li><strong>相殺してよい</strong></li>
+        <li>抗弁の放棄は自由だから</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Aが相殺するために主張すべきこと</h3>
+  <div class="key">
+    Aが代金債権を自働債権として相殺するには、<strong>自分の甲引渡債務の履行を提供して、Bの同時履行の抗弁権を消滅させたこと</strong>まで主張しなければなりません。<br>
+    → 問2と同じ構造。「存在効」を消すために「履行の提供」が必要になる、という共通パターンです。
+  </div>
+
+  <div class="warn">
+    相殺は「とりあえず反対債権があれば打てる」と思いがちですが、<strong>自働債権がクリーンであること</strong>（抗弁が付着していないこと）が大前提です。<br>
+    対価的な債権同士（売買代金 ⇄ 引渡し）は互いに同時履行の関係に立つため、一方を勝手に自働債権にすることはできません。
+  </div>
+
+  <div class="term">
+    <strong>自働債権／受働債権</strong>：相殺する人が持ち出す側の債権が<strong>自働債権</strong>、相殺される側（相手が持っている＝自分が負う）の債権が<strong>受働債権</strong>。相殺は自働債権の側から一方的に行うので、自働債権に弱点（抗弁）があると相手に不利益を押し付けることになり、認められません。
+  </div>
+
+  <div class="quiz">
+    Q1: Aの代金債権を自働債権とする相殺に、追加で必要な主張は何ですか。<br>
+    Q2: 「受働債権に抗弁が付いている」場合は相殺できますか。理由も。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>A1: Aが甲引渡債務の履行を提供してBの同時履行の抗弁権を消滅させたこと。<br>
+      A2: できる。受働債権に付いた抗弁は相殺する側A自身の抗弁であり、自分の利益を放棄するだけで相手に不利益を与えないから。問題になるのは「自働債権」に抗弁が付着している場合だけ。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義126 ========== -->
+<div class="section" id="lec126">
+  <div class="section-header">
+    <div class="section-num">126</div>
+    <h2>同時履行抗弁権の存在効：問4について（牽連性ある債権の相殺）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>今度はBの番。Aの代金請求に対し、Bは<strong>「渡された甲が契約に適合していない」ことによる損害賠償債権</strong>を自働債権に相殺できます。<u>同じ売買契約から生まれた仲間同士の債権</u>だから、相殺してよいのです。</p>
+
+  <div class="analogy">
+    買い物の値引き交渉のたとえ：<br>
+    「1000万円の機械を買ったけど、傷物だった。修理に200万円かかる。だから代金から200万円引くね」——これは自然で正当な精算です。<br>
+    傷物だったことの賠償請求権と、代金支払債務は、<strong>同じ1つの売買から生まれた表裏の関係</strong>。だから相殺（精算）が当然に認められます。問3の「赤の他人同士の債権」とは事情が違うのです。
+  </div>
+
+  <h3>問3と問4の決定的な違い</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>問3：相殺できない（原則）</h4>
+      <ul>
+        <li>自働債権＝<strong>売買代金債権</strong></li>
+        <li>これに同時履行の抗弁権が付着</li>
+        <li>相手の抗弁を奪うので不可</li>
+        <li>提供して抗弁を消せば可能</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>問4：相殺できる</h4>
+      <ul>
+        <li>自働債権＝<strong>契約不適合の損害賠償債権</strong></li>
+        <li>同一売買契約から生じた牽連債権</li>
+        <li>互いに精算するのが当然</li>
+        <li>抗弁の付着が問題にならない</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>契約不適合責任のしくみ</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">Aが甲を引き渡した</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">甲が契約に適合しない<br><small>（種類・品質・数量の不適合）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">Bに損害賠償請求権<br><small>（民564条→415条）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">これを自働債権に相殺</div>
+  </div>
+
+  <div class="key">
+    <strong>「どの債権なら自働債権になれるか」を整理しよう</strong>：<br>
+    ・売買代金債権（問3）→ 同時履行の抗弁権が付着 → そのままでは自働債権に<u>できない</u><br>
+    ・契約不適合の損害賠償債権（問4）→ 同一契約から生じた牽連債権 → 自働債権に<u>できる</u><br>
+    → ポイントは「自働債権に抗弁が付着していないか」。同じ契約内部の精算は、むしろ相殺になじむ。
+  </div>
+
+  <div class="term">
+    <strong>契約不適合責任（民562条〜564条）</strong>：引き渡された目的物が「種類・品質・数量」について契約の内容に適合しないとき、買主は追完請求・代金減額請求・損害賠償請求・解除ができる。損害賠償は債務不履行の一般規定（民415条）に従う。旧法の「瑕疵担保責任」が2020年改正で再構成されたもの。
+  </div>
+  <div class="term">
+    <strong>牽連性（けんれんせい）</strong>：複数の債権・債務が「同じ原因（同一契約）から生じ、互いに結びついている」関係。牽連性のある債権同士は、同時履行や相殺になじみやすい。
+  </div>
+
+  <div class="quiz">
+    Q1: 問3では相殺できないのに、問4では相殺できるのはなぜですか。<br>
+    Q2: 問4でBが自働債権とする債権の根拠条文は何ですか。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>A1: 問3の自働債権（売買代金債権）には相手Bの同時履行の抗弁権が付着しているため、勝手に相殺すると相手の抗弁を奪う。問4の自働債権（契約不適合の損害賠償債権）は同一売買契約から生じた牽連債権で、同じ契約内部の精算として相殺が認められるから。<br>
+      A2: 民564条（契約不適合の場合に415条の損害賠償請求を妨げない）→ 民415条（債務不履行による損害賠償）。不適合の前提として民562条以下。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義127 ========== -->
+<div class="section" id="lec127">
+  <div class="section-header">
+    <div class="section-num">127</div>
+    <h2>本契約締結のための予約</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>日常語の「予約」（ホテル・新幹線）と、民法用語の「予約」は<strong>まったくの別物</strong>。民法の予約は「<u>将来、本契約を結ぶことを今約束する契約</u>」で、契約が<strong>2段階（予約＋本契約）</strong>になります。</p>
+
+  <div class="analogy">
+    結婚にたとえると：<br>
+    <strong>日常語の「予約」（ホテル）</strong>＝もう「宿泊契約」という結婚そのものは成立済み。ただ実際に泊まる（履行する）のが将来というだけ。契約は<u>1個</u>。<br>
+    <strong>民法の「予約」</strong>＝「婚約」のようなもの。まだ結婚（本契約）はしていない。「将来ちゃんと結婚しようね」という約束（予約）が先にあり、後で本当の結婚（本契約）をする。契約は<u>2段階</u>。
+  </div>
+
+  <h3>日常語の予約 vs 民法の予約</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🏨 日常語の予約</h4>
+      <p>ホテル・新幹線・レストラン</p>
+      <ul>
+        <li>契約は<strong>1個だけ</strong>（宿泊契約・運送契約）</li>
+        <li>契約は<u>すでに成立済み</u></li>
+        <li>履行が将来に予定されているだけ</li>
+        <li>「将来履行される契約を今結ぶ」</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>⚖️ 民法の予約</h4>
+      <p>売買の一方の予約 など</p>
+      <ul>
+        <li>契約は<strong>2段階</strong>（予約 → 本契約）</li>
+        <li>予約の時点では本契約は<u>未成立</u></li>
+        <li>本契約を将来締結する約束</li>
+        <li>「将来結ぶ契約を約束しておく」</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>民法の予約のしくみ</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">予約の締結<br><small>「将来、本契約を結ぼう」</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">予約完結権の発生<br><small>「本契約にする」と言える権利</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">予約完結権の行使<br><small>一方的意思表示</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">本契約の成立</div>
+  </div>
+
+  <div class="mindmap">
+    <div class="mindmap-title">予約の体系</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">本契約締結のための予約</span>
+        <ul>
+          <li>
+            <span class="node l1">売買の一方の予約（民556条）</span>
+            <ul>
+              <li><span class="node l2">当事者の一方だけが予約完結権を持つ</span></li>
+              <li><span class="node l2">完結権を行使すると、相手の承諾なしに本契約が成立</span></li>
+              <li><span class="node l3">完結権の行使期間を定めなければ、相手は催告できる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">双方の予約</span>
+            <ul>
+              <li><span class="node l2">当事者双方が完結権を持つ（実務では一方の予約が普通）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">担保目的での利用</span>
+            <ul>
+              <li><span class="node accent">再売買の予約：お金を貸す代わりに「後で買い戻せる予約」を取り、担保とする</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    <strong>予約完結権</strong>がこの制度の主役。<br>
+    ・これは<strong>形成権</strong>（一方的意思表示だけで法律関係を作る権利）。<br>
+    ・行使すると、相手の改めての承諾がなくても<u>自動的に本契約が成立</u>する。<br>
+    ・「将来この値段で買えるオプションを今押さえておく」という機能を持つ。
+  </div>
+
+  <div class="warn">
+    「予約」という同じ言葉でも、日常語と法律用語で意味が違うことに注意。<br>
+    ホテルの予約はもう「契約成立済み」で、キャンセルすれば<strong>契約の解除（債務不履行）</strong>の問題。<br>
+    民法の予約は「本契約はまだ」で、予約完結権を行使して<strong>本契約を成立させる</strong>段階がある。同じ「予約」でも法的構造が全然違います。
+  </div>
+
+  <div class="term">
+    <strong>形成権</strong>：権利者の一方的な意思表示だけで、法律関係の発生・変更・消滅を生じさせる権利。取消権・解除権・予約完結権などがその例。相手の同意は要らない。
+  </div>
+
+  <div class="quiz">
+    Q1: 「ホテルの予約」は民法でいう「予約」ですか。理由も。<br>
+    Q2: 予約完結権を行使すると何が起きますか。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>A1: 違う。ホテルの予約は宿泊契約という1個の契約がすでに成立しており、履行が将来に予定されているだけ。民法の予約は「本契約を将来締結する約束」という別個の契約で、本契約はまだ成立していない。<br>
+      A2: 予約完結権（形成権）を一方的に行使すると、相手の承諾なしに本契約（例：売買契約）が成立する。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義128 ========== -->
+<div class="section" id="lec128">
+  <div class="section-header">
+    <div class="section-num">128</div>
+    <h2>贈与契約</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>贈与は「<strong>ただであげる約束</strong>」。口約束でも成立する（諾成契約）が、見返りがなく（無償）、あげる側だけが義務を負う（片務）。書面なしの贈与は、まだ渡していない部分なら<u>やめられる</u>のがポイントです。</p>
+
+  <div class="analogy">
+    誕生日プレゼントのたとえ：<br>
+    「来月の誕生日に時計あげるね」と<u>口で約束した</u>瞬間に、贈与契約は成立しています（諾成）。あなたは見返りに何ももらいません（無償）。義務を負うのはあげる側だけ（片務）。<br>
+    でも「やっぱりやめた」と言える——口約束（書面なし）の段階なら、まだ渡していない分は撤回OK。ただし、すでに渡してしまった分は「あげちゃったものは戻せない」。
+  </div>
+
+  <h3>贈与契約の3つの性質</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">贈与契約の性質（民549条）</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">贈与契約</span>
+        <ul>
+          <li>
+            <span class="node l1">諾成契約</span>
+            <ul>
+              <li><span class="node l2">合意（口約束）だけで成立。物の引渡しは不要</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">無償契約</span>
+            <ul>
+              <li><span class="node l2">あげる側は対価をもらわない</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">片務契約</span>
+            <ul>
+              <li><span class="node l2">義務を負うのは贈与者だけ（受贈者は義務なし）</span></li>
+              <li><span class="node l3">→ だから同時履行の抗弁権は問題にならない</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>他人の物でも贈与契約は有効</h3>
+  <div class="key">
+    贈与者が<strong>目的財貨の持ち主であるとは限りません</strong>。<br>
+    贈与契約は「相手に財産を取得させる債務を負う」という<strong>債権契約</strong>にすぎず、契約の時点で贈与者がその物の所有者である必要はないのです（他人物贈与も契約として有効）。<br>
+    「契約を結んだこと」と「物の持ち主であること」は<u>別の事実</u>。たまたま持ち主だった、というだけのことが多い——これは売買・交換でも同じ理屈です。
+  </div>
+
+  <h3>書面によらない贈与の解除（民550条）</h3>
+  <div class="flow">
+    <div class="flow-item f-orange">書面によらない贈与<br><small>（口約束）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">まだ履行していない部分<br><small>→ 各当事者が解除できる（本文）</small></div>
+  </div>
+  <div class="flow">
+    <div class="flow-item f-orange">書面によらない贈与</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">履行の終わった部分<br><small>→ 解除できない（但書）</small></div>
+  </div>
+
+  <table>
+    <tr><th>区分</th><th>解除できる？</th><th>根拠</th></tr>
+    <tr><td>書面による贈与</td><td>❌ 自由には解除できない</td><td>軽率さがないと判断される</td></tr>
+    <tr><td>書面によらない贈与（未履行）</td><td>✅ 各当事者が解除できる</td><td>民550条本文</td></tr>
+    <tr><td>書面によらない贈与（履行済み）</td><td>❌ 解除できない</td><td>民550条但書</td></tr>
+  </table>
+
+  <div class="warn">
+    民550条で「書面によらない贈与は解除できる」のは、<strong>軽率な口約束から贈与者を守る</strong>ため。<br>
+    ただし<u>履行が終わった部分</u>は別。すでにあげてしまったものを「やっぱり返して」とは言えません（但書）。<br>
+    なお、ここでの「解除」は債務不履行を理由とする解除ではなく、書面によらない贈与に特有の<strong>撤回的な解除</strong>です。
+  </div>
+
+  <div class="term">
+    <strong>諾成・無償・片務</strong>：<br>
+    ・<strong>諾成契約</strong>＝合意だけで成立する契約（⇔要物契約：物の引渡しが必要）。<br>
+    ・<strong>無償契約</strong>＝一方だけが給付し対価がない契約（⇔有償契約）。<br>
+    ・<strong>片務契約</strong>＝一方だけが債務を負う契約（⇔双務契約）。贈与はこの3つすべてに当てはまる典型例。
+  </div>
+
+  <div class="quiz">
+    Q1: 贈与契約は「諾成・無償・片務」とされますが、それぞれどういう意味ですか。<br>
+    Q2: 「来月、時計をあげる」と口約束した後、まだ渡していない場合、やめられますか。すでに渡した場合は？
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>A1: 諾成＝合意（口約束）だけで成立。無償＝対価を受け取らない。片務＝義務を負うのは贈与者だけ。<br>
+      A2: まだ渡していない（履行していない）部分は、書面によらない贈与として各当事者が解除できる（民550条本文）。すでに渡した（履行の終わった）部分は解除できない（同条但書）。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 用語集 ========== -->
+<div class="section" id="glossary">
+  <div class="section-header">
+    <div class="section-num">📖</div>
+    <h2>初学者向け用語集</h2>
+  </div>
+
+  <table>
+    <tr><th>用語</th><th>読み</th><th>意味（やさしく）</th><th>登場講義</th></tr>
+    <tr><td>同時履行の抗弁権</td><td>どうじりこうのこうべんけん</td><td>「あなたが渡すまで私も払わない」と待ったをかける権利（民533条）</td><td>122-126</td></tr>
+    <tr><td>存在効</td><td>そんざいこう</td><td>抗弁権が主張されなくても、存在するだけで生じる効果</td><td>122</td></tr>
+    <tr><td>行使効</td><td>こうしこう</td><td>抗弁権を主張して初めて生じる効果（例：引換給付判決）</td><td>122</td></tr>
+    <tr><td>履行遅滞阻却効</td><td>りこうちたいそきゃくこう</td><td>抗弁権がある間は期限が来ても遅滞にならない効果</td><td>124</td></tr>
+    <tr><td>相殺阻却効</td><td>そうさいそきゃくこう</td><td>抗弁が付いた債権は自働債権として相殺に使えない効果</td><td>125</td></tr>
+    <tr><td>請求の趣旨</td><td>せいきゅうのしゅし</td><td>判決でどんな主文がほしいかを示すゴール</td><td>123</td></tr>
+    <tr><td>訴訟物</td><td>そしょうぶつ</td><td>裁判で争う対象となる権利・法律関係</td><td>123</td></tr>
+    <tr><td>請求原因事実</td><td>せいきゅうげんいんじじつ</td><td>請求する権利を基礎づける最小限の事実</td><td>123</td></tr>
+    <tr><td>抗弁</td><td>こうべん</td><td>請求を妨げるために相手（被告）側が出す主張</td><td>123</td></tr>
+    <tr><td>遅延損害金</td><td>ちえんそんがいきん</td><td>支払が遅れたことへの賠償金（法定利率年3％）</td><td>123</td></tr>
+    <tr><td>催告</td><td>さいこく</td><td>「履行してください」と相手に求めること</td><td>124</td></tr>
+    <tr><td>催告解除</td><td>さいこくかいじょ</td><td>催告して相当期間内に履行がなければ契約を解除できる制度（民541条）</td><td>124</td></tr>
+    <tr><td>履行の提供</td><td>りこうのていきょう</td><td>あとは相手が受け取るだけの状態にすること。抗弁権を消滅させる</td><td>124-125</td></tr>
+    <tr><td>相殺</td><td>そうさい</td><td>互いに同種の債権を持つとき、対当額で帳消しにすること（民505条）</td><td>125-126</td></tr>
+    <tr><td>自働債権</td><td>じどうさいけん</td><td>相殺する側が持ち出す側の債権</td><td>125-126</td></tr>
+    <tr><td>受働債権</td><td>じゅどうさいけん</td><td>相殺される側の債権（＝自分が負う債務）</td><td>125-126</td></tr>
+    <tr><td>契約不適合責任</td><td>けいやくふてきごうせきにん</td><td>引き渡した物が契約に合わないときの売主の責任（民562条〜）</td><td>126</td></tr>
+    <tr><td>牽連性</td><td>けんれんせい</td><td>同じ契約から生じ互いに結びついている関係</td><td>126</td></tr>
+    <tr><td>予約</td><td>よやく</td><td>民法では「本契約を将来締結する約束」（日常語とは別物）</td><td>127</td></tr>
+    <tr><td>予約完結権</td><td>よやくかんけつけん</td><td>一方的意思表示で本契約を成立させる形成権（民556条）</td><td>127</td></tr>
+    <tr><td>形成権</td><td>けいせいけん</td><td>一方的意思表示だけで法律関係を変える権利</td><td>127</td></tr>
+    <tr><td>贈与契約</td><td>ぞうよけいやく</td><td>無償で財産をあげる約束。諾成・無償・片務（民549条）</td><td>128</td></tr>
+    <tr><td>諾成契約</td><td>だくせいけいやく</td><td>合意だけで成立する契約（物の引渡し不要）</td><td>128</td></tr>
+    <tr><td>片務契約</td><td>へんむけいやく</td><td>一方だけが債務を負う契約</td><td>128</td></tr>
+    <tr><td>書面によらない贈与</td><td>しょめんによらないぞうよ</td><td>口約束の贈与。未履行部分は解除できる（民550条）</td><td>128</td></tr>
+  </table>
+</div>
+
+<!-- ========== Footer ========== -->
+<div style="text-align:center; padding: 30px; color: var(--text-light); font-size: 0.85em;">
+  <p>msahkie先生の民法講義に基づく学習ガイド</p>
+  <p>法律未修者向け知識点整理・拡展</p>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>
