@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義129〜134 学習ガイド（法律未修者向け）</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --primary: #2c5f8a;
+    --secondary: #e8f0f8;
+    --accent: #d4740e;
+    --accent-light: #fff5eb;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #dfe6e9;
+    --success: #00b894;
+    --danger: #e17055;
+    --info: #74b9ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #2c5f8a 0%, #1a3a5c 100%);
+    color: white;
+    border-radius: 16px;
+    margin-bottom: 30px;
+  }
+  .header h1 { font-size: 2em; margin-bottom: 10px; }
+  .header p { opacity: 0.9; font-size: 1.05em; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+
+  /* Navigation */
+  .nav {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav:hover, .nav:focus-within {
+    max-height: 600px;
+  }
+  .nav h3 { margin-bottom: 10px; color: var(--primary); font-size: 0.95em; cursor: pointer; }
+  .nav h3::after { content: " ▼"; font-size: 0.7em; }
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .nav a {
+    display: block;
+    padding: 8px 12px;
+    background: var(--secondary);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.88em;
+    transition: all 0.2s;
+  }
+  .nav a:hover { background: var(--primary); color: white; }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--secondary);
+  }
+  .section-num {
+    background: var(--primary);
+    color: white;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 1.35em; color: var(--primary); }
+
+  /* Subsection */
+  h3 {
+    color: var(--primary);
+    font-size: 1.1em;
+    margin: 24px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  h4 {
+    color: var(--accent);
+    font-size: 1em;
+    margin: 16px 0 8px;
+  }
+
+  /* Analogy box */
+  .analogy {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .analogy::before {
+    content: "💡 たとえ話";
+    display: block;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Key point */
+  .key {
+    background: #eef7ee;
+    border-left: 4px solid var(--success);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .key::before {
+    content: "✅ 重要ポイント";
+    display: block;
+    font-weight: bold;
+    color: var(--success);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Warning */
+  .warn {
+    background: #fff3f0;
+    border-left: 4px solid var(--danger);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .warn::before {
+    content: "⚠️ 注意・よくある誤解";
+    display: block;
+    font-weight: bold;
+    color: var(--danger);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Term */
+  .term {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .term::before {
+    content: "📖 用語解説";
+    display: block;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Quiz */
+  .quiz {
+    background: #f0eeff;
+    border: 2px dashed #6c5ce7;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .quiz::before {
+    content: "🧪 理解度チェック";
+    display: block;
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+  .quiz details {
+    margin-top: 8px;
+  }
+  .quiz summary {
+    cursor: pointer;
+    color: #6c5ce7;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .quiz details p {
+    margin-top: 6px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92em;
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:nth-child(even) { background: var(--secondary); }
+  tr:hover { background: #dbeafe; }
+
+  /* Mind map */
+  .mindmap {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .mindmap-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 16px;
+    font-size: 1.05em;
+  }
+
+  /* Tree structure */
+  .tree { padding-left: 0; list-style: none; }
+  .tree ul { padding-left: 28px; list-style: none; position: relative; }
+  .tree ul::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 12px;
+    border-left: 2px solid var(--border);
+  }
+  .tree li {
+    position: relative;
+    padding: 4px 0 4px 0;
+  }
+  .tree ul > li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 14px;
+    width: 14px;
+    border-top: 2px solid var(--border);
+  }
+  .tree .node {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+  .node.root { background: var(--primary); color: white; font-size: 1em; padding: 8px 20px; }
+  .node.l1 { background: #4a90c4; color: white; }
+  .node.l2 { background: var(--secondary); color: var(--primary); border: 1px solid #b0cfe0; }
+  .node.l3 { background: #f1f5f1; color: var(--text); border: 1px solid #c8d6c8; font-size: 0.85em; }
+  .node.accent { background: var(--accent-light); color: #b35c00; border: 1px solid #f0c8a0; }
+  .node.danger { background: #fff0ee; color: #c0392b; border: 1px solid #f0b0a0; }
+
+  /* Flow diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 16px 0;
+    justify-content: center;
+  }
+  .flow-item {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 0.88em;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-arrow {
+    font-size: 1.4em;
+    color: var(--text-light);
+    padding: 0 4px;
+  }
+  .flow .f-blue { background: var(--secondary); color: var(--primary); border: 2px solid #a0c4e0; }
+  .flow .f-green { background: #e8f8e8; color: #1e7e34; border: 2px solid #a0d8a0; }
+  .flow .f-orange { background: var(--accent-light); color: #b35c00; border: 2px solid #f0c8a0; }
+  .flow .f-red { background: #fff0ee; color: #c0392b; border: 2px solid #f0b0a0; }
+
+  /* Comparison */
+  .vs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: start;
+    margin: 16px 0;
+  }
+  .vs-box {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid;
+  }
+  .vs-box.left { border-color: #4a90c4; background: #f0f6fc; }
+  .vs-box.right { border-color: #e0a040; background: #fdf8f0; }
+  .vs-box h4 { margin-top: 0; text-align: center; }
+  .vs-mid {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--text-light);
+    align-self: center;
+  }
+
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 24px; }
+  li { margin: 4px 0; }
+  strong { color: var(--primary); }
+
+  @media (max-width: 768px) {
+    body { padding: 10px; }
+    .section { padding: 18px; }
+    .header h1 { font-size: 1.4em; }
+    .nav-grid { grid-template-columns: 1fr 1fr; }
+    .vs { grid-template-columns: 1fr; }
+    .vs-mid { text-align: center; }
+    .flow { flex-direction: column; align-items: center; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== Header ========== -->
+<div class="header">
+  <h1>民法学習ガイド 講義129〜134</h1>
+  <p>売買の契約不適合責任</p>
+  <div class="badge">msahkie先生の講義に基づく整理・拡展</div>
+</div>
+
+<!-- ========== Navigation ========== -->
+<div class="nav">
+  <h3>📑 目次（クリックでジャンプ）</h3>
+  <div class="nav-grid">
+    <a href="#overview">全体マップ</a>
+    <a href="#lec129">①129 特則ヌキで考える</a>
+    <a href="#lec130">②130 562〜565条の存在意義</a>
+    <a href="#lec131">③131 買主の権利の時的制限</a>
+    <a href="#lec132">④132 責任の約定・法定制限</a>
+    <a href="#lec133">⑤133 引取り・受領遅滞と危険移転</a>
+    <a href="#lec134">⑥134 債権の売主の担保責任</a>
+    <a href="#glossary">用語集</a>
+  </div>
+</div>
+
+<!-- ========== 全体マップ ========== -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-num">📍</div>
+    <h2>全体マップ：講義129〜134は何を学ぶのか</h2>
+  </div>
+
+  <p>このブロックのテーマは一つ、<strong>「売買の契約不適合責任」</strong>です。買った物が「契約で約束した通りの物ではなかった」とき、買主は売主に何を言えるのか。その全体像を、6回の講義で<strong>「土台 → 特則 → 期間制限 → 責任の制限 → 危険の移転 → 債権売買の特殊性」</strong>という流れで攻めていきます。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">🗺️ 講義129〜134 全体思維導図</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">売買の契約不適合責任</span>
+        <ul>
+          <li>
+            <span class="node l1">Part 1：土台を作る（129-130）</span>
+            <ul>
+              <li><span class="node l2">①129 特則ヌキ＝不完全履行として考える（改正の眼目）</span></li>
+              <li><span class="node l2">②130 民562〜565条にどんな固有の意義があるか</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part 2：権利を縛る（131-132）</span>
+            <ul>
+              <li><span class="node l2">③131 民566条＝知った時から1年で失権（時的制限）</span></li>
+              <li><span class="node l2">④132 免責特約（約定制限）と競売の特則（法定制限）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">Part 3：応用・特殊論点（133-134）</span>
+            <ul>
+              <li><span class="node accent">⑤133 適合物を渡したら危険は買主へ（民567条）</span></li>
+              <li><span class="node accent">⑥134 債権を売ったとき、債務者の無資力は誰の責任か（民569条）</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="analogy">
+    買い物にたとえると：<br>
+    <strong>129・130</strong> = 「買った物が約束と違う！」をそもそもどう考えるか（＝「不完全な配達」だと捉え直す）。<br>
+    <strong>131・132</strong> = 文句を言える「期限」と、あらかじめ「文句なし」と取り決めた場合・競売で買った場合のルール。<br>
+    <strong>133</strong> = ちゃんとした物が届いた後に壊れたら、損は誰がかぶるか（＝届いた瞬間からは買主の自己責任）。<br>
+    <strong>134</strong> = 「物」ではなく「債権（借用書）」を買ったとき、その回収が外れても文句は言えるか。
+  </div>
+
+  <div class="key">
+    このブロック最大の合言葉は<strong>「瑕疵担保責任から不完全履行へ」</strong>。<br>
+    2020年改正前は、契約不適合（昔の「隠れた瑕疵」）を、契約とは別枠の特別な<strong>法定責任</strong>と考えていました。改正民法はこれをやめ、<strong>契約不適合＝不完全履行という債務不履行の一種</strong>として捉え直しました。この発想の転換が、129以降すべての話の出発点です。
+  </div>
+
+  <div class="warn">
+    もう一つの隠れた主役が<strong>「攻撃防御の構造」</strong>（抗弁 → 再抗弁 → 再々抗弁）です。131・132・133では、誰がどの事実を主張すれば勝てるか、というキャッチボールが何度も出てきます。この階段構造を図でイメージできると、一気に理解が進みます。
+  </div>
+</div>
+
+<!-- ========== 講義129 ========== -->
+<div class="section" id="lec129">
+  <div class="section-header">
+    <div class="section-num">129</div>
+    <h2>売買目的物の契約不適合：特則ヌキで考えるとどうなるか</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>契約不適合な物を渡すのは「<strong>不完全な履行</strong>」。だから契約各則の特別ルールを使わなくても、債権総則・契約総則だけで、買主は<strong>①追完請求 ②損害賠償 ③契約解除</strong>の3つを導けます。</p>
+
+  <div class="analogy">
+    出前のたとえ：<br>
+    あなたは「大盛りラーメン」を注文しました。届いたのが「並盛り」だったら——お店は<u>一応「ラーメンを届ける」という仕事はした</u>けれど、約束（契約の趣旨）どおりではない。これが<strong>不完全履行</strong>です。<br>
+    このときあなたは、①「ちゃんと大盛りにして！」（<strong>追完請求</strong>）、②「冷めて損したぶん弁償して」（<strong>損害賠償</strong>）、③「もういらない、お金返して」（<strong>解除</strong>）と言える。契約不適合責任も、根っこはこれと同じ発想です。
+  </div>
+
+  <h3>改正の最大の眼目：法定責任 → 不完全履行へ</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>📜 改正前（瑕疵担保責任）</h4>
+      <ul>
+        <li>瑕疵ある特定物でも、渡せば債務は<strong>完全に履行</strong>された</li>
+        <li>でも代金との間に不均衡が残る</li>
+        <li>その不公平を<u>法律が特別に</u>是正する</li>
+        <li>＝契約の外に置いた<strong>法定責任</strong>（改正前570条）</li>
+      </ul>
+    </div>
+    <div class="vs-mid">→</div>
+    <div class="vs-box right">
+      <h4>✨ 改正後（契約不適合＝不完全履行）</h4>
+      <ul>
+        <li>契約債務＝<strong>契約の趣旨に従う物を渡す債務</strong></li>
+        <li>不適合な物を渡す＝<strong>不完全履行</strong></li>
+        <li>＝ふつうの<strong>債務不履行</strong>の一種</li>
+        <li>特定物か不特定物かを問わない</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>買主が持つ3つの権利</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">特則ヌキで導ける買主の権利</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">契約不適合な物を渡された買主</span>
+        <ul>
+          <li>
+            <span class="node l1">① 追完請求権（＝完全履行請求）</span>
+            <ul>
+              <li><span class="node l2">「あくまで完全に履行してくれ」という残債権</span></li>
+              <li><span class="node l3">これは「責任」ではなく本来の履行の問題</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">② 損害賠償請求権</span>
+            <ul>
+              <li><span class="node l2">不完全履行を理由とする賠償</span></li>
+              <li><span class="node danger">「責任」なので売主に帰責事由がなければ免責</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">③ 契約解除権</span>
+            <ul>
+              <li><span class="node l2">一部解除 → 代金が縮減＋過払い分は利息付で返還</span></li>
+              <li><span class="node l2">全部解除 → 既払代金を利息付で全額返還</span></li>
+              <li><span class="node l3">解除は契約締結時に遡って効力を失わせる</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    <strong>3つの権利の出どころを区別しよう</strong>：<br>
+    ・追完請求権 → <u>本来の履行請求権そのもの</u>（だから帰責事由は要らない）<br>
+    ・損害賠償請求権 → <u>「責任」</u>（だから売主の帰責事由が必要。なければ免責）<br>
+    ・契約解除権 → 一部 or 全部。契約をなかったことにして、お金を取り戻す手段
+  </div>
+
+  <h3>消滅時効も総則から導ける</h3>
+  <table>
+    <tr><th>権利</th><th>性質</th><th>客観的起算点 → 期間</th></tr>
+    <tr><td>追完（完全履行）請求権</td><td>本来の履行請求権</td><td>契約締結時から10年／知った時から5年</td></tr>
+    <tr><td>損害賠償請求権</td><td>債権（責任）</td><td>不適合物の引渡し時から10年／知った時から5年</td></tr>
+    <tr><td>契約解除権</td><td>形成権（166条2項）</td><td>解除権取得時から20年（判例の2段階構成）</td></tr>
+    <tr><td>解除後の原状回復請求権</td><td>法定債権（166条1項）</td><td>解除時から10年／知った時から5年</td></tr>
+  </table>
+
+  <h3>無償契約の例外：贈与者は原則責任なし</h3>
+  <div class="warn">
+    タダであげる人（贈与者）にまで「契約どおりの物を持ち出せ」と負担させるのは酷です。<br>
+    だから<strong>贈与者は原則として契約不適合責任を負いません</strong>（民551条1項。あえて「瑕疵なきこと」を担保すると約束した場合は別）。<br>
+    ただし<strong>負担付贈与</strong>は、その有償性を帯びる限度で、売主と同じく責任を負います（民551条2項）。
+  </div>
+
+  <div class="term">
+    <strong>不完全履行</strong>：一応の履行はしたが、契約の趣旨に照らすと完全ではない履行。債務不履行の一類型。契約不適合な物の引渡しは、まさにこの不完全履行に当たる、というのが改正民法の基本発想です。
+  </div>
+
+  <div class="quiz">
+    Q1: 改正民法が「最大の眼目」とした発想の転換とは何ですか。<br>
+    Q2: 買主の3つの権利のうち、売主の帰責事由がないと認められないのはどれですか。<br>
+    Q3: タダで物をあげる贈与者は、契約不適合責任を負いますか。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>A1: 契約不適合を、契約の外に置いた特別な「法定責任（瑕疵担保責任）」ではなく、契約の趣旨に適合する物を渡せなかった「不完全履行＝債務不履行の一種」として捉え直したこと。<br>
+      A2: ②損害賠償請求権。これは「責任」なので、売主に帰責事由がなければ免責される（①追完請求は本来の履行請求なので帰責事由不要）。<br>
+      A3: 原則として負わない（民551条1項）。あえて瑕疵なきことを担保した場合や、負担付贈与の有償性の限度（同2項）は例外。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義130 ========== -->
+<div class="section" id="lec130">
+  <div class="section-header">
+    <div class="section-num">130</div>
+    <h2>民法562条〜565条の存在意義</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>129で見たとおり、買主の権利は特則がなくても導けます。では、わざわざ置かれた民562〜565条には何の意味があるのか。<strong>本当に固有の意義があるのは562条1項くらいで、563〜565条はほぼ「念のため規定」</strong>——というのが講義の辛口な結論です。</p>
+
+  <div class="analogy">
+    取扱説明書のたとえ：<br>
+    家電の説明書には、わざわざ「電源プラグはコンセントに挿してください」と書いてある。<u>言われなくても分かる</u>ことです。<br>
+    民563〜565条もこれに近い。総則・債権総則を読めば当然に出てくる結論を、念のため契約各則に書き写しただけ。一方、562条1項は「<strong>追完の方法（修理か・代替品か・不足分か）を買主が特定できる</strong>」という、書いておかないと困る実質的なルールを定めた点で、ちゃんと意味があります。
+  </div>
+
+  <h3>民562条：追完請求権 ― ここに固有の意義がある</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">民562条1項のしくみ</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">追完請求権（562条）</span>
+        <ul>
+          <li>
+            <span class="node l1">本質：本来の履行請求権の「残債権」</span>
+            <ul>
+              <li><span class="node l2">質的・量的に足りない分を「追って完全に」</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">1項本文：追完方法を特定して請求</span>
+            <ul>
+              <li><span class="node l2">修補・代替物交付・不足分交付のどれか</span></li>
+              <li><span class="node accent">一次的な選択権は買主にある</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">1項但書：売主の二次的選択権</span>
+            <ul>
+              <li><span class="node l2">買主に不相当な負担でない範囲で、売主が別の方法を選べる</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    <strong>562条1項本文の本当の意義は「手続法との連携」にある</strong>：<br>
+    もし「とにかく追完しろ」という<u>抽象的な</u>訴えを認めると、勝訴判決が出ても執行機関は「具体的に何をすればいいの？」と動けません（→抽象的差止請求と同じく<strong>不適法却下</strong>）。<br>
+    だから買主には、追完の具体的方法を<u>特定する実体法上の権能</u>が必要。それを明文で疑義なく与えた点に、562条1項の固有の意義があります。
+  </div>
+
+  <div class="warn">
+    <strong>民568条2項の謎</strong>：買主に帰責事由があると追完請求権が障害される、と定めます。しかし「履行不完全が債権者のせいだと完全履行を求められない」という一般法理は<u>存在しません</u>。<br>
+    講師の見立て：これは<strong>品質不適合を念頭にした規定</strong>かもしれない。種類違いや数量不足の場合にまで適用するのは慎重を要する、というのが筋の通った理解です。
+  </div>
+
+  <h3>民563条：代金減額請求権 ― 名前は請求権、実は形成権</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🔵 もし本当の「請求権」なら</h4>
+      <ul>
+        <li>売主が減額に抵抗 → 訴訟が必要</li>
+        <li>「減額に同意せよ」の判決確定を待つ</li>
+        <li>とにかく面倒</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🟠 実際は「形成権」</h4>
+      <ul>
+        <li>減額の通知が<strong>到達するだけ</strong>で減額の効果</li>
+        <li>その実質は<strong>契約の一部解除そのもの</strong></li>
+        <li>要件が541・542条とほぼ同じなのも当然</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    <strong>「代金減額請求権」＝「契約の一部解除権」</strong>と読み替えると一気に腑に落ちます。<br>
+    ・要件（追完の催告＋相当期間経過、または追完不能・見込みなし）が541・542条とほぼ同じ。<br>
+    ・543条（債権者の帰責事由による解除障害）に対応して、563条3項がある。<br>
+    → つまり563条は全体として契約総則の解除権規定に委ねてよく、独立した存在意義はほぼない。
+  </div>
+
+  <div class="term">
+    <strong>形成権なのに「請求権」と呼ぶ理由</strong>：民法・特別法ではよくある命名です（借地借家法の賃料増減額「請求権」も同じ）。具体的な減額幅の確定には結局裁判所の介入を要することが多いので、「裁判外の一発で決着させず、きちんと訴訟にしてね」というニュアンスを込めているのかもしれません。
+  </div>
+
+  <h3>民564条・565条 ― ほぼ「丸投げ」「念のため」</h3>
+  <table>
+    <tr><th>条文</th><th>内容</th><th>講義の評価</th></tr>
+    <tr><td>民564条</td><td>損害賠償・全部解除は債権総則・契約総則でどうぞ</td><td>各則規定を置くのを諦めて丸投げ</td></tr>
+    <tr><td>民565条</td><td>物以外の財産権の売買にも同様の権利あり</td><td>言われなくても当然</td></tr>
+    <tr><td>民562条1項</td><td>追完方法の特定・選択権</td><td><strong>固有の積極的意義あり</strong></td></tr>
+  </table>
+
+  <div class="key">
+    結局、562〜565条の本当の役回りは、次回131の<strong>民566条（時的制限）の「前振り」</strong>。「566条で特別な時間制限を受ける買主の権利とは、こういうものたちですよ」と並べて見せている、という見立てです。
+  </div>
+
+  <div class="quiz">
+    Q1: 民562条1項本文の固有の意義は、どこ（手続法との関係）にありますか。<br>
+    Q2: 民563条「代金減額請求権」の法的性質は何で、その実質は何と同じですか。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>A1: 抽象的な追完命令は執行不能で不適法却下されるため、買主が追完の具体的方法（修補・代替物・不足分）を特定する実体法上の権能を明文で与えた点。手続法と実体法のシームレスな接続を確保する意義がある。<br>
+      A2: 性質は形成権（通知の到達だけで減額の効果が生じる）。その実質は契約の一部解除そのもの。要件が民541・542条とほぼ同じなのもそのためで、563条全体は契約総則の解除規定に委ねてよい。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義131 ========== -->
+<div class="section" id="lec131">
+  <div class="section-header">
+    <div class="section-num">131</div>
+    <h2>買主の権利の時的制限（民566条）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>種類・品質の不適合に気づいた買主は、<strong>「知った時から1年以内」</strong>にその具体的事実を売主に通知しないと、消滅時効を待たずに失権します（民566条）。<u>数量不足はこの1年制限の対象外</u>なのが重要ポイント。</p>
+
+  <div class="analogy">
+    宅配便のたとえ：<br>
+    荷物を受け取った配達員は「ちゃんと届けた、もう一件落着」と思って次の配達へ向かいます。時間が経つほど「あの件は問題なかったんだな」と安心が深まる。<br>
+    そこへ半年後・1年後にいきなり「あの荷物、中身が違ってた！」とクレームが来たら——「<u>なんで今ごろ？言うなら早く言ってよ</u>」と不意打ちに感じますよね。この<strong>売主の自己信頼を保護</strong>するのが566条の趣旨。だから買主には「気づいたら早く言え」という1年の縛りがかかるのです。
+  </div>
+
+  <h3>なぜ数量不足は除外されるのか</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🔵 種類・品質の不適合 → 1年制限あり</h4>
+      <ul>
+        <li>売主は「ちゃんと適合品を渡した」と信じうる</li>
+        <li>その自己信頼に合理性がある</li>
+        <li>だから保護に値する → 買主に通知義務</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🟠 数量不足 → 1年制限なし</h4>
+      <ul>
+        <li>100個のうち95個しか渡していない</li>
+        <li>売主自身が<strong>容易に認識できる</strong>はず</li>
+        <li>保護に値する信頼が乏しい → 除外</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>よくある誤解</strong>：「566条の1年が過ぎたら買主の権利は全部ダメ」——これは不正確。<br>
+    566条は<u>種類・品質の不適合だけ</u>が対象。数量不足や権利の瑕疵には及びません。さらに、1年制限とは別に<u>消滅時効（引渡し時から10年など）も並行して進行</u>しています。566条は時効に「重ねて」より早い決着の可能性を加えただけです。
+  </div>
+
+  <h3>攻撃防御の階段構造</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">買主：562〜564条の権利を請求</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">売主：「知った時から1年経過」<br><small>＝失権の抗弁</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">買主：「1年以内に通知到達」<br><small>＝権利保存の再抗弁</small></div>
+  </div>
+  <p style="text-align:center; font-size:0.9em; color:var(--text-light);">通知が1年以内に「到達」していれば、権利は（あとは消滅時効に服するだけのものとして）保存される</p>
+
+  <h3>除斥期間 vs 消滅時効</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>⏳ 除斥期間（566条の1年）</h4>
+      <ul>
+        <li>権利のDNAに織り込まれた<strong>寿命</strong></li>
+        <li>更新なし（寿命は延びない）</li>
+        <li>遡及効なし（生きてきたことは否定されない）</li>
+        <li>同時に権利保存期間でもある</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🕰️ 消滅時効</h4>
+      <ul>
+        <li>権利不行使への<strong>サンクション</strong></li>
+        <li>更新あり・完成猶予あり</li>
+        <li>援用が必要・遡及効あり</li>
+        <li>引渡し時から10年など</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    <strong>大原則を忘れない</strong>：所有権以外の財産権は<u>あまねく消滅時効に服する</u>。<br>
+    「買主が不適合を知らなければ権利は永久に存続する」は誤り。知らなければ<u>1年の除斥期間がスタートしないだけ</u>で、客観的起算点（＝引渡し時）からの10年消滅時効は淡々と進んでいます。
+  </div>
+
+  <div class="term">
+    <strong>客観的起算点は「引渡し時」</strong>：追完請求権・代金減額請求権・損害賠償請求権は、不適合物が引き渡された時に生じるので、引渡し時が客観的起算点。追完請求権は本来の履行請求権と「本質的に同一」でありつつ「実定制度上は別個の権利」なので、引渡し時起算で他の権利とつりあいを取ります。
+  </div>
+
+  <div class="warn">
+    <strong>近年の最高裁</strong>：除斥期間も「当事者の主張がなければ裁判所は考慮しない」「主張されても権利濫用評価で斥けられることがある」との態度を示しました。従来の「更新なし・援用不要・遡及効なし」の3点セットが、実務では柔軟化しつつあります。<br>
+    また<strong>商人間売買</strong>では商法526条が重なり、買主は<u>民566条と商法526条の両方のハードル</u>を越えないと権利を保存できません。
+  </div>
+
+  <div class="quiz">
+    Q1: 民566条の1年制限は、どの種類の不適合に適用され、どれに適用されませんか。<br>
+    Q2: 1年制限の攻防（抗弁・再抗弁）はどう組み立てますか。<br>
+    Q3: 「買主が不適合を知らなければ権利は永久に存続する」は正しいですか。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>A1: 種類・品質の不適合に適用される。数量不足には適用されない（売主が容易に認識できるはずで、保護に値する信頼が乏しいため）。<br>
+      A2: 売主が「買主が不適合を知った時から1年経過」を主張して失権の抗弁、買主が「その1年以内に不適合の具体的事実の通知を売主に到達させた」を主張して権利保存の再抗弁。<br>
+      A3: 誤り。知らなければ1年の除斥期間が始まらないだけで、引渡し時を客観的起算点とする10年の消滅時効は並行して進行する。所有権以外の財産権はあまねく消滅時効に服する。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義132 ========== -->
+<div class="section" id="lec132">
+  <div class="section-header">
+    <div class="section-num">132</div>
+    <h2>責任の約定制限・法定制限（民572条・568条）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>契約不適合責任は、当事者の<strong>合意で制限・免除できる（約定制限）</strong>が、売主が不適合を知って黙っていたら免責されない（572条）。また<strong>競売（法定制限）</strong>では、買受人は種類・品質の不適合について追完も解除も損害賠償も<u>一切できない</u>（568条4項）のが最重要ポイントです。</p>
+
+  <div class="analogy">
+    中古品ショップのたとえ：<br>
+    フリマの「ノークレーム・ノーリターン」がまさに<strong>約定制限（免責特約）</strong>。契約自由なので有効です。<br>
+    でも出品者が「実は壊れてるの知ってたけど黙ってた」なら、ノークレーム宣言は通りません（572条）。<br>
+    そして<strong>競売（ジャンク品の山買い）</strong>は別格。「中身に欠陥があるのは織り込み済み、だから安い」のが大前提なので、品質に文句を言うこと自体が許されません（568条4項）。
+  </div>
+
+  <h3>約定制限：免責特約と、その例外（民572条）</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">買主：契約不適合責任を追及</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">売主：責任制限合意がある<br><small>＝責任制限の抗弁</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">買主：売主は不適合を知っていた<br><small>＝再抗弁（572条）</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">売主：その不適合を告げていた<br><small>＝再々抗弁</small></div>
+  </div>
+
+  <div class="key">
+    <strong>約定制限の攻防は4段重ね</strong>：<br>
+    ① 抗弁：免責特約がある（契約自由により有効）<br>
+    ② 再抗弁：売主が不適合を知っていた（悪意）→ 免責は通らない（572条）<br>
+    ③ 再々抗弁：その不適合を契約時に買主へ告げていた → やはり免責される<br>
+    ＝「黙っていた悪意の売主」だけが免責の利益を失う、という構造。
+  </div>
+
+  <h3>法定制限：競売の特則（民568条）</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">競売における契約不適合責任のしくみ</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">競売（強制執行・担保執行）で買い受けた</span>
+        <ul>
+          <li>
+            <span class="node l1">私法上の「売主」の地位は債務者にある</span>
+            <ul>
+              <li><span class="node l2">売却行為をするのは執行機関（国）だが…</span></li>
+              <li><span class="node l2">買受人が責任を問う相手は債務者</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">買受人が債務者に主張できること（限定）</span>
+            <ul>
+              <li><span class="node l2">契約の全部・一部解除による原状回復請求（568条1項）</span></li>
+              <li><span class="node l2">不適合を知って黙っていた債務者への損害賠償（568条3項）</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">債務者が無資力のとき</span>
+            <ul>
+              <li><span class="node accent">配当を受けた債権者に転嫁できる（568条2項）</span></li>
+              <li><span class="node l3">配当受領者を「売主のように」見立てる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node danger">★種類・品質の不適合 → 一切請求できない（568条4項）</span>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="warn">
+    <strong>最重要・落とし穴</strong>：競売物件の買受人は、<u>種類・品質</u>の契約不適合については、追完請求も・解除による代金返還も・損害賠償も、債務者にも配当受領債権者にも、<strong>一切できません</strong>（568条4項）。<br>
+    解除や損害賠償ができるのは、<u>数量不足や権利の瑕疵</u>の場合に限られます。「競売でも568条1〜3項で救済される」と覚えると、品質瑕疵で誤答します。
+  </div>
+
+  <div class="key">
+    <strong>なぜ競売では品質に文句を言えないのか</strong>：<br>
+    ① 競売物件に種類・品質の瑕疵がありうるのは社会常識。<br>
+    ② 情報開示も万全でない。<br>
+    ③ だから売却基準価格は市場の正常価格より<u>低く設定</u>されている。<br>
+    → そのリスクを織り込んで安く買えるのだから、品質瑕疵のリスクは買受人が負担せよ、というのが568条4項の発想。
+  </div>
+
+  <div class="term">
+    <strong>物件明細書・現況調査報告書</strong>：競売物件の権利関係（賃借権・法定地上権の有無など）や物理的状況（占有者の有無など）を記載して公の閲覧に供する文書。債務者に正直な情報開示を促す仕組みだが、いずれも<u>公信力はない</u>。
+  </div>
+
+  <div class="quiz">
+    Q1: 免責特約があっても売主が免責されないのはどんな場合ですか（条文も）。<br>
+    Q2: 競売の買受人が、種類・品質の不適合について債務者に請求できることは何ですか。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>A1: 売主が契約不適合を知りながら買主に告げなかった場合（民572条）。ただし、その不適合を契約時に買主へ告げていたなら、なお免責される。<br>
+      A2: 何もできない。競売物件の種類・品質の不適合については、追完・解除による代金返還・損害賠償のいずれも、債務者にも配当受領債権者にも請求できない（民568条4項）。解除・損害賠償が可能なのは数量不足や権利の瑕疵の場合に限られる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義133 ========== -->
+<div class="section" id="lec133">
+  <div class="section-header">
+    <div class="section-num">133</div>
+    <h2>契約適合物の引取り又は受領遅滞による危険移転（民567条）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p><strong>契約に適合する物を引き渡したら、売主の引渡債務は完全履行</strong>。その後に物が滅失・損傷しても、売主の帰責事由による場合を除き、その損は<strong>買主が負担</strong>します（＝危険の移転、民567条1項）。受領遅滞でも同じく危険は移ります（2項）。</p>
+
+  <div class="analogy">
+    バトンリレーのたとえ：<br>
+    走者A（売主）が走者B（買主）に<u>正しくバトン（適合物）を渡した</u>瞬間、Aの区間は完走です。その後にBがバトンを落としても、それはBの責任。Aのせいではありません。<br>
+    では「Bがいつまでも手を出さない（受領を拒む）」とどうなる？ Aが差し出した（提供した）のにBが受け取らないなら、その時点でバトンは渡ったものと扱う。<u>受け取らなければずっとA負担</u>では、Bが受領を拒んで引き延ばし放題になり不合理だからです。
+  </div>
+
+  <h3>危険移転の基本（民567条1項）</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">適合物を引き渡した</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">売主の引渡債務は完全履行</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">その後の滅失・損傷</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">買主が負担（代金拒絶もできない）</div>
+  </div>
+
+  <div class="warn">
+    <strong>射程の境界に注意</strong>：滅失・損傷は引渡し後でも、その原因となる不具合が<u>引渡し前から物に内在していた</u>なら、それは「契約不適合物を渡した」話であって、<strong>契約不適合責任</strong>の領域（129〜132）。<br>
+    民567条が扱うのは、あくまで「<u>適合物</u>が引き渡され、その後に滅失・損傷した」場面に限られます。ここを混同しないこと。
+  </div>
+
+  <h3>受領遅滞による危険移転（民567条2項）</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>📦 引渡し（1項）</h4>
+      <p>売主の引渡しの提供 ＋ 買主の引取り</p>
+      <ul>
+        <li>正常に受け渡しが完了した場合</li>
+        <li>引渡し時に危険が移転</li>
+      </ul>
+    </div>
+    <div class="vs-mid">＝</div>
+    <div class="vs-box right">
+      <h4>🚫 受領遅滞（2項）</h4>
+      <p>売主の引渡しの提供 ＋ 買主の引取り拒絶・不能</p>
+      <ul>
+        <li>買主が受け取らない場合</li>
+        <li>提供の時に危険が移転（引渡しと等価）</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>攻撃防御の構造</h3>
+  <div class="flow">
+    <div class="flow-item f-blue">買主B：滅失・損傷で責任追及</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">売主A：滅失損傷に先立つ引渡し（or提供＋引取拒絶・不能）<br><small>＝責任障害の抗弁</small></div>
+  </div>
+  <div class="flow">
+    <div class="flow-item f-green">買主B：滅失損傷は売主Aの帰責事由による<br><small>＝再抗弁</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">売主A：自己の帰責事由評価を障害する事実<br><small>＝再々抗弁</small></div>
+  </div>
+
+  <div class="key">
+    <strong>「先立つ」がかかるのは「提供」だけ</strong>（2項の抗弁の読み方）：<br>
+    「滅失損傷に先立って提供したこと」＋「その提供以後にBが引取りを拒絶し、または引き取れなかったこと」。<br>
+    ＝「先立つ」は提供にのみかかり、引取りの拒絶・不能にはかからない、という細かいが大事な読み方。
+  </div>
+
+  <div class="warn">
+    <strong>講師の辛口指摘</strong>：民567条1項・2項の「<u>当事者双方の責めに帰することができない事由によって</u>」という文言は、<strong>不要かつミスリーディング</strong>。実際の攻防は「売主の帰責事由の有無」で動くので、この文言に引きずられないこと。
+  </div>
+
+  <div class="term">
+    <strong>危険の移転</strong>：目的物が当事者双方の責めによらず滅失・損傷した場合、その経済的損失（＝代金を払う側の不利益）をどちらが負担するかという問題。適合物の引渡し（または受領遅滞）を境に、危険は売主から買主へ移る。移転後は、買主は民536条1項による代金支払拒絶もできない。
+  </div>
+
+  <div class="quiz">
+    Q1: 適合物を引き渡した後に物が損傷したら、原則として損は誰が負担しますか。<br>
+    Q2: 買主が受け取らない（受領遅滞）場合、危険はいつ移転しますか。<br>
+    Q3: 「引渡し後の損傷」でも契約不適合責任の問題になるのはどんな場合ですか。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>A1: 買主。売主の帰責事由による場合を除き、買主が負担し、代金支払拒絶もできない（民567条1項）。<br>
+      A2: 売主が引渡しの提供をし、その後に買主が引取りを拒絶し、または引き取れなかった時点で移転する（引渡しと等価に扱う。民567条2項）。<br>
+      A3: 損傷の原因となる不具合が引渡し前から物に内在していた場合。これは「契約不適合物を渡した」話であり567条の射程外で、契約不適合責任の領域となる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義134 ========== -->
+<div class="section" id="lec134">
+  <div class="section-header">
+    <div class="section-num">134</div>
+    <h2>債権の売主の担保責任（民569条）</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>債権（借用書）を売ったとき、<strong>債務者がお金を返せない（無資力）のは「債権そのものの瑕疵」ではない</strong>から、原則として売主に責任を問えません（買主の自己責任）。例外は、売主が「最低◯円は回収できる」と<strong>資力を担保する合意</strong>をした場合だけ（民569条）。</p>
+
+  <div class="analogy">
+    宝くじの売買のたとえ：<br>
+    「当たれば1000万円の宝くじ（額面1000万円の債権）」を、リスク込みで700万円で買ったとします。フタを開けて200万円しか回収できなくても、それは<u>買った人の運命</u>。「将来の回収リスクを承知で安く買った」のだから、誰のせいにもできません。<br>
+    例外は、売り手が「<strong>少なくとも900万円は回収できると請け合う</strong>」と約束した場合。これは実質「保証契約」で、約束した分は責任を取らせられます。
+  </div>
+
+  <h3>なぜ債務者の無資力は売主の責任にならないのか</h3>
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🔴 権利の瑕疵 → 責任あり</h4>
+      <ul>
+        <li>例：売った債権に実は質権が付いていた</li>
+        <li>債権「それ自体」の欠陥</li>
+        <li>契約不適合として責任を問える</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>🟢 債務者の無資力 → 原則責任なし</h4>
+      <ul>
+        <li>債務者が返せないだけ</li>
+        <li>債権「それ自体」の瑕疵ではない</li>
+        <li>回収リスクは買主の自己責任</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="key">
+    <strong>「土地の瑕疵は借地権の瑕疵ではない」と同じ論法</strong>：<br>
+    土地に問題があっても、その土地を使う借地権（権利）自体に欠陥があるわけではない——という判例の理屈と同じ構造です。<br>
+    債務者の資力という「外側の事情」の悪化は、債権という「権利の中身」の瑕疵とは別物。だから売買当時であれ履行期であれ、売主に契約不適合責任は問えないのが原則。
+  </div>
+
+  <h3>例外：資力担保合意と民569条の推定</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">資力担保の基準時（民569条の推定規定）</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">売主が「資力を担保する」と合意した</span>
+        <ul>
+          <li>
+            <span class="node l1">原則（569条1項）：契約締結時が基準</span>
+            <ul>
+              <li><span class="node l2">売主も将来の資力までは見通せない</span></li>
+              <li><span class="node l2">「今の現有資力で足りない分は責任を取る」が担保意思の基本</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">例外（569条2項）：履行期到来時が基準</span>
+            <ul>
+              <li><span class="node l2">①「弁済期未到来の」債権の売買であること</span></li>
+              <li><span class="node l2">②「将来の」資力を担保する趣旨と認められること</span></li>
+              <li><span class="node l3">①②が揃ったときだけ、基準時が将来の履行期に動く</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h3>講義の設例で確かめる</h3>
+  <div class="term">
+    <strong>設例</strong>：Aが「最低900万円は回収できる」と請け合い、Bへの額面1000万円の債権を800万円でCに売却。Bの資力は——契約締結時で600万円、履行期で400万円、請求時で200万円までしか満足できない水準に低下していった。Cはいくらの損害填補を求められるか？
+  </div>
+  <table>
+    <tr><th>基準時</th><th>計算</th><th>填補額</th></tr>
+    <tr><td>契約締結時（原則・569条1項）</td><td>900 − 600</td><td><strong>300万円</strong></td></tr>
+    <tr><td>履行期到来時（例外・569条2項）</td><td>900 − 400</td><td>500万円</td></tr>
+    <tr><td>請求時</td><td>900 − 200</td><td>700万円</td></tr>
+  </table>
+
+  <div class="key">
+    <strong>設例の結論は「300万円」</strong>：<br>
+    AC間の売買が「弁済期未到来の債権」であることは明らかだが、「<u>将来の</u>資力を担保する趣旨」だったとは積極的に認定しきれない。<br>
+    → 569条2項の要件を満たさないので、原則どおり<strong>契約締結時が基準</strong>。よってCの填補は 900 − 600 ＝ <strong>300万円</strong>にとどまる。
+  </div>
+
+  <div class="warn">
+    <strong>資力担保合意の正体</strong>：「最低◯円は回収できると請け合う」は、実質的にも形式的にも、売主Aが売却した債権について<u>保証人になる</u>のと同じ（全部保証または一部保証）。<br>
+    そうだとすれば、それは<strong>保証契約</strong>であり、本来は<u>書面が必要</u>なはず。講師は「保証規定の及ばない無名担保では野放しすぎる」と疑問を呈しています。
+  </div>
+
+  <div class="quiz">
+    Q1: 債務者が無資力でも、原則として債権の売主に契約不適合責任を問えないのはなぜですか。<br>
+    Q2: 民569条で、資力担保の基準時が「将来の履行期」に動くための2要件は何ですか。<br>
+    Q3: 設例（900万円担保・締結時資力600万円）で、原則どおりだとCの填補額はいくらですか。
+    <details>
+      <summary>💬 解答例を見る</summary>
+      <p>A1: 債務者の資力の瑕疵は「債権それ自体の瑕疵」ではないから。回収リスクは信用評価における買主の自己責任。「土地の瑕疵は借地権の瑕疵ではない」と同じ論法。<br>
+      A2: ①弁済期未到来の債権の売買であること、②債務者の「将来の」資力を担保する趣旨と認められること（民569条2項）。両方が揃って初めて履行期到来時が基準になる。<br>
+      A3: 300万円（900 − 600）。設例は②「将来の資力」担保の趣旨と認めきれないため、原則（569条1項）どおり契約締結時が基準になる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 用語集 ========== -->
+<div class="section" id="glossary">
+  <div class="section-header">
+    <div class="section-num">📖</div>
+    <h2>初学者向け用語集</h2>
+  </div>
+
+  <table>
+    <tr><th>用語</th><th>読み</th><th>意味（やさしく）</th><th>登場講義</th></tr>
+    <tr><td>契約不適合</td><td>けいやくふてきごう</td><td>引き渡された物が契約の趣旨（種類・品質・数量）と違うこと</td><td>129-134</td></tr>
+    <tr><td>不完全履行</td><td>ふかんぜんりこう</td><td>一応の履行はしたが完全ではない履行。債務不履行の一種</td><td>129</td></tr>
+    <tr><td>瑕疵担保責任</td><td>かしたんぽせきにん</td><td>改正前の制度。契約の外の特別な法定責任とされていた（改正前570条）</td><td>129</td></tr>
+    <tr><td>追完請求権</td><td>ついかんせいきゅうけん</td><td>「あくまで完全に履行して」と求める権利＝本来の履行請求権の残債権（民562条）</td><td>129-131</td></tr>
+    <tr><td>代金減額請求権</td><td>だいきんげんがくせいきゅうけん</td><td>名は請求権だが性質は形成権。実質は契約の一部解除（民563条）</td><td>130</td></tr>
+    <tr><td>形成権</td><td>けいせいけん</td><td>一方的意思表示（通知の到達）だけで法律関係を変える権利</td><td>130</td></tr>
+    <tr><td>負担付贈与</td><td>ふたんつきぞうよ</td><td>受贈者にも負担がある贈与。有償性の限度で売主と同じ責任（民551条2項）</td><td>129</td></tr>
+    <tr><td>抽象的差止請求</td><td>ちゅうしょうてきさしとめせいきゅう</td><td>内容が特定されず執行できない請求。不適法却下される</td><td>130</td></tr>
+    <tr><td>除斥期間</td><td>じょせきかん</td><td>権利のDNAに織り込まれた寿命。更新なし・遡及効なし</td><td>131</td></tr>
+    <tr><td>消滅時効</td><td>しょうめつじこう</td><td>権利不行使へのサンクション。更新・完成猶予・援用がある</td><td>129-131</td></tr>
+    <tr><td>権利保存</td><td>けんりほぞん</td><td>1年以内の通知到達で、権利を（消滅時効に服するものとして）残すこと（民566条）</td><td>131</td></tr>
+    <tr><td>客観的起算点</td><td>きゃっかんてききさんてん</td><td>時効の数え始め（10年）。契約不適合では原則「引渡し時」</td><td>129-131</td></tr>
+    <tr><td>主観的起算点</td><td>しゅかんてききさんてん</td><td>時効の数え始め（5年）。権利を行使できると知った時</td><td>129-131</td></tr>
+    <tr><td>商法526条</td><td>しょうほう526じょう</td><td>商人間売買の特則。民566条に重ねて適用される（両方クリアが必要）</td><td>131</td></tr>
+    <tr><td>責任制限合意</td><td>せきにんせいげんごうい</td><td>不適合責任を制限・免除する特約。契約自由により有効（免責特約）</td><td>132</td></tr>
+    <tr><td>売主悪意</td><td>うりぬしあくい</td><td>売主が不適合を知っていたこと。知って告げなければ免責特約は無効（民572条）</td><td>132</td></tr>
+    <tr><td>競売</td><td>けいばい</td><td>強制執行・担保執行で財産を売却して換価する手続</td><td>132</td></tr>
+    <tr><td>買受人</td><td>かいうけにん</td><td>競売で物件を落札して買い受けた人</td><td>132</td></tr>
+    <tr><td>物件明細書</td><td>ぶっけんめいさいしょ</td><td>競売物件の権利関係を記載した文書（公信力なし）</td><td>132</td></tr>
+    <tr><td>危険の移転</td><td>きけんのいてん</td><td>双方の責めによらない滅失損傷の損を、どちらが負担するかの境目（民567条）</td><td>133</td></tr>
+    <tr><td>受領遅滞</td><td>じゅりょうちたい</td><td>売主が提供したのに買主が引取りを拒絶・不能なこと。引渡しと等価に扱う</td><td>133</td></tr>
+    <tr><td>履行の提供</td><td>りこうのていきょう</td><td>あとは相手が受け取るだけの状態にすること</td><td>133</td></tr>
+    <tr><td>抗弁・再抗弁・再々抗弁</td><td>こうべん等</td><td>請求 → 防御 → 再反論 → 再々反論と続く攻撃防御の階段</td><td>131-133</td></tr>
+    <tr><td>資力担保合意</td><td>しりょくたんぽごうい</td><td>債権の売主が「最低◯円は回収できる」と保証する合意（民569条）</td><td>134</td></tr>
+    <tr><td>無資力</td><td>むしりょく</td><td>債務者にお金がなく、債権を満足させられない状態</td><td>134</td></tr>
+  </table>
+</div>
+
+<!-- ========== Footer ========== -->
+<div style="text-align:center; padding: 30px; color: var(--text-light); font-size: 0.85em;">
+  <p>msahkie先生の民法講義に基づく学習ガイド</p>
+  <p>法律未修者向け知識点整理・拡展</p>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>
