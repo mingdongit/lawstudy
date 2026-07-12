@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>民法講義135〜139 学習ガイド（法律未修者向け）</title>
+<style>
+  :root {
+    --bg: #f8f9fa;
+    --card: #ffffff;
+    --primary: #2c5f8a;
+    --secondary: #e8f0f8;
+    --accent: #d4740e;
+    --accent-light: #fff5eb;
+    --text: #2d3436;
+    --text-light: #636e72;
+    --border: #dfe6e9;
+    --success: #00b894;
+    --danger: #e17055;
+    --info: #74b9ff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    padding: 20px;
+  }
+  .container { max-width: 1100px; margin: 0 auto; }
+
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(135deg, #2c5f8a 0%, #1a3a5c 100%);
+    color: white;
+    border-radius: 16px;
+    margin-bottom: 30px;
+  }
+  .header h1 { font-size: 2em; margin-bottom: 10px; }
+  .header p { opacity: 0.9; font-size: 1.05em; }
+  .header .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-top: 10px;
+    font-size: 0.9em;
+  }
+
+  /* Navigation */
+  .nav {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin-bottom: 30px;
+    border: 1px solid var(--border);
+    position: sticky;
+    top: 10px;
+    z-index: 100;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .nav:hover, .nav:focus-within {
+    max-height: 600px;
+  }
+  .nav h3 { margin-bottom: 10px; color: var(--primary); font-size: 0.95em; cursor: pointer; }
+  .nav h3::after { content: " ▼"; font-size: 0.7em; }
+  .nav-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+  }
+  .nav a {
+    display: block;
+    padding: 8px 12px;
+    background: var(--secondary);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--primary);
+    font-size: 0.88em;
+    transition: all 0.2s;
+  }
+  .nav a:hover { background: var(--primary); color: white; }
+
+  /* Section */
+  .section {
+    background: var(--card);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 24px;
+    border: 1px solid var(--border);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.04);
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--secondary);
+  }
+  .section-num {
+    background: var(--primary);
+    color: white;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+    font-size: 1.1em;
+    flex-shrink: 0;
+  }
+  .section-header h2 { font-size: 1.35em; color: var(--primary); }
+
+  /* Subsection */
+  h3 {
+    color: var(--primary);
+    font-size: 1.1em;
+    margin: 24px 0 12px;
+    padding-left: 12px;
+    border-left: 4px solid var(--accent);
+  }
+  h4 {
+    color: var(--accent);
+    font-size: 1em;
+    margin: 16px 0 8px;
+  }
+
+  /* Analogy box */
+  .analogy {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .analogy::before {
+    content: "💡 たとえ話";
+    display: block;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Key point */
+  .key {
+    background: #eef7ee;
+    border-left: 4px solid var(--success);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .key::before {
+    content: "✅ 重要ポイント";
+    display: block;
+    font-weight: bold;
+    color: var(--success);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Warning */
+  .warn {
+    background: #fff3f0;
+    border-left: 4px solid var(--danger);
+    padding: 16px 20px;
+    border-radius: 0 10px 10px 0;
+    margin: 14px 0;
+  }
+  .warn::before {
+    content: "⚠️ 注意・よくある誤解";
+    display: block;
+    font-weight: bold;
+    color: var(--danger);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Term */
+  .term {
+    background: var(--secondary);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .term::before {
+    content: "📖 用語解説";
+    display: block;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+
+  /* Quiz */
+  .quiz {
+    background: #f0eeff;
+    border: 2px dashed #6c5ce7;
+    padding: 16px 20px;
+    border-radius: 10px;
+    margin: 14px 0;
+  }
+  .quiz::before {
+    content: "🧪 理解度チェック";
+    display: block;
+    font-weight: bold;
+    color: #6c5ce7;
+    margin-bottom: 6px;
+    font-size: 0.9em;
+  }
+  .quiz details {
+    margin-top: 8px;
+  }
+  .quiz summary {
+    cursor: pointer;
+    color: #6c5ce7;
+    font-weight: bold;
+    font-size: 0.9em;
+  }
+  .quiz details p {
+    margin-top: 6px;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+  }
+
+  /* Table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    font-size: 0.92em;
+  }
+  th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  tr:nth-child(even) { background: var(--secondary); }
+  tr:hover { background: #dbeafe; }
+
+  /* Mind map */
+  .mindmap {
+    background: white;
+    border: 2px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .mindmap-title {
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 16px;
+    font-size: 1.05em;
+  }
+
+  /* Tree structure */
+  .tree { padding-left: 0; list-style: none; }
+  .tree ul { padding-left: 28px; list-style: none; position: relative; }
+  .tree ul::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 12px;
+    border-left: 2px solid var(--border);
+  }
+  .tree li {
+    position: relative;
+    padding: 4px 0 4px 0;
+  }
+  .tree ul > li::before {
+    content: '';
+    position: absolute;
+    left: -16px;
+    top: 14px;
+    width: 14px;
+    border-top: 2px solid var(--border);
+  }
+  .tree .node {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+  }
+  .node.root { background: var(--primary); color: white; font-size: 1em; padding: 8px 20px; }
+  .node.l1 { background: #4a90c4; color: white; }
+  .node.l2 { background: var(--secondary); color: var(--primary); border: 1px solid #b0cfe0; }
+  .node.l3 { background: #f1f5f1; color: var(--text); border: 1px solid #c8d6c8; font-size: 0.85em; }
+  .node.accent { background: var(--accent-light); color: #b35c00; border: 1px solid #f0c8a0; }
+  .node.danger { background: #fff0ee; color: #c0392b; border: 1px solid #f0b0a0; }
+
+  /* Flow diagram */
+  .flow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0;
+    margin: 16px 0;
+    justify-content: center;
+  }
+  .flow-item {
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-size: 0.88em;
+    font-weight: 600;
+    text-align: center;
+    min-width: 100px;
+  }
+  .flow-arrow {
+    font-size: 1.4em;
+    color: var(--text-light);
+    padding: 0 4px;
+  }
+  .flow .f-blue { background: var(--secondary); color: var(--primary); border: 2px solid #a0c4e0; }
+  .flow .f-green { background: #e8f8e8; color: #1e7e34; border: 2px solid #a0d8a0; }
+  .flow .f-orange { background: var(--accent-light); color: #b35c00; border: 2px solid #f0c8a0; }
+  .flow .f-red { background: #fff0ee; color: #c0392b; border: 2px solid #f0b0a0; }
+
+  /* Comparison */
+  .vs {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: start;
+    margin: 16px 0;
+  }
+  .vs-box {
+    padding: 20px;
+    border-radius: 12px;
+    border: 2px solid;
+  }
+  .vs-box.left { border-color: #4a90c4; background: #f0f6fc; }
+  .vs-box.right { border-color: #e0a040; background: #fdf8f0; }
+  .vs-box h4 { margin-top: 0; text-align: center; }
+  .vs-mid {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--text-light);
+    align-self: center;
+  }
+
+  p { margin: 8px 0; }
+  ul, ol { margin: 8px 0; padding-left: 24px; }
+  li { margin: 4px 0; }
+  strong { color: var(--primary); }
+
+  @media (max-width: 768px) {
+    body { padding: 10px; }
+    .section { padding: 18px; }
+    .header h1 { font-size: 1.4em; }
+    .nav-grid { grid-template-columns: 1fr 1fr; }
+    .vs { grid-template-columns: 1fr; }
+    .vs-mid { text-align: center; }
+    .flow { flex-direction: column; align-items: center; }
+    .flow-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ========== Header ========== -->
+<div class="header">
+  <h1>民法学習ガイド 講義135〜139</h1>
+  <p>貸借型契約：消費貸借・準消費貸借・賃貸借</p>
+  <div class="badge">msahkie先生の講義に基づく整理・拡展</div>
+</div>
+
+<!-- ========== Navigation ========== -->
+<div class="nav">
+  <h3>📑 目次（クリックでジャンプ）</h3>
+  <div class="nav-grid">
+    <a href="#overview">全体マップ</a>
+    <a href="#lec135">⑮ 消費貸借契約</a>
+    <a href="#lec136">⑯ 準消費貸借契約</a>
+    <a href="#lec137">⑰ 賃貸借（当事者間）</a>
+    <a href="#lec138">⑱ 賃貸人側の第三者</a>
+    <a href="#lec139">⑲ 賃借人側の第三者</a>
+    <a href="#glossary">用語集</a>
+  </div>
+</div>
+
+<!-- ========== 全体マップ ========== -->
+<div class="section" id="overview">
+  <div class="section-header">
+    <div class="section-num">📍</div>
+    <h2>全体マップ：講義135〜139は何を学ぶのか</h2>
+  </div>
+
+  <p>この5回の講義に共通するテーマは<strong>「貸借型契約（借りたら返す契約）」</strong>です。お金を借りる契約（消費貸借）→ 複数の借金を一本化する契約（準消費貸借）→ 物を借りる契約（賃貸借）へと進み、最後は賃貸借に「第三者」が絡んだ場合を扱います。</p>
+
+  <div class="mindmap">
+    <div class="mindmap-title">🗺️ 講義135〜139 全体思維導図</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">貸借型契約（借りたら返す）</span>
+        <ul>
+          <li>
+            <span class="node l1">お金を借りる（講義135・136）</span>
+            <ul>
+              <li><span class="node l2">⑮ 消費貸借 — お金を借りて同種の物を返す</span></li>
+              <li><span class="node l2">⑯ 準消費貸借 — 既存の借金を1個の貸金にまとめる</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">物を借りる（講義137〜139）</span>
+            <ul>
+              <li><span class="node l2">⑰ 賃貸借・当事者間 — 大家と借主のルール</span></li>
+              <li><span class="node l2">⑱ 賃貸人側の第三者 — 貸主が物を売ったら？</span></li>
+              <li><span class="node l2">⑲ 賃借人側の第三者 — 借主が又貸ししたら？</span></li>
+            </ul>
+          </li>
+          <li>
+            <span class="node l1">貫く1本の軸</span>
+            <ul>
+              <li><span class="node accent">「返還請求権はいつ生じるか」の構造的対比</span></li>
+              <li><span class="node l3">消費貸借：貸した時に発生 → 返済完了で契約終了</span></li>
+              <li><span class="node l3">賃貸借：契約終了の効果として発生</span></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="analogy">
+    3つの「借りる」を身近な例で並べると：<br>
+    <strong>消費貸借</strong>＝友達に「1000円貸して」。使ったら消える。だから返すのは<u>同じ1000円分の別のお札</u>でOK。<br>
+    <strong>準消費貸借</strong>＝ツケが何件もたまった飲み屋で「ぜんぶまとめて〇万円の借金にしとくわ」と一本化する。<br>
+    <strong>賃貸借</strong>＝レンタルDVDやアパート。借りた<u>その物そのもの</u>を、使い終わったら返す。
+  </div>
+
+  <div class="key">
+    このブロック最大の勘所は<strong>「返還請求権がいつ発生するか」</strong>という構造の違いです。<br>
+    ・<strong>消費貸借</strong>：貸したその瞬間に「貸金返還債権」が生まれ、返済期が来て請求できる。全額返ってきて初めて契約が終わる（＝返還は契約の<u>効力</u>）。<br>
+    ・<strong>賃貸借</strong>：契約が続く間は貸しておくのが本体で、<u>契約が終わって初めて</u>「返せ」と言える（＝返還は契約終了の<u>効果</u>）。<br>
+    この対比が、5講義を通じて何度も顔を出します。
+  </div>
+</div>
+
+<!-- ========== 講義135 ========== -->
+<div class="section" id="lec135">
+  <div class="section-header">
+    <div class="section-num">135</div>
+    <h2>消費貸借契約の法理</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>消費貸借とは、<strong>お金（使うと消えてしまう物）を借りて、後で同じ種類・量・質の物を返す契約</strong>です。借りた「そのお札」を返すのではなく、「同じ額の別のお金」を返すのがポイント。</p>
+
+  <div class="analogy">
+    お隣さんに「お醤油を1本貸して」と借りる場面をイメージしてください。<br>
+    借りた醤油は料理に使って消えてしまいます。だから返すのは「借りたその瓶そのもの」ではなく「後で買ってきた<strong>同じ醤油1本</strong>」。<br>
+    お金もこれと同じ。借りた1万円札を使ったら、返すのは「別の1万円分のお金」でいい。<br>
+    これが「消費物（使うと同一物として存在を失う物）」の貸し借り＝消費貸借です。
+  </div>
+
+  <div class="term">
+    <strong>消費物（しょうひぶつ）</strong>：本来の使い方をすると、同一物としての存在を失う物。要するに<strong>お金</strong>のこと（概念上はコメ・ミソ・ショーユなどの食品も含むが、本格的な法律紛争になるのはほぼお金）。<br>
+    借主に<strong>処分権</strong>（自由に使ってよい権利）が移るのが特徴。だから使い切ってしまってよく、返すのは同種・同量・同質の物になる。
+  </div>
+
+  <h3>歴史：なぜ「要物契約」だったのか</h3>
+  <p>消費貸借は、ローマ法以来2000年間ずっと<strong>「要物契約」</strong>として扱われてきました。合意だけでは足りず、実際にお金を渡して初めて成立する契約です。</p>
+
+  <div class="analogy">
+    昔の友達どうしの貸し借りを想像してください。<br>
+    「今度お金貸すよ」と口約束しただけで「貸す義務」を負わせてしまうと、貸す側は約束に縛られて大きな負担を背負います。<br>
+    軽い気持ちで「貸すよ」と言った友人を守るため、<strong>「実際にお金を手渡すまでは契約は成立しない」</strong>ことにしたのです。これが要物契約。<br>
+    → だから昔の消費貸借は「借りた金を返す債務」だけが生まれる、片方だけが義務を負う（片務）・タダ（無償）の契約でした。
+  </div>
+
+  <div class="term">
+    <strong>要物契約（ようぶつけいやく）</strong>：合意に加えて「物の交付」があって初めて成立する契約。<br>
+    ⇔ <strong>諾成契約（だくせいけいやく）</strong>：当事者の合意だけで成立する契約（売買や賃貸借はこちら）。
+  </div>
+
+  <h4>タダから有償へ：利息が付くと</h4>
+  <div class="key">
+    要物・無償・片務が基本形ですが、<strong>利息を付ける合意（利息特約）</strong>があるとき、または<strong>商人どうしの貸し借り（商法513条）</strong>のときは、有償の契約になります。<br>
+    このとき法律構成としては、①消費貸借契約に基づく<strong>元本の返還債権</strong>と、②その従たる契約である利息特約に基づく<strong>利息の支払債権</strong>の2本が生じています（返済が滞れば、これに履行遅滞の損害賠償が加わる）。
+  </div>
+
+  <h3>改正で登場：「諾成的消費貸借」</h3>
+  <p>要物契約一本やりは、現代の金融社会に合いません。「合意だけで貸す約束をきちんと成立させたい」というニーズが高まり、改正民法は<strong>書面またはデジタル記録があれば、合意だけで成立する諾成的消費貸借</strong>も正面から認めました。</p>
+
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>📦 要物型（伝統型）</h4>
+      <p><strong>合意＋お金の交付で成立</strong></p>
+      <ul>
+        <li>成立：お金を渡して初めて成立</li>
+        <li>発生する債権：貸金返還債権<strong>だけ</strong></li>
+        <li>性質：無償・片務が基本</li>
+        <li>「貸す債務」は生じない</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>📝 諾成型（改正で公認）</h4>
+      <p><strong>書面・デジタル記録での合意で成立</strong></p>
+      <ul>
+        <li>成立：合意だけで成立（交付前でも）</li>
+        <li>発生する債権：<strong>貸す債務＋返す債務</strong></li>
+        <li>要件：書面またはデジタル記録が必要</li>
+        <li>貸主は「貸す義務」を負う</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>よくある誤解：「書面でする消費貸借＝諾成的消費貸借」ではない！</strong><br>
+    書面・デジタル記録は、諾成的消費貸借であるための<strong>必要条件</strong>ではあるが、<strong>十分条件ではない</strong>。<br>
+    つまり「書面がある → 必ず諾成型」とは言えない。書面があっても要物型として結ぶこともできる。書面は諾成型の入口の1つにすぎません。
+  </div>
+
+  <h4>諾成型でも借主は「借りる義務」を負わない</h4>
+  <div class="key">
+    諾成的消費貸借が成立しても、借主は「貸す債務」に対応して「返す債務」を負うだけで、<strong>「借りる義務」までは負いません</strong>。<br>
+    お金が要らなくなった等の理由で、借主は、まだ渡されていない部分について<strong>契約を解除できます</strong>（民587条の2第2項）。<br>
+    ただし、貸主が貸すために準備で出費していた場合、その無駄になった費用は<strong>損害賠償として請求できる</strong>。
+  </div>
+
+  <div class="term">
+    <strong>破産したらどうなる？（民587条の2第3項）</strong><br>
+    諾成的消費貸借で、借主または貸主のどちらかが破産手続開始決定を受けたときは、その時点で、まだ渡していない部分について<strong>契約自体が失効</strong>します。<br>
+    → 破産管財人が「貸せ」と請求してわずかな配当のために貸主を巻き込む、といった不公平を避けるための特則。
+  </div>
+
+  <h3>【最重要】返還請求権はいつ発生するのか</h3>
+  <p>ここがこのブロック全体の核心です。消費貸借と賃貸借では、返還請求権の発生の仕組みが構造的に違います。</p>
+
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>💴 消費貸借</h4>
+      <p><strong>返還は「契約の効力」</strong></p>
+      <ul>
+        <li>貸した時点で貸金返還債権が発生</li>
+        <li>履行期が来たら「返せ」と請求</li>
+        <li>全額回収して契約が<strong>目的達成で終了</strong></li>
+        <li>「借りた金は返済期に返す」が出発点</li>
+      </ul>
+    </div>
+    <div class="vs-mid">≠</div>
+    <div class="vs-box right">
+      <h4>🏠 賃貸借・使用貸借</h4>
+      <p><strong>返還は「契約終了の効果」</strong></p>
+      <ul>
+        <li>契約中は「貸しておく」のが本体</li>
+        <li>契約が<strong>終了して初めて</strong>返還請求権が発生</li>
+        <li>条文も「契約終了時に返還」と書く</li>
+        <li>返還は終了の結果</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="analogy">
+    <strong>消費貸借</strong>は「マラソン」に似ています。スタート（貸渡し）と同時に「ゴール（返済）まで走る義務」が発生し、ゴールした瞬間にレース（契約）が終わる。返済がゴールであり終着点。<br>
+    <strong>賃貸借</strong>は「レンタカー」。借りている間はずっと使わせておくのが契約の中身で、返却は「レンタル期間が終わったから」返すだけ。返却は契約が終わった<u>結果</u>。<br>
+    条文の書きぶりも、この普通の感覚の違いを反映しています。
+  </div>
+
+  <div class="warn">
+    司法研修所は「催告＋相当期間経過」を解約告知と捉え、賃貸借と同じ枠組みで統一的に理解しようとするフシがあります。<br>
+    しかし先生は懐疑的。カネの貸し借りでは「借りた金は返済期が来たら返す」というのが当事者の普通の意識で、<strong>契約が存続しているからこそ、その契約の効力として返済請求ができる</strong>と考えるほうが自然だと説きます。<br>
+    （司法研修所も過去に民法112条を「表見代理の規定ではない」と頑張った末に学説に屈服した「前科」があるので、鵜呑みは禁物、というのが先生の立場。）
+  </div>
+
+  <h4>返還請求の要件事実</h4>
+  <table>
+    <tr><th>型</th><th>請求原因事実</th></tr>
+    <tr><td>要物型</td><td>① 金銭消費貸借契約の締結　② 貸金返還債務の履行期の到来</td></tr>
+    <tr><td>諾成型</td><td>① 書面による諾成的消費貸借契約の締結　② その契約に基づく一定額の金銭交付　③ 貸金返還債務の履行期の到来</td></tr>
+  </table>
+
+  <div class="term">
+    <strong>履行期の合意がないデフォルトケース（民591条）</strong><br>
+    返す時期を決めていない場合、貸主が「返して」と<strong>催告し、そこから相当期間が経過</strong>して初めて履行期が到来する。<br>
+    しかもこの相当期間の経過で履行遅滞も始まる。「請求さえすれば即遅滞」となる民412条3項の<strong>特則</strong>（借主にワンクッションの猶予を与えている）。
+  </div>
+
+  <h3>おまけ：ニセ札が混じっていたら</h3>
+  <div class="key">
+    借りたお金にニセ札が混じっていた場合、借主は原則としてホンモノでの穴埋めを請求できません（民590条1項→民551条1項準用）。返す額も、ホンモノで借りた金額の限度でOK（民590条2項）。<br>
+    ただし<strong>利息付き（有償）</strong>の場合は話が別で、ニセ札分のリカバリー・利息の減額・年3%の損害賠償・契約の全部解除などを主張できます（民590条1項→民551条2項準用）。
+  </div>
+
+  <div class="quiz">
+    理解度チェック（2問）
+    <details>
+      <summary>💬 Q1：「書面でした消費貸借は必ず諾成的消費貸借である」。正しい？</summary>
+      <p><strong>誤り。</strong>書面・デジタル記録は諾成的消費貸借の<u>必要条件</u>にすぎず、<u>十分条件ではない</u>。書面があっても要物型として締結することは可能で、「書面がある＝諾成型」とは言えない。</p>
+    </details>
+    <details>
+      <summary>💬 Q2：消費貸借の「返還」と賃貸借の「返還」は、発生のしくみがどう違う？</summary>
+      <p>消費貸借では、貸渡しと同時に貸金返還債権が発生し、履行期到来で請求でき、全額回収されて契約が目的達成で終了する。返還は「契約の<strong>効力</strong>」。<br>
+      賃貸借では、契約中は貸しておくのが本体で、契約が終了して初めて目的物返還請求権が生じる。返還は「契約終了の<strong>効果</strong>」。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義136 ========== -->
+<div class="section" id="lec136">
+  <div class="section-header">
+    <div class="section-num">136</div>
+    <h2>準消費貸借契約の法理</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>準消費貸借とは、<strong>同じ当事者間にある既存の債権（1個でも複数でもよい）を、合意によって「1個の貸金返還債権」に切り替える契約</strong>です。狙いは<strong>債権関係の簡明化</strong>。</p>
+
+  <div class="analogy">
+    行きつけの居酒屋でツケがたまっているとします。<br>
+    「先月のビール代」「今月の焼き鳥代」「同僚の分の立て替え」…と、発生日も金額もバラバラの支払いが何件も。管理が面倒です。<br>
+    そこで店主とあなたが「ぜんぶまとめて<strong>8万円の借金</strong>ということにして、月末に返します」と合意する。<br>
+    これが準消費貸借。複数の債権を1個の貸金債権に一本化して、管理をラクにするのです。
+  </div>
+
+  <div class="key">
+    <strong>なぜ「準」消費貸借なのか？</strong><br>
+    普通の消費貸借では「新たにお金を交付」して貸金返還債権を作ります。準消費貸借では、お金の交付の代わりに「<strong>旧債権を消滅させる</strong>」ことで貸金返還債権を作る。<br>
+    → 通常の消費貸借の「金銭交付」と、準消費貸借の「旧債権の消滅」が<strong>置き換えの関係</strong>に立つ。だから「準」なのです。
+  </div>
+
+  <div class="flow">
+    <div class="flow-item f-blue">旧債権A<br><small>売買代金</small></div>
+    <div class="flow-item f-blue">旧債権B<br><small>立替金</small></div>
+    <div class="flow-item f-blue">旧債権C<br><small>貸金</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">準消費貸借の合意<br><small>一本化</small></div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">1個の貸金返還債権</div>
+  </div>
+
+  <h3>【判例の目玉】立証責任は誰が負う？</h3>
+  <p>ここが講義136の最大の論点。普通に考えると「旧債権が本当にあったこと」は<strong>債権者Aが証明すべき</strong>はずです。ところが判例はこれをひっくり返します。</p>
+
+  <div class="warn">
+    もし旧債権の発生原因を債権者Aが立証しなければならないとすると…<br>
+    Aは、一本化した後もずっと旧債権の契約書などを保存し続けなければならない。<br>
+    → これでは「管理をラクにする」という準消費貸借の趣旨が<strong>まるごと台無し</strong>になってしまう。しかも実際には、一本化したら旧債権の証書は破棄されているのが普通。
+  </div>
+
+  <div class="key">
+    <strong>判例：旧債権の「不存在」の立証責任は債務者Bが負う</strong>（3つの理由）<br>
+    ① <strong>簡明化の趣旨</strong>：一本化でラクにする目的なのに、Aに旧債権の立証を求めるのは本末転倒。<br>
+    ② <strong>取引の実際</strong>：一本化すれば旧債権の証書は破棄されるのが通常。<br>
+    ③ <strong>禁反言（信義則）</strong>：準消費貸借を締結した行為自体が「旧債務を新債務に置き換える」承認。後から「旧債務は無かった」と言うのは自己矛盾で許されない。
+  </div>
+
+  <div class="analogy">
+    借金の一本化は、いわば「今までの貸し借りを精算して1枚の新しい借用書にサインする」行為。<br>
+    サインした本人（B）が後になって「実はあの元の借金、無かったんだよね」と言い出すのは、ムシがよすぎる話。<br>
+    「自分でサインしておいて今さら何を」——これが<strong>禁反言</strong>（矛盾した態度は許されない）の発想です。だから、旧債務が無かったと言いたいなら、それはBが自分で証明しなさい、となる。
+  </div>
+
+  <div class="warn">
+    <strong>用語の注意：「旧債務の存在／不存在の証明責任」という言い方は本当はミスリーディング。</strong><br>
+    債務の存否は「事実」ではなく、発生・消滅・障害という法律効果の結果としての「法律関係」。だから正確には、旧債権の<strong>根拠要件事実・障害要件事実・消滅要件事実</strong>のどれを誰が主張立証するか、という問題として捉える必要があります。
+  </div>
+
+  <h4>要件事実の整理</h4>
+  <table>
+    <tr><th>立場</th><th>主張立証すべき事実</th></tr>
+    <tr><td>原告A（請求原因）</td><td>① 旧債権を特定して準消費貸借契約を締結したこと　② その貸金返還債務の履行期到来（約定期限到来 or 民591条の催告＋相当期間満了）</td></tr>
+    <tr><td>被告B（抗弁）</td><td>旧債権の <strong>根拠要件事実の不存在</strong>／障害要件事実の存在／準消費貸借締結前の消滅要件事実の存在 → 新債権障害の抗弁</td></tr>
+  </table>
+
+  <h3>準消費貸借の効果いろいろ</h3>
+
+  <h4>① 担保・同時履行の抗弁は承継されるか</h4>
+  <div class="key">
+    別段の合意や債権者による担保放棄がない限り、旧債権の<strong>担保（人的・物的）や同時履行の抗弁権は、原則として新債権に承継</strong>されます。<br>
+    ただし保証人・物上保証人の負担は「旧債権の担保としての範囲内」に限られる。たとえば新債権の利率が上がっても、別段の合意がなければ<strong>保証人は旧債権の利率の範囲でしか責任を負わない</strong>。弁済期が前倒しされても、旧債権の履行期までの期限の利益を主張できる。
+  </div>
+
+  <div class="analogy">
+    保証人は「元の借金の保証人」として引き受けた人。<br>
+    本人どうしが勝手に「利率を上げよう」「返済期を早めよう」と決めても、保証人は「私が引き受けたのは<strong>元の条件</strong>まで。勝手に厳しくされた分まで付き合う義理はない」と言える。<br>
+    → 担保は承継されるが、負担が重くなる分までは当然にはついて来ない。
+  </div>
+
+  <h4>② 詐害行為取消権の被保全債権の先後判断</h4>
+  <div class="key">
+    詐害行為取消権は「被保全債権の発生原因が、債務者の財産減少行為より前」であることが要件。<br>
+    被保全債権が準消費貸借に基づく貸金返還債権のときは、<strong>旧債権の発生原因</strong>を基準に先後を判断します（準消費貸借の締結時ではない）。<br>
+    → 債務者の財産減少を望んで一本化したとは通常考えられないから。被告が「準消費貸借の締結は財産減少行為の後だ」と反論しても、主張自体失当（理由になっていない）。
+  </div>
+
+  <h4>③ 消滅時効の起算点</h4>
+  <div class="term">
+    準消費貸借に基づく貸金返還債権の消滅時効は、<strong>新債権の履行期</strong>を起算点とする。<br>
+    ・客観的起算点（履行期到来時）から10年<br>
+    ・主観的起算点（債務者が履行期到来を知った時）から5年<br>
+    時効は公益に関わる制度なので、当事者の意思の問題ではない。
+  </div>
+
+  <div class="quiz">
+    理解度チェック（2問）
+    <details>
+      <summary>💬 Q1：準消費貸借で、旧債権が「本当に存在したこと」の立証責任は、原則どおりなら誰が負うはず？ 判例は誰に負わせた？</summary>
+      <p>原則（法律要件分類説）どおりなら、旧債権が発生したことは債権者Aが立証すべき。<br>
+      しかし判例は、①簡明化の趣旨 ②旧債権の証書は破棄されがち ③準消費貸借締結自体が債務者の承認で後の否認は禁反言、の3理由から、旧債権の<strong>不存在</strong>の立証責任を<strong>債務者B</strong>に負わせた。</p>
+    </details>
+    <details>
+      <summary>💬 Q2：新債権の利率が旧債権より高く設定された。保証人はどちらの利率で責任を負う？</summary>
+      <p>債権者との「担保負担増強合意」が別途認定されない限り、保証人は<strong>旧債権の利率の範囲内</strong>でしか責任を負わない。担保は承継されるが、負担が重くなる部分までは当然にはついて来ない。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義137 ========== -->
+<div class="section" id="lec137">
+  <div class="section-header">
+    <div class="section-num">137</div>
+    <h2>賃貸借契約の法理：当事者間の法律関係</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>賃貸借とは、<strong>物を貸して使わせ、その対価として賃料を払わせる契約</strong>です。諾成・有償・双務・継続的な契約で、アパートやレンタカーの法的な正体がこれ。</p>
+
+  <div class="analogy">
+    アパートを借りる場面がまさに賃貸借。<br>
+    大家さん（賃貸人）は「部屋を貸して、住める状態に保つ」義務を負い、あなた（賃借人）は「家賃を払う」義務を負う。<br>
+    消費貸借（お金）の本体が「貸した金を返させる」ことなのに対し、賃貸借の本体は<strong>「物を貸しておくこと」そのもの</strong>。だから返還請求権は契約が終わって初めて生じます。
+  </div>
+
+  <div class="key">
+    <strong>賃貸借は必然的に「継続的契約」</strong>。だから継続的契約の法理が働く：<br>
+    ① <strong>解約の自由</strong>（契約で人を身分的に縛ってはならない）<br>
+    ② <strong>解除の効果の不遡及</strong>（さかのぼって清算すると無駄に複雑になる。民620条に明文）
+  </div>
+
+  <h3>賃貸人（大家）の義務</h3>
+  <p>賃貸人は、ただ「邪魔しない」だけの使用貸借の貸主と違い、<strong>目的物を使用収益に適した状態に置く積極的な義務</strong>を負います。</p>
+
+  <div class="term">
+    <strong>修繕義務（民606条1項）</strong>：賃貸人は、目的物を契約の趣旨に従って賃借人の使用収益に適した状態に保つため、費用を負担して修繕する義務を負う。<br>
+    賃料には賃貸人の純収益だけでなく「この義務を果たすコスト」も含まれているから、当然の義務。<br>
+    ⚠️ ただし、修繕の必要が<strong>賃借人の帰責事由</strong>で生じたときは、修繕請求権は障害される（民606条1項ただし書）。
+  </div>
+
+  <h4>賃借人が自分で修繕していい？</h4>
+  <div class="warn">
+    「壊れたから勝手に直して、後で費用を請求しよう」——これは原則NG。<br>
+    賃借人はまず<strong>修繕の必要を賃貸人に遅滞なく通知する義務</strong>がある（民615条）。<br>
+    賃借人が自分で修繕して費用を請求できるのは、次のいずれかの場合だけ：
+  </div>
+
+  <div class="flow">
+    <div class="flow-item f-blue">修繕が必要と気づく</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">賃貸人に通知（民615条）</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">① 相当期間経過<br>or ② 急迫の事情</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">自分で修繕OK<br>→ 費用請求可</div>
+  </div>
+
+  <h4>必要費と有益費</h4>
+  <table>
+    <tr><th></th><th>必要費（民608条1項）</th><th>有益費（民608条2項）</th></tr>
+    <tr><td>内容</td><td>修繕など、物の維持に必要な費用</td><td>物の価値を高める費用</td></tr>
+    <tr><td>償還の時期</td><td>直ちに（支出時に履行期到来）</td><td>契約終了時</td></tr>
+    <tr><td>金額</td><td>支出額（利息なし）</td><td>支出額 or 価値増加額を賃貸人が選択…ではなく賃借人が選択</td></tr>
+    <tr><td>留置権</td><td>被担保債権になる</td><td>被担保債権になる（ただし裁判所が履行期を猶予すれば留置権停止）</td></tr>
+  </table>
+
+  <div class="warn">
+    <strong>費用償還請求権は1年で消える（除斥期間）</strong><br>
+    必要費・有益費の償還請求権は、借主が目的物を返還した時から<strong>1年以内</strong>に償還請求の意思を通知しないと、消滅時効の完成を待たずに除斥される（民600条・622条）。うっかり放置すると請求できなくなる。
+  </div>
+
+  <h3>一部が使えなくなったら：賃料の当然減額</h3>
+  <div class="key">
+    目的物の一部が滅失するなどして、その部分が使用収益できなくなったときは、<strong>使えない割合に応じて賃料が当然に（自動的に）減額</strong>される（民611条1項）。<br>
+    ・契約総則の民536条だけなら「賃料の支払を割合的に拒める」にとどまる（賃料債務は約定額のまま残る）。<br>
+    ・しかし民611条1項は<strong>特則</strong>として、賃料債務そのものを一部消滅させる（当然縮減）。
+  </div>
+
+  <div class="flow">
+    <div class="flow-item f-orange">一部が使えない</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-green">賃料が当然減額<br><small>民611①</small></div>
+  </div>
+  <div class="flow">
+    <div class="flow-item f-orange">残部では目的達せず</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">賃借人は全部解除できる<br><small>民611②</small></div>
+  </div>
+  <div class="flow">
+    <div class="flow-item f-red">全部が使えない（全部滅失）</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">契約は当然終了<br><small>意思表示不要</small></div>
+  </div>
+
+  <h3>賃貸借の終了原因</h3>
+  <div class="mindmap">
+    <div class="mindmap-title">思維導図：賃貸借の終了原因</div>
+    <ul class="tree">
+      <li>
+        <span class="node root">賃貸借契約の終了</span>
+        <ul>
+          <li><span class="node l2">① 目的物の全部滅失（賃貸人の債務が全部履行不能）</span></li>
+          <li>
+            <span class="node l2">② 期間満了・解約申入れ（最も正常な終了）</span>
+            <ul>
+              <li><span class="node l3">期間の定めなし → いつでも解約申入れ可（民617条）</span></li>
+              <li><span class="node l3">建物賃貸人からの解約申入れは6か月（借地借家27条）</span></li>
+            </ul>
+          </li>
+          <li><span class="node l2">③ 法定解除・約定解除</span></li>
+          <li><span class="node l2">④ 合意解約</span></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="key">
+    <strong>期間満了は「唯一避けられない終了原因」</strong>。法定解除も約定解除も合意解約も一度も起きない賃貸借はいくらでもあるが、期間満了を免れる賃貸借はありえない（解約申入れは概念上、期間満了の基本型）。
+  </div>
+
+  <h3>存続期間の上限</h3>
+  <table>
+    <tr><th></th><th>民法604条（一般）</th><th>借地借家法（特則）</th></tr>
+    <tr><td>建物賃貸借</td><td>最長50年</td><td>上限なし（天井知らず）／最短1年、1年未満は「期間の定めなし」とみなす</td></tr>
+    <tr><td>借地（建物所有目的）</td><td>最長50年</td><td>原則30年（更新後は1回目20年、2回目以降10年）</td></tr>
+  </table>
+
+  <div class="term">
+    <strong>借地権（借地借家2条）</strong>：建物を所有する目的で土地を借りる場合の土地賃借権（建物所有目的の地上権も含む）。存続期間は当然に30年（30年未満の定めは無効、30年超は有効）。「一世代の間」という感覚。
+  </div>
+
+  <h3>敷金</h3>
+  <div class="key">
+    敷金は、賃料債権や損害賠償債権などを担保するために賃借人から賃貸人へ交付される金銭（保証金・預り金などと呼んでも実質が敷金なら敷金）。法的には賃貸借に従たる<strong>要物契約としての敷金契約</strong>。<br>
+    賃借人は、賃貸借が終了し<strong>目的物を返還した時点</strong>で、未払債務を控除した残額の敷金返還請求権を取得する（民622条の2）。<strong>目的物返還が先、敷金返還が後</strong>。「敷金返すまで物を返さない」は主張自体失当。
+  </div>
+
+  <div class="quiz">
+    理解度チェック（3問）
+    <details>
+      <summary>💬 Q1：雨漏りに気づいた借主が、大家に何も言わずに自分で業者に修理させ、費用を請求できるか？</summary>
+      <p>原則できない。まず賃貸人に<strong>遅滞なく通知</strong>する義務があり（民615条）、自分で修繕して費用請求できるのは、①通知後に相当期間が経過した場合、または②急迫の事情がある場合に限られる。</p>
+    </details>
+    <details>
+      <summary>💬 Q2：目的物の一部が使えなくなった。民536条と民611条1項で結論はどう違う？</summary>
+      <p>民536条だけなら賃料の支払を<strong>割合的に拒める</strong>にとどまり、賃料債務は約定額のまま残る。民611条1項は特則として、使えない割合に応じて<strong>賃料債務そのものを一部消滅させる</strong>（当然減額）。</p>
+    </details>
+    <details>
+      <summary>💬 Q3：「敷金を返してくれるまで部屋は明け渡さない」という主張は通る？</summary>
+      <p>通らない（主張自体失当）。<strong>目的物返還が先、敷金返還が後</strong>。敷金は返還時に未払債務を当然控除した残額が返される仕組みで、同時履行の関係には立たない。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義138 ========== -->
+<div class="section" id="lec138">
+  <div class="section-header">
+    <div class="section-num">138</div>
+    <h2>賃貸借の法理：賃貸人側の第三者と賃借人の関係</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>大家が物件を第三者に売ってしまったとき、<strong>借主は新しい所有者に「借りているんだ」と主張できるのか？</strong> という問題。カギは「賃借権は債権だから、対抗要件がないと第三者に対抗できない」こと。</p>
+
+  <div class="analogy">
+    こんな場面です。<br>
+    Aさんの土地をBさんが借りて、その上に自分の建物を建てて住んでいる。<br>
+    ところがAさんが、その土地をCさんに<strong>売ってしまった</strong>。<br>
+    新所有者Cが「私の土地だから建物を壊して出て行け」とBに迫る。BはCに「借りてるんです」と言い返せるのか？——これが講義138の核心です。
+  </div>
+
+  <div class="flow">
+    <div class="flow-item f-blue">A（土地所有者）</div>
+    <div class="flow-arrow">→賃貸</div>
+    <div class="flow-item f-green">B（借主・建物所有）</div>
+  </div>
+  <div class="flow">
+    <div class="flow-item f-blue">A</div>
+    <div class="flow-arrow">→売却</div>
+    <div class="flow-item f-orange">C（新所有者）</div>
+    <div class="flow-arrow">→明渡請求</div>
+    <div class="flow-item f-green">B（借主）は対抗できる？</div>
+  </div>
+
+  <h3>問題の根っこ：賃借権は「債権」</h3>
+  <div class="key">
+    Bの賃借権は<strong>債権</strong>です。債権は、契約の相手方（債務者A）には主張できるが、<strong>第三者Cにはそのままでは対抗できない</strong>（物権債権の峻別）。<br>
+    だからBがCに「占有権原がある」と抗弁するには、賃借権に<strong>特別の第三者対抗要件</strong>を備える必要がある。
+  </div>
+
+  <div class="vs">
+    <div class="vs-box left">
+      <h4>🏠 地上権（物権）</h4>
+      <p><strong>それ自体で対抗力あり</strong></p>
+      <ul>
+        <li>物権なので生まれつき第三者対抗力を持つ</li>
+        <li>争われて初めて登記の具備を主張すればよい</li>
+        <li>対抗力は「内在」している</li>
+      </ul>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-box right">
+      <h4>📄 賃借権（債権）</h4>
+      <p><strong>対抗要件を備えて初めて対抗力を獲得</strong></p>
+      <ul>
+        <li>債権だから対抗力は「内在しない」</li>
+        <li>特別の第三者対抗要件が必要</li>
+        <li>対抗力は「外から付与」される</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="warn">
+    <strong>ここが重要ポイント：</strong>賃借権（債権）と地上権（物権）で、対抗力の由来が全く違う。地上権は最初から対抗力を持つが、賃借権は対抗要件を備えて初めて対抗力が付与される。物権篇（講義18〜21）の復習も兼ねる論点。
+  </div>
+
+  <h3>対抗要件の実際：民605条はほぼ空文</h3>
+  <div class="term">
+    <strong>賃借権の登記（民605条）</strong>：民法が用意した対抗要件。しかし賃借権の登記は<strong>賃貸人の協力（登記手続への同意）が必要</strong>で、賃貸人には協力する義務がない（債権だから、効力を超える対抗力を得るための協力を強制できない）。<br>
+    → 実際上は「言い値の登記協力手数料」を払わないと登記できず、<strong>ほぼ空文化</strong>している（梅田の大規模ビルなど稀有な例を除く）。
+  </div>
+
+  <h3>借地借家法による救済</h3>
+  <p>民605条が使い物にならないので、国家は特別法（借地借家法）で、<strong>賃借人が自力で備えられる対抗要件</strong>を用意しました。ポイントは「①不動産が公示されること」「②他人の協力に頼らず賃借人自身の権利で備えられること」の2つ。</p>
+
+  <table>
+    <tr><th></th><th>対抗要件</th><th>条文</th></tr>
+    <tr><td>借地（建物所有目的の土地賃借権）</td><td>借地上に賃借人<strong>自己名義の建物登記</strong>があること</td><td>借地借家10条1項</td></tr>
+    <tr><td>借家（建物賃借権）</td><td>建物の<strong>引渡し</strong>を受けたこと</td><td>借地借家31条</td></tr>
+    <tr><td>農地・採草放牧地</td><td>引渡し</td><td>農地法16条</td></tr>
+  </table>
+
+  <div class="analogy">
+    借地借家法の仕組みは、賃借人が「自分でできる方法」で自分の権利を世間に見せる仕組み。<br>
+    借地なら、借主は自分の建物に自分名義で登記できる（自力でできる）。第三者は土地を見て「他人名義の建物が建っている → 誰かが土地を借りているのかも」と推知できる。<br>
+    借家なら、建物を引き渡してもらって現に住む（自力でできる）。第三者は「所有者でない人が住んでいる → 借家人がいるのかも」と推知できる。<br>
+    ※ここでの「推知」は「確実に推定できる」ではなく「ひょっとしたらそうかも、と警戒できる」という意味。
+  </div>
+
+  <h3>対抗要件を備えたら：賃貸人の地位も移転する</h3>
+  <div class="key">
+    Bが対抗要件を備えていれば「<strong>売買は賃貸借を破らず</strong>」。CはBの賃借権に負ける。<br>
+    しかもこのとき、民605条の2により、<strong>賃貸人たる地位もAからCに移転</strong>する（Cは自分が登記を備えるかどうかに関わらず、原則として賃貸人の地位を承継）。<br>
+    → Cは単に「賃借権に負ける所有者」ではなく、賃料を請求でき、修繕義務を負う「新しい大家」になる。AB間の賃貸借関係がそのままCB間に移行する。
+  </div>
+
+  <div class="flow">
+    <div class="flow-item f-green">Bが対抗要件を具備</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-blue">売買は賃貸借を破らず</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-orange">Cが新賃貸人に<br><small>民605条の2</small></div>
+  </div>
+
+  <div class="term">
+    <strong>賃貸人地位の対抗要件（民605条の2第3項）</strong>：Cが「私が新しい大家です」とBに主張するには、<strong>不動産の所有権移転登記</strong>が必要。債権譲渡の対抗要件の類推などでは足りず、一律に所有権移転登記だけが対抗要件。<br>
+    （なぜBが対抗要件を要求できるか？ 「オマエ誰やねん、本当に新しい大家か？ IDカード見せて」と言える立場だから。）
+  </div>
+
+  <div class="quiz">
+    理解度チェック（2問）
+    <details>
+      <summary>💬 Q1：Bの賃借権が地上権だった場合と、ただの土地賃借権だった場合で、Cへの対抗力の獲得はどう違う？</summary>
+      <p>地上権は<strong>物権</strong>なので、それ自体で第三者対抗力を持つ（争われて初めて登記の具備を主張すればよい）。<br>
+      ただの土地賃借権は<strong>債権</strong>なので、特別の第三者対抗要件（借地借家法10条の自己名義建物登記など）を備えて初めて対抗力を獲得する。</p>
+    </details>
+    <details>
+      <summary>💬 Q2：Bが対抗要件を備えていた場合、土地を買ったCとBの関係はどうなる？</summary>
+      <p>「売買は賃貸借を破らず」。CはBに明渡しを求められないばかりか、民605条の2により<strong>賃貸人の地位をAから承継</strong>する。CはBに賃料を請求でき、修繕義務を負う新しい大家になる。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 講義139 ========== -->
+<div class="section" id="lec139">
+  <div class="section-header">
+    <div class="section-num">139</div>
+    <h2>賃貸借の法理：賃借人側に第三者が現れた場合</h2>
+  </div>
+
+  <h3>一言でいうと</h3>
+  <p>今度は逆に、<strong>借主が勝手に第三者へ又貸し（転貸）・賃借権譲渡をしたら？</strong> という問題。原則として賃貸人の承諾が必要で、無断でやれば大家は契約を解除できる。ただし判例の<strong>背信行為論</strong>という重要な例外がある。</p>
+
+  <div class="analogy">
+    Aさんから借りた部屋を、Bさんが勝手に第三者Cさんに又貸ししてしまった場面。<br>
+    大家Aからすれば「私はBさんを信頼して貸したのに、知らない人が住んでいる！」という裏切り。<br>
+    賃貸借は「この人ならちゃんとしてくれる」という<strong>人と人との信頼関係</strong>で成り立っています。だから無断で他人に使わせるのは、その信頼を壊す行為なのです。
+  </div>
+
+  <div class="key">
+    <strong>民法612条のルール</strong><br>
+    ① 賃借人は、賃貸人の承諾がなければ賃借権を譲渡・転貸できない（1項）。<br>
+    ② 賃借人が無断で第三者に賃借物を使用収益させたら、賃貸人は契約を解除できる（2項）。
+  </div>
+
+  <div class="flow">
+    <div class="flow-item f-blue">A（大家）</div>
+    <div class="flow-arrow">→賃貸</div>
+    <div class="flow-item f-green">B（借主）</div>
+    <div class="flow-arrow">→無断で転貸</div>
+    <div class="flow-item f-orange">C（第三者）</div>
+  </div>
+  <div class="flow">
+    <div class="flow-item f-red">Bの無断転貸＝信頼関係の破壊</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-item f-red">Aは契約解除できる（民612条2項）</div>
+  </div>
+
+  <h3>【最重要例外】背信行為論（信頼関係破壊の法理）</h3>
+  <div class="key">
+    無断譲渡・転貸でも、それが<strong>「賃貸人に対する背信的行為と認めるに足りない特段の事情」</strong>があるときは、信頼関係はまだ破壊されていないので、賃貸人は解除<strong>できない</strong>（判例）。<br>
+    → 条文どおりなら解除できそうな場面でも、信頼関係が壊れていなければ解除を認めない、という判例による調整。
+  </div>
+
+  <div class="analogy">
+    「無断で又貸ししたら即解除」だと、借主に酷なケースがあります。<br>
+    たとえば、借りた建物で個人事業をしていた人が、自分で法人を作ってその法人の事務所にした（実質は同じ人）とか、親戚の子に大学の4年間だけ間借りさせたとか。<br>
+    こういうのは「めくじらを立てるほどではない」——背信的とまでは言えない。だから大家の解除権は認めない、というのが背信行為論です。
+  </div>
+
+  <div class="warn">
+    <strong>言葉の正確な意味に注意。</strong>「背信行為<u>ではない</u>と認めるに足りる事情」ではなく、「背信行為<u>と認めるに足りない</u>特段の事情」。<br>
+    つまり「背信性は無い」と積極的に言えなくてもよい。「背信性があるとまでは<strong>言えない</strong>」と評価できれば、違法性が阻却され解除権が障害される。ハードルはそこまで高くない。
+  </div>
+
+  <h3>先生の見解：民612条の正しい読み方</h3>
+  <p>先生は、条文の「無断で」という書き方はミスリーディングだと説きます。消極的事実（承諾を得<u>なかった</u>こと）を賃貸人に立証させるのはおかしいからです。</p>
+
+  <div class="key">
+    <strong>民612条の趣旨に即した読み替え（先生の見解）</strong><br>
+    1項「賃借人は、その賃借権を譲渡し、又は賃借物を適法に転貸することができない。ただし、賃貸人の承諾を得たときは、この限りでない。」<br>
+    2項「賃貸人が第三者に賃借物を引き渡したときは、賃貸人は、契約の解除をすることができる。ただし、その引渡し又はその原因行為につき賃貸人の承諾を得たときは、この限りでない。」<br>
+    → 「承諾を得なかったこと」は解除権の要件<strong>ではない</strong>。承諾は、賃借権移転の効力発生要件であり、引渡しの違法性阻却要件。
+  </div>
+
+  <div class="term">
+    <strong>解除権を根拠づける核心的事実は何か（先生の分析）</strong><br>
+    契約締結でも、第三者の使用収益開始でもなく、<strong>「賃借人が第三者に目的物を引き渡したこと」</strong>、これに尽きる。<br>
+    ・第三者の使用収益開始を要件とすると、引き渡したのに放置されている間は解除できず不合理。<br>
+    ・引渡しの原因行為（転貸借契約など）の特定・立証を賃貸人に負わせるのは、他人（B・C間）の事情を賃貸人に立証させることになり公平に反する。<br>
+    → 原因行為は、賃借人Bが「こういう事情で引き渡した」と抗弁として自ら主張すべき事柄。
+  </div>
+
+  <h4>解除権の障害要件事実（Bの抗弁）</h4>
+  <div class="key">
+    Bが「解除できない」と反論するには、次のいずれかを主張する：<br>
+    ① 賃貸人が、引渡しまたはその原因行為を<strong>容認する意思</strong>をB or Cに通知したこと（引渡しの前でも後でもよい）。<br>
+    ② 賃貸人に対する<strong>背信行為と認めるに足りない特段の事情</strong>の存在。
+  </div>
+
+  <div class="term">
+    <strong>「承諾」の法的性質（先生の見解）</strong>：民612条の承諾とは、引渡しまたはその原因行為を容認する意思を賃借人または第三者に通知すること。違法性阻却を生じさせる<strong>観念の通知たる準法律行為</strong>と解する。<br>
+    → 第三者Cの側から大家に「借りていいですか」と聞いてOKをもらった場合も、承諾に当たる（代理論を持ち込んで話を複雑にする必要はない）。
+  </div>
+
+  <h3>C（転借人）に対するAの請求</h3>
+  <div class="key">
+    Aは、所有権に基づいてC（現占有者である限り）に返還請求できる。<br>
+    ただしCは、①Aの容認意思の通知、または②背信行為と認めるに足りない特段の事情を主張して、<strong>適法転借権による占有権原の抗弁</strong>を出せる。<br>
+    抗弁が認められ、BC間が賃貸借のときは、Aは民613条により、Cに対して<strong>直接に賃料を請求できる</strong>（AがBに請求できる賃料額の範囲内で）。
+  </div>
+
+  <div class="term">
+    <strong>直接請求権（民613条）</strong>：Cが本来Bに払う賃料を、Aに直接払わせることができる法定請求権。B（転貸人）の無資力を要件としない点で債権者代位権と異なる。CはAに払えばBへの賃料債務を免れるので、特に不利益はない。<br>
+    ⚠️ ただしCがBに<strong>前払い</strong>していても、Aは「支払時期より前の前払いだ」と主張してAへの支払を求められる（民613条1項後段）。転借人の賃料前払いは法的に極めてリスキー。
+  </div>
+
+  <h4>親亀・子亀の法理</h4>
+  <div class="analogy">
+    転貸借は「親亀の上に子亀が乗った」構造。<br>
+    <strong>親亀（AB間の原賃貸借）</strong>の上に<strong>子亀（BC間の転貸借）</strong>が乗っている。<br>
+    親亀がこけたら（＝AB間の原賃貸借が終了したら）、子亀も当然にこける（＝CはAに転借権を対抗できなくなる）。<br>
+    だからAは、Cの適法転借権の抗弁に対し、原賃貸借の終了原因を再抗弁として主張できる。
+  </div>
+
+  <div class="warn">
+    ただし、原賃貸借が終了しても、BC間の転貸借契約が<strong>当然に終了するわけではない</strong>。判例は、Aが所有権に基づく返還請求をCにした時点で、BのC に対する債務が履行不能になり、BC間の転貸借が将来に向かって終了すると解する。<br>
+    （先生は、より精密に「Aが最初に返還請求した時に、後日棄却判決が確定することを解除条件として、将来に向かって終了する」と解すべきと説く。）
+  </div>
+
+  <div class="quiz">
+    理解度チェック（3問）
+    <details>
+      <summary>💬 Q1：借主が無断で又貸しをした。大家は必ず契約を解除できるか？</summary>
+      <p>必ずではない。原則は解除できるが（民612条2項）、その無断転貸が<strong>「背信行為と認めるに足りない特段の事情」</strong>があるときは、信頼関係が破壊されていないので解除できない（背信行為論）。</p>
+    </details>
+    <details>
+      <summary>💬 Q2：先生の見解では、解除権を根拠づける核心的事実は何か？</summary>
+      <p><strong>「賃借人が第三者に目的物を引き渡したこと」</strong>、これに尽きる。第三者の使用収益開始や、原因行為（転貸借契約）の特定・立証は、賃貸人の負担すべき要件事実ではない（原因行為は賃借人Bが抗弁として自ら主張すべき事柄）。</p>
+    </details>
+    <details>
+      <summary>💬 Q3：適法な転借人Cが賃料をBに前払いしていた。AはCに直接請求できないか？</summary>
+      <p>できる。民613条1項後段により、Aは「その支払が賃料支払時期より前の前払いだ」と主張して、Cに対しAへの支払を求められる。Cは二重払いのリスクを負う（前払いは法的にリスキー）。</p>
+    </details>
+  </div>
+</div>
+
+<!-- ========== 用語集 ========== -->
+<div class="section" id="glossary">
+  <div class="section-header">
+    <div class="section-num">📖</div>
+    <h2>初学者向け用語集</h2>
+  </div>
+
+  <table>
+    <tr><th>用語</th><th>読み</th><th>意味（やさしく）</th><th>登場講義</th></tr>
+    <tr><td>消費貸借</td><td>しょうひたいしゃく</td><td>お金を借りて、同種・同量・同質の物を返す契約</td><td>135</td></tr>
+    <tr><td>消費物</td><td>しょうひぶつ</td><td>使うと同一物として存在を失う物（主にお金）</td><td>135</td></tr>
+    <tr><td>要物契約</td><td>ようぶつけいやく</td><td>合意＋物の交付で初めて成立する契約</td><td>135</td></tr>
+    <tr><td>諾成契約</td><td>だくせいけいやく</td><td>当事者の合意だけで成立する契約</td><td>135</td></tr>
+    <tr><td>諾成的消費貸借</td><td>だくせいてきしょうひたいしゃく</td><td>書面・デジタル記録での合意で成立する消費貸借。貸す債務も生じる</td><td>135</td></tr>
+    <tr><td>利息特約</td><td>りそくとくやく</td><td>元本のほかに利息を払う合意。消費貸借を有償にする従たる契約</td><td>135</td></tr>
+    <tr><td>準消費貸借</td><td>じゅんしょうひたいしゃく</td><td>既存の債権を1個の貸金返還債権にまとめる契約</td><td>136</td></tr>
+    <tr><td>禁反言</td><td>きんはんげん</td><td>自分の以前の言動と矛盾する主張は許されない（信義則）</td><td>136</td></tr>
+    <tr><td>要件事実</td><td>ようけんじじつ</td><td>法律効果の発生に必要な、主張立証すべき具体的事実</td><td>136</td></tr>
+    <tr><td>被保全債権</td><td>ひほぜんさいけん</td><td>詐害行為取消権などで守られる対象となる債権</td><td>136</td></tr>
+    <tr><td>賃貸借</td><td>ちんたいしゃく</td><td>物を貸して使わせ、賃料を払わせる契約</td><td>137</td></tr>
+    <tr><td>継続的契約</td><td>けいぞくてきけいやく</td><td>一定期間続く契約。解約の自由・解除の不遡及が働く</td><td>137</td></tr>
+    <tr><td>修繕義務</td><td>しゅうぜんぎむ</td><td>賃貸人が目的物を使える状態に保つ義務（民606条）</td><td>137</td></tr>
+    <tr><td>必要費</td><td>ひつようひ</td><td>物の維持に必要な費用。直ちに償還される</td><td>137</td></tr>
+    <tr><td>有益費</td><td>ゆうえきひ</td><td>物の価値を高める費用。契約終了時に償還</td><td>137</td></tr>
+    <tr><td>除斥期間</td><td>じょせききかん</td><td>権利が一定期間で確定的に消滅する期間（更新なし）</td><td>137</td></tr>
+    <tr><td>敷金</td><td>しききん</td><td>賃料等を担保するため賃借人が交付する金銭</td><td>137</td></tr>
+    <tr><td>対抗要件</td><td>たいこうようけん</td><td>第三者に権利を主張するための条件（登記・引渡しなど）</td><td>138</td></tr>
+    <tr><td>物権債権の峻別</td><td>ぶっけんさいけんのしゅんべつ</td><td>物権は誰にでも、債権は相手方にだけ主張できるという区別</td><td>138</td></tr>
+    <tr><td>借地権</td><td>しゃくちけん</td><td>建物所有目的の土地賃借権（存続期間は原則30年）</td><td>138</td></tr>
+    <tr><td>賃貸人たる地位の移転</td><td>ちんたいにんたるちいのいてん</td><td>物件が売られると新所有者が大家の地位を引き継ぐこと（民605条の2）</td><td>138</td></tr>
+    <tr><td>転貸</td><td>てんたい</td><td>借りた物をさらに第三者に貸すこと（又貸し）</td><td>139</td></tr>
+    <tr><td>背信行為論</td><td>はいしんこういろん</td><td>信頼関係が壊れていなければ無断転貸でも解除できないとする法理</td><td>139</td></tr>
+    <tr><td>直接請求権</td><td>ちょくせつせいきゅうけん</td><td>賃貸人が転借人に直接賃料を請求できる権利（民613条）</td><td>139</td></tr>
+    <tr><td>親亀・子亀の法理</td><td>おやがめこがめのほうり</td><td>原賃貸借が終われば転貸借も当然に対抗できなくなる関係</td><td>139</td></tr>
+  </table>
+</div>
+
+<!-- ========== Footer ========== -->
+<div style="text-align:center; padding: 30px; color: var(--text-light); font-size: 0.85em;">
+  <p>msahkie先生の民法講義に基づく学習ガイド</p>
+  <p>法律未修者向け知識点整理・拡展</p>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>
